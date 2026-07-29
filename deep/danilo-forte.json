@@ -1,0 +1,466 @@
+{
+  "slug": "danilo-forte",
+  "solicitado_para": "Danilo Forte",
+  "dossie": {
+    "politician": {
+      "id": 62881,
+      "name": "Danilo Forte",
+      "party": "PP",
+      "state": "CE",
+      "email": "dep.daniloforte@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/62881",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 4,
+      "propositions_total": 20,
+      "min_sample_required": 5,
+      "attendance_rate": 96.6,
+      "sessions_checked": 29,
+      "inconsistencies": 3,
+      "total_propositions": 20,
+      "total_votes": 1
+    },
+    "promises": [],
+    "evidence": [
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3956/2026: Requer a criação da Frente Parlamentar Mista em Defesa do Programa Espacial Brasileiro.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 50/2026: Requer a convocação do Ministro de Estado de Minas e Energia para prestar esclarecimentos sobre o Leilão de Reserva de Capacidade de 2026 (LRCap 2026), em especial diante da decisão judicial que deter",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3212/2026: Requer a inclusão na Ordem do Dia do PLP nº 185/2024.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3159/2026: Requer inclusão de assinatura no Requerimento de Retirada de Proposição de Iniciativa Coletiva REQ nº 3131/2026.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3040/2026: Solicita a retirada de assinatura das emendas EMC nº 1 e EMC nº 2 da PEC 221/2019.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 2/0: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 1/0: Altera o Art. 7º inciso XIII da Constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 3367/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REL 1/2026: Relatório - Audiência Pública sobre Leilão de Reserva de Capacidade no setor elétrico brasileiro.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2608/2026: Requer Regime de Urgência para apreciação do PDL nº 264/2026.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 1079/2019",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 8324/2014",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 1854/2026: Institui o Dia Nacional do Corredor de Rua.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 23/2026: Requer, nos termos regimentais, a retirada de tramitação, nesta Comissão, e o arquivamento do Requerimento nº 20/2026, de minha autoria.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 22/2026: Requer a realização de Audiência Pública para debater o Leilão de Reserva de Capacidade no setor elétrico brasileiro e seus impactos regulatórios, econômicos e concorrenciais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 20/2026: Requer a realização de Audiência Pública para debater o Leilão de Reserva de Capacidade no setor elétrico brasileiro e seus impactos regulatórios, econômicos e concorrenciais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 5681/2023",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 655/2015",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 496/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 1355/2026: Requer o registro da Frente Parlamentar em Defesa da Política Nacional de Plantas Medicinais e Fitoterápicos",
+        "relevance": 0.8
+      },
+      {
+        "source": "Câmara dos Deputados",
+        "type": "votação",
+        "content": "Votou 'Não' em Rejeitado o Recurso nº 7/2026 (art. 58, § 1º c/c art. 132, § 2º, RICD). Sim: 154; Não: 245; Abstenção: 3; Total: 402. (2026-04-29T18:06:27)",
+        "relevance": 0.7
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.)  Sr. Presidente, Sras. e Srs. Deputados, Sras. e Srs. Senadores, o Brasil todo quer, de fato, ter transparência e visualizar quem tem responsabilidade sobre o problema do Banco Master. Esse é o maior escândalo do momento, mesmo ",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Como Líder. Sem revisão do orador.) - Obrigado, Sr. Presidente. Sras. e Srs. Deputados, nós acompanhamos estarrecidos os escândalos recentes no Brasil. Todos nós, nesta Casa, debatemos, profundamente, o tamanho do rombo na conta de aposentados, pensionistas e benef",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, o Brasil precisa ser destravado. O Brasil é um país riquíssimo, e o povo passa dificuldade. O País está estagnado economicamente, sem perspectiva, sem grandes investimentos, sempre patinando na mesma agenda porq",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Quero compartilhar a dor, a tristeza que hoje, principalmente, o Município de Caucaia, no interior do Ceará, sente pela partida de um grande homem, um ex-colega nosso, Deputado Federal, que também foi ",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, venho aqui dizer que temos um grande vencedor esta noite: a democracia interna da Câmara dos Deputados. Na semana passada, na segunda-feira, quando eu cheguei aqui e vi as urnas instalada",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/PP - CE. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, é uma alegria muito grande poder estar aqui neste momento, prestando contas do meu protagonismo na história recente deste Parlamento quando se fala de orçamento público. Foi com a nossa coragem, foi ",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Obrigado, Sr. Presidente. Meu amigo Deputado Hildo Rocha, é um prazer voltar a esta tribuna. Hoje, num momento de alegria, quero inicialmente compartilhar algo com as famílias de Itapajé, a minha cidade, onde eu tive o praze",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Obrigado, Deputado Gilberto. Este é um momento de dor, de pesar. Quero lamentar a partida de um ente muito querido, de uma pessoa que conviveu comigo desde a juventude, do meu amigo Jurailson Brito.",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, Sras. e Srs. Senadores, este é mais um ponto importante na caminhada pela autonomia dos Poderes no Brasil naquilo que diz respeito exatamente à ponderação do equilíbrio entre esses Pod",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, hoje é um dia muito importante para o Parlamento brasileiro. Neste ano, talvez, este seja o dia mais magnífico do encontro desta Casa parlamentar com o sentimento do povo brasileiro. Q",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, de novo temos um grande tema para tratar, neste momento, com muita responsabilidade. Sem sombra de dúvida, a maior aflição de toda a sociedade brasileira, de todas as famílias brasilei",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, estamos diante de um momento muito importante para a economia do Brasil, para a imagem do Brasil perante o mundo: vamos sediar aqui a COP 30, um desafio extraordinário. Nós temos capac",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Sem revisão do orador.) - Sr. Presidente, primeiramente, eu queria pedir para V.Exa. retirar da orientação do destaque a necessidade de votação nominal. Acho que isso não faz sentido, pois já está tudo acordado aqui para que todo mundo possa votar pelo sistema o",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, oriento pelo União Brasil. Ao aprofundar a visão do texto, vejo que ele estabelece uma cota de 100 megawatts por Estado, no Sul, com relação à eólica. Eu não posso obrigar um Estado a ",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, há muito tempo estamos ávidos por impedir o crescimento do crime organizado na economia formal. O que foi visto na Operação Carbono Oculto e o que estamos presenciando hoje, com o cres",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sra. Presidente, Sras. e Srs. Deputados, nós acabamos de aprovar a revisão de uma lei que já tínhamos votado em 2016, que não foi cumprida por uma agência reguladora chamada Anac. Naquele momento, quando impunha a cobrança d",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Para proferir parecer. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, a unidade deste Plenário já demonstra a preocupação e a sensibilidade da Câmara dos Deputados com um tema tão importante como hoje é o tema da segurança pública do nosso Paí",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Para proferir parecer. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, hoje é um dia muito importante para o Legislativo brasileiro. Um quarto  o que equivale a 25%  da população brasileira hoje vive sob o domínio do crime organizado. Ou seja",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Aqui, mais uma vez, todos nós que fazemos a bancada do União Brasil estamos muito felizes, não só pelo reconhecimento desta Casa, à unanimidade, com relação a um projeto que prioriza o cuidado com a",
+        "relevance": 0.6
+      },
+      {
+        "source": "Discurso em Plenário",
+        "type": "discurso",
+        "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Para discursar. Sem revisão do orador.)  Bom dia a todos e a todas. Cumprimento os que compõem a mesa na pessoa da nossa Presidenta, a Deputada Fernanda Pessoa, por essa belíssima iniciativa de homenagear quem merece o reconhecimento não só do povo cearense, ma",
+        "relevance": 0.6
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 30,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — Qualigraf Editora e Grafica LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 30,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — Qualigraf Editora e Grafica LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 10,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — SOBREMIDIA DIGITAL S/A",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 8,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — AC COMUNICAÇÃO LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 8,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — AC COMUNICAÇÃO LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 8,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — AC COMUNICAÇÃO LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 8,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — AC COMUNICAÇÃO LTDA",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 6,500.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINGOS SÁVIO ARAÚJO CARVALHO",
+        "relevance": 0.5
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 6,500.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINGOS SÁVIO ARAÚJO CARVALHO",
+        "relevance": 0.5
+      }
+    ],
+    "viability": [],
+    "inconsistencies": [
+      "⚠️ Despesa atípica: R$ 3,131.17 para LATAM Airlines Brasil — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,044.05 para LATAM Airlines Brasil — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,035.75 para LATAM Airlines Brasil — valor muito acima da média"
+    ],
+    "cross_reference": {
+      "achados": [
+        {
+          "tipo": "sem_acao_legislativa",
+          "tema": "infraestrutura",
+          "descricao": "Tema 'infraestrutura' aparece 3x em discursos, mas nenhuma das 20 proposições de autoria analisadas menciona o tema.",
+          "confianca": "media",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        },
+        {
+          "tipo": "sem_acao_legislativa",
+          "tema": "economia",
+          "descricao": "Tema 'economia' aparece 2x em discursos, mas nenhuma das 20 proposições de autoria analisadas menciona o tema.",
+          "confianca": "media",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        },
+        {
+          "tipo": "tema_silenciado",
+          "tema": "infraestrutura",
+          "descricao": "'infraestrutura' é recorrente no discurso (3 menções) e não aparece em nenhuma das 20 proposições de autoria.",
+          "confianca": "alta",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        },
+        {
+          "tipo": "tema_silenciado",
+          "tema": "economia",
+          "descricao": "'economia' é recorrente no discurso (2 menções) e não aparece em nenhuma das 20 proposições de autoria.",
+          "confianca": "alta",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        }
+      ],
+      "temas_falados": {
+        "infraestrutura": 3,
+        "saúde": 6,
+        "economia": 2
+      },
+      "temas_legislados": {
+        "saúde": 1
+      },
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 20,
+        "votos_analisados": 1,
+        "discursos_analisados": 20
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 292385.28,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 20,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "```markdown\n# Parecer Técnico\n\n## Resumo Executivo\nO analista forense político identificou uma série de proposições e discursos do deputado Danilo Forte, do PP, no CE, que foram analisadas em quatro aspectos: coerência, viabilidade, risco e benchmarking. A análise revela contradições entre discurso e ação, promessas e orçamento, padrões suspeitos e comparação com pares.\n\n## Análise de Coerência\n### Contradições entre Discurso e Ação\n- **Discurso**: Forte se posiciona contra escândalos e pela transparência, mas vota contra o Recurso nº 7/2026.\n- **Ação**: Participa de proposições que, aparentemente, não correspondem aos discursos de luta pela transparência e contra escândalos.\n\n### Conclusão sobre Coerência\nHá evidências de contradição entre discurso e ação. Forte se posiciona contra escândalos, mas vota contra propostas que poderiam fortalecer a transparência. Esta contradição sugere um possível conflito de interesses ou uma falta de coerência entre suas ações e suas declarações públicas.\n\n## Análise de Viabilidade\n### Promessas vs Orçamento\n- **Promessas**: Forte apresenta várias proposições que, na sua visão, são necessárias para o desenvolvimento do país, como a criação de Frentes Parlamentares, alterações constitucionais e a criação de dias nacionais.\n- **Orçamento**: Não há informações específicas sobre o orçamento disponível para essas propostas.\n\n### Conclusão sobre Viabilidade\nSem informações específicas sobre o orçamento disponível, não é possível avaliar a viabilidade de todas as promessas. Algumas propostas, como a criação de Frentes Parlamentares, podem ser factíveis, enquanto outras, como alterações constitucionais, requerem orçamentos significativos que não foram mencionados.\n\n## Flags de Risco\n### Padrões Suspeitos\n- **Gastos e Votações**: Não foram identificados padrões suspeitos em gastos ou votações específicas que justifiquem uma avaliação de risco.\n\n### Conclusão sobre Risco\nNão foram identificados padrões suspeitos em gastos ou votações que justifiquem uma avaliação de risco. Não há evidências de que as ações de Forte estejam associadas a padrões suspeitos.\n\n## Comparação com Pares\n- **Benchmarking**: Não há dados suficientes para comparar Forte com pares específicos.\n\n## Conclusão\n**Score recomendado**: 50\n**Justificativa**: A análise revela contradições entre discurso e ação, mas não há evidências suficientes para avaliar a viabilidade ou risco. O score de 50 reflete a falta de dados específicos para avaliar a viabilidade e risco, mas não há evidências de contradições ou padrões suspeitos.\n\n```\n\nEste parecer técnico é",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "19 frases classificadas por qwen1.5b; 11 divergência(s) do filtro determinístico",
+      "total_classificadas": 19,
+      "divergencias": [
+        {
+          "texto": "Nós vamos orientar \"sim\" ao projeto para esse setor que sustenta nossa economia, que é o agro brasileiro.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Podem ter a certeza de que continuarei nesta Casa lutando pelas prerrogativas conquistadas, lutando pela sua soberania, lutando pela sua independência e cobrando, e cobrando sempre, que o poder público possa corresponder aos desejos, às necessidades, à ansiedade e ao medo que o povo brasileiro vive hoje.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Meus amigos, antes de concluir minha fala  e vou passar, inclusive, um tempo da Liderança ao Deputado Delegado da Cunha, para que possa se pronunciar, como me pediu anteriormente , digo que é importante termos sensibilidade para reconhecer a responsabilidade que está sobre nós neste momento.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "A maior balela que apareceu nessa história é a de que, aprovando a lei do terrorismo, nós vamos perder a soberania.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Não podemos passar a imagem de que nós, Parlamentares, Deputados, que muitas vezes somos tão depreciados no quadro político nacional, perderemos a oportunidade de dizer ao Brasil: Epa!",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Não vamos criar preconceito pela semântica das palavras, mas vamos criar uma legislação compatível com o que o momento nos exige.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E é esta afirmação que este Parlamento precisa dizer ao povo brasileiro: Vamos votar, sim, a lei contra o terrorismo, contra as facções, contra aqueles que trazem desassossego e assombram o nosso povo e as famílias de bem do nosso Brasil! Muito obrigado, Sr. Presidente.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, estamos diante de um momento muito importante para a economia do Brasil, para a imagem do Brasil perante o mundo: vamos sediar aqui a COP 30, um desafio extraordinário.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Inclusive, agora, com o advento da perspectiva dos data centers, com a perspectiva do hidrogênio verde, nós vamos precisar de uma concentração e de um estímulo ainda muito maior.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mas é na política que nós vamos resolver os nossos problemas.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Quero também reconhecer o laborioso trabalho que foi feito pelo Relator da matéria, o Deputado Coronel Ulysses, do meu partido, o União Brasil, que trabalhou junto com os técnicos legislativos desta Casa para preparar esta peça, que agora passaremos a ler a partir do voto do Relator, que representa exatamente um avanço em relação a essa demanda da sociedade brasileira.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-29T18:28:01.865092-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
