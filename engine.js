@@ -334,14 +334,27 @@ async function coletarContexto(depId) {
 }
 
 async function coletarOrcamento(uf) {
-  if (!uf) return null;
+  if (!uf || !UF_IBGE[uf]) return null;
   // Prioriza exercício fechado: no meio do ano a despesa empenhada cobre o ano
   // inteiro e produz margem negativa artificial.
   const ano = hoje().getFullYear() - 1;
-  const d = await tentar(`${SICONFI}/rreo?${qs({
+  // A resposta do SICONFI para um RREO completo passa de 250 KB e chega a
+  // 1,7 MB. Disputando as 6 conexões com as ~26 requisições da presença, ela
+  // é derrubada pelo navegador (ERR_FAILED). Sai do limitador compartilhado e
+  // ganha caminho próprio.
+  const url = `${SICONFI}/rreo?${qs({
     an_exercicio: ano, nr_periodo: 6, co_tipo_demonstrativo: 'RREO',
-    no_anexo: 'RREO-Anexo 01', id_ente: UF_IBGE[uf] || '',
-  })}`);
+    no_anexo: 'RREO-Anexo 01', id_ente: UF_IBGE[uf],
+  })}`;
+  let d = null;
+  try {
+    const r = await fetch(url, { headers: { Accept: 'application/json' } });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    d = await r.json();
+  } catch (e) {
+    console.warn('SICONFI indisponível:', e.message);
+    return null;
+  }
   const itens = (d && d.items) || [];
   if (!itens.length) return null;
   const soma = (rot) => itens
@@ -491,13 +504,20 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
   prog('conferindo presença sessão a sessão');
   const presenca = await coletarPresenca(id, prog);
 
-  prog('consultando orçamento estadual no SICONFI');
-  const orcamento = await coletarOrcamento(perfil.state);
-
   prog('extraindo promessas dos discursos');
   const textoDiscursos = discursos
     .map((d) => d.transcricao || d.sumario || '').join('\n');
   const { promessas, descartes } = extrairPromessas(textoDiscursos);
+
+  /* O orçamento estadual só serve para aferir viabilidade DE PROMESSA. Sem
+     promessa detectada, ninguém consome esse dado -- e ele custa uma resposta
+     de centenas de KB. Buscar assim mesmo seria gastar a paciência de quem
+     está esperando por um número que não vai aparecer. */
+  let orcamento = null;
+  if (promessas.length) {
+    prog('consultando orçamento estadual no SICONFI');
+    orcamento = await coletarOrcamento(perfil.state);
+  }
 
   prog('cruzando discurso, ação registrada e vínculos');
   const cross = cruzar({ discursos, proposicoes, contexto, promessas });
