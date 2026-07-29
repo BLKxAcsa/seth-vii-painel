@@ -373,6 +373,11 @@ function modalHTML(p) {
       ).join('')}</div>`
     : '<p style="color:var(--tx-3);font-size:13px;margin:0">Sem evidências coletadas.</p>';
 
+  const news = p.noticias_publicas || [];
+  const newsHTML = news.length
+    ? `<div class="evd">${news.map((n) => `<div><b>${esc(n.fonte || 'Notícia pública')}</b> — ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title || '')}</a>` : esc(n.title || '')}<br><span style="color:var(--tx-3)">${esc((n.resumo || '').slice(0, 220))}</span></div>`).join('')}</div>`
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma notícia pública recente encontrada nos feeds acessíveis pelo navegador. Redes sociais e Google News exigem proxy/backend ou API autenticada.</p>';
+
   return `
   <div class="m-head">
     <div class="avatar">${esc(initials(pol.name))}</div>
@@ -406,13 +411,18 @@ function modalHTML(p) {
 
   <div class="m-sec"><h4>Promessas extraídas de discursos</h4>${promHTML}</div>
 
+  <div class="m-sec"><h4>Notícias públicas encontradas</h4>${newsHTML}</div>
+
   <div class="m-sec"><h4>Evidências coletadas</h4>${evdHTML}</div>
 
   <p class="legal">
     Análise probabilística, não acusatória. Mede viabilidade técnica, não
     honestidade nem intenção. As promessas são extraídas automaticamente de
     transcrições de discursos e podem conter falsos positivos. Fontes: API de
-    Dados Abertos da Câmara dos Deputados e SICONFI (Tesouro Nacional).
+    Dados Abertos da Câmara dos Deputados, SICONFI (Tesouro Nacional) e feeds
+    públicos acessíveis no navegador. Redes sociais e Google News não são lidos
+    diretamente no site quando bloqueiam CORS ou exigem API autenticada; para
+    isso é preciso camada de coleta em GitHub Actions/proxy.
   </p>`;
 }
 
@@ -458,6 +468,7 @@ $('#sort').addEventListener('change', (e) => { state.sort = e.target.value; rend
 
 let buscaTimer = null;
 let ultimaBusca = '';
+let buscaSeq = 0;  // impede resposta antiga de sobrescrever busca mais recente
 
 $('#q').addEventListener('input', (e) => {
   const termo = e.target.value.trim();
@@ -470,6 +481,7 @@ $('#q').addEventListener('input', (e) => {
 async function buscarNaCamara(termo) {
   if (termo === ultimaBusca) return;
   ultimaBusca = termo;
+  const seq = ++buscaSeq;
 
   const box = $('#live');
   box.hidden = false;
@@ -480,19 +492,29 @@ async function buscarNaCamara(termo) {
     const { buscarDeputados } = await import('./engine.js');
     achados = await buscarDeputados(termo);
   } catch (err) {
+    if (seq !== buscaSeq) return;
     box.innerHTML = `<div class="live-h">Não foi possível consultar a API oficial
       (${esc(err.message)}). Os cards abaixo continuam disponíveis.</div>`;
     return;
   }
 
+  // A busca é assíncrona; se o usuário digitou outro nome enquanto a API
+  // respondia, esta resposta antiga não pode sobrescrever a busca nova.
+  if (seq !== buscaSeq) return;
+
   if (!achados.length) {
-    box.innerHTML = `<div class="live-h">Nenhum deputado em exercício com
-      "${esc(termo)}" no nome.</div>`;
+    box.innerHTML = `<div class="live-h"><b>Nenhum deputado federal em exercício</b>
+      encontrado para "${esc(termo)}".</div>
+      <div class="live-note">O painel ao vivo consulta a Câmara dos Deputados.
+      Se for candidato, dirigente partidário, ex-deputado ou influenciador político
+      sem mandato federal atual, ele não aparece nessa base. Ex.: Jones Manoel
+      não consta como deputado federal em exercício.</div>`;
     return;
   }
 
+  const modoBusca = [...new Set(achados.map((d) => d._busca).filter(Boolean))].join(' · ');
   box.innerHTML = `
-    <div class="live-h">${achados.length} encontrado(s) na API oficial —
+    <div class="live-h">${achados.length} encontrado(s) na API oficial${modoBusca ? ` (${esc(modoBusca)})` : ''} —
       clique para analisar <b>agora</b>, com dados do minuto</div>
     <div class="live-list">
       ${achados.map((d) => `

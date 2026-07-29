@@ -223,11 +223,91 @@ export function extrairPromessas(texto) {
  * Coleta nas fontes oficiais
  * ------------------------------------------------------------------ */
 
+const ALIASES_BUSCA = {
+  // Correções de grafia que apareceram no uso real do painel.
+  // A API oficial é literal: "Nicolas" não acha "Nikolas"; "Kataguire" não
+  // acha "Kataguiri". O painel não deve parecer que a pessoa não existe por
+  // uma letra errada.
+  'nicolas ferreira': 'Nikolas Ferreira',
+  'nicolás ferreira': 'Nikolas Ferreira',
+  'nikolas ferreira': 'Nikolas Ferreira',
+  'kim kataguire': 'Kim Kataguiri',
+  'kim kataguiri': 'Kim Kataguiri',
+};
+
+function normalizarBusca(txt) {
+  return String(txt || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+function distanciaLevenshtein(a, b) {
+  a = normalizarBusca(a); b = normalizarBusca(b);
+  if (!a || !b) return 999;
+  const dp = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const custo = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + custo);
+    }
+  }
+  return dp[a.length][b.length];
+}
+
+let todosDeputadosCache = null;
+async function todosDeputados() {
+  if (todosDeputadosCache) return todosDeputadosCache;
+  // A API da Câmara não aceita itens=1000; pagina. Buscamos páginas de 100
+  // até acabar. Sem isso o fuzzy fallback falhava exatamente quando a busca
+  // direta não achava nada.
+  const todos = [];
+  for (let pagina = 1; pagina <= 8; pagina++) {
+    const d = await tentar(`${API}/deputados?${qs({
+      itens: 100, pagina, ordem: 'ASC', ordenarPor: 'nome',
+    })}`);
+    const dados = (d && d.dados) || [];
+    todos.push(...dados);
+    if (dados.length < 100) break;
+  }
+  todosDeputadosCache = todos;
+  return todosDeputadosCache;
+}
+
 export async function buscarDeputados(nome) {
-  const d = await tentar(`${API}/deputados?${qs({
-    nome, ordem: 'ASC', ordenarPor: 'nome', itens: 15,
-  })}`);
-  return (d && d.dados) || [];
+  const termoOriginal = String(nome || '').trim();
+  const chave = normalizarBusca(termoOriginal);
+  const tentativas = [termoOriginal];
+  if (ALIASES_BUSCA[chave] && ALIASES_BUSCA[chave] !== termoOriginal) {
+    tentativas.unshift(ALIASES_BUSCA[chave]);
+  }
+
+  // 1. Busca oficial direta, incluindo alias quando a grafia conhecida difere.
+  for (const termo of tentativas) {
+    const d = await tentar(`${API}/deputados?${qs({
+      nome: termo, ordem: 'ASC', ordenarPor: 'nome', itens: 15,
+    })}`);
+    const dados = (d && d.dados) || [];
+    if (dados.length) {
+      return dados.map((x) => ({ ...x, _busca: termo === termoOriginal ? 'direta' : `alias: ${termo}` }));
+    }
+  }
+
+  // 2. Fallback fuzzy na lista completa dos deputados em exercício. Corrige
+  // erros pequenos sem criar falso positivo grosseiro: exige distância baixa
+  // OU inclusão forte do termo normalizado.
+  const todos = await todosDeputados();
+  const ranqueados = todos.map((d) => {
+    const n = normalizarBusca(d.nome);
+    const dist = distanciaLevenshtein(chave, n);
+    const inclui = n.includes(chave) || chave.includes(n);
+    const score = inclui ? 0 : dist;
+    return { ...d, _scoreBusca: score, _busca: 'aproximação' };
+  }).filter((d) => d._scoreBusca <= Math.max(2, Math.floor(chave.length * 0.18)))
+    .sort((a, b) => a._scoreBusca - b._scoreBusca || a.nome.localeCompare(b.nome, 'pt-BR'))
+    .slice(0, 8);
+
+  return ranqueados;
 }
 
 async function coletarPresenca(depId, prog, maxSessoes = 20) {
@@ -331,6 +411,46 @@ async function coletarContexto(depId) {
     ocupacoes: ((ocu && ocu.dados) || [])
       .map((o) => ({ titulo: o.titulo, entidade: o.entidade, ano: o.anoInicio })),
   };
+}
+
+async function coletarNoticiasPublicas(nome) {
+  // Notícias oficiais/públicas que o navegador consegue ler por CORS.
+  // Google News e redes sociais comuns não entram aqui: sem proxy/backend, o
+  // navegador bloqueia por CORS ou a plataforma exige API autenticada. Agência
+  // Brasil/EBC é pública, sem chave e com ACAO=* medido.
+  const feeds = [
+    'https://agenciabrasil.ebc.com.br/rss/politica/feed.xml',
+    'https://agenciabrasil.ebc.com.br/rss/ultimasnoticias/feed.xml',
+  ];
+  const nomeNorm = normalizarBusca(nome);
+  const partes = nomeNorm.split(' ').filter((x) => x.length >= 3);
+  const achados = [];
+
+  for (const url of feeds) {
+    try {
+      const r = await fetch(url, { headers: { Accept: 'application/rss+xml, text/xml' } });
+      if (!r.ok) continue;
+      const xml = await r.text();
+      const doc = new DOMParser().parseFromString(xml, 'text/xml');
+      for (const item of [...doc.querySelectorAll('item')]) {
+        const title = item.querySelector('title')?.textContent || '';
+        const link = item.querySelector('link')?.textContent || '';
+        const desc = item.querySelector('description')?.textContent || '';
+        const pubDate = item.querySelector('pubDate')?.textContent || '';
+        const texto = normalizarBusca(`${title} ${desc}`);
+        const bate = partes.length >= 2
+          ? partes.every((p) => texto.includes(p))
+          : texto.includes(nomeNorm);
+        if (bate && !achados.some((n) => n.link === link)) {
+          achados.push({ fonte: 'Agência Brasil/EBC', title, link, pubDate,
+                         resumo: desc.replace(/<[^>]+>/g, '').slice(0, 220) });
+        }
+      }
+    } catch (e) {
+      console.warn('RSS público indisponível:', url, e.message);
+    }
+  }
+  return achados.slice(0, 8);
 }
 
 async function coletarOrcamento(uf) {
@@ -493,12 +613,13 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
   };
 
   prog('coletando discursos, proposições, despesas e vínculos');
-  const [discursos, proposicoes, despesas, contexto, nProps] = await Promise.all([
+  const [discursos, proposicoes, despesas, contexto, nProps, noticias] = await Promise.all([
     coletarDiscursos(id),
     coletarProposicoes(id),
     coletarDespesas(id),
     coletarContexto(id),
     contarProposicoes(id),
+    coletarNoticiasPublicas(perfil.name),
   ]);
 
   prog('conferindo presença sessão a sessão');
@@ -544,6 +665,11 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     ...contexto.frentes.slice(0, 10).map((f) => ({
       source: 'Frente parlamentar', type: 'vinculo', content: f,
     })),
+    ...noticias.map((n) => ({
+      source: n.fonte, type: 'noticia_publica',
+      content: `${n.title}${n.pubDate ? ' — ' + n.pubDate : ''}`,
+      url: n.link,
+    })),
   ];
 
   return {
@@ -559,6 +685,7 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     inconsistencies: anomalias,
     cross_reference: cross,
     contexto,
+    noticias_publicas: noticias,
     record: {
       attendance_rate: presenca.rate,
       sessions_checked: presenca.sessions_total,
