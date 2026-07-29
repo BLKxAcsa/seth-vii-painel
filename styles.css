@@ -451,3 +451,71 @@ body {
   margin-top: 10px;
   padding-top: 10px;
 }
+
+/* ---------------- Análise Profunda (beta) ---------------- */
+
+.deep-cta {
+  margin: 14px 0 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--bg-2), var(--card));
+}
+
+.deep-cta-h {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.deep-cta-h strong { font-size: 15px; }
+
+.deep-cta p { margin: 8px 0; font-size: 13px; color: var(--tx-2); line-height: 1.55; }
+.deep-cta ul { margin: 6px 0 10px; padding-left: 18px; font-size: 13px; color: var(--tx-2); line-height: 1.6; }
+.deep-cta li { margin-bottom: 4px; }
+
+.deep-cta-limite {
+  font-size: 12px;
+  color: var(--tx-3);
+  border-left: 3px solid var(--line-hi);
+  padding: 8px 10px;
+  margin: 10px 0;
+  background: var(--bg-2);
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+.btn-deep {
+  margin-top: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line-hi);
+  background: var(--card-hi);
+  color: var(--tx);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-deep:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Selo de dossiê profundo já publicado, distinto da análise instantânea. */
+.tag.deep {
+  border-color: #9a7fd1;
+  color: #b79ef0;
+}
+
+.deep-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #b79ef0;
+  border: 1px solid #4a3d63;
+  background: #211a2e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+}

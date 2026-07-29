@@ -61,6 +61,39 @@
     honestidade ou intenção.
   </section>
 
+  <section class="deep-cta" id="deepCta">
+    <div class="deep-cta-h">
+      <strong>🔬 Análise Profunda (beta)</strong>
+      <span class="tag vivo">roda em minutos, não em segundos</span>
+    </div>
+    <p>
+      A análise instantânea acima roda no seu navegador e usa só fontes com
+      acesso liberado a partir dele (API da Câmara, SICONFI, Agência Brasil).
+      A <strong>Análise Profunda</strong> roda em um servidor do GitHub Actions
+      e, por não estar limitada ao navegador, consegue:
+    </p>
+    <ul>
+      <li>usar <strong>dois modelos de IA locais</strong> (Qwen 3B como
+        "cérebro" para redigir a narrativa, Qwen 1.5B como "subcérebro" para
+        dar uma segunda opinião sobre cada promessa aceita ou descartada);</li>
+      <li>varrer <strong>mais feeds de notícia oficiais</strong> (Agência
+        Brasil/EBC completa + Agência Senado), que o navegador não alcança
+        por bloqueio de CORS;</li>
+      <li>demorar o que precisar — <strong>de 5 a 15 minutos</strong>, medido
+        de verdade num run completo (551s incluindo o download dos dois
+        modelos na primeira vez).</li>
+    </ul>
+    <div class="deep-cta-limite">
+      <strong>Limite honesto de hoje:</strong> por segurança, nenhuma página
+      pública pode acionar direto um workflow do repositório privado —
+      exigiria expor uma credencial no código do navegador, e isso nunca vai
+      acontecer aqui. Por ora, quem dispara a análise profunda é o
+      mantenedor do projeto, pelo GitHub Actions. O resultado, quando pronto,
+      é publicado automaticamente e aparece aqui embaixo, na busca.
+    </div>
+    <button class="btn-deep" id="btnDeepInfo" type="button">Como pedir uma análise profunda</button>
+  </section>
+
   <div id="grid" class="card-grid"></div>
 
   <p id="empty" class="empty" hidden>Nenhum resultado para esse filtro.</p>

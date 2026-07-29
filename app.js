@@ -528,14 +528,104 @@ async function buscarNaCamara(termo) {
     </div>`;
 }
 
+/* ---------------- Análise Profunda (beta) ----------------
+   Não roda no navegador: usa 2 modelos locais (1-2GB cada) + feeds sem CORS.
+   Por segurança, NENHUM token fica no código do site -- então o disparo real
+   hoje é feito pelo mantenedor via GitHub Actions, não por clique anônimo.
+   O que o visitante PODE fazer sem token nenhum: abrir uma issue pública no
+   repositório do painel pedindo a análise. É gratuito, não expõe credencial,
+   e não depende de nenhum serviço novo. */
+
+function slugify(nome) {
+  return String(nome || '')
+    .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase() || 'sem-nome';
+}
+
+const deepCache = new Map();
+async function buscarAnaliseProfunda(nome) {
+  const slug = slugify(nome);
+  if (deepCache.has(slug)) return deepCache.get(slug);
+  try {
+    const r = await fetch(`deep/${slug}.json`, { cache: 'no-store' });
+    const val = r.ok ? await r.json() : null;
+    deepCache.set(slug, val);
+    return val;
+  } catch {
+    deepCache.set(slug, null);
+    return null;
+  }
+}
+
+/* Selo mostrado quando já existe um dossiê de Análise Profunda publicado
+   para o nome buscado. `deep.dossie` tem o schema completo do CLI Python
+   (mesmo formato de data.json), então reaproveita subbrain/noticias_publicas
+   já presentes ali -- sem duplicar leitura de campo em dois lugares. */
+function deepBadgeHTML(deep) {
+  const d = deep.dossie || {};
+  const sub = d.subbrain || {};
+  const noticias = d.noticias_publicas || [];
+  const divergencias = sub.divergencias || [];
+  return `
+  <div class="deep-badge">
+    <span>🔬</span>
+    <span>
+      <b>Análise Profunda (beta) já publicada</b> para este nome —
+      cérebro: ${esc(d.ai_provider || 'indisponível')}
+      ${sub.disponivel ? `· subcérebro: ${esc(sub.resumo || '')}` : ''}
+      ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is) encontrada(s)` : ''}
+      ${divergencias.length ? `<br>⚠️ ${divergencias.length} divergência(s) do subcérebro sobre o filtro de promessas` : ''}
+    </span>
+  </div>`;
+}
+
+function linkPedidoIssue(nome) {
+  const title = encodeURIComponent(`Análise profunda: ${nome || '(nome do político)'}`);
+  const body = encodeURIComponent(
+    `Pedido de análise profunda (beta) para: ${nome || ''}\n\n` +
+    'Contexto: análise com dois modelos de IA locais (cérebro + subcérebro) ' +
+    'e busca em feeds de notícia oficiais, feita via GitHub Actions.'
+  );
+  return `https://github.com/BLKxAcsa/seth-vii-painel/issues/new?title=${title}&body=${body}&labels=analise-profunda`;
+}
+
+// Clicar num resultado da busca dispara a análise ao vivo. Este handler foi
+// perdido numa edição anterior (substituído sem ser copiado de volta) e só
+// foi achado porque testei clique de verdade, não só sintaxe do arquivo.
 document.addEventListener('click', async (e) => {
   const item = e.target.closest('.live-item');
   if (!item) return;
   const dep = JSON.parse(item.dataset.dep);
-  await analisar(dep);
+  const deep = await buscarAnaliseProfunda(dep.nome);
+  await analisar(dep, deep);
 });
 
-async function analisar(dep) {
+$('#btnDeepInfo')?.addEventListener('click', () => {
+  const box = document.getElementById('deepCtaInfo') || (() => {
+    const d = document.createElement('div');
+    d.id = 'deepCtaInfo';
+    d.className = 'deep-cta-limite';
+    $('#deepCta').appendChild(d);
+    return d;
+  })();
+  const nomeAtual = $('#q').value.trim();
+  box.innerHTML = `
+    <strong>Duas formas de pedir, hoje:</strong>
+    <ol style="margin:8px 0 0;padding-left:18px;line-height:1.6">
+      <li><strong>Abra um pedido público</strong> (não precisa de token nem de
+        acesso ao código): <a href="${esc(linkPedidoIssue(nomeAtual))}"
+        target="_blank" rel="noopener">abrir issue no GitHub</a>${nomeAtual ? ` já
+        preenchida para "${esc(nomeAtual)}"` : ''}.</li>
+      <li>Se o dossiê profundo já existir para esse nome, ele aparece
+        automaticamente marcado como <span class="tag deep">Profunda ✓</span>
+        no resultado da busca acima.</li>
+    </ol>`;
+});
+
+
+async function analisar(dep, deepDossie) {
   const body = $('#modalBody');
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
@@ -548,6 +638,7 @@ async function analisar(dep) {
         <div><h2 id="mName">${esc(dep.nome)}</h2>
           <p>${esc(dep.siglaPartido || '—')} · ${esc(dep.siglaUf || '')}</p></div>
       </div>
+      ${deepDossie ? deepBadgeHTML(deepDossie) : ''}
       <div class="m-sec">
         <h4>Analisando ao vivo nas fontes oficiais</h4>
         <div class="steps">
@@ -571,11 +662,12 @@ async function analisar(dep) {
       }
       pintar(msg);
     });
+    dossie._deep = deepDossie || null;
 
     // Entra no mesmo estado dos demais para reusar card, modal e ordenação.
     state.data.unshift(dossie);
     renderStats(); renderChips(); renderGrid();
-    body.innerHTML = modalHTML(dossie);
+    body.innerHTML = (deepDossie ? deepBadgeHTML(deepDossie) : '') + modalHTML(dossie);
     $('.modal-panel').scrollTop = 0;
     $('#live').hidden = true;
   } catch (err) {
