@@ -1,0 +1,1778 @@
+{
+  "generated_at": "2026-07-29T17:22:22.236206+00:00",
+  "source": "API Câmara dos Deputados + SICONFI (Tesouro Nacional)",
+  "politicians": [
+    {
+      "politician": {
+        "id": 204379,
+        "name": "Acácio Favacho",
+        "party": "MDB",
+        "state": "AP",
+        "email": "dep.acaciofavacho@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204379",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,893.90 — PASSAGEM AÉREA - SIGEPA — LATAM Airlines Brasil [ANOMALIA]",
+          "relevance": 0.9
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 38/2026: Dá nova redação à MPV 1348/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 15/2026: Altera os art. 150 Constituição Federal para incluir as entidades esportivas sem fins lucrativos.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PRL 1/0: Parecer do Relator, Dep. Acácio Favacho (MDB-AP), pela admissibilidade.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 2546/2026: Altera a Lei n 13.105, de 16 de março de 2015 – Código de Processo Civil, para assegurar gratuidade da justiça à pessoa física em ações que envolvam o direito à saúde ajuizadas em face da União, Estad",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 2385/2026: Institui a Política Nacional de Proteção Humanitária ao Passageiro do Transporte Aéreo em Situação de Luto Familiar e dispõe sobre mecanismos obrigatórios de flexibilização contratual, assistência eme",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2262/2026: Requer a inclusão na Ordem do Dia do PLP 185/2024, que “Regulamenta a aposentadoria especial dos agentes comunitários de saúde e dos agentes de combate às endemias.”",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RCP 2/2026: Requer, nos termos do § 3º do art. 58 da Constituição Federal e dos arts. 35, 36 e 37, do Regimento Interno da Câmara dos Deputados, a criação de Comissão Parlamentar de Inquérito, com a finalidade de",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1497/2026: Requer, nos termos do artigo 155 do Regimento Interno, tramitação sob o regime de urgência do Projeto de Lei nº 6.483 de 2025.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1132/2026: Requer a instalação da Frente Parlamentar Mista em apoio à Integração União Europeia – Mercosul.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 3/2026: Altera o art. 155 da Constituição Federal para estabelecer alíquota máxima e base de cálculo exclusiva do Imposto sobre a Propriedade de Veículos Automotores – IPVA, e acrescenta dispositivos ao Ato d",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 50/2025: Altera os artigos 103-B e 130-A da Constituição Federal, para modificar a composição do Conselho Nacional de Justiça e do Conselho Nacional do Ministério Público.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 6008/2025: Requer a criação e registro da Frente Parlamentar Mista do Ambiente de Negócios (FPN).",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 48/2025: Altera o inciso XVI do art. 37 da Constituição Federal para permitir a acumulação de cargos públicos por outros profissionais da área da educação.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 46/2025: Altera a redação do § 4º do art. 212 da Constituição Federal para considerar o programa de alimentação escolar como despesa de manutenção e desenvolvimento de ensino.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 4896/2025: Requer o registro da Frente Parlamentar Mista do Crédito de Carbono.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 4700/2025: Requer o registro da Frente Parlamentar Mista de Telecomunicações e Soluções Digitais.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "DTQ 2/0: Destaque de Preferência - PEC 302/2017 Turno 1",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 4344/2025: Requer regime de urgência para a apreciação do Projeto de Resolução nº 71, de 2025, que “Cria a Bancada Cristã da Câmara dos Deputados e dá outras providências.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 4302/2025: Requeiro o registro da Frente Parlamentar em Defesa das Confederações e Federações do Esporte e Paradesporto.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RAT 7/0: VOTO: pela APROVAÇÃO do Projeto de Lei nº 15, de 2025-CN, relativamente à Área Temática VII – Turismo, com as alterações decorrentes das emendas aprovadas e aprovadas parcialmente, conforme discrimina",
+          "relevance": 0.8
+        },
+        {
+          "source": "Câmara dos Deputados",
+          "type": "votação",
+          "content": "Votou 'Não' em Rejeitado o Recurso nº 7/2026 (art. 58, § 1º c/c art. 132, § 2º, RICD). Sim: 154; Não: 245; Abstenção: 3; Total: 402. (2026-04-29T18:16:16)",
+          "relevance": 0.7
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Peço licença ao Deputado Hildo Rocha, próximo orador, para fazer um registro. Quero agradecer a este Plenário, em nome do povo do Estado Amapá, do povo do Norte, a medida provisória que acaba de ser aprovada nesta Casa, a no",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "DISCURSO NA ÍNTEGRA ENCAMINHADO PELO SR. DEPUTADO ACÁCIO FAVACHO (SEM REGISTRO TAQUIGRÁFICO). Senhor Presidente, Senhoras e Senhores Deputados, e de forma mais que especial as mulheres do nosso Brasil, boa tarde. Subo hoje a esta tribuna para registrar uma data que carrega profundo significado histó",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "DISCURSO NA ÍNTEGRA ENCAMINHADO PELO SR. DEPUTADO ACÁCIO FAVACHO (SEM REGISTRO TAQUIGRÁFICO). Senhor Presidente e nobres colegas. Hoje, subo a esta tribuna para celebrar uma data muito especial. Falo do aniversário de 268 anos da cidade de Macapá, a capital do meu estado do Amapá, amanhã, dia 4 de f",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Presidente, quero pedir ao Plenário que reflita sobre este projeto, que surge a partir da apresentação pelo Governo Federal da medida provisória do Fundo Social em que se iniciava a Faixa 3 e Faixa 4 do Minha Casa, Minha Vid",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Presidente, este Plenário, na data de hoje, deu um recado claro de que todos, a Casa, o Plenário, os 513 Parlamentares, sabem que há que ter uma punição. Há duas possibilidades: fazer a cassação ou dar uma punição reduzida, ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - É muito importante, nesta posição, reconhecer a postura do partido do Deputado Glauber, que está sendo representado neste momento. Precisamos reconhecer que houve excessos, mas apelamos ao Plenário desta Casa para fazer a se",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Presidente Hugo, boa tarde. Quero agradecer a V.Exa. por ter pautado o requerimento de preferência deste tema abordado pelas duas Casas. Foram construídas duas matérias com o mesmo teor, tanto no Senado quanto na Câmara. Ent",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "DISCURSO NA ÍNTEGRA ENCAMINHADO PELO SR. DEPUTADO ACÁCIO FAVACHO (SEM REGISTRO TAQUIGRÁFICO). PRONUNCIAMENTO DO DEPUTADO ACÁCIO FAVACHO MDB/AP Senhor Presidente e nobres colegas. Hoje, subo a esta tribuna para celebrar a conquista de mais uma etapa fundamental para o desenvolvimento do meu estado do",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Sr. Presidente, o Movimento Democrático Brasileiro tem muito orgulho de colocar a sua digital nesta matéria. Nesta oportunidade, eu parabenizo o Líder Isnaldo Bulhões Jr., que teve a coragem de apresentar este projeto que nó",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Presidente, o MDB orienta \"sim\" a esta matéria e aproveita a oportunidade para parabenizar o Relator José Priante, que neste texto tentou, até o último momento, colocar na prática o que nós votamos na medida provisória lá at",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Sr. Presidente, o MDB vota \"não\" ao requerimento de adiamento da matéria. Vamos ter a oportunidade, com o texto que o Líder Isnaldo Bulhões apresentou, de colocar em prática medida provisória votada por este Plenário e aprov",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ACÁCIO FAVACHO (Bloco/MDB - AP. Pela ordem. Sem revisão do orador.) - Presidente, o MDB, nesse tema, orienta \"não\", até mesmo porque o Movimento Democrático Brasileiro teve a oportunidade de indicar o Deputado Yury do Paredão para presidir a Comissão que analisa a medida provisória que está aq",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "DISCURSO NA ÍNTEGRA ENCAMINHADO PELO SR. DEPUTADO ACÁCIO FAVACHO (SEM REGISTRO TAQUIGRÁFICO). Senhor Presidente e nobres colegas, boa tarde. É com grande entusiasmo que venho tratar de um tema de imenso valor estratégico para o futuro do meu Estado o Amapá e, também, para o desenvolvimento nacional.",
+          "relevance": 0.6
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 35,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — MEGA GLOBAL DIGITAL LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 35,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — MEGA GLOBAL DIGITAL LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 35,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — MEGA GLOBAL DIGITAL LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 29,400.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — I. RODRUGUES DE ALMEIDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 20,000.00 — LOCAÇÃO OU FRETAMENTO DE AERONAVES — TÁXI AÉREO AEROTOP",
+          "relevance": 0.5
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [
+        "⚠️ Despesa atípica: R$ 5,893.90 para LATAM Airlines Brasil — valor muito acima da média"
+      ],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "educação": 2,
+          "saúde": 2,
+          "economia": 2,
+          "transporte": 1,
+          "meio_ambiente": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 20,
+          "votos_analisados": 1
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 2,
+        "propositions_total": 20,
+        "min_sample_required": 5,
+        "attendance_rate": 86.2,
+        "sessions_checked": 29,
+        "inconsistencies": 1,
+        "total_propositions": 20,
+        "total_votes": 1
+      },
+      "benchmark": {
+        "politician_expenses": 309553.15,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 20,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 25.1
+    },
+    {
+      "politician": {
+        "id": 204560,
+        "name": "Adolfo Viana",
+        "party": "PSDB",
+        "state": "BA",
+        "email": "dep.adolfoviana@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204560",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMP 1/0: Altera a Lei Complementar nº 73, de 10 de fevereiro de 1993, que institui a Lei Orgânica da Advocacia-Geral da União.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3544/2026: Requer Urgência para apreciação imediata do Projeto de Lei de 6.819 /2010, que altera a Lei n° 8.234, de 17 de setembro de 1991, para dispor sobre a jornada e condições de trabalho dos nutricionistas.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2851/2026: Requer regime de urgência para apreciação do Projeto de Lei nº 3220/2019, que dispõe sobre o compartilhamento de infraestrutura física aérea de titularidade de prestadoras de serviços de distribuição ",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2850/2026: Solicita urgência no trâmite do Projeto de Lei Complementar nº 80 de 2026, que “Altera a Lei nº 14.301, de 7 de janeiro de 2022, para prorrogar o prazo de vigência da não incidência do Adicional ao Fr",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2846/2026: Requer nos termos do art. 155 do RICD urgência na apreciação do Projeto de Lei Nº 4778/2024, que “Cria o Cadastro Nacional de Pessoas Condenadas por crimes de Maus-Tratos aos Animais (CNPMA), com o ob",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2845/2026: Requer nos termos do art. 155 do RICD urgência na apreciação do Projeto de Lei Nº 7/2026, que “Dispõe sobre a proteção integral dos animais comunitários e dá outras providências.”",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2844/2026: Requer nos termos do art. 155 do RICD urgência na apreciação do Projeto de Lei Nº 10/2026, que \"Altera os arts. 122 e 123 da Lei nº 8.069, de 13 de julho de 1990 (Estatuto da Criança e do Adolescente)",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2843/2026: Requer nos termos do art. 155 do RICD urgência na apreciação do Projeto de Lei Nº 5/2026, que \"Institui o Dia Nacional do Animal Comunitário Cão Orelha\", a ser celebrado anualmente no dia 4 de janeiro",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2822/2026: Requer, nos termos do art. 155 do RICD, urgência para o Projeto de Lei nº 8.107, de 2017, que altera os limites da Floresta Nacional do Jamanxim e cria a Área de Proteção Ambiental do Jamanxim, locali",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2808/2026: Requer a realização de Sessão Solene em homenagem aos 20 anos da Lei da Agricultura Familiar.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2778/2026: Nos termos do art. 155 do Regimento Interno, requeiro regime de urgência na apreciação do PLP 78/2025, de autoria do Bacelar, que dispõe sobre a regulamentação de locação para temporada, quando interm",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2777/2026: Nos termos do art. 155 do Regimento Interno, requeiro regime de urgência na apreciação do PLP 2/2023, de autoria do David Soares, que altera a Lei de Responsabilidade Fiscal para proibir o bloqueio de",
+          "relevance": 0.8
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ADOLFO VIANA (Bloco/PSDB - BA. Pela ordem. Sem revisão do orador.) - Sr. Presidente, a Federação PSDB CIDADANIA orienta \"sim\" ao destaque, ao tempo que cumprimenta o Relator desta matéria, o Deputado Neto Carletto, que é um dos Deputados mais jovens desta Casa, já é Líder do seu partido e demo",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ADOLFO VIANA (Bloco/PSDB - BA. Pela ordem. Sem revisão do orador.) - Sr. Presidente, a Federação PSDB CIDADANIA orienta \"sim\", entendendo que a carga tributária que o cidadão brasileiro paga é, sem dúvida nenhuma, uma das maiores do planeta. Eu quero cumprimentar e parabenizar V.Exa. por pauta",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ADOLFO VIANA (Bloco/PSDB - BA. Pela ordem. Sem revisão do orador.) - Sr. Presidente, a Federação PSDB CIDADANIA orientará \"sim\" à urgência desta matéria. (Palmas.) Temos certeza de que V.Exa. vai escolher um Relator experiente e equilibrado, porque é de equilíbrio que este Plenário precisa. Eu",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ADOLFO VIANA (Bloco/PSDB - BA. Pela ordem. Sem revisão do orador.) - Presidente Hugo Motta, gostaria de cumprimentá-lo. V.Exa. ontem conseguiu fazer um acordo, e este Plenário pôde votar uma pauta importante: a adultização. Hoje nós estamos votando a urgência para este projeto importante, que ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 15,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — PARDAL LOCAÇÕES DE VEÍCULOS E SERVIÇOS EIRELE ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 15,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — PARDAL LOCACOES DE VEICULOS E SERVICOS LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 12,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MULTIPLICAR E SERVIÇOS LTDA EPP",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 12,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MULTIPLICAR E SERVIÇOS LTDA EPP",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 12,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MULTIPLICAR E SERVIÇOS LTDA EPP",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 12,500.00 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MULTIPLICAR E SERVIÇOS LTDA EPP",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,360.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,036.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,036.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,036.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,036.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 8,036.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — ONIX IMOB LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JC DE BRITO ASSESSORIA E COMINICA;'AO ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JC DE BRITO ASSESSORIA E COMINICA;'AO ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JC DE BRITO ASSESSORIA E COMINICA;'AO ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JC DE BRITO ASSESSORIA E COMINICA;'AO ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JC DE BRITO ASSESSORIA E COMINICA;'AO ME",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JOAO GLAUCE ALMEIDA ANDREA BRANDAO",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JOAO GLAUCE ALMEIDA ANDREA BRANDAO",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — JOAO GLAUCE ALMEIDA ANDREA BRANDAO",
+          "relevance": 0.5
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "segurança": 1,
+          "economia": 1,
+          "cultura": 1,
+          "meio_ambiente": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 12,
+          "votos_analisados": 0
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 0,
+        "propositions_total": 12,
+        "min_sample_required": 5,
+        "attendance_rate": 72.4,
+        "sessions_checked": 29,
+        "inconsistencies": 0,
+        "total_propositions": 12,
+        "total_votes": 0
+      },
+      "benchmark": {
+        "politician_expenses": 282393.56,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 12,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "12 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 0.3
+    },
+    {
+      "politician": {
+        "id": 204528,
+        "name": "Adriana Ventura",
+        "party": "NOVO",
+        "state": "SP",
+        "email": "dep.adrianaventura@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204528",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 2,225.64 — PASSAGEM AÉREA - SIGEPA — LATAM Airlines Brasil [ANOMALIA]",
+          "relevance": 0.9
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 1,414.05 — PASSAGEM AÉREA - SIGEPA — LATAM Airlines Brasil [ANOMALIA]",
+          "relevance": 0.9
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2259/2026: Requer informações ao Ministro de Estado Chefe da Secretaria-Geral da Presidência da República, Sr. Guilherme Castro Boulos, sobre o acompanhamento da quarentena, a composição e a estabilidade dos man",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2258/2026: Requer informações ao Ministro de Estado das Relações Exteriores, Sr. Mauro Vieira, sobre as providências diplomáticas e consulares adotadas no caso da criança brasileira Adam Ahmed Tarek Aranha Moham",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 3784/2026: Altera a Lei nº 8.036, de 11 de maio de 1990, para estabelecer remuneração mínima das contas vinculadas do Fundo de Garantia do Tempo de Serviço (FGTS) correspondente à variação do Índice Nacional de ",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 3756/2026: Altera a Lei nº 8.742, de 7 de dezembro de 1993, e a Lei nº 14.601, de 19 de junho de 2023, para instituir o Programa de Inclusão Produtiva e Empreendedorismo destinado às pessoas inscritas no Cadastr",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PDL 851/2026: Susta dispositivos do Decreto nº 12.955, de 29 de abril de 2026, e da Resolução do Comitê Gestor do Imposto sobre Bens e Serviços nº 6, de 2026, que impõem ao nanoempreendedor obrigação de inscrição n",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RPD 2/0: Requerimento de Retirada de Matéria da Pauta - PL 3957/2025",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - PL 2412/2019",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RPD 2/0: Requerimento de Retirada de Matéria da Pauta - PL 3799/2023",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RPD 14/0: Requerimento de Retirada de Matéria da Pauta - PL 6348/2019",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3832/2026: Requer a inclusão da Proposta de Emenda à Constituição nº 333 de 2017, na ordem do dia.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 167/2026: Requer seja convidado o Presidente do Banco Central do Brasil, Sr. Gabriel Muricca Galípolo, para comparecer a esta Comissão e prestar esclarecimentos sobre a atuação supervisória do Banco Central rel",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2176/2026: Requer informações ao Ministro da Saúde, Sr. Alexandre Padilha, sobre os processos licitatórios, contratos e demais instrumentos de contratação pública relacionados às carretas e equipamentos do progr",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2175/2026: Requer informações ao Ministro-Chefe da Secretaria de Comunicação Social da Presidência da República, Sr. Sidônio Palmeira, acerca da destinação de R$ 520 milhões em publicidade institucional pelo Gov",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2174/2026: Requer informações ao Ministro de Estado dos Transportes, Sr. George Santoro, sobre o bloqueio do código de marca/modelo/versão nº 152701 junto ao Registro Nacional de Veículos Automotores (RENAVAM), ",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2173/2026: Requer informações ao Ministro de Estado da Saúde, Sr. Alexandre Padilha, sobre as providências adotadas pelo Ministério da Saúde após os achados do Tribunal de Contas da União no TC 022.237/2024-0, r",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2172/2026: Requer informações ao Ministro de Estado das Relações Exteriores, Sr. Mauro Vieira, acerca dos fundamentos técnicos, jurídicos e diplomáticos da avaliação do Ministério sobre a classificação do Comand",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 3600/2026: Revoga o art. 67 da Lei nº 15.421, de 1º de junho de 2026, e altera a Lei nº 9.394, de 20 de dezembro de 1996, para preservar a autonomia dos sistemas de ensino e das instituições educacionais na orga",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3781/2026: Requer a inclusão da Proposta de Emenda à Constituição nº 333 de 2017, na ordem do dia.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2124/2026: Requer informações ao Ministro de Estado da Fazenda, Sr. Dario Carnevalli Durigan, sobre as estimativas de impacto fiscal, memória de cálculo, renúncia de receita e compatibilidade orçamentária relati",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 3449/2026: Altera a Lei nº 6.839, de 30 de outubro de 1980, para vedar a exigência de registro de pessoas jurídicas em conselhos profissionais quando a atividade básica não for privativa de profissão regulamenta",
+          "relevance": 0.8
+        },
+        {
+          "source": "Câmara dos Deputados",
+          "type": "votação",
+          "content": "Votou 'Não' em Rejeitado o Recurso nº 7/2026 (art. 58, § 1º c/c art. 132, § 2º, RICD). Sim: 154; Não: 245; Abstenção: 3; Total: 402. (2026-04-29T18:05:05)",
+          "relevance": 0.7
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. Olha, esta medida provisória abre um crédito extraordinário em favor do Ministério do Desenvolvimento Agrário e Agricultura Familiar, no valor de 20 milhões de reais. Quando a gente olha a exposição de motivos, sabem",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Presidente, somos contrários a esse projeto  pelo menos a essa urgência  porque temos preocupações. É importante reforçar o dever de transparência quanto à dependência de servidores e condições de atualização de jogos eletrônicos. Realm",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Presidente, a gente reconhece que há pontos positivos neste projeto  eu estava até falando com o Deputado Lafayette aqui  porque atualiza uma legislação que é antiga e fragmentada, estabelece algumas competências mais claras",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. Eu acho este projeto meritório, inclusive, parabenizo o Deputado Kim Kataguiri, porque está colocando pessoas condenadas sem ter benefício. Eu acho isso interessante porque, a partir do momento que esse projeto imped",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Presidente, o NOVO orienta \"não\" também, com todo o respeito à Deputada Célia e à Deputada Sônia. A gente acha importante reconhecer e valorizar a diversidade brasileira, principalmente garantir a liberdade de manifestação cul",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. Eu agradeço ao Deputado Kim. Eu estava aqui indignada, porque a gente se inscreve, e quem se inscreve antes fala depois  essas regras do Brasil que eu não consigo entender. Acho um absurdo a gente ficar transitando,",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - A nossa orientação é \"não\" a esta emenda, por uma razão muito simples: esta emenda expande as hipóteses de relevância para todos os recursos especiais. Isso já inclui os direitos fundamentais e coletivos, ações civis públicas que envolvam",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. Primeiramente, eu quero agradecer aqui ao Deputado Coronel Chrisóstomo pela gentileza de ceder o lugar. Eu vou falar que eu concordo muito com a fala do Deputado Zé Neto, que acabou de falar sobre aumento do limite d",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Obrigada, Presidente. Na verdade, a gente vai encaminhar favoravelmente a essa proposta da Deputada Bruna Furlan. O que esse projeto faz é internalizar obrigações internacionais que já foram assumidas pelo Brasil e tem por obj",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Presidente, esta política de drawback é um instrumento de política comercial para aumentar a competitividade das exportações brasileiras, por conta de desoneração temporária. O que este projeto está fazendo  é claro, os agric",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP) - Obrigada, Presidente. Presidente, olha, eu não posso deixar de falar algumas palavras da minha preocupação com este projeto, uma vez que ele busca reduzir a pressão sobre preços recebidos pelos produtores nacionais de cacau, principalmente durante os períodos de ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Obrigada. Presidente, a gente vai orientar contra. A gente entende que esse projeto pode ser interessante, porque estabelece alguns parâmetros nacionais para operar serviço de táxi. Então, nesse aspecto, a gente considera-o po",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. Na verdade, este projeto é muito simples. Ele trata das meninas principalmente na primeira menstruação. É por isso que ele é chamado de Projeto Menarca. O que ele propõe, sabendo-se que a puberdade é uma fase de muda",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Presidente, eu vou orientar contra a urgência, porque a gente realmente não viu esse projeto e não sabe dele. Ponto. Mas eu queria fazer um apelo a V.Exa. O portal da Câmara está com problema. A gente está com dificuldade de s",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Obrigada, Presidente. Presidente, eu estava até conversando aqui com o Deputado Kim. Este projeto traz uma preocupação, e eu não sei como ele avançou, porque a questão da adulteração de imagem é algo que, com certeza, nos preo",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Pela ordem. Sem revisão da oradora.) - Presidente, na verdade, a gente está aqui naquela corrida contra o relógio. Não é preciso pedir votação nominal nesse projeto. A sua importância foi um pedido, inclusive, do Líder Antonio Brito. Ele autoriza a aplicação do Fun",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "A SRA. ADRIANA VENTURA (NOVO - SP. Sem revisão da oradora.) - Obrigada, Presidente. O PT está com problemas, este Governo também. Quando você tem um Senador da República, Ministro do Governo, pessoa de confiança, que é denunciado várias vezes na CPMI do INSS, que, com a maior cara de pau, entrou lá ",
+          "relevance": 0.6
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [
+        "⚠️ Despesa atípica: R$ 2,225.64 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 1,414.05 para LATAM Airlines Brasil — valor muito acima da média"
+      ],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "educação": 1,
+          "saúde": 3,
+          "economia": 4,
+          "transporte": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 20,
+          "votos_analisados": 1
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 0,
+        "propositions_total": 20,
+        "min_sample_required": 5,
+        "attendance_rate": 100.0,
+        "sessions_checked": 29,
+        "inconsistencies": 2,
+        "total_propositions": 20,
+        "total_votes": 1
+      },
+      "benchmark": {
+        "politician_expenses": 49429.48,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 20,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 0.4
+    },
+    {
+      "politician": {
+        "id": 160559,
+        "name": "Alceu Moreira",
+        "party": "MDB",
+        "state": "RS",
+        "email": "dep.alceumoreira@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/160559",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RIC 2260/2026: Solicita informações ao Senhor Ministro-Chefe da Casa Civil da Presidência da República acerca da regulamentação da Lei nº 15.070, de 23 de dezembro de 2024 (Marco Regulatório dos Bioinsumos).",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 3593/2026: Institui a Política Nacional de Desenvolvimento da Cadeia Produtiva do Leite e Derivados e dá outras providências.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RPD 11/0: Requerimento de Retirada de Matéria da Pauta - PL 1924/2024",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 55/2026: Requer aditamento ao Requerimento nº 51/2026 - CME, que \"Requer a realização de audiência pública para debater a qualidade e a rastreabilidade do diesel e do biodiesel comercializados no Brasil\", para",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 339/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 329/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 318/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 317/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 314/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 312/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 309/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 256/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 245/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 166/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 165/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 164/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 105/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 104/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 103/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 61/2026: Dá nova redação à MPV 1343/2026",
+          "relevance": 0.8
+        },
+        {
+          "source": "Câmara dos Deputados",
+          "type": "votação",
+          "content": "Votou 'Não' em Rejeitado o Recurso nº 7/2026 (art. 58, § 1º c/c art. 132, § 2º, RICD). Sim: 154; Não: 245; Abstenção: 3; Total: 402. (2026-04-29T18:09:33)",
+          "relevance": 0.7
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Srs. Parlamentares, nós estamos tentando votar este projeto, que está na Casa há muito tempo. Nós estabelecemos para os Campos de Altitude que nós queríamos um corte de 1.500 metros de altitude. Daí para baixo",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Pela ordem. Sem revisão do orador.) - Sr. Presidente, para dar uma noção da pauta de que estamos tratando, quero lembrar que tivemos em nosso país pessoas comprando nafta no Amapá. A nafta é um insumo para a indústria petroquímica, e foi vendida como se gasolina ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Para proferir parecer. Sem revisão do orador.) - Sr. Presidente, foram apresentadas oito emendas. Tendo havido acordo entre todas as partes, nós vamos rejeitar as oito emendas. \"I - Voto (...) Após amplo diálogo com diversos Líderes partidários, consideramos que,",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Para proferir parecer. Sem revisão do orador.) - Obrigado, Sr. Presidente. Obrigado, nosso querido Líder José Guimarães, Líderes da Oposição, todos aqueles deste Plenário que ajudaram a construir esta lei de autoria do meu querido amigo Deputado Flávio Nogueira. ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Pela ordem. Sem revisão do orador.) - Eu peço licença ao Deputado Zé Trovão para falar por 1 minuto. Sr. Presidente, Sras. e Srs. Parlamentares, hoje, nós estamos numa luta aqui para votar a Medida Provisória nº 1.303, de 2025  uns são contra, outros são a favor",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Sem revisão do orador.) - Sr. Presidente, Srs. Parlamentares, ao longo deste meu quarto mandato, tenho visto produtores rurais sendo perseguidos implacavelmente. Há demarcação de terra com laudo antropológico completamente fraudulento, com laudo feito por encomen",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. ALCEU MOREIRA (Bloco/MDB - RS. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Srs. Parlamentares, hoje o povo brasileiro pode dar um grande grito de vitória. À época da Lava-Jato, nós tínhamos a sensação clara de que estávamos fazendo um contrato de integridade nacional. O Brasil estava",
+          "relevance": 0.6
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 16,775.90 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — Facebook Serviços Online do Brasil Ltda.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 13,389.90 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — FACEBOOK SERVICOS ONLINE DO BRASIL LTDA.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 12,857.10 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — Facebook Serviços Online do Brasil Ltda.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 10,973.70 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — Facebook Serviços Online do Brasil Ltda.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,713.50 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — JOÃO JOELSON LIPERT DA SILVA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 4,500.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — beneficiamento e comércio",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 4,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — viviani silveira",
+          "relevance": 0.5
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [
+        "⚠️ Despesa atípica: R$ 2,560.57 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 2,118.17 para LATAM Airlines Brasil — valor muito acima da média"
+      ],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "tecnologia": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 20,
+          "votos_analisados": 1
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 0,
+        "propositions_total": 20,
+        "min_sample_required": 5,
+        "attendance_rate": 100.0,
+        "sessions_checked": 29,
+        "inconsistencies": 2,
+        "total_propositions": 20,
+        "total_votes": 1
+      },
+      "benchmark": {
+        "politician_expenses": 224968.83000000002,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 20,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 0.5
+    },
+    {
+      "politician": {
+        "id": 178975,
+        "name": "Baleia Rossi",
+        "party": "MDB",
+        "state": "SP",
+        "email": "dep.baleiarossi@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/178975",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 2806/2026: Reconhece a Festa de Corpus Christi de Matão, no Estado do São Paulo, como Patrimônio Cultural Material e Imaterial do Brasil.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3240/2026: Requer seja formulada Moção de Aplausos a Orquestra de Violeiros Tropeiros de Bebedouro, em reconhecimento à sua trajetória e à relevante contribuição na valorização da cultura caipira",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3131/2026: Requer, nos termos do art. 104 do Regimento Interno da Câmara dos Deputados, a retirada de tramitação da Emenda nº 1 apresentada à PEC nº 221/2019",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 2/0: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 1/0: Altera o Art. 7º inciso XIII da Constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 2105/2026: Altera o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para prever majoração das penas dos crimes contra a paz pública cometidos em ambiente digital e contra a mulher",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 2104/2026: Estabelece diretrizes para a atenção à saúde da mulher no climatério e na menopausa, no âmbito do Sistema Único de Saúde, e institui a Semana Nacional de Conscientização sobre o Climatério e a Menopau",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RCP 2/2026: Requer, nos termos do § 3º do art. 58 da Constituição Federal e dos arts. 35, 36 e 37, do Regimento Interno da Câmara dos Deputados, a criação de Comissão Parlamentar de Inquérito, com a finalidade de",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1783/2026: Requer seja formulada Moção de Aplausos  em comemoração aos 20 anos da Cédula Municipal a Ordem DeMolay, em Piracicaba",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 3/2026: Altera o art. 155 da Constituição Federal para estabelecer alíquota máxima e base de cálculo exclusiva do Imposto sobre a Propriedade de Veículos Automotores – IPVA, e acrescenta dispositivos ao Ato d",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1065/2026: Requeiro que seja registrado nos anais desta Casa, Moção de Aplausos à Dra. Tatiana Sampaio pelo relevante avanço científico no desenvolvimento de tratamento experimental com poliaminina para regenera",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1064/2026: Requeiro que seja registrado nos anais desta Casa, Moção de Aplausos ao Laboratório Cristália pelo patrocínio e incentivo aos estudos científicos com a substância poliaminina, voltados à regeneração d",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 707/2026: Autoriza o sepultamento de animais domésticos de estimação em jazigos, túmulos, gavetas, carneiras ou sepulturas pertencentes à família do tutor nos cemitérios públicos e privados e dá outras providên",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 344/2026: Altera a Lei nº 8.906, de 4 de julho de 1994 (Estatuto da Advocacia e da OAB), para delimitar o impedimento ao exercício da advocacia pelos membros do Poder Legislativo exclusivamente contra a Fazenda",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 231/2026: Requer a desapensação do Projeto de Lei nº 2.155, de 2019 que tramita conjuntamente com o Projeto de Lei nº 4.936, de 2009.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 321/2026: Dispõe sobre a utilização de recursos digitais computadores, tablets e telefones celulares, por terapeutas no ambiente escolar como ferramentas de apoio terapêutico aos estudantes com Transtorno do Es",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PEC 48/2025: Altera o inciso XVI do art. 37 da Constituição Federal para permitir a acumulação de cargos públicos por outros profissionais da área da educação.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMP 1/0: Acrescenta inciso V ao art. 141 do Decreto-Lei nº 2.848, de 7 de dezembro de 1940.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 4700/2025: Requer o registro da Frente Parlamentar Mista de Telecomunicações e Soluções Digitais.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 5393/2025: Dispõe sobre o ingresso e permanência de animais de estimação em hospitais públicos, privados e conveniados ao Sistema Único de Saúde (SUS) para visitação de pacientes internados, e dá outras providên",
+          "relevance": 0.8
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 14,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 14,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 14,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 14,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 13,040.40 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 9,500.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Marcio Antonio Rossi",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 6,000.00 — DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR. — RICHARD IGOR FURTADO CILIA DA SILVA 43647091820",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,500.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINIUM INFORMÁTICA LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,379.60 — LOCAÇÃO OU FRETAMENTO DE VEÍCULOS AUTOMOTORES — MOVIDA PARTICIPAÇÕES S.A.",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,070.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINIUM INFORMÁTICA LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 5,070.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINIUM INFORMÁTICA LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 4,390.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — DOMINIUM INFORMÁTICA LTDA",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Progen Brasil Tecnologia Ltda",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Progen Brasil Tecnologia Ltda",
+          "relevance": 0.5
+        },
+        {
+          "source": "Cota Parlamentar",
+          "type": "despesa",
+          "content": "R$ 3,000.00 — MANUTENÇÃO DE ESCRITÓRIO DE APOIO À ATIVIDADE PARLAMENTAR — Progen Brasil Tecnologia Ltda",
+          "relevance": 0.5
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [
+        "⚠️ Despesa atípica: R$ 2,765.14 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 2,691.69 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 2,278.15 para LATAM Airlines Brasil — valor muito acima da média"
+      ],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "educação": 2,
+          "saúde": 3,
+          "segurança": 1,
+          "economia": 1,
+          "cultura": 2,
+          "meio_ambiente": 3,
+          "tecnologia": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 20,
+          "votos_analisados": 0
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 1,
+        "propositions_total": 20,
+        "min_sample_required": 5,
+        "attendance_rate": 82.8,
+        "sessions_checked": 29,
+        "inconsistencies": 3,
+        "total_propositions": 20,
+        "total_votes": 0
+      },
+      "benchmark": {
+        "politician_expenses": 228127.94,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 20,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 0.5
+    },
+    {
+      "politician": {
+        "id": 62881,
+        "name": "Danilo Forte",
+        "party": "PP",
+        "state": "CE",
+        "email": "dep.daniloforte@camara.leg.br",
+        "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/62881",
+        "role": "Deputado Federal"
+      },
+      "score": null,
+      "label": "Sem promessas detectadas",
+      "promises": [],
+      "evidence": [
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3956/2026: Requer a criação da Frente Parlamentar Mista em Defesa do Programa Espacial Brasileiro.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 50/2026: Requer a convocação do Ministro de Estado de Minas e Energia para prestar esclarecimentos sobre o Leilão de Reserva de Capacidade de 2026 (LRCap 2026), em especial diante da decisão judicial que deter",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3212/2026: Requer a inclusão na Ordem do Dia do PLP nº 185/2024.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3159/2026: Requer inclusão de assinatura no Requerimento de Retirada de Proposição de Iniciativa Coletiva REQ nº 3131/2026.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 3040/2026: Solicita a retirada de assinatura das emendas EMC nº 1 e EMC nº 2 da PEC 221/2019.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 2/0: Altera o Art. 7º inciso XII da constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "EMC 1/0: Altera o Art. 7º inciso XIII da Constituição Federal, reduzindo a jornada de trabalho a 36 horas semanais em 10 anos.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PL 3367/2024",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REL 1/2026: Relatório - Audiência Pública sobre Leilão de Reserva de Capacidade no setor elétrico brasileiro.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 2608/2026: Requer Regime de Urgência para apreciação do PDL nº 264/2026.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PL 1079/2019",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PL 8324/2014",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "PL 1854/2026: Institui o Dia Nacional do Corredor de Rua.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 23/2026: Requer, nos termos regimentais, a retirada de tramitação, nesta Comissão, e o arquivamento do Requerimento nº 20/2026, de minha autoria.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 22/2026: Requer a realização de Audiência Pública para debater o Leilão de Reserva de Capacidade no setor elétrico brasileiro e seus impactos regulatórios, econômicos e concorrenciais.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 20/2026: Requer a realização de Audiência Pública para debater o Leilão de Reserva de Capacidade no setor elétrico brasileiro e seus impactos regulatórios, econômicos e concorrenciais.",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PL 5681/2023",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PL 655/2015",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "RDF 1/0: Redação Final ao PDL 496/2025",
+          "relevance": 0.8
+        },
+        {
+          "source": "Proposição",
+          "type": "projeto",
+          "content": "REQ 1355/2026: Requer o registro da Frente Parlamentar em Defesa da Política Nacional de Plantas Medicinais e Fitoterápicos",
+          "relevance": 0.8
+        },
+        {
+          "source": "Câmara dos Deputados",
+          "type": "votação",
+          "content": "Votou 'Não' em Rejeitado o Recurso nº 7/2026 (art. 58, § 1º c/c art. 132, § 2º, RICD). Sim: 154; Não: 245; Abstenção: 3; Total: 402. (2026-04-29T18:06:27)",
+          "relevance": 0.7
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.)  Sr. Presidente, Sras. e Srs. Deputados, Sras. e Srs. Senadores, o Brasil todo quer, de fato, ter transparência e visualizar quem tem responsabilidade sobre o problema do Banco Master. Esse é o maior escândalo do momento, mesmo ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Como Líder. Sem revisão do orador.) - Obrigado, Sr. Presidente. Sras. e Srs. Deputados, nós acompanhamos estarrecidos os escândalos recentes no Brasil. Todos nós, nesta Casa, debatemos, profundamente, o tamanho do rombo na conta de aposentados, pensionistas e benef",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, o Brasil precisa ser destravado. O Brasil é um país riquíssimo, e o povo passa dificuldade. O País está estagnado economicamente, sem perspectiva, sem grandes investimentos, sempre patinando na mesma agenda porq",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Quero compartilhar a dor, a tristeza que hoje, principalmente, o Município de Caucaia, no interior do Ceará, sente pela partida de um grande homem, um ex-colega nosso, Deputado Federal, que também foi ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, venho aqui dizer que temos um grande vencedor esta noite: a democracia interna da Câmara dos Deputados. Na semana passada, na segunda-feira, quando eu cheguei aqui e vi as urnas instalada",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/PP - CE. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, é uma alegria muito grande poder estar aqui neste momento, prestando contas do meu protagonismo na história recente deste Parlamento quando se fala de orçamento público. Foi com a nossa coragem, foi ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Obrigado, Sr. Presidente. Meu amigo Deputado Hildo Rocha, é um prazer voltar a esta tribuna. Hoje, num momento de alegria, quero inicialmente compartilhar algo com as famílias de Itapajé, a minha cidade, onde eu tive o praze",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Obrigado, Deputado Gilberto. Este é um momento de dor, de pesar. Quero lamentar a partida de um ente muito querido, de uma pessoa que conviveu comigo desde a juventude, do meu amigo Jurailson Brito.",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, Sras. e Srs. Senadores, este é mais um ponto importante na caminhada pela autonomia dos Poderes no Brasil naquilo que diz respeito exatamente à ponderação do equilíbrio entre esses Pod",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, hoje é um dia muito importante para o Parlamento brasileiro. Neste ano, talvez, este seja o dia mais magnífico do encontro desta Casa parlamentar com o sentimento do povo brasileiro. Q",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, de novo temos um grande tema para tratar, neste momento, com muita responsabilidade. Sem sombra de dúvida, a maior aflição de toda a sociedade brasileira, de todas as famílias brasilei",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, estamos diante de um momento muito importante para a economia do Brasil, para a imagem do Brasil perante o mundo: vamos sediar aqui a COP 30, um desafio extraordinário. Nós temos capac",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Sem revisão do orador.) - Sr. Presidente, primeiramente, eu queria pedir para V.Exa. retirar da orientação do destaque a necessidade de votação nominal. Acho que isso não faz sentido, pois já está tudo acordado aqui para que todo mundo possa votar pelo sistema o",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, oriento pelo União Brasil. Ao aprofundar a visão do texto, vejo que ele estabelece uma cota de 100 megawatts por Estado, no Sul, com relação à eólica. Eu não posso obrigar um Estado a ",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, há muito tempo estamos ávidos por impedir o crescimento do crime organizado na economia formal. O que foi visto na Operação Carbono Oculto e o que estamos presenciando hoje, com o cres",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Como Líder. Sem revisão do orador.) - Sra. Presidente, Sras. e Srs. Deputados, nós acabamos de aprovar a revisão de uma lei que já tínhamos votado em 2016, que não foi cumprida por uma agência reguladora chamada Anac. Naquele momento, quando impunha a cobrança d",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Para proferir parecer. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, a unidade deste Plenário já demonstra a preocupação e a sensibilidade da Câmara dos Deputados com um tema tão importante como hoje é o tema da segurança pública do nosso Paí",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Para proferir parecer. Sem revisão do orador.) - Sr. Presidente, Sras. e Srs. Deputados, hoje é um dia muito importante para o Legislativo brasileiro. Um quarto  o que equivale a 25%  da população brasileira hoje vive sob o domínio do crime organizado. Ou seja",
+          "relevance": 0.6
+        },
+        {
+          "source": "Discurso em Plenário",
+          "type": "discurso",
+          "content": "O SR. DANILO FORTE (Bloco/UNIÃO - CE. Pela ordem. Sem revisão do orador.) - Obrigado, Sr. Presidente. Aqui, mais uma vez, todos nós que fazemos a bancada do União Brasil estamos muito felizes, não só pelo reconhecimento desta Casa, à unanimidade, com relação a um projeto que prioriza o cuidado com a",
+          "relevance": 0.6
+        }
+      ],
+      "viability": [],
+      "inconsistencies": [
+        "⚠️ Despesa atípica: R$ 3,131.17 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 3,044.05 para LATAM Airlines Brasil — valor muito acima da média",
+        "⚠️ Despesa atípica: R$ 3,035.75 para LATAM Airlines Brasil — valor muito acima da média"
+      ],
+      "cross_reference": {
+        "achados": [],
+        "temas_falados": {},
+        "temas_legislados": {
+          "saúde": 1
+        },
+        "cobertura": {
+          "promessas_analisadas": 0,
+          "proposicoes_analisadas": 20,
+          "votos_analisados": 1
+        }
+      },
+      "record": {
+        "fulfillment_rate": null,
+        "propositions_decided": 0,
+        "propositions_approved": 0,
+        "propositions_ambiguous": 4,
+        "propositions_total": 20,
+        "min_sample_required": 5,
+        "attendance_rate": 96.6,
+        "sessions_checked": 29,
+        "inconsistencies": 3,
+        "total_propositions": 20,
+        "total_votes": 1
+      },
+      "benchmark": {
+        "politician_expenses": 292385.28,
+        "reference_expense_avg": 35000.0,
+        "politician_propositions": 20,
+        "reference_propositions_avg": 8.0,
+        "events_attended": 0,
+        "attendance_comparison_available": false,
+        "reference_is_estimate": true,
+        "assessment": "20 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+      },
+      "duration_s": 0.7
+    }
+  ]
+}
