@@ -22,9 +22,11 @@
     </a>
 
     <div class="search">
-      <input id="q" type="search" placeholder="Buscar deputado, partido ou UF…" autocomplete="off">
+      <input id="q" type="search" placeholder="Digite o nome de qualquer deputado — a análise roda ao vivo" autocomplete="off">
     </div>
   </div>
+
+  <div class="wrap"><div id="live" class="live" hidden></div></div>
 
   <div class="wrap toolbar">
     <div class="chips" id="partyChips"></div>
@@ -82,6 +84,6 @@
   </div>
 </div>
 
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 </body>
 </html>

@@ -109,6 +109,7 @@ function cardHTML(p, i) {
       ${has
         ? `<span class="tag">${(p.promises || []).length} promessas</span>`
         : `<span class="tag muted">sem promessa detectada</span>`}
+      ${p.ao_vivo ? `<span class="tag vivo">apurado agora · ${p.duration_s}s</span>` : ''}
       ${alerts ? `<span class="tag alert">${alerts} achados</span>` : ''}
       ${cov != null ? `<span class="tag cov">cobertura ${Math.round(cov * 100)}%</span>` : ''}
     </div>
@@ -250,13 +251,16 @@ function recordHTML(p) {
     });
   }
   if (props != null) {
+    const analisadas = num(rec.propositions_analyzed);
     rows.push({
       label: 'Proposições de autoria',
       value: String(props),
       cls: null,
-      note: decided
+      note: decided != null
         ? `${decided} já decididas · ${approved || 0} aprovadas`
-        : 'nenhuma com tramitação concluída ainda',
+        : (analisadas != null && analisadas < props
+            ? `contagem exata; ${analisadas} lidas em detalhe nesta análise`
+            : 'contagem exata de autoria'),
     });
   }
   if (votes != null) {
@@ -282,10 +286,14 @@ function recordHTML(p) {
   const fulfilHTML = fulfil != null
     ? `<div class="rec-note"><b>Taxa de aprovação das proposições: ${fulfil.toFixed(1)}%</b>
          (sobre as ${decided} com tramitação concluída)</div>`
-    : `<div class="rec-note">Taxa de aprovação <b>não calculada</b>:
-         ${decided || 0} proposição(ões) com tramitação concluída, e o mínimo é
-         ${minSample || 5}. Projeto ainda em tramitação não é promessa descumprida${
-           ambiguous ? `, e ${ambiguous} foi(ram) apenas arquivada(s) por fim de legislatura` : ''}.</div>`;
+    : (decided == null
+        ? `<div class="rec-note">Situação de tramitação <b>não conferida</b> nesta
+             análise — custa uma consulta por proposição. Não é o mesmo que
+             “nenhuma aprovada”, e por isso nenhum número é exibido no lugar.</div>`
+        : `<div class="rec-note">Taxa de aprovação <b>não calculada</b>:
+             ${decided} proposição(ões) com tramitação concluída, e o mínimo é
+             ${minSample || 5}. Projeto ainda em tramitação não é promessa descumprida${
+               ambiguous ? `, e ${ambiguous} foi(ram) apenas arquivada(s) por fim de legislatura` : ''}.</div>`);
 
   return `<div class="m-sec">
     <h4>Registro mensurável</h4>
@@ -440,8 +448,126 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !$('#modal').hidden) closeModal();
 });
 
-$('#q').addEventListener('input', (e) => { state.q = e.target.value; renderGrid(); });
 $('#sort').addEventListener('change', (e) => { state.sort = e.target.value; renderGrid(); });
+
+/* ---------------- busca ao vivo ----------------
+   O painel deixa de ser vitrine. Digitar um nome consulta a API oficial na
+   hora e analisa qualquer um dos 513 deputados, não só os pré-gerados.
+   Só é possível porque as fontes respondem com CORS liberado — foi medido
+   antes de desenhar isto. */
+
+let buscaTimer = null;
+let ultimaBusca = '';
+
+$('#q').addEventListener('input', (e) => {
+  const termo = e.target.value.trim();
+  clearTimeout(buscaTimer);
+  if (termo.length < 3) { $('#live').hidden = true; return; }
+  // Espera a digitação parar: sem isso, cada tecla vira uma requisição.
+  buscaTimer = setTimeout(() => buscarNaCamara(termo), 400);
+});
+
+async function buscarNaCamara(termo) {
+  if (termo === ultimaBusca) return;
+  ultimaBusca = termo;
+
+  const box = $('#live');
+  box.hidden = false;
+  box.innerHTML = `<div class="live-h">Procurando "${esc(termo)}" na Câmara…</div>`;
+
+  let achados = [];
+  try {
+    const { buscarDeputados } = await import('./engine.js');
+    achados = await buscarDeputados(termo);
+  } catch (err) {
+    box.innerHTML = `<div class="live-h">Não foi possível consultar a API oficial
+      (${esc(err.message)}). Os cards abaixo continuam disponíveis.</div>`;
+    return;
+  }
+
+  if (!achados.length) {
+    box.innerHTML = `<div class="live-h">Nenhum deputado em exercício com
+      "${esc(termo)}" no nome.</div>`;
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="live-h">${achados.length} encontrado(s) na API oficial —
+      clique para analisar <b>agora</b>, com dados do minuto</div>
+    <div class="live-list">
+      ${achados.map((d) => `
+        <button class="live-item" data-dep='${esc(JSON.stringify({
+          id: d.id, nome: d.nome, siglaPartido: d.siglaPartido,
+          siglaUf: d.siglaUf, urlFoto: d.urlFoto,
+        }))}'>
+          <img src="${esc(d.urlFoto || '')}" alt="" loading="lazy">
+          <span><b>${esc(d.nome)}</b><em>${esc(d.siglaPartido || '—')} · ${esc(d.siglaUf || '')}</em></span>
+        </button>`).join('')}
+    </div>`;
+}
+
+document.addEventListener('click', async (e) => {
+  const item = e.target.closest('.live-item');
+  if (!item) return;
+  const dep = JSON.parse(item.dataset.dep);
+  await analisar(dep);
+});
+
+async function analisar(dep) {
+  const body = $('#modalBody');
+  $('#modal').hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  const passos = [];
+  const pintar = (atual) => {
+    body.innerHTML = `
+      <div class="m-head">
+        <div class="avatar">${esc(initials(dep.nome))}</div>
+        <div><h2 id="mName">${esc(dep.nome)}</h2>
+          <p>${esc(dep.siglaPartido || '—')} · ${esc(dep.siglaUf || '')}</p></div>
+      </div>
+      <div class="m-sec">
+        <h4>Analisando ao vivo nas fontes oficiais</h4>
+        <div class="steps">
+          ${passos.map((p) => `<div class="step done">✓ ${esc(p)}</div>`).join('')}
+          <div class="step doing"><span class="spin"></span> ${esc(atual)}</div>
+        </div>
+        <p class="steps-note">A coleta acontece no seu navegador, direto nas APIs
+          da Câmara e do Tesouro. Nada passa por servidor nosso — não há
+          servidor. Leva de 20 a 60 segundos, conforme a resposta das fontes.</p>
+      </div>`;
+  };
+
+  pintar('iniciando');
+
+  try {
+    const { analisarAoVivo } = await import('./engine.js');
+    const dossie = await analisarAoVivo(dep, (msg) => {
+      if (passos[passos.length - 1] !== msg) {
+        const anterior = document.querySelector('.step.doing');
+        if (anterior && passos.length < 8) passos.push(anterior.textContent.trim().replace(/^\s*/, ''));
+      }
+      pintar(msg);
+    });
+
+    // Entra no mesmo estado dos demais para reusar card, modal e ordenação.
+    state.data.unshift(dossie);
+    renderStats(); renderChips(); renderGrid();
+    body.innerHTML = modalHTML(dossie);
+    $('.modal-panel').scrollTop = 0;
+    $('#live').hidden = true;
+  } catch (err) {
+    body.innerHTML = `
+      <div class="m-head"><div class="avatar">${esc(initials(dep.nome))}</div>
+        <div><h2>${esc(dep.nome)}</h2><p>análise interrompida</p></div></div>
+      <div class="m-sec"><h4>Não foi possível concluir</h4>
+        <div class="rec-note">${esc(err.message)}<br><br>
+          As fontes são APIs públicas de terceiros e ficam instáveis sem aviso.
+          Nada foi estimado para preencher a falha — preferimos não mostrar
+          número a mostrar número inventado.</div></div>`;
+  }
+}
+
 
 /* ---------------- carga ---------------- */
 

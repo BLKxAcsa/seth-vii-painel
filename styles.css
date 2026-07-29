@@ -366,3 +366,79 @@ body {
   border-style: dashed;
   color: var(--tx-3);
 }
+
+/* ---------------- busca ao vivo ----------------
+   Resultados vindos da API oficial no momento da digitação. Ficam visualmente
+   separados da grade pré-gerada para o usuário saber o que é dado do minuto e
+   o que é dado publicado. */
+
+.live {
+  margin: 12px 0 4px;
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  padding: 12px 14px;
+}
+
+.live-h { font-size: 12.5px; color: var(--tx-2); margin-bottom: 10px; }
+.live-h b { color: var(--accent); }
+
+.live-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px;
+}
+
+.live-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; text-align: left; cursor: pointer;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; color: var(--tx); font: inherit;
+}
+
+.live-item:hover { background: var(--card-hi); border-color: var(--accent); }
+
+.live-item img {
+  width: 36px; height: 46px; object-fit: cover;
+  border-radius: 6px; background: var(--line); flex-shrink: 0;
+}
+
+.live-item span { display: flex; flex-direction: column; min-width: 0; }
+.live-item b { font-size: 13px; font-weight: 600; }
+.live-item em { font-style: normal; font-size: 11px; color: var(--tx-3); }
+
+/* ---------------- progresso da análise ---------------- */
+
+.steps { display: flex; flex-direction: column; gap: 7px; }
+
+.step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--tx-3);
+}
+
+.step.done { color: var(--ok); }
+.step.doing { color: var(--tx); }
+
+.spin {
+  width: 12px; height: 12px; flex-shrink: 0;
+  border: 2px solid var(--line-hi); border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: girar .7s linear infinite;
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Quem prefere menos movimento não deve receber spinner girando. */
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; border-top-color: var(--tx-2); }
+}
+
+.steps-note {
+  margin: 14px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--tx-3);
+}
+
+/* Marca visual do que foi apurado agora, e não lido de arquivo. */
+.tag.vivo {
+  border-color: var(--accent);
+  color: var(--accent);
+}
