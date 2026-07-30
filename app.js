@@ -87,22 +87,39 @@ function cardHTML(p, i) {
         unit: att != null ? 'presença' : 'sem dado',
         pct: att != null ? att : 0, cap: 'presença' };
 
+  // headline.cap descreve a CATEGORIA da metrica ("viabilidade" ou
+  // "presenca"); headline.unit descreve a UNIDADE/observacao ("/100",
+  // "presenca" ou "sem dado"). Quando os dois dizem a mesma palavra
+  // (caso de presenca com dado disponivel) o sufixo fica redundante
+  // com o rotulo acima do numero, entao so um dos dois e mostrado.
+  const metricSuffix = headline.unit && headline.unit !== headline.cap ? esc(headline.unit) : '';
+
+  const casaBadge = pol.role === 'Senador(a)'
+    ? '<span class="casa-badge casa-senado">Senado</span>' : '';
+
   return `
-  <button class="card" data-i="${i}">
-    <div class="card-top">
+  <button class="card card-${headline.cls}" data-i="${i}">
+    <div class="card-head">
       <div class="avatar">${esc(initials(pol.name))}</div>
       <div class="card-id">
-        <h3>${esc(pol.name)}</h3>
-        <p>${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}${
-          pol.role === 'Senador(a)' ? ' · <span class="casa-badge casa-senado">Senado</span>' : ''
-        }</p>
-      </div>
-      <div class="score-badge">
-        <b class="s-${headline.cls}">${esc(headline.val)}</b>
-        <span>${esc(headline.unit)}</span>
+        <h3 class="card-name">${esc(pol.name)}</h3>
+        <div class="card-meta">
+          <span class="card-party">${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}</span>
+          ${casaBadge}
+        </div>
       </div>
     </div>
-    <div class="bar"><i class="f-${headline.cls}" style="width:${headline.pct}%"></i></div>
+
+    <div class="card-metric">
+      <div class="metric-row">
+        <span class="metric-label">${esc(headline.cap)}</span>
+        <span class="metric-value s-${headline.cls}">${esc(headline.val)}${
+          metricSuffix ? `<small>${metricSuffix}</small>` : ''
+        }</span>
+      </div>
+      <div class="bar"><i class="f-${headline.cls}" style="width:${headline.pct}%"></i></div>
+    </div>
+
     <div class="card-foot">
       ${att != null && sessions
         ? `<span class="tag">presença ${att.toFixed(0)}% · ${sessions} sessões</span>` : ''}
