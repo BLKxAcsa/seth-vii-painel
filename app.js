@@ -312,6 +312,77 @@ function recordHTML(p) {
   </div>`;
 }
 
+const EVIDENCE_GROUP_LABEL = {
+  projeto: 'Proposi\u00e7\u00f5es de autoria',
+  discurso: 'Discursos em plen\u00e1rio',
+  despesa: 'Despesas (cota parlamentar)',
+  vinculo: 'Comiss\u00f5es e frentes',
+};
+const EVIDENCE_GROUP_ORDER = ['projeto', 'discurso', 'vinculo', 'despesa'];
+const EVIDENCE_GROUP_CAP = 8;
+
+/* Antes era uma lista \u00fanica cortada em 25 itens no total -- com
+   proposi\u00e7\u00f5es agora coletando muito mais que antes, elas sozinhas
+   enchiam o corte e escondiam discursos, despesas e v\u00ednculos. Agrupar por
+   tipo com um teto por grupo (e contagem real ao lado) resolve os dois
+   problemas: nada some em sil\u00eancio, e fica organizado por categoria. */
+function evidenceGroupsHTML(evidence) {
+  if (!evidence.length) {
+    return '<p style="color:var(--tx-3);font-size:13px;margin:0">Sem evid\u00eancias coletadas.</p>';
+  }
+  const grupos = {};
+  for (const e of evidence) {
+    const t = e.type || 'outro';
+    (grupos[t] = grupos[t] || []).push(e);
+  }
+  const ordem = [...EVIDENCE_GROUP_ORDER, ...Object.keys(grupos).filter((k) => !EVIDENCE_GROUP_ORDER.includes(k))];
+  return ordem.filter((t) => (grupos[t] || []).length).map((t) => {
+    const itens = grupos[t];
+    const mostrados = itens.slice(0, EVIDENCE_GROUP_CAP);
+    const resto = itens.length - mostrados.length;
+    // Aberto por padrão sempre -- um acordeão fechado por padrão foi
+    // exatamente a origem da queixa de "análise cortada". O teto de itens
+    // por grupo já evita que a lista fique gigante; fechar por cima disso
+    // só esconderia de novo.
+    return `
+      <details class="evd-group" open>
+        <summary>${esc(EVIDENCE_GROUP_LABEL[t] || t)} <span class="evd-count">${itens.length}</span></summary>
+        <div class="evd">
+          ${mostrados.map((e) => `<div>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">` : ''}<b>${esc(e.source || '')}</b>${e.url ? '</a>' : ''} \u2014 ${esc(String(e.content || '').slice(0, 240))}</div>`).join('')}
+          ${resto > 0 ? `<p class="evd-more">+ ${resto} n\u00e3o exibido(s) aqui.</p>` : ''}
+        </div>
+      </details>`;
+  }).join('');
+}
+
+/* Resumo final: recombina n\u00fameros j\u00e1 calculados acima em uma frase curta.
+   N\u00e3o calcula nada novo -- s\u00f3 reapresenta o que j\u00e1 est\u00e1 no dossi\u00ea, para
+   quem quer o essencial sem ler a an\u00e1lise inteira. */
+function resumoHTML(p) {
+  const rec = record(p);
+  const att = num(rec.attendance_rate);
+  const props = num(rec.propositions_total);
+  const nPromises = (p.promises || []).length;
+  const nAlerts = findings(p).length + (p.inconsistencies || []).length;
+  const has = hasScore(p);
+
+  const partes = [];
+  if (att != null) partes.push(`presen\u00e7a de ${att.toFixed(0)}% nas sess\u00f5es conferidas`);
+  if (props != null) partes.push(`${props} proposi\u00e7\u00e3o(\u00f5es) de autoria`);
+  partes.push(has
+    ? `viabilidade de ${p.score.toFixed(0)}/100 para ${nPromises} promessa(s) identificada(s)`
+    : 'nenhuma promessa identificada nos discursos analisados');
+  if (nAlerts) partes.push(`${nAlerts} ponto(s) de aten\u00e7\u00e3o no cruzamento`);
+
+  return `
+  <div class="m-sec resumo">
+    <h4>Resumo</h4>
+    <p>${esc((p.politician || {}).name || 'Este parlamentar')} tem ${partes.join(', ')}.</p>
+    <p class="resumo-aviso">Resumo autom\u00e1tico a partir dos dados acima \u2014 n\u00e3o
+      substitui a an\u00e1lise completa e o conte\u00fado mais extenso desta p\u00e1gina.</p>
+  </div>`;
+}
+
 function modalHTML(p) {
   const pol = p.politician || {};
   const has = hasScore(p);
@@ -331,9 +402,8 @@ function modalHTML(p) {
   const missing = (v.unavailable_factors || []);
   const missHTML = missing.length ? `
     <div class="miss">
-      <strong>Não foi possível medir ${missing.length} fator(es).</strong>
-      Eles foram <em>excluídos</em> do cálculo — o peso foi redistribuído entre
-      os medidos, e não contado como zero.
+      <strong>${missing.length} fator(es) sem dado público</strong>, excluído(s) do
+      cálculo (peso redistribuído entre os demais).
       <ul>${missing.map((m) => `<li>${esc(FACTOR_LABEL[m] || m.replace(/_/g, ' '))}</li>`).join('')}</ul>
     </div>` : '';
 
@@ -348,7 +418,7 @@ function modalHTML(p) {
         <p>${esc(a.descricao)}</p>
         ${(a.fontes || []).length ? `<div class="src">Fontes: ${esc((a.fontes || []).join(' · '))}</div>` : ''}
       </div>`).join('')
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma divergência entre discurso e ação registrada foi encontrada nos dados analisados.</p>';
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma divergência encontrada entre discurso e ação registrada.</p>';
 
   const incHTML = (p.inconsistencies || []).length
     ? `<div class="m-sec"><h4>Pontos de atenção</h4>${
@@ -365,18 +435,14 @@ function modalHTML(p) {
             ${pr.is_conditional ? '<span>condicional</span>' : ''}
           </div>
         </li>`).join('')}</ul>`
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma promessa foi extraída dos discursos analisados. Sem promessa não há o que avaliar — por isso não há score.</p>';
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma promessa identificada nos discursos analisados.</p>';
 
-  const evdHTML = (p.evidence || []).length
-    ? `<div class="evd">${p.evidence.slice(0, 25).map((e) =>
-        `<div><b>${esc(e.source || '')}</b> — ${esc(String(e.content || '').slice(0, 190))}</div>`
-      ).join('')}</div>`
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Sem evidências coletadas.</p>';
+  const evdHTML = evidenceGroupsHTML(p.evidence || []);
 
   const news = p.noticias_publicas || [];
   const newsHTML = news.length
-    ? `<div class="evd">${news.map((n) => `<div><b>${esc(n.fonte || 'Notícia pública')}</b> — ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title || '')}</a>` : esc(n.title || '')}<br><span style="color:var(--tx-3)">${esc((n.resumo || '').slice(0, 220))}</span></div>`).join('')}</div>`
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma notícia pública recente encontrada nos feeds acessíveis pelo navegador. Redes sociais e Google News exigem proxy/backend ou API autenticada.</p>';
+    ? `<div class="evd">${news.map((n) => `<div><b>${esc(n.fonte || 'Notícia pública')}</b> — ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title || '')}</a>` : esc(n.title || '')}<br><span style="color:var(--tx-3)">${esc((n.resumo || '').slice(0, 280))}</span></div>`).join('')}</div>`
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma notícia pública recente encontrada.</p>';
 
   return `
   <div class="m-head">
@@ -415,22 +481,33 @@ function modalHTML(p) {
 
   <div class="m-sec"><h4>Evidências coletadas</h4>${evdHTML}</div>
 
+  ${resumoHTML(p)}
+
   <p class="legal">
     Análise probabilística, não acusatória. Mede viabilidade técnica, não
-    honestidade nem intenção. As promessas são extraídas automaticamente de
-    transcrições de discursos e podem conter falsos positivos. Fontes: API de
-    Dados Abertos da Câmara dos Deputados, SICONFI (Tesouro Nacional) e feeds
-    públicos acessíveis no navegador. Redes sociais e Google News não são lidos
-    diretamente no site quando bloqueiam CORS ou exigem API autenticada; para
-    isso é preciso camada de coleta em GitHub Actions/proxy.
+    honestidade nem intenção. Promessas extraídas automaticamente de discursos
+    podem conter falsos positivos. Fontes: Câmara dos Deputados, SICONFI e
+    feeds de notícia pública.
   </p>`;
 }
 
-function openModal(i) {
-  $('#modalBody').innerHTML = modalHTML(state.data[i]);
+async function openModal(i) {
+  const p = state.data[i];
+  modalAtual = slugify((p.politician || {}).name);
+  $('#modalBody').innerHTML = modalHTML(p);
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
   $('.modal-panel').scrollTop = 0;
+
+  // Card pré-gerado (não veio de busca ao vivo): confere se já existe dossiê
+  // profundo publicado para este nome e mostra o selo, sem refazer a análise.
+  if (!p._deep) {
+    const deep = await buscarAnaliseProfunda((p.politician || {}).name);
+    if (deep && modalAtual === slugify((p.politician || {}).name)) {
+      p._deep = deep;
+      $('#modalBody').innerHTML = deepBadgeHTML(deep) + modalHTML(p);
+    }
+  }
 }
 
 function closeModal() {
@@ -565,30 +642,20 @@ async function buscarAnaliseProfunda(nome) {
    já presentes ali -- sem duplicar leitura de campo em dois lugares. */
 function deepBadgeHTML(deep) {
   const d = deep.dossie || {};
-  const sub = d.subbrain || {};
   const noticias = d.noticias_publicas || [];
-  const divergencias = sub.divergencias || [];
+  const divergencias = (d.subbrain || {}).divergencias || [];
+  const quando = d.generated_at
+    ? new Date(d.generated_at).toLocaleDateString('pt-BR')
+    : null;
   return `
   <div class="deep-badge">
     <span>🔬</span>
     <span>
-      <b>Análise Profunda (beta) já publicada</b> para este nome —
-      cérebro: ${esc(d.ai_provider || 'indisponível')}
-      ${sub.disponivel ? `· subcérebro: ${esc(sub.resumo || '')}` : ''}
-      ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is) encontrada(s)` : ''}
-      ${divergencias.length ? `<br>⚠️ ${divergencias.length} divergência(s) do subcérebro sobre o filtro de promessas` : ''}
+      <b>Análise profunda disponível</b>${quando ? ` · ${esc(quando)}` : ''}
+      ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is)` : ''}
+      ${divergencias.length ? `· ${divergencias.length} ponto(s) revisado(s) por segunda análise` : ''}
     </span>
   </div>`;
-}
-
-function linkPedidoIssue(nome) {
-  const title = encodeURIComponent(`Análise profunda: ${nome || '(nome do político)'}`);
-  const body = encodeURIComponent(
-    `Pedido de análise profunda (beta) para: ${nome || ''}\n\n` +
-    'Contexto: análise com dois modelos de IA locais (cérebro + subcérebro) ' +
-    'e busca em feeds de notícia oficiais, feita via GitHub Actions.'
-  );
-  return `https://github.com/BLKxAcsa/seth-vii-painel/issues/new?title=${title}&body=${body}&labels=analise-profunda`;
 }
 
 // Clicar num resultado da busca dispara a análise ao vivo. Este handler foi
@@ -602,33 +669,57 @@ document.addEventListener('click', async (e) => {
   await analisar(dep, deep);
 });
 
-$('#btnDeepInfo')?.addEventListener('click', () => {
-  const box = document.getElementById('deepCtaInfo') || (() => {
-    const d = document.createElement('div');
-    d.id = 'deepCtaInfo';
-    d.className = 'deep-cta-limite';
-    $('#deepCta').appendChild(d);
-    return d;
-  })();
-  const nomeAtual = $('#q').value.trim();
-  box.innerHTML = `
-    <strong>Duas formas de pedir, hoje:</strong>
-    <ol style="margin:8px 0 0;padding-left:18px;line-height:1.6">
-      <li><strong>Abra um pedido público</strong> (não precisa de token nem de
-        acesso ao código): <a href="${esc(linkPedidoIssue(nomeAtual))}"
-        target="_blank" rel="noopener">abrir issue no GitHub</a>${nomeAtual ? ` já
-        preenchida para "${esc(nomeAtual)}"` : ''}.</li>
-      <li>Se o dossiê profundo já existir para esse nome, ele aparece
-        automaticamente marcado como <span class="tag deep">Profunda ✓</span>
-        no resultado da busca acima.</li>
-    </ol>`;
-});
 
+const WORKER_URL = 'https://seth-vii-deep-trigger.angst.workers.dev';
 
-async function analisar(dep, deepDossie) {
+// Slug do dossiê profundo sendo exibido no momento -- evita que uma resposta
+// de polling atualize o modal depois que o usuário já abriu outra pessoa.
+let modalAtual = null;
+
+async function solicitarAnaliseProfunda(nome) {
+  try {
+    const r = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome }),
+    });
+    return await r.json();
+  } catch {
+    return { erro: 'não foi possível contatar o serviço de análise profunda' };
+  }
+}
+
+async function aguardarDossieProfundo(slug, onUpdate) {
+  const intervaloMs = 20000;
+  const maxTentativas = 45; // ~15 min
+  for (let i = 0; i < maxTentativas; i++) {
+    await new Promise((r) => setTimeout(r, intervaloMs));
+    if (modalAtual !== slug) return; // usuário saiu desta análise
+    const deep = await buscarAnaliseProfunda(slug);
+    if (deep) { onUpdate(deep); return; }
+  }
+}
+
+function progressoProfundoHTML(estado) {
+  if (estado === 'aguardando') {
+    return `<div class="deep-progress"><span class="spin"></span>
+      Análise profunda em andamento — geralmente 5 a 15 minutos. Esta janela
+      atualiza sozinha quando terminar.</div>`;
+  }
+  if (estado === 'limite') {
+    return `<div class="deep-progress warn">Limite de pedidos por hora atingido.
+      Tente novamente mais tarde.</div>`;
+  }
+  return `<div class="deep-progress warn">Não foi possível iniciar a análise
+      profunda agora.</div>`;
+}
+
+async function analisar(dep, deepDossieExistente) {
   const body = $('#modalBody');
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
+  const slug = slugify(dep.nome);
+  modalAtual = slug;
 
   const passos = [];
   const pintar = (atual) => {
@@ -638,16 +729,14 @@ async function analisar(dep, deepDossie) {
         <div><h2 id="mName">${esc(dep.nome)}</h2>
           <p>${esc(dep.siglaPartido || '—')} · ${esc(dep.siglaUf || '')}</p></div>
       </div>
-      ${deepDossie ? deepBadgeHTML(deepDossie) : ''}
+      ${deepDossieExistente ? deepBadgeHTML(deepDossieExistente) : ''}
       <div class="m-sec">
-        <h4>Analisando ao vivo nas fontes oficiais</h4>
+        <h4>Analisando fontes oficiais</h4>
         <div class="steps">
           ${passos.map((p) => `<div class="step done">✓ ${esc(p)}</div>`).join('')}
           <div class="step doing"><span class="spin"></span> ${esc(atual)}</div>
         </div>
-        <p class="steps-note">A coleta acontece no seu navegador, direto nas APIs
-          da Câmara e do Tesouro. Nada passa por servidor nosso — não há
-          servidor. Leva de 20 a 60 segundos, conforme a resposta das fontes.</p>
+        <p class="steps-note">Geralmente 20 a 60 segundos.</p>
       </div>`;
   };
 
@@ -662,23 +751,44 @@ async function analisar(dep, deepDossie) {
       }
       pintar(msg);
     });
-    dossie._deep = deepDossie || null;
+    dossie._deep = deepDossieExistente || null;
 
     // Entra no mesmo estado dos demais para reusar card, modal e ordenação.
     state.data.unshift(dossie);
     renderStats(); renderChips(); renderGrid();
-    body.innerHTML = (deepDossie ? deepBadgeHTML(deepDossie) : '') + modalHTML(dossie);
+
+    const querProfunda = $('#deepToggle')?.checked;
+    const renderizarModal = (extra = '') =>
+      (deepDossieExistente ? deepBadgeHTML(deepDossieExistente) : extra) + modalHTML(dossie);
+
+    body.innerHTML = renderizarModal();
     $('.modal-panel').scrollTop = 0;
     $('#live').hidden = true;
+
+    // Modo profundo ligado e ainda sem dossiê publicado: dispara e acompanha
+    // sem travar a análise instantânea, que já está na tela.
+    if (querProfunda && !deepDossieExistente) {
+      const resp = await solicitarAnaliseProfunda(dep.nome);
+      if (modalAtual !== slug) return;
+      if (resp.status === 'ja_existe') {
+        body.innerHTML = deepBadgeHTML(resp) + modalHTML(dossie);
+      } else if (resp.status === 'iniciado') {
+        body.innerHTML = progressoProfundoHTML('aguardando') + modalHTML(dossie);
+        aguardarDossieProfundo(slug, (deep) => {
+          if (modalAtual !== slug) return;
+          body.innerHTML = deepBadgeHTML(deep) + modalHTML(dossie);
+        });
+      } else {
+        body.innerHTML = progressoProfundoHTML(resp.erro?.includes('limite') ? 'limite' : 'erro') + modalHTML(dossie);
+      }
+    }
   } catch (err) {
     body.innerHTML = `
       <div class="m-head"><div class="avatar">${esc(initials(dep.nome))}</div>
         <div><h2>${esc(dep.nome)}</h2><p>análise interrompida</p></div></div>
       <div class="m-sec"><h4>Não foi possível concluir</h4>
-        <div class="rec-note">${esc(err.message)}<br><br>
-          As fontes são APIs públicas de terceiros e ficam instáveis sem aviso.
-          Nada foi estimado para preencher a falha — preferimos não mostrar
-          número a mostrar número inventado.</div></div>`;
+        <div class="rec-note">Fonte oficial indisponível no momento. Tente novamente
+          em alguns instantes.<br><span style="color:var(--tx-3);font-size:12px">${esc(err.message)}</span></div></div>`;
   }
 }
 
