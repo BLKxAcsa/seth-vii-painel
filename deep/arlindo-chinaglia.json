@@ -1,0 +1,614 @@
+{
+  "slug": "arlindo-chinaglia",
+  "solicitado_para": "Arlindo Chinaglia",
+  "dossie": {
+    "politician": {
+      "id": 73433,
+      "name": "Arlindo Chinaglia",
+      "party": "PT",
+      "state": "SP",
+      "email": "dep.arlindochinaglia@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/73433",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 3,
+      "propositions_total": 500,
+      "min_sample_required": 5,
+      "attendance_rate": 95.6,
+      "sessions_checked": 91,
+      "inconsistencies": 3,
+      "total_propositions": 500,
+      "total_votes": 0
+    },
+    "promises": [
+      {
+        "text": "O IPEA realizou estudo demonstrando que o impacto da proposta que vamos aprovar é semelhante ao impacto do aumento do salário mínimo.",
+        "category": "economia",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Vou dar o exemplo do Sistema Nacional de Informações de Segurança Pública, criado em 2012.",
+        "category": "segurança",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "2012"
+          ],
+          "deadlines": [
+            "2012"
+          ],
+          "locations": [
+            "Informa",
+            "Seguran"
+          ]
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 8/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 7/0: Requerimento de Adiamento da Discussão - PL 1588/2019",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 6/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 5/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 4/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 18/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 3/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 17/0: Requerimento de Adiamento da Discussão - PL 1659/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Adiamento da Discussão - PL 674/2021",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 16/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 15/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 14/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 13/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 13/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 12/0: Requerimento de Adiamento da Discussão - PL 82/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 11/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 12/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 10/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 11/0: Requerimento de Adiamento da Discussão - PLP 118/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - REQ 95/2026 CREDN",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - REQ 94/2026 CREDN",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - REQ 93/2026 CREDN",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3479/2026: Estabelece o marco legal do Registro Nacional de Beneficiários Finais, dispõe sobre a integração, atualização, verificação, interoperabilidade e acesso às informações relativas aos beneficiários finai",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 4/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 3/0: Requerimento de Adiamento da Discussão - PL 1588/2019",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 9/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 8/0: Requerimento de Adiamento da Discussão - PL 1659/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 9/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 8/0: Requerimento de Adiamento da Discussão - PL 82/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 9/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 8/0: Requerimento de Adiamento da Discussão - PL 194/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 10/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 7/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 6/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 7/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 6/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 7/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 6/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 9/0: Requerimento de Retirada de Matéria da Pauta",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 8/0: Requerimento de Adiamento da Votação",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 7/0: Requerimento de Adiamento da Discussão - PLP 118/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - REQ 91/2026 CREDN",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Votação Nominal",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [
+      {
+        "score": 36.4,
+        "label": "Improvável",
+        "confidence_interval": [
+          26.4,
+          46.4
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 61.5,
+          "similaridade_pares": 15.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n⚠️ Pares raramente obtiveram esse resultado\n\n📊 Score: 36.4/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 36.4,
+        "label": "Improvável",
+        "confidence_interval": [
+          26.4,
+          46.4
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 61.5,
+          "similaridade_pares": 15.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n⚠️ Pares raramente obtiveram esse resultado\n\n📊 Score: 36.4/100 (baseado em 100% dos fatores previstos)"
+      }
+    ],
+    "inconsistencies": [
+      "⚠️ Despesa atípica: R$ 3,327.14 para LATAM Airlines Brasil — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,327.14 para LATAM Airlines Brasil — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,276.64 para LATAM Airlines Brasil — valor muito acima da média"
+    ],
+    "cross_reference": {
+      "achados": [
+        {
+          "tipo": "sem_acao_legislativa",
+          "tema": "educação",
+          "descricao": "Tema 'educação' aparece 2x em discursos, mas nenhuma das 500 proposições de autoria analisadas menciona o tema.",
+          "confianca": "media",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        },
+        {
+          "tipo": "tema_silenciado",
+          "tema": "educação",
+          "descricao": "'educação' é recorrente no discurso (2 menções) e não aparece em nenhuma das 500 proposições de autoria.",
+          "confianca": "alta",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        }
+      ],
+      "temas_falados": {
+        "saúde": 6,
+        "educação": 2,
+        "segurança": 2,
+        "economia": 11,
+        "infraestrutura": 2,
+        "assistência_social": 1,
+        "tecnologia": 1
+      },
+      "temas_legislados": {
+        "saúde": 4,
+        "infraestrutura": 2,
+        "segurança": 7,
+        "economia": 9,
+        "transporte": 1,
+        "cultura": 2,
+        "meio_ambiente": 2,
+        "tecnologia": 3
+      },
+      "cobertura": {
+        "promessas_analisadas": 2,
+        "proposicoes_analisadas": 500,
+        "votos_analisados": 0,
+        "discursos_analisados": 55
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 271947.89,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 500,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "500 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# Parecer Técnico de Análise Forense – Arlindo Chinaglia (Deputado Federal – PT – SP)\n\n---\n\n## 1. Resumo Executivo\n\nO presente parecer técnico analisa o discurso e ações de Arlindo Chinaglia, deputado federal do Partido dos Trabalhadores (PT), com foco em coerência, viabilidade, riscos e benchmarking com pares. A análise se baseia em promessas públicas identificadas e em evidências de proposições e requerimentos de votação no Congresso Nacional. A principal evidência de discurso é a referência ao Sistema Nacional de Informações de Segurança Pública (2012), apresentada com confiança de 80%, e a afirmação de que uma proposta de política econômica tem impacto semelhante ao aumento do salário mínimo, com confiança de 65%.\n\nEm termos de ação, o perfil de atividade legislativa revela uma frequência elevada de requerimentos de adiamento, discussão ou retirada de matérias da pauta, com 18 requerimentos registrados (inclusive duplicados) entre os números 1/0 a 18/0. Ocorrência sistemática de requerimentos de adiamento e retirada de matérias sugere um padrão de gestão de tempo e debate legislativo que pode indicar uma estratégia de controle da agenda, mas não necessariamente de incoerência com promessas. Não há evidências diretas de propostas vinculadas ao impacto do salário mínimo ou ao sistema de segurança pública, o que gera uma discrepância entre o discurso e a evidência legislativa.\n\nA análise não identifica dados orçamentários ou estimativas de custo para as promessas mencionadas. Portanto, a viabilidade econômica das promessas não pode ser avaliada com base nos dados disponíveis. A comparação com pares é limitada por falta de dados de transparência legislativa e de histórico de ações de outros deputados do PT em SP. O risco detectado é de natureza procedural, não política, e está ligado à frequência de intervenções na pauta legislativa.\n\n---\n\n## 2. Análise de Coerência (Discurso vs Ação)\n\nA promessa de referência ao Sistema Nacional de Informações de Segurança Pública (criado em 2012) é apresentada com confiança de 80%, mas não há evidência de que a proposta de legislação mencionada (ou qualquer outra) esteja vinculada a um projeto que busque aprimorar ou expandir esse sistema. A referência é qualitativa e não está associada a uma matéria específica, nem a um projeto de lei que tenha sido aprovado ou discutido com base nesse exemplo.\n\nA promessa de que o impacto de uma proposta é \"semelhante ao aumento do salário mínimo\" (categoria: economia, confiança 65%) não está vinculada a uma proposta específica, nem há dados que permitam verificar se o",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "60 frases classificadas por qwen1.5b; 34 divergência(s) do filtro determinístico",
+      "total_classificadas": 60,
+      "divergencias": [
+        {
+          "texto": "Vou dar o exemplo do Sistema Nacional de Informações de Segurança Pública, criado em 2012.",
+          "rotulo_subcerebro": "PROCEDIMENTO"
+        },
+        {
+          "texto": "O PIB combinado é de 4,40 trilhões de dólares, e 99% das exportações brasileiras serão desgravadas de forma imediata, sendo que alguns produtos serão imediatamente desgravados.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Finalmente, eu creio que é oportuno também a gente identificar que as tarifas industriais e pesqueiras serão zeradas imediatamente.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós vamos vencer, porque o povo brasileiro venceu a ditadura que eles defendem.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E aproveito para cumprimentá-lo pelo seu papel neste acordo, em que vamos aprovar a redução da jornada de trabalho para 40 horas, a escala 5 por 2, sem redução de salário.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Como nós vamos fazer o planejamento de combate ao crime?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Quando nós, então, em complemento a esta proposta de emenda à Constituição, formos acrescentando propostas e cobrando eficiência de quem nós devemos cobrar, pois esse é o papel do Parlamento, eu acredito que nós vamos obter resultados.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "já sabe, Deputado  eu só vou repetir , o art. 4º, ou o art. 8º, não sei precisar, diz textualmente que está proibido fazer esse tipo de operação com os inadimplentes.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "O art. 3º estabelece que os prazos, limites e condições serão definidos em regulamento precedido de consulta pública.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se está nessa situação, com o acordo, é quase impossível piorar, mas vamos imaginar que piore.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos imaginar que a Europa use da sua tradição imperial e tente colocar para cima do Mercosul e do Brasil, portanto, aquilo que nós não queremos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Portanto, já aceitaram que os dados serão fornecidos dos nossos satélites.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós sabemos que existe uma cultura, mas se a gente não liquidar essa cultura, se nós não começarmos a trabalhar agora, quando pela primeira vez generais foram para a cadeia e um ex-Presidente golpista foi para a cadeia, nós vamos perder uma oportunidade raríssima.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sendo assim, vamos fazer justiça.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vou repetir: é o dinheiro do bolso dele que ele investe e depois ele recebe os juros, como se ele tivesse pego dinheiro emprestado.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu vou começar de forma diferente do que eu tinha imaginado, porque entendo que seria bom que aquele que diz que o salário mínimo no Brasil é o menor da América Latina primeiro dissesse qual é o salário mínimo nos outros países.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós não vamos recuar daquilo que, para nós, é uma convicção.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu vou dar apenas um exemplo, a título de comparação, para V.Exas.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Assim, como outros aqui já disseram, nós vamos atuar, nós vamos respeitar os interlocutores, mas nós não vamos concordar, em nenhum momento, com a tese da anistia.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós vamos resistir e consolidar a democracia.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mas isso nós temos certeza que vamos corrigir.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mas à custa do Fundo Social, isso não é nada justo, porque assim nós vamos tirar dinheiro da saúde, da educação, da segurança pública, de tudo aquilo que compõe a vida social.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "O que é preciso dizer é que nós não dependeremos mais de uma medida provisória quando houver uma calamidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Porque nós vamos poder contratar brigadistas.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se considerarmos o conjunto das mudanças  além da isenção, os descontos para aqueles que vão pagar, mas vão pagar menos , de cada dez contribuintes do Imposto de Renda, nove serão beneficiados.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos considerar alguém que vai ganhar, em 1 ano, 1 milhão e 50 mil reais.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Dessa forma, nós vamos conseguir fazer com que o País se desenvolva a partir de uma massa salarial ainda maior.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Como é que nós vamos conseguir melhorar a segurança se não houver a padronização dos boletins de ocorrência, por exemplo?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Assim, eu quero dizer que, ao abraçarmos essa causa aqui no Congresso Nacional, nós vamos debater com a sociedade, com Governadores, com Prefeitos e, enfim, fazer aquilo que vai ser um bem para a sociedade brasileira.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se tivermos êxito na iniciativa, que eu creio tem tudo para dar certo, nós vamos aportar em torno de 100 milhões de reais no Rio Grande do Sul.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Termino dizendo que eu vou manter a Câmara e o Senado informados, exatamente porque creio que isso tende a valorizar a política em bom nível, ao socorrermos neste momento o povo gaúcho.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu vou aqui demonstrar que, através de medida provisória que vai ser recolhida  e vai tramitar um projeto de lei , para quem ganha um salário mínimo, a isenção corresponde a 105,90 reais.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vou repetir: 12 mil crianças foram assassinadas, muitas delas queimadas pelo fósforo branco.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E é precisamente e exatamente por causa das lições que os meus pais ensinaram a mim e aos meus dois irmãos que eu não vou ficar em silêncio enquanto Israel comete seus crimes contra os palestinos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T18:24:56.919993-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
