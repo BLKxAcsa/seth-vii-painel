@@ -1,0 +1,543 @@
+{
+  "slug": "erika-hilton",
+  "solicitado_para": "Erika Hilton",
+  "dossie": {
+    "politician": {
+      "id": 220645,
+      "name": "Erika Hilton",
+      "party": "PSOL",
+      "state": "SP",
+      "email": "dep.erikahilton@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/220645",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 22,
+      "propositions_total": 496,
+      "min_sample_required": 5,
+      "attendance_rate": 97.8,
+      "sessions_checked": 91,
+      "inconsistencies": 0,
+      "total_propositions": 496,
+      "total_votes": 0
+    },
+    "promises": [],
+    "evidence": [
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBR 1/0: Institui a Política Nacional de Assistência às Pessoas com Endometriose.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Dispõe sobre a prioridade e gratuidade na taxa de emissão de documentos para mulheres vítimas de violência em todo País.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 2403/25 e  do PL 4922/2025, apensado, na forma do Substitutivo da Comissão de Saúde, com subemenda.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Institui a Política Nacional de Reestruturação Financeira das Famílias, com diretrizes para prevenção e tratamento do superendividamento, e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 1413/2026, e do PL 1469/2026, apensado, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 8.078, de 11 de setembro de 1990 (Código de Defesa do Consumidor), para estabelecer prazo prioritário de devolução do valor pago por produto essencial, quando não houver reposição imed",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 6740/2025, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 57/2026: Requer a apresentação de Emenda de Plenário ao Projeto de Lei nº 896, de 2023.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 2/0: Acrescenta dispositivos à Lei nº 11.340, de 7 de Agosto de 2006 (Lei Maria da Penha), para instituir o Marco Legal das Rondas Maria da Penha, destinadas à fiscalização do cumprimento das medidas prote",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PES 1/0: Parecer à emenda apresentada ao Substitutivo da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 6043/25, do PL 6394/25, apensado, da Emenda apresentada ao substitutivo 1, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3635/2026: Institui a Política Nacional de Proteção, Valorização e Promoção da Dignidade das Traviarcas – travestis pioneiras e sobreviventes –, e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 8.078, de 11 de setembro de 1990 – Código de Defesa do Consumidor, para incluir disposições específicas sobre a vedação a práticas discriminatórias de natureza racial nas relações de c",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 5788/2025, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Estabelece medidas de prevenção e combate ao trabalho infantil em empresas de aplicativos de entregas ou transporte e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do Projeto de Lei 807/22, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela rejeição deste, e do PL 1173/2026, apensado.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela rejeição do projeto.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Institui o Selo de Transparência em Publicidade dirigida a Crianças, para assegurar identificação clara e inequívoca de conteúdos publicitários destinados ao público infantil, e dá outras providências",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 6702/2025, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Dispõe sobre a publicidade de cunho misógino, sexista ou estimuladora de agressão ou violência sexual.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 6191/2016 e dos PLs, 2558/2019, PL 354/2021, e PL 45/2022, apensados, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 51/2026: Requer aprovação de Moção de Aplausos à Sra. Aline Aparecida Floriano Nogueira, diretora do EMEI Antônio Bento, que mesmo diante da intimidação policial garantiu a aplicação da Lei 10.639/2003 que det",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 50/2026: Requer a criação de Grupo de Trabalho no âmbito desta Comissão, com a finalidade de analisar, acompanhar e propor iniciativas legislativas e políticas públicas relacionadas ao mundo do trabalho das mu",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela rejeição.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3298/2026: Institui a Política Nacional de Incentivo às Paradas de Orgulho LGBTQIA+ e altera a Lei nº 14.399, de 8 de julho de 2022 (Lei Aldir Blanc).",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3249/2026: Altera o art. 83 da Lei nº 7.210, de 11 de julho de 1984 (Lei de Execução Penal), para garantir às mulheres e às pessoas transmasculinas no sistema prisional que sejam gestantes, parturientes e/ou lac",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 49/2026: Requer a realização de visita técnica seguida do Seminário Lélia Gonzalez, para debater políticas públicas de reparação para mulheres negras, em celebração ao Dia Internacional da Mulher Negra Latino-",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3074/2026: Altera a Lei n° 8.036, de 11 de maio de 1990, para estabelecer que a conta vinculada do trabalhador no FGTS poderá custear o acesso às técnicas de reprodução humana assistida.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3073/2026: Inscreve o nome de Rosely Roth no Livro dos Heróis e Heroínas da Pátria.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Dispõe sobre a utilização de informações relativas ao Fundo Garantidor de Créditos (FGC) na comunicação comercial de instituições integrantes do Sistema Financeiro Nacional.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 71/2026, e do PL 295/2026, apensado, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 2/0: Institui o Programa Nacional do Afro-empreendedorismo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 2/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação deste, do PL 10421/2018, do PL 304/2019, e do PL 5619/2023, apensados, na forma do substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 7.353 de 29 de agosto de 1985 e a Lei nº 9.250, de 26 de dezembro de 1995, para incluir os Fundos dos Direitos da Mulher na destinação do Imposto de Renda de pessoas físicas e jurídica",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 4634/25 e do PL 5134/2025, apensado, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "INC 1004/2026: Sugere a criação do Conselho Federal de Estética e Cosmetologia, órgão responsável por normatizar o exercício profissional em todo o território nacional, estabelecer diretrizes éticas e técnicas, prom",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 13/2026: Altera o art. 9º da Emenda Constitucional nº 132, de 20 de dezembro de 2023, para permitir a concessão de créditos do Imposto sobre Bens e Serviços através de fomento indireto a doadores e patrocinado",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 11.340, de 7 de agosto de 2006 (Lei Maria da Penha), para instituir as Diretrizes Nacionais das Rondas Maria da Penha, destinadas à fiscalização do cumprimento das medidas protetivas d",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação do PL 6043/25 e do PL 6394/25, apensado, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 11.340, de 7 de agosto de 2006 (Lei Maria da Penha), para estabelecer multa diária em favor da vítima, em caso de descumprimento de medida protetiva de urgência, e estabelecer a possib",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Erika Hilton (PSOL-SP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2883/2026: Altera o artigo 60 da Lei nº 14.133, de 1º de abril de 2021, visando ações de promoção da diversidade, inclusão, equidade de oportunidades e tratamento para pessoas LGBTQIA+ como critério de desempate",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2882/2026: Altera o Artigo 483 do Decreto-Lei nº 5.452, de 1° de maio de 1943 (Consolidação das Leis do Trabalho.), visando a inclusão da LGBTfobia como hipótese de rescisão indireta de trabalho.",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {
+        "assistência_social": 3,
+        "saúde": 9,
+        "segurança": 2,
+        "economia": 1
+      },
+      "temas_legislados": {
+        "educação": 11,
+        "saúde": 44,
+        "infraestrutura": 3,
+        "segurança": 31,
+        "economia": 12,
+        "transporte": 1,
+        "habitação": 1,
+        "cultura": 4,
+        "meio_ambiente": 10,
+        "tecnologia": 7
+      },
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 496,
+        "votos_analisados": 0,
+        "discursos_analisados": 50
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 0,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 496,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "496 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# Parecer Técnico\n\n## Resumo Executivo\nErika Hilton, deputada federal do PSOL-SP, apresentou uma série de propostas legislativas que abrangem diversos temas, incluindo saúde, consumo, violência contra mulheres, trabalho infantil, publicidade dirigida a crianças, transparência, e políticas públicas LGBTQIA+. A análise forense revela que, embora Erika Hilton tenha apresentado uma variedade de propostas, há evidências de que algumas delas podem não ser factíveis com o orçamento disponível e que algumas propostas apresentadas podem não ser coerentes com a ação política que vem sendo tomada.\n\n## Análise de Coerência\n**Contradições entre discurso e ação:**\n- **Proposição SBR 1/0**: A proposta institui a Política Nacional de Assistência às Pessoas com Endometriose, uma medida que, aparentemente, não revela contradições diretas com a ação política.\n- **Proposição SBT 1/0**: A proposta institui a Política Nacional de Reestruturação Financeira das Famílias, uma medida que, aparentemente, não revela contradições diretas com a ação política.\n- **Proposição PRL 1/0**: A proposta é um parecer de relatora, não uma proposição legislativa em si. Não há contradições diretas com a ação política.\n\n**Conclusão**: Não há evidências claras de contradições entre o discurso e a ação política de Erika Hilton.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\n- **Proposição SBR 1/0**: A proposta não menciona um orçamento específico, mas a implementação de políticas públicas para endometriose pode ser altamente custosa, dependendo da extensão e da complexidade do programa.\n- **Proposição SBT 1/0**: A proposta não menciona um orçamento específico, mas a implementação de políticas públicas para reestruturação financeira das famílias também pode ser altamente custosa, dependendo da extensão e da complexidade do programa.\n- **Proposição PRL 1/0**: A proposta é um parecer de relatora, não uma proposição legislativa em si. Não há necessidade de orçamento específico.\n\n**Conclusão**: Não há dados suficientes para avaliar a viabilidade financeira das propostas apresentadas por Erika Hilton.\n\n## Flags de Risco\n**Padrões Suspeitos:**\n- **Proposição SBT 1/0**: A proposta institui a Política Nacional de Reestruturação Financeira das Famílias, uma medida que, aparentemente, não revela padrões suspeitos diretos.\n- **Proposição PRL 1/0**: A proposta é um parecer de relatora, não uma proposição legislativa em si. Não há padrões suspeitos diretos.\n\n**Conclusão**: Não há evidências de padrões suspeitos em gastos ou vot",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "46 frases classificadas por qwen1.5b; 39 divergência(s) do filtro determinístico",
+      "total_classificadas": 46,
+      "divergencias": [
+        {
+          "texto": "Nós mostraremos que a classe trabalhadora brasileira também tem voz nesta Casa, que muitas vezes vota contra o povo brasileiro e espezinha a dignidade dos trabalhadores.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "É por isso que nós vamos continuar gritando que Marielle está presente, que Marielle vive.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos bradando por justiça.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos lutando pelos invisíveis.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos ocupando este Parlamento, a despeito daqueles que nos odeiam, porque a nossa presença deve ser incômoda.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós não nos intimidaremos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós não nos acovardaremos diante do ódio, da intolerância, da barbárie, do preconceito, que muitas vezes são os pilares desta Casa, que deveria ter como pilar a democracia, a Constituição, o Regimento e não ódio.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mesmo diante disso, nós seguimos aqui e seguiremos apresentando um projeto de Brasil, um projeto de poder, que represente aquilo que representou o legado, o mandato e a vida da companheira Marielle Franco, porque acreditamos que o Brasil é maior e melhor do que essa gente amarga de cara pálida que ocupa os poderes deste País.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "É por ela e por todas nós que continuaremos aqui lutando, brigando, exigindo e acreditando que um Brasil melhor e maior do que este Brasil mesquinho, que assassina de maneira covarde e cruel uma Vereadora eleita, é possível.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "O Ministério Público já se manifestou, e nós seguiremos clamando pela proteção de nossas crianças, de nossas adolescentes, de nossas meninas e mulheres brasileiras, para que decisões como essas não sejam naturalizadas no Brasil;",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Inclusive, eu quero lembrar que na semana em que o ex-Presidente Jair Bolsonaro teve a pachorra de dizer que \"pintou um clima com garotas de 14 e 15 anos\"  e nós não vamos nos esquecer disso , o partido dele aqui, na Câmara dos Deputados, em 2022, barrou, barrou o projeto que transformava em hediondo o crime de pedofilia.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Lembraremos as inúmeras vezes que esses partidos viraram as costas a esse tema e também denunciaremos ao conjunto da sociedade brasileira a ameaça de obstrução ao andamento de pautas que regulamentam as redes sociais, que regulam as redes sociais no nosso País.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós combateremos com veemência, coragem, braveza e força o preconceito e a LGBTfobia, que nos mata a pauladas, à tortura, como foi o caso de Dandara dos Santos, entre tantos outros que já ocorreram neste País.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Os algozes, executores e assassinos de Fernando devem ser identificados, punidos e responsabilizados por esse crime bárbaro, para dizermos que neste País nós não aceitaremos mais que nossa vida seja tratada como algo descartável.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós não aceitaremos mais que nossa dignidade e nossa cidadania deixem de ser consideradas, que nossos jovens e nossas crianças, que têm uma vida inteira pela frente, não tenham o direito de viver por serem quem são.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Quero aproveitar esta tribuna para mandar um abraço solidário à família e aos amigos do jovem Fernando, executado em Manaus, e dizer que, enquanto nós estivermos dentro desta Casa, nós continuaremos defendendo os direitos de todo o povo brasileiro, de toda a comunidade LGBTQIA+.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Continuaremos denunciando os horrores praticados aqui dentro contra nossa comunidade e continuaremos cobrando políticas públicas e legislações que retirem da marginalidade, do esquecimento, do assassinato e da execução grupos sociais que, muitas vezes, são esquecidos e, quando lembrados, o são para serem ridicularizados por Parlamentares que reforçam a violência na ponta, que, todos os dias, mata jovens nos quatro cantos deste País.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós seguiremos lutando.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos de pé, valentes, corajosos, batalhando não só pela dignidade, mas também pela vida da nossa comunidade, que não pode ser roubada nem ceifada da maneira brutal como foi a do jovem Fernando.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Ele permanecerá em nossa memória, e nós seguiremos denunciando os abandonos promovidos pelo Estado e a violência praticada contra nossa comunidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós não vamos permitir que diminuam a gravidade, a brutalidade e a covardia dos atos praticados contra as instituições, contra esta Casa, contra o Senado brasileiro e contra o Supremo Tribunal Federal.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós avançaremos no ano de 2025 com esse texto, apresentando à classe de trabalhadores do nosso País uma condição digna e humana de trabalho.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós lembraremos aos trabalhadores que o Congresso Nacional, que deveria ser a Casa do Povo, não vai estar aqui se debruçando apenas sobre os interesses das elites e dos empresários, mas estará olhando de forma cuidadosa e respeitosa também para a classe trabalhadora, que é sucateada, violentada, massacrada e esquecida.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós quereremos ver se os Deputados e as Deputadas irão se posicionar ao lado dos trabalhadores, defendendo a dignidade do trabalho, defendendo a vida daqueles e daquelas que carregam este País e a economia nas costas.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Este foi um ano duro, um ano difícil, mas nós o terminaremos de cabeça erguida, sabendo que lutamos ao lado do povo, sabendo que lutamos pela vida daqueles que são violentados e amargados pelas desigualdades sociais e pelas injustiças políticas.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Presidente, peço mais 30 segundos para concluir, parabenizando os movimentos feministas Brasil afora, que tomaram as ruas, mostraram a força da mobilização popular e disseram que não, essas vidas não serão rifadas, essas vidas não serão leiloadas por uma agenda política nefasta, uma agenda política de retrocesso, como é essa que pauta e ancora o Projeto de Lei nº 1.904.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Aonde chegaremos, se a escalada da violência entre nós continuar desta maneira?!",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Hoje, extrapolaram-se todos os limites, e nós exigimos que o Presidente Arthur Lira e que esta Mesa deem uma resposta e barrem esta que é uma escalada da violência, senão, daqui a pouco, pessoas serão violentadas, serão alvo de tiros.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mas nós seguiremos junto com os movimentos, nós seguiremos junto com os estudantes, lutando, gritando e garantindo os nossos direitos, custe o que custar.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós entraremos em uma batalha para que isso seja mudado no Senado, para que esse projeto não sirva para auxiliar as empresas de energia elétrica a não terem compromisso com a qualidade da distribuição.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E nós seguiremos aqui exigindo que essas investigações continuem, mostrando que o Estado brasileiro é conivente e apertou a arma que executou nossa companheira.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos lutando por justiça, lutando pela democracia, lutando pela representação de mulheres negras, de jovens da periferia, de pessoas LGBT neste espaço nefasto que não nos quer  não nos quer!",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": ", mas terá que nos engolir, porque chegamos e não arredaremos o pé por Marielle e por todas nós.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Acompanharemos cada um dos endereços que permaneceram sem energia elétrica e seguiremos fiscalizando.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Acionaremos o Ministério Público e todos os órgãos competentes para que essas famílias sejam respeitadas, para que essas famílias sejam ressarcidas, para que essas famílias não fiquem com esse prejuízo decorrente do despreparo e do descaso do Prefeito da cidade de São Paulo, que estava assistindo à Fórmula 1 enquanto deveria estar sentado com o seus Secretários pensando em como reparar essa grave problemática.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Medidas precisam ser tomadas e serão tomadas!",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Esta noite corrigiremos isso.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E não toleraremos, não aceitaremos que mercadores da fé, falsos profetas, usem as mídias ou os púlpitos de suas igrejas para atacar de forma covarde, criminosa e intolerante a nossa vida e a nossa dignidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Nós continuaremos denunciando o descaso e o abandono que os mais pobres, os mais vulneráveis e os mais necessitados têm enfrentado na cidade de São Paulo.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T01:31:23.173467-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
