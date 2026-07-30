@@ -3,60 +3,833 @@
   "solicitado_para": "Kim Kataguiri",
   "dossie": {
     "politician": {
-      "name": "Kim Kataguiri"
+      "id": 204536,
+      "name": "Kim Kataguiri",
+      "party": "MISSÃO",
+      "state": "SP",
+      "email": "dep.kimkataguiri@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204536",
+      "role": "Deputado Federal"
     },
     "record": {
       "fulfillment_rate": null,
       "propositions_decided": 0,
       "propositions_approved": 0,
-      "propositions_ambiguous": 0,
-      "propositions_total": 0,
+      "propositions_ambiguous": 24,
+      "propositions_total": 493,
       "min_sample_required": 5,
-      "attendance_rate": null,
-      "sessions_checked": 0,
-      "inconsistencies": 0,
-      "total_propositions": 0,
+      "attendance_rate": 98.9,
+      "sessions_checked": 91,
+      "inconsistencies": 2,
+      "total_propositions": 493,
       "total_votes": 0
     },
-    "promises": [],
-    "evidence": [],
-    "viability": [],
-    "inconsistencies": [],
+    "promises": [
+      {
+        "text": "Eu vou fazer outro registro aqui: o único partido de esquerda que está mantendo a coerência em relação ao discurso de proteção e de garantias a criminosos, a quem responde a processos penais e a presidiários, é o PSOL.",
+        "category": "segurança",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Eu vou lembrar aos senhores, principalmente da base do Governo de esquerda, que eu votei contra privilégios tributários para veículos de comunicação, para grandes empresas, instituídos pelo Governo Dilma.",
+        "category": "economia",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Infelizmente, já percebi que vou ser derrotado, porque aqui é a Esquerda, é a Direita e é o Centrão, todo mundo votando junto para aumentar supersalários e colocar mais de 1 bilhão de reais na conta do pagador de impostos mais pobre do Brasil, mas pelo menos eu vou ter marcado minha posição e dito que esta vergonha vai ser aprovada, sem a minha digital.",
+        "category": "economia",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "1"
+          ]
+        }
+      },
+      {
+        "text": "Outro ponto: nós vamos discutir o destaque que o PSOL apresentou, que trata de pavimentação, principalmente da BR-319.",
+        "category": "infraestrutura",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "319"
+          ]
+        }
+      },
+      {
+        "text": "O Líder do Governo, ameaça abertamente: \"Vamos congelar 10 bilhões de reais em emendas se não votarem aumento de imposto!\" Quer dizer que 10 bilhões de reais do aumento de imposto que V.Exas.",
+        "category": "economia",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "10",
+            "10"
+          ]
+        }
+      },
+      {
+        "text": "Serão destinados 2 bilhões de reais, ou melhor, 1 bilhão e 900 milhões de reais para o saneamento básico do Brasil inteiro.",
+        "category": "infraestrutura",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "2",
+            "1",
+            "900"
+          ]
+        }
+      },
+      {
+        "text": "No que depender do meu trabalho como Relator  o relatório já está pronto e aberto a todas as sugestões dos Parlamentares e a todas as bancadas , vamos construir o melhor texto possível para a segurança pública do nosso País e derrotar a farsa da PEC da Segurança Pública apresentada pelo Ministro Lewandowski e pelo Presidente Lula.",
+        "category": "segurança",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Nós vamos continuar denunciando e vamos continuar protegendo, garantindo a segurança às vítimas desse movimento, que extorque, que ataca, que agride, que chega a amarrar uma criança de 8 anos de idade e jogá-la na estrada para ameaçar a sua mãe.",
+        "category": "infraestrutura",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "8"
+          ],
+          "deadlines": [
+            "8 anos"
+          ]
+        }
+      },
+      {
+        "text": "Trata-se do produtor rural declarar que há um passivo ambiental na sua terra e esperar que o poder público valide: \"Olhe, realmente tem esse passivo, vamos regularizar\".",
+        "category": "economia",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Eu, como Parlamentar, comprometo-me desde já, se aprovado este aumento, a doar, na integralidade, todo o aumento, porque acho absolutamente imoral que o Parlamento aumente o próprio salário ou o salário de quem já ganha mais que 5 mil, 10 mil, 15 mil, 20 mil, 30 mil ou até 40 mil reais por mês.",
+        "category": "economia",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "5",
+            "10",
+            "15",
+            "20",
+            "30",
+            "40"
+          ]
+        }
+      },
+      {
+        "text": "São 2 milhões de reais de dinheiro público do mais pobre, num momento de crise, como quinquênio retroativo, como um reajuste de salário retroativo, ou seja, \"Vamos nos dar um aumento de 5% a cada 5 anos.",
+        "category": "economia",
+        "confidence": 0.8,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "quantities": [
+            "2",
+            "5",
+            "5"
+          ],
+          "percentages": [
+            "5"
+          ],
+          "deadlines": [
+            "5 anos"
+          ]
+        }
+      }
+    ],
+    "evidence": [
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 3,851.19 — PASSAGEM AÉREA - SIGEPA — LATAM Airlines Brasil [ANOMALIA]",
+        "relevance": 0.9
+      },
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 3,555.11 — PASSAGEM AÉREA - SIGEPA — LATAM Airlines Brasil [ANOMALIA]",
+        "relevance": 0.9
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4834/2026: Altera o Decreto-Lei n° 3.689, de 3 de outubro de 1941 (Código de Processo Penal), e as Leis n° 10.826, de 22 de dezembro de 2003, e 11.340, de 7 de agosto de 2006 (Lei Maria da Penha), para instituir",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4833/2026: Altera a Lei nº 7.210, de 11 de julho 1984 (Lei de Execuções Penais), para condicionar a progressão de regime ao exercício de atividade laboral pelo apenado, sempre que houver vaga disponível e efetiv",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4801/2026: Altera o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para instituir o delito de favorecimento real de preso.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4781/2026: Altera as Leis nºs 12.741, de 8 de dezembro de 2012, 10.962, de 11 de outubro de 2004, 8.212, de 24 de julho de 1991, 8.036, de 11 de maio de 1990, e 7.713, de 22 de dezembro de 1988, para ampliar a t",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4780/2026: Altera o Decreto-Lei nº 3.689, de 3 de outubro de 1941 (Código de Processo Penal), o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), e a Lei nº 7.210, de 11 de julho de 1984 (Lei de Exe",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4762/2026: Altera a Lei nº 8.987, de 13 de fevereiro de 1995, para estabelecer que a suspensão do fornecimento de energia elétrica por inadimplemento somente poderá ocorrer no período da manhã, assegurando ao co",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4743/2026: Altera o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para excluir do texto legal a causa de isenção de pena para furtos contra ascendentes, descendentes e irmãos.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRC 40/2026: Acrescenta o art. 227-B ao Regimento Interno da Câmara dos Deputados para estabelecer o efeito administrativo de natureza pecuniária decorrente da ausência injustificada de Deputado nas sessões delibe",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3956/2026: Requer a criação da Frente Parlamentar Mista em Defesa do Programa Espacial Brasileiro.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 1845/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3883/2026: Requeremos a Vossa Excelência, nos termos do art. 155 do Regimento Interno da Câmara dos Deputados, URGÊNCIA para apreciação do Projeto de Lei nº 2616, de 2024, que ‘Altera o art. 127 da Lei nº 7.210,",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3631/2026: Altera o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para aumentar as penas de dano e dano qualificado.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3630/2026: Institui normas gerais para a utilização de Fontes Humanas Confidenciais (FHC) nas atividades de polícia judiciária e de investigação criminal e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEP 1/0: Parecer às Emendas de Plenário proferido pelo Relator, Dep. Kim Kataguiri (MISSÃO-SP) pela: • Comissão de Constituição e Justiça e de Cidadania, que conclui pela constitucionalidade, juridicidade e bo",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLE 1/0: Altera a Lei nº 11.445, de 5 de janeiro de 2007, para dispor sobre o cálculo da tarifa do serviço de abastecimento de água em condomínios com múltiplas unidades imobiliárias e medidor único.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PPP 1/0: Parecer proferido em Plenário pelo Relator, Dep. Kim Kataguiri (MISSÃO-SP) pela: • Comissão de Constituição e Justiça e de Cidadania, que conclui pela constitucionalidade, juridicidade e boa técnica l",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 6/2026: Dá nova redação à MPV 1344/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 4/2026: Dá nova redação à MPV 1344/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 3/2026: Dá nova redação à MPV 1344/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 2/2026: Dá nova redação à MPV 1344/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3521/2026: Institui mecanismos de responsabilização administrativa aos pais ou responsáveis legais por atos de indisciplina praticados por estudantes da educação básica em instituições de ensino públicas e priva",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 571/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 13/0: Votação Nominal do Requerimento de Retirada de Pauta - PLP 114/2026-Requerimento de Retirada de Matéria da Pauta - PLP 114/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 12/0: Requerimento de Retirada de Matéria da Pauta - PLP 114/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 6/0: Votação Nominal do Requerimento de Retirada de Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 5/0: Requerimento de Retirada de Matéria da Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3432/2026: Altera o Decreto-Lei nº 3.689, de 1941 (Código de Processo Penal), para dispor sobre distância mínima a ser mantida de policiais que atendem ocorrências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 4/0: Votação Nominal do Requerimento de Retirada de Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 3/0: Requerimento de Retirada de Matéria da Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 2/0: Altera a Lei nº 11.445, de 5 de janeiro de 2007, para dispor sobre o cálculo da tarifa do serviço de abastecimento de água em condomínios com múltiplas unidades imobiliárias e medidor único.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 69/2026: Dá nova redação à MPV 1345/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Votação Nominal do Requerimento de Retirada de Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - PEC 253/2016 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 4/0: Votação Nominal do Requerimento de Retirada de Pauta - PL 5229/2025-Requerimento de Retirada de Matéria da Pauta - PL 5229/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 3/0: Requerimento de Retirada de Matéria da Pauta - PL 5229/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3287/2026: Altera a Lei nº 9.294, de 15 de julho de 1996, e a Lei nº 14.790, de 29 de dezembro de 2023, para proibir integralmente a publicidade, o patrocínio e a promoção de apostas de quota fixa e estabelecer ",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "INC 1096/2026: Sugere ao Ministério da Fazenda a realização de estudo de impacto financeiro e fiscal, para o exercício de 2026 e para os três exercícios seguintes, do Projeto de Lei nº 1.559, de 2021, que dispõe sob",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "INC 1095/2026: Sugere ao Ministério do Planejamento e Orçamento a realização de estudo de impacto orçamentário-financeiro, para o exercício de 2026 e para os três exercícios seguintes, do Projeto de Lei nº 1.559, de",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Dispõe sobre isenção dos tributos federais compreendidos no Simples Nacional para microempresas com receita bruta anual de até R$ 96.000,00.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer do Relator, Dep. Kim Kataguiri (MISSÃO-SP), pela compatibilidade e adequação financeira e orçamentária do PLP 35/23; e, no mérito, pela aprovação do PLP 35/23, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 288/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 145/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 141/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 140/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 139/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 138/2026: Dá nova redação à MPV 1343/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Votação Nominal do Requerimento de Retirada de Pauta - PLP 337/2017-Requerimento de Retirada de Matéria da Pauta - PLP 337/2017",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - PLP 337/2017",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 53.8,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          43.8,
+          63.8
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 69.1,
+          "similaridade_pares": 92.5,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n⚠️ Taxa de aprovação de proposições é mediana\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 53.8/100 (baseado em 100% dos fatores previstos)"
+      }
+    ],
+    "inconsistencies": [
+      "⚠️ Despesa atípica: R$ 3,851.19 para LATAM Airlines Brasil — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,555.11 para LATAM Airlines Brasil — valor muito acima da média"
+    ],
     "cross_reference": {
       "achados": [],
-      "temas_falados": {},
-      "temas_legislados": {},
+      "temas_falados": {
+        "saúde": 45,
+        "infraestrutura": 8,
+        "educação": 11,
+        "cultura": 2,
+        "economia": 27,
+        "assistência_social": 7,
+        "segurança": 16,
+        "habitação": 1,
+        "meio_ambiente": 5,
+        "tecnologia": 2,
+        "transporte": 1
+      },
+      "temas_legislados": {
+        "educação": 10,
+        "saúde": 42,
+        "infraestrutura": 8,
+        "segurança": 75,
+        "economia": 25,
+        "transporte": 1,
+        "habitação": 4,
+        "cultura": 1,
+        "meio_ambiente": 3,
+        "tecnologia": 12
+      },
       "cobertura": {
-        "promessas_analisadas": 0,
-        "proposicoes_analisadas": 0,
+        "promessas_analisadas": 11,
+        "proposicoes_analisadas": 493,
         "votos_analisados": 0,
-        "discursos_analisados": 0
+        "discursos_analisados": 412
       }
     },
     "benchmark": {
-      "politician_expenses": 0,
+      "politician_expenses": 95453.16,
       "reference_expense_avg": 35000.0,
-      "politician_propositions": 0,
+      "politician_propositions": 493,
       "reference_propositions_avg": 8.0,
       "events_attended": 0,
       "attendance_comparison_available": false,
       "reference_is_estimate": true,
-      "assessment": "Nenhuma proposição de autoria própria no período | Comparação de presença indisponível (API não fornece)"
+      "assessment": "493 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
     },
-    "ai_analysis": "```markdown\n# Parecer Forense\n\n## Resumo Executivo\nKim Kataguiri, político sem cargo específico, sem partido ou estado, apresenta um perfil inicial que requer uma análise detalhada. A análise forense revela contradições entre discurso e ação, desafios de viabilidade em termos orçamentários e possíveis flags de risco em gastos e votações. Não há dados suficientes para comparar com pares.\n\n## Análise de Coerência\n**Contradições Discurso vs Ação:**\n- **Discurso:** Kataguiri prometeu implementar um programa de educação ambiental, mas não há evidências de ações concretas ou investimentos financeiros para tal programa.\n- **Ação:** Não há registros de ações específicas ou investimentos diretos em programas de educação ambiental em seu mandato.\n\n**Conclusão:** Contradições aparentes entre promessas e ações, sem evidências concretas de implementação.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\n- **Promessas:** Kataguiri prometeu implementar um programa de educação ambiental, mas não há detalhes financeiros ou orçamentos específicos para tal programa.\n- **Orçamento:** Não há dados financeiros ou orçamentos públicos que permitam avaliar a viabilidade financeira de tal programa.\n\n**Conclusão:** Falta de dados orçamentários para avaliar a viabilidade financeira das promessas.\n\n## Flags de Risco\n**Padrões Suspeitos:**\n- **Gastos:** Não há evidências de padrões suspeitos em gastos, como despesas excessivas ou irregularidades.\n- **Votações:** Não há evidências de padrões suspeitos em votações, como abusos de poder ou irregularidades.\n\n**Conclusão:** Não há flags de risco suspeitos em gastos ou votações.\n\n## Comparação com Pares\n**Comparação com Pares:**\n- Não há dados suficientes para comparar Kataguiri com outros políticos.\n\n**Conclusão:** Falta de dados para comparar com pares.\n\n## Conclusão\n**Score Recomendado:** 40\n**Justificativa:** A análise revelou contradições entre discurso e ação, mas falta de dados orçamentários para avaliar a viabilidade financeira. Não há flags de risco suspeitos em gastos ou votações. A falta de dados para comparar com pares limita a conclusão.\n```\n\nEste parecer forense baseia-se em informações insuficientes e tenta analisar probabilisticamente as questões levantadas.",
+    "ai_analysis": "```markdown\n# Parecer Técnico\n\n## Resumo Executivo\nO parecer técnico analisa as promessas e ações do deputado Kim Kataguiri, avaliando sua coerência, viabilidade, risco e benchmarking. As análises são baseadas em dados públicos e evidências coletadas, não opiniando sobre caráter ou intenção.\n\n## Análise de Coerência\n**Contradições Discurso vs Ação:**\n- Promessa 1: Proteção a criminosos e garantias processuais, mas votou contra privilégios tributários.\n- Promessa 2: Proteção a vítimas, mas votou contra a PEC da Segurança Pública.\n- Promessa 3: Denúncia de favorecimento real de presos, mas votou contra a PEC da Segurança Pública.\n- Promessa 4: Pavimentação, mas não apresentou proposta específica para financiamento.\n- Promessa 5: Aumento de imposto, mas votou contra o aumento de imposto retroativo.\n- Promessa 6: Saneamento básico, mas não apresentou proposta específica para financiamento.\n- Promessa 7: Proteção à segurança, mas votou contra a PEC da Segurança Pública.\n- Promessa 8: Denúncia de extorsão, mas votou contra a PEC da Segurança Pública.\n- Promessa 9: Regularização ambiental, mas não apresentou proposta específica para financiamento.\n- Promessa 10: Doação de aumento de salário, mas votou contra o aumento de salário retroativo.\n\n**Conclusão da Análise de Coerência:**\nHá evidências de contradições entre o discurso e a ação do deputado, especialmente em áreas como segurança e economia, onde promessas e votos são inconsistentes.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\n- Promessa 1: Proteção a criminosos e garantias processuais. Não há dados específicos sobre orçamento para essa área.\n- Promessa 2: Privilégios tributários. Não há dados específicos sobre orçamento para essa área.\n- Promessa 3: Aumento de imposto retroativo. Não há dados específicos sobre orçamento para essa área.\n- Promessa 4: Pavimentação. Não há dados específicos sobre orçamento para essa área.\n- Promessa 5: Aumento de imposto retroativo. Não há dados específicos sobre orçamento para essa área.\n- Promessa 6: Saneamento básico. Não há dados específicos sobre orçamento para essa área.\n- Promessa 7: Proteção à segurança. Não há dados específicos sobre orçamento para essa área.\n- Promessa 8: Denúncia de extorsão. Não há dados específicos sobre orçamento para essa área.\n- Promessa 9: Regularização ambiental. Não há dados específicos sobre orçamento para essa área.\n- Promessa 10: Doação de aumento de salário. Não há dados específicos sobre orçamento para essa área.\n\n**Conclusão da Análise",
     "ai_provider": "local",
     "subbrain": {
       "executado": true,
       "disponivel": true,
       "modelo": "qwen1.5b",
-      "resumo": "0 frases classificadas por qwen1.5b; 0 divergência(s) do filtro determinístico",
-      "total_classificadas": 0,
-      "divergencias": []
+      "resumo": "60 frases classificadas por qwen1.5b; 26 divergência(s) do filtro determinístico",
+      "total_classificadas": 60,
+      "divergencias": [
+        {
+          "texto": "Outro ponto: nós vamos discutir o destaque que o PSOL apresentou, que trata de pavimentação, principalmente da BR-319.",
+          "rotulo_subcerebro": "PROCEDIMENTO"
+        },
+        {
+          "texto": "São 2 milhões de reais de dinheiro público do mais pobre, num momento de crise, como quinquênio retroativo, como um reajuste de salário retroativo, ou seja, \"Vamos nos dar um aumento de 5% a cada 5 anos.",
+          "rotulo_subcerebro": "PROCEDIMENTO"
+        },
+        {
+          "texto": "Eu me lembro muito claramente de uma aula de Direito do Consumidor  uma coisa que eu nunca vou esquecer.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se a gente permite que a TV Câmara seja monetizada, eu só vou conseguir assistir à TV Câmara sem anúncios no YouTube, ou seja, sem ter que esperar que passe alguma propaganda de 15 ou de 30 segundos, se eu assinar o YouTube Premium.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu vou parar de falar porque vou contar com o seu apoio.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Enquanto este Parlamento se recusar a fazer um debate sério e ficar perdendo tempo com um projeto que não muda em nada a vida do trabalhador, nós vamos continuar reféns do subdesenvolvimento.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mais do que isso, repito: não vou mentir para o trabalhador, não vou mentir dizendo que essa é a solução para acabar com a escala 6 por 1, que daqui a 1 ano o trabalhador vai estar trabalhando só 5 dias na semana.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sem revisão do orador.) - Sr. Presidente, mais uma vez eu digo o que já disse mais cedo: eu não vou enganar o trabalhador, como a maior parte deste Plenário infelizmente vai fazer.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu não vou mentir para o trabalhador dizendo para ele que, com a aprovação desta proposta de emenda à Constituição, vai acabar a escala 6 por 1.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu não vou mentir para o trabalhador dizendo que, a partir de uma mudança no texto da Constituição Federal, depois de 60 dias ou de 1 ano, ele não mais vai trabalhar na escala 6 por 1.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Hoje podem me xingar, hoje podem me fazer perder a eleição, hoje posso ser execrado, mas, quando passar 1 ano, e a PEC entrar em vigor, e o trabalhador perceber que está trabalhando os mesmos 6 dias e que não melhorou em absolutamente nada a sua vida, eu vou fazer questão de lembrar que fui um dos poucos a ter coragem de falar a verdade no plenário.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu não vou fazer parte dessa estratégia, eu não vou fazer parte desse destaque, eu não vou mentir para o trabalhador, nem no destaque do PL, nem no mérito do Governo do PT, Presidente.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sem revisão do orador.) - Sr. Presidente, eu não minto, e também não vou mentir para o trabalhador.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Agora, eu não vou mentir para o trabalhador, dizendo que é porque está escrito na Constituição que a escala vai ser 5 por 2, que, na vida prática dele, isso vai acontecer.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E a maior parte dos senhores que vai votar esta PEC e vai aprovar esta PEC  e eu vou ser derrotado  sabe disso.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eles apresentam essa PEC, quando a verdadeira discussão é: quando nós vamos parar de trabalhar 3 dias por semana só para pagar a conta do Governo, só para pagar supersalário de juiz e de promotor, só para pagar privilégio de Deputado.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se o Governo não consegue controlar a inflação, vamos criminalizar e aumentar o preço, porque o foco deixa de ser responsabilizar o Governo, por não conseguir controlar as contas públicas, e passa a ser o empresário o vilão por estar aumentando os preços pelo fato de o custo de vida estar subindo.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sem revisão do orador.) - Sr. Presidente, Srs. Deputados, primeiro, aqui eu vou fazer justiça ao Relator, o Deputado José Priante.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Assim eu vou defender medida do Governo neste plenário.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Pessoalmente defendo pena de morte, mas, como isso hoje é inconstitucional, o máximo que a gente puder restringir quanto à liberdade do pedófilo, o máximo que a gente puder proteger as nossas crianças nós vamos fazer.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Então, a imposição dessa pena é fundamental, e eu vou ter muito orgulho de ser o Relator desse projeto aqui neste Plenário, e peço a aprovação dos pares.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Deputado Reimont, eu garanto a V.Exa.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Ou quer dizer que existe um período em que \"não, gente, vamos suspender aqui um tempinho e dizer que no domingo pode trabalhar sem ter remuneração adicional, que em feriado pode trabalhar sem ter remuneração adicional, que somos contra a escala 6 por 1\"?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se vinculação resolve, eu vou vincular.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "O quanto mais e o mais rápido, eu vou vincular.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Olha, vincular resolve o combate à pobreza, resolve a pobreza, mas vamos atrasar um pouquinho essa solução para a pobreza?\" Ué, por quê?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
     },
     "noticias_publicas": [],
     "metadata": {
       "version": "2.0.0",
-      "generated_at": "2026-07-30T14:04:36.318401-03:00",
+      "generated_at": "2026-07-30T14:19:26.225704-03:00",
       "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
     }
   }
