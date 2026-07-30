@@ -1,0 +1,583 @@
+{
+  "slug": "acacio-favacho",
+  "solicitado_para": "Acácio Favacho",
+  "dossie": {
+    "politician": {
+      "id": 204379,
+      "name": "Acácio Favacho",
+      "party": "MDB",
+      "state": "AP",
+      "email": "dep.acaciofavacho@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204379",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 186,
+      "propositions_total": 490,
+      "min_sample_required": 5,
+      "attendance_rate": 80.2,
+      "sessions_checked": 91,
+      "inconsistencies": 0,
+      "total_propositions": 490,
+      "total_votes": 0
+    },
+    "promises": [
+      {
+        "text": "Vamos agir agora para garantir que as futuras gerações possam desfrutar de um planeta equilibrado e sustentável, onde os oceanos continuam a ser fontes de vida, beleza e sustento.",
+        "category": "meio_ambiente",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Diante desses dados, irei conclamar à nossa bancada federal, para que possamos unidos, buscar junto ao Ministério da Justiça e Segurança Pública, ações mais enérgicas e maiores investimentos na área de Segurança do nosso estado.",
+        "category": "segurança",
+        "confidence": 0.5,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {
+          "locations": [
+            "Seguran"
+          ]
+        }
+      },
+      {
+        "text": "E, com o nosso trabalho, representando todos os cidadãos da nossa capital, continuaremos a trilhar este caminho, promovendo sempre a inclusão social e o desenvolvimento sustentável.",
+        "category": "meio_ambiente",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      }
+    ],
+    "evidence": [
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 38/2026: Dá nova redação à MPV 1348/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 15/2026: Altera os art. 150 Constituição Federal para incluir as entidades esportivas sem fins lucrativos.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer do Relator, Dep. Acácio Favacho (MDB-AP), pela admissibilidade.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2546/2026: Altera a Lei n 13.105, de 16 de março de 2015 – Código de Processo Civil, para assegurar gratuidade da justiça à pessoa física em ações que envolvam o direito à saúde ajuizadas em face da União, Estad",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2385/2026: Institui a Política Nacional de Proteção Humanitária ao Passageiro do Transporte Aéreo em Situação de Luto Familiar e dispõe sobre mecanismos obrigatórios de flexibilização contratual, assistência eme",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2262/2026: Requer a inclusão na Ordem do Dia do PLP 185/2024, que “Regulamenta a aposentadoria especial dos agentes comunitários de saúde e dos agentes de combate às endemias.”",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RCP 2/2026: Requer, nos termos do § 3º do art. 58 da Constituição Federal e dos arts. 35, 36 e 37, do Regimento Interno da Câmara dos Deputados, a criação de Comissão Parlamentar de Inquérito, com a finalidade de",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 1497/2026: Requer, nos termos do artigo 155 do Regimento Interno, tramitação sob o regime de urgência do Projeto de Lei nº 6.483 de 2025.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 1132/2026: Requer a instalação da Frente Parlamentar Mista em apoio à Integração União Europeia – Mercosul.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 3/2026: Altera o art. 155 da Constituição Federal para estabelecer alíquota máxima e base de cálculo exclusiva do Imposto sobre a Propriedade de Veículos Automotores – IPVA, e acrescenta dispositivos ao Ato d",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 50/2025: Altera os artigos 103-B e 130-A da Constituição Federal, para modificar a composição do Conselho Nacional de Justiça e do Conselho Nacional do Ministério Público.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 6008/2025: Requer a criação e registro da Frente Parlamentar Mista do Ambiente de Negócios (FPN).",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 48/2025: Altera o inciso XVI do art. 37 da Constituição Federal para permitir a acumulação de cargos públicos por outros profissionais da área da educação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 46/2025: Altera a redação do § 4º do art. 212 da Constituição Federal para considerar o programa de alimentação escolar como despesa de manutenção e desenvolvimento de ensino.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4896/2025: Requer o registro da Frente Parlamentar Mista do Crédito de Carbono.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4700/2025: Requer o registro da Frente Parlamentar Mista de Telecomunicações e Soluções Digitais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "DTQ 2/0: Destaque de Preferência - PEC 302/2017 Turno 1",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4344/2025: Requer regime de urgência para a apreciação do Projeto de Resolução nº 71, de 2025, que “Cria a Bancada Cristã da Câmara dos Deputados e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4302/2025: Requeiro o registro da Frente Parlamentar em Defesa das Confederações e Federações do Esporte e Paradesporto.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RAT 7/0: VOTO: pela APROVAÇÃO do Projeto de Lei nº 15, de 2025-CN, relativamente à Área Temática VII – Turismo, com as alterações decorrentes das emendas aprovadas e aprovadas parcialmente, conforme discrimina",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4268/2025: Requerimento de criação da Frente Parlamentar Brasil-Israel",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4119/2025: Requer o registro da Frente Parlamentar de Acolhimento e Desenvolvimento Integrado.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 17/0: Acrescente-se o art. 144-A na Constituição Federal, criando o Capítulo IV – Da Segurança Pública Institucional",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 13/0: Emenda PEC 18 - Inclusão da Polícia Socioeducativa na Constituição Federal",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 10/0: Altera os art. 21, art. 22, art. 23, art. 24 e art. 144 da Constituição, para dispor sobre competências da União, dos Estados, do Distrito Federal e dos Municípios relativas à segurança pública.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 9/0: Altera os art. 21, art. 22, art. 23, art. 24 e art. 144 da Constituição, para dispor sobre competências da União, dos Estados, do Distrito Federal e dos Municípios relativas à segurança pública.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Institui a Política Nacional de Atenção aos Cuidadores Familiares de Pessoas com Deficiência, Idosas ou com Doenças em Situação de Dependência e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer do Relator, Dep. Acácio Favacho (MDB-AP), pela aprovação deste, do PL 5007/2024, apensado, e do Substitutivo Adotado pela Comissão de Defesa dos Direitos da Pessoa Idosa, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3922/2025: Requer o registro da Frente Parlamentar Mista Pelo Apoio e Fortalecimento das Câmaras Municipais de Vereadores, nos termos do Ato Mesa nº 69, de 10/11/2005.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3906/2025: Requer a criação da Frente Parlamentar Mista em Defesa dos Vereadores e das Câmaras Municipais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3745/2025: Requer o registro da Frente Parlamentar de combate à violência em ambiente digital contra crianças e adolescentes.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer do Relator, Dep. Acácio Favacho (MDB-AP), pela aprovação deste e das Emendas Adotadas pela Comissão de Indústria Comércio e Serviços\n(CICS), na forma do Substitutivo Adotado pela Comissão de T",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "DOC 1093/2025: Requer inclusão das assinaturas de adesão dos Deputados Federais ao Requerimento nº 2282/2023",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "INC 2087/2025: Sugere adoção de providências para o reforço no quadro da carreira de Auditor Fiscal do Trabalho.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3218/2025: Requer a criação da FRENTE PARLAMENTAR MISTA EM DEFESA DA OFTALMOLOGIA – FPOF que tem por objetivo Acompanhar e fiscalizar os programas e a Política Nacional de Saúde Oftalmológica no Brasil.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3959/2025: Altera a Lei nº 8.213, de 24 de julho de 1991, para dispor sobre critérios diferenciados de aposentadoria aos pais ou responsáveis legais de pessoas com deficiência grave, no âmbito do Regime Geral de",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3031/2025: Requer a criação da Frente Parlamentar Mista em Defesa da União Nacional dos Legisladores e Legislativos Estaduais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2773/2025: Requer dispensa do interstício regimental para a inclusão da Proposta de Emenda à Constituição nº 66, de 2023, na Ordem do Dia do Plenário.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2605/2025: Requer a criação de Comissão Externa Destinada a Acompanhar e Monitorar a Devolução de valores descontados indevidamente de aposentados e pensionistas do INSS residentes em todas as unidades da federa",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2586/2025: REQUER INCLUSÃO DE ASSINATURA CO-AUTORIA, NO REQUERIMENTO 2571/2025.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2571/2025: Requer a criação de Comissão Externa Destinada a Acompanhar e Monitorar a Devolução de valores descontados indevidamente de aposentados e pensionistas do INSS residentes em todas as unidades da federa",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REC 7/2025: Recurso contra a tramitação conclusiva do Projeto de Lei nº 3999/2020, que “dispõe sobre o despejo extrajudicial de chaves, e para tanto altera a Lei nº 8.245, de 18 de outubro de 1991, que dispõe sob",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2343/2025: Requer, o registro da Frente Parlamentar Mista da transparência dos precatórios – FPTP. Nos termos do ato da mesa n° 69 de novembro de 2005.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 6/0: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Gera",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 5/0: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Gera",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 4/0: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Gera",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 3/0: Acrescenta o § 18 ao art. 165 da Constituição Federal para estabelecer regime orçamentário específico, com execução obrigatória, das despesas com precatórios e requisições de pequeno valor da União, p",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2797/2025: Altera o art. 473 da Consolidação das Leis do Trabalho (CLT), para permitir ao empregado ausentar-se do trabalho, sem prejuízo do salário, para acompanhar sua cônjuge ou companheira gestante em consul",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer do Relator, Dep. Acácio Favacho (MDB-AP), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMC 2/0: Institui limite para o pagamento de precatórios pelos Municípios, abre novo prazo de parcelamento especial de débitos dos Municípios com seus regimes próprios de previdência social e com o Regime Gera",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [
+      {
+        "score": 49.3,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          30.5,
+          68.0
+        ],
+        "factors": {
+          "historico_politico": 64.2,
+          "similaridade_pares": 25.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [
+          "viabilidade_orcamentaria"
+        ],
+        "coverage": 0.65,
+        "explanation": "⚠️ Taxa de aprovação de proposições é mediana\n⚠️ Pares raramente obtiveram esse resultado\n\n**Fatores sem dado (excluídos do cálculo):**\n- viabilidade orcamentaria: orçamento não obtido ou promessa não quantificável — custo não confrontável\n\n📊 Score: 49.3/100 (baseado em 65% dos fatores previstos)"
+      },
+      {
+        "score": 63.5,
+        "label": "Moderadamente Viável",
+        "confidence_interval": [
+          53.5,
+          73.5
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 90.0,
+          "historico_politico": 64.2,
+          "similaridade_pares": 25.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "✅ Orçamento comporta a promessa\n⚠️ Taxa de aprovação de proposições é mediana\n⚠️ Pares raramente obtiveram esse resultado\n\n📊 Score: 63.5/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 49.3,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          30.5,
+          68.0
+        ],
+        "factors": {
+          "historico_politico": 64.2,
+          "similaridade_pares": 25.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [
+          "viabilidade_orcamentaria"
+        ],
+        "coverage": 0.65,
+        "explanation": "⚠️ Taxa de aprovação de proposições é mediana\n⚠️ Pares raramente obtiveram esse resultado\n\n**Fatores sem dado (excluídos do cálculo):**\n- viabilidade orcamentaria: orçamento não obtido ou promessa não quantificável — custo não confrontável\n\n📊 Score: 49.3/100 (baseado em 65% dos fatores previstos)"
+      }
+    ],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {
+        "economia": 3,
+        "educação": 3,
+        "saúde": 4,
+        "infraestrutura": 4,
+        "transporte": 3,
+        "meio_ambiente": 6,
+        "habitação": 1,
+        "assistência_social": 1,
+        "cultura": 2,
+        "segurança": 1
+      },
+      "temas_legislados": {
+        "educação": 18,
+        "saúde": 64,
+        "infraestrutura": 13,
+        "segurança": 23,
+        "economia": 23,
+        "transporte": 6,
+        "habitação": 2,
+        "cultura": 6,
+        "meio_ambiente": 12,
+        "tecnologia": 12
+      },
+      "cobertura": {
+        "promessas_analisadas": 3,
+        "proposicoes_analisadas": 490,
+        "votos_analisados": 0,
+        "discursos_analisados": 47
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 271264.72,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 490,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "490 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# Parecer Técnico\n\n## Resumo Executivo\nO parecer técnico analisa as promessas e ações do deputado federal Acácio Favacho, focando nas seções de meio ambiente e segurança. A análise revela contradições entre o discurso e a ação, bem como possíveis desafios na viabilidade das promessas em relação ao orçamento disponível. Há também indícios de padrões suspeitos em algumas propostas. No benchmarking, não há dados suficientes para comparar com pares.\n\n## Análise de Coerência\n**Contradições:**\n- **Meio Ambiente:** A promessa de garantir um planeta equilibrado e sustentável é ambiciosa, mas não há evidências concretas de ações específicas para atingir esse objetivo. Além disso, a proposta de criar um novo artigo na Constituição para proteção ambiental é uma ação legislativa, mas sem detalhes concretos sobre implementação ou recursos.\n- **Segurança:** A promessa de buscar ações mais enérgicas e maiores investimentos na segurança do estado é ambiciosa, mas a proposta de alterar o Ministério da Justiça e Segurança Pública é uma ação legislativa sem detalhes concretos. A proposta de criar uma Frente Parlamentar Mista em Defesa dos Vereadores e das Câmaras Municipais é uma ação legislativa, mas sem detalhes concretos sobre implementação.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\n- **Meio Ambiente:** A promessa de proteção ambiental é uma ação legislativa, sem detalhes concretos sobre implementação ou recursos. Não há evidências de que o orçamento disponível possa suportar essas ações.\n- **Segurança:** A promessa de maior investimento na segurança do estado é uma ação legislativa, sem detalhes concretos sobre implementação ou recursos. Não há evidências de que o orçamento disponível possa suportar essas ações.\n\n## Flags de Risco\n**Padrões Suspeitos:**\n- **Meio Ambiente:** Não há evidências de padrões suspeitos em gastos ou votações relacionadas ao meio ambiente.\n- **Segurança:** Não há evidências de padrões suspeitos em gastos ou votações relacionadas à segurança.\n\n## Comparação com Pares\nNão há dados suficientes para comparar com pares.\n\n## Conclusão\n**Score Recomendado:** 30\n\n**Justificativa:** A análise revela contradições entre o discurso e a ação, bem como desafios na viabilidade das promessas em relação ao orçamento disponível. Há indícios de padrões suspeitos, mas não são suficientes para uma conclusão definitiva.",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "32 frases classificadas por qwen1.5b; 26 divergência(s) do filtro determinístico",
+      "total_classificadas": 32,
+      "divergencias": [
+        {
+          "texto": "Continuarei trabalhando para que nossa capital seja cada vez mais iluminada, mais segura, mais digna e mais preparada para as próximas gerações.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos ter a oportunidade, com o texto que o Líder Isnaldo Bulhões apresentou, de colocar em prática medida provisória votada por este Plenário e aprovada por unanimidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se formos verificar a votação dessa medida provisória, vamos ver que todos votamos por acordo.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "pauta no dia de hoje, nós vamos ter oportunidade de levar melhoria para a saúde aos lugares mais distantes neste Brasil de regiões diferentes.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos intensificar os diálogos, mobilizar nossos filiados, formar novas lideranças e construir candidaturas fortes e conectadas com as demandas sociais.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Continuarei lutando, com firmeza e responsabilidade, para que o Amapá tenha o direito de crescer, de gerar empregos e de ocupar seu lugar de protagonismo na economia nacional.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Sempre defendi e continuarei a defender, que o Amapá não pode ser visto apenas como uma unidade de conservação.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E aqui, nesta Casa, continuarei sendo uma voz firme em defesa dos interesses do meu, do seu e do nosso Amapá.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E reafirmo, aqui, meu compromisso: vamos continuar lutando para que a UEAP seja prioridade nas políticas públicas estaduais e federais.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos lutar, com todas as nossas forças, para que a Política Nacional de Proteção dos Direitos da Pessoa com TEA, Lei nº 12.764, de 27 de dezembro de 2012, tenha a sua aplicabilidade plena no nosso estado, com recursos garantidos no orçamento e mecanismos de fiscalização pela sociedade civil.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos transformar esse dado em política.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos transformar invisibilidade em dignidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "É assim que vamos conseguir avançar em direção a um Brasil mais próspero, mais justo para todos e por todos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos juntos seguir construindo uma Macapá mais justa, mais humana e com mais dignidade para todos!",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos cobrar dos governantes, exigir soluções e, juntos, lutar por um país onde todos possam ter o direito de se alimentar com dignidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguiremos na luta no Senado Federal, se Deus quiser.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Relato aqui alguns dos principais benefícios que serão alcançados: A geração de empregos e renda.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Aqui, na Câmara dos Deputados irei atuar junto ao Presidente Hugo Motta, para que possamos com celeridade, destravar as amarras que ainda insistem em travar o desenvolvimento do Brasil e em especial, do meu estado do Amapá.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E, estou muito feliz em anunciar que tudo indica ainda no decorrer deste ano, iremos iluminar também os bairros Marabaixo 1, Marabaixo 2, Marabaixo 3 e Goiabal.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Assim, continuaremos a nossa luta pela liberação da exploração de petróleo na Foz do Rio Amazonas, isso representará um futuro de prosperidade para o nosso estado.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Em toda a cidade de Macapá serão substituídos mais de 17 mil pontos de iluminação.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Continuarei trabalhando para que todas as nossas cidades, estado adentro se beneficie dessas melhorias, sempre com o objetivo de oferecer mais qualidade de vida, segurança e conforto a cada pessoa que aqui reside ou que venha nos visitar.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Esse é um dos temas que defenderemos com toda a nossa garra.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos enfrentar esse desafio com coragem, compaixão e determinação.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos preservar e celebrar essas tradições, garantindo que sejam transmitidas às nossas gerações futuras.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Como membro titular da Comissão de Minas e Energia da Câmara dos Deputados, garanto que irei buscar todos os meios possíveis para que esta situação não se concretize e para que possamos discutir o assunto amplamente entre o Grupo Equatorial Energia, a ANEEL e todos os setores envolvidos e, assim, buscarmos uma solução que não coloque novamente nossa população numa situação difícil em pleno fim de ano.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T02:10:47.865115-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
