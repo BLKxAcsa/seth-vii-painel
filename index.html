@@ -83,6 +83,18 @@
   </div>
 </div>
 
+<!-- Popup secundário: significado da sigla de uma proposição (PL, PEC, EMC...).
+     Fica por CIMA do modal do dossiê (z-index maior, ver styles.css) sem
+     fechá-lo ou perder o estado dele -- data-prop-close é independente de
+     data-close, então fechar este popup nunca fecha o modal principal. -->
+<div id="propModal" class="modal prop-modal" hidden>
+  <div class="modal-backdrop" data-prop-close></div>
+  <div class="modal-panel prop-modal-panel" role="dialog" aria-modal="true" aria-labelledby="propTitle">
+    <button class="modal-x" data-prop-close aria-label="Fechar">&times;</button>
+    <div id="propModalBody"></div>
+  </div>
+</div>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>

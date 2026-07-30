@@ -357,6 +357,80 @@ const EVIDENCE_GROUP_LABEL = {
 const EVIDENCE_GROUP_ORDER = ['projeto', 'discurso', 'vinculo', 'despesa'];
 const EVIDENCE_GROUP_CAP = 8;
 
+/* Glossário de siglas de tipo de proposição (PL, PEC, EMC...), em
+   linguagem simples, para o popup "o que significa isso" ao clicar numa
+   proposição de autoria (evidência type === 'projeto'). Fonte oficial:
+   mesma API de Dados Abertos da Câmara que este projeto já usa para
+   coletar proposições -- GET /referencias/tiposProposicao. Não
+   interpreta o MÉRITO de nenhuma proposição específica -- só traduz o
+   JARGÃO do tipo. Sigla sem entrada aqui cai no fallback genérico
+   abaixo; nunca fica em branco. */
+const GLOSSARIO_PROPOSICOES = {
+  PL:  { nome: 'Projeto de Lei', explicacao: 'Projeto de lei comum. Se aprovado pelos deputados, pelos senadores e sancionado (assinado) pelo Presidente, se torna uma lei nova que vale para todo o país.' },
+  PLP: { nome: 'Projeto de Lei Complementar', explicacao: 'Como um Projeto de Lei, mas para assuntos que a Constituição exige um processo mais rigoroso -- precisa de maioria absoluta de votos, não só da maioria dos presentes.' },
+  PEC: { nome: 'Proposta de Emenda à Constituição', explicacao: 'Proposta para mudar o texto da própria Constituição Federal. É o processo mais difícil de aprovar: precisa de 3/5 dos votos, em dois turnos, nas duas Casas do Congresso.' },
+  MPV: { nome: 'Medida Provisória', explicacao: 'Regra criada diretamente pelo Presidente da República, que já entra em vigor imediatamente -- mas o Congresso precisa votá-la em até 120 dias, ou ela perde a validade.' },
+  MSC: { nome: 'Mensagem', explicacao: 'Comunicação oficial entre os Poderes (ex.: do Presidente para o Congresso). Não é, por si só, uma lei.' },
+  REQ: { nome: 'Requerimento', explicacao: 'Pedido formal de um parlamentar dentro do processo legislativo (ex.: pedir uma informação, criar uma comissão, mudar a ordem de uma votação). É um trâmite interno -- não cria lei.' },
+  EMC: { nome: 'Emenda (na Comissão)', explicacao: 'Sugestão de mudança no texto de um projeto que já está em tramitação, proposta por outro parlamentar.' },
+  EMP: { nome: 'Emenda de Plenário', explicacao: 'Sugestão de mudança no texto de um projeto, apresentada durante a votação em Plenário (não mais na comissão).' },
+  EMS: { nome: 'Emenda/Substitutivo do Senado', explicacao: 'Mudança no texto de um projeto, proposta pelo Senado depois que ele passou pela Câmara (ou vice-versa).' },
+  PRL: { nome: 'Parecer do Relator', explicacao: 'Análise oficial escrita pelo deputado(a) escolhido(a) (relator) para avaliar um projeto antes da votação, recomendando aprovação, rejeição ou mudanças. É uma opinião técnica dentro do processo, não uma lei em si.' },
+  PAR: { nome: 'Parecer de Comissão', explicacao: 'Análise oficial de uma comissão (grupo de parlamentares especializado no tema) sobre um projeto, com sua recomendação.' },
+  MAN: { nome: 'Manifestação do Relator', explicacao: 'Posição preliminar do relator sobre um projeto, antes do parecer final.' },
+  SBT: { nome: 'Substitutivo', explicacao: 'Uma versão alternativa (reescrita) de um projeto de lei, para substituir o texto original.' },
+  RCP: { nome: 'Requerimento de CPI', explicacao: 'Pedido para criar uma Comissão Parlamentar de Inquérito (CPI) -- um grupo de parlamentares com poder de investigação para apurar um fato específico.' },
+  DTQ: { nome: 'Destaque', explicacao: 'Pedido para votar separadamente uma parte específica de um projeto, em vez de votar tudo de uma vez.' },
+  INC: { nome: 'Indicação', explicacao: 'Sugestão informal de um parlamentar para o Poder Executivo. Não obriga a nada -- é uma recomendação, não uma lei.' },
+  DOC: { nome: 'Documento', explicacao: 'Documento administrativo do processo legislativo (ex.: um ofício, uma indicação de liderança partidária). Não tem efeito de lei.' },
+  REC: { nome: 'Recurso', explicacao: 'Pedido para reverter ou reconsiderar uma decisão sobre a tramitação de um projeto ou de outro requerimento.' },
+  PDC: { nome: 'Projeto de Decreto Legislativo', explicacao: 'Projeto para o Congresso decidir sobre atos do Poder Executivo ou assuntos exclusivos do Legislativo (ex.: aprovar um tratado internacional). Diferente do Projeto de Lei, não precisa da sanção do Presidente.' },
+  PRC: { nome: 'Projeto de Resolução', explicacao: 'Projeto para a Câmara decidir sobre seu próprio funcionamento interno (ex.: criar uma CPI, mudar o regimento). Não precisa da sanção do Presidente.' },
+  PRN: { nome: 'Projeto de Resolução do Congresso', explicacao: 'Como o Projeto de Resolução, mas para decisões conjuntas de Câmara e Senado.' },
+  PET: { nome: 'Petição', explicacao: 'Pedido apresentado por um cidadão ou entidade de fora do Congresso.' },
+  PFC: { nome: 'Proposta de Fiscalização e Controle', explicacao: 'Pedido para que uma comissão fiscalize um órgão ou programa do governo.' },
+  RIC: { nome: 'Requerimento de Informação', explicacao: 'Pedido oficial de um parlamentar para o governo responder com informações sobre um assunto específico.' },
+  SIT: { nome: 'Solicitação de Informação ao TCU', explicacao: 'Pedido de informação ao Tribunal de Contas da União, o órgão que fiscaliza as contas públicas.' },
+  INA: { nome: 'Indicação de Autoridade', explicacao: 'Indicação de nome para ocupar um cargo público que precisa da aprovação do Congresso.' },
+  OF:  { nome: 'Ofício', explicacao: 'Comunicação oficial escrita entre órgãos (ex.: entre a Câmara e o Senado).' },
+  CON: { nome: 'Consulta', explicacao: 'Pergunta formal sobre a interpretação de uma regra do processo legislativo.' },
+  REM: { nome: 'Reclamação', explicacao: 'Reclamação formal dentro do processo legislativo.' },
+  REP: { nome: 'Representação', explicacao: 'Denúncia ou comunicação formal de um fato para apuração.' },
+  /* As seis siglas abaixo nao vieram no glossario original -- apareceram
+     em evidencias REAIS (autorias de proposicoes, dossie de Kim
+     Kataguiri, coletado ao vivo pelo proprio pipeline deste projeto)
+     durante a implementacao deste popup, e foram adicionadas cruzando o
+     MESMO endpoint oficial (GET /referencias/tiposProposicao), sem
+     inventar significado. RPD e reutilizada pela API para varios
+     requerimentos procedimentais parecidos (retirar da pauta, adiar,
+     encerrar discussao, votacao nominal...) -- por isso a explicacao
+     fica no nivel da categoria, e o texto original ao lado sempre mostra
+     qual e o pedido exato. */
+  RDF:  { nome: 'Redação Final', explicacao: 'Texto final e já revisado de um projeto que terminou de tramitar numa Casa, redigido para deixar a redação clara antes de seguir adiante ou ser promulgado.' },
+  PEP:  { nome: 'Parecer às Emendas de Plenário', explicacao: 'Análise oficial do relator sobre as emendas (sugestões de mudança) apresentadas durante a votação em Plenário.' },
+  PRLE: { nome: 'Parecer Preliminar às Emendas de Plenário', explicacao: 'Primeira análise do relator sobre as emendas apresentadas em Plenário, antes do parecer final sobre elas.' },
+  PPP:  { nome: 'Parecer Proferido em Plenário', explicacao: 'Análise oficial do relator lida e registrada durante a sessão do Plenário, em vez de só protocolada por escrito.' },
+  PRLP: { nome: 'Parecer Preliminar', explicacao: 'Primeira análise do relator sobre um projeto, antes do parecer final.' },
+  RPD:  { nome: 'Requerimento sobre a sessão ou a votação', explicacao: 'Pedido formal de um parlamentar sobre como a sessão ou a votação deve prosseguir agora (por exemplo: retirar algo da pauta, adiar, encerrar uma discussão, votar de forma nominal). A mesma sigla cobre vários pedidos parecidos -- o texto original ao lado mostra qual é este.' },
+};
+
+const GLOSSARIO_FALLBACK = {
+  nome: 'Tipo de proposição legislativa',
+  explicacao: 'Documento ou trâmite oficial do processo legislativo. Ainda não temos uma explicação específica para esta sigla no glossário -- o texto original abaixo é a fonte real.',
+};
+
+/* Extrai a sigla do começo de e.content (formato típico vindo do
+   engine/pipeline: "PL 2546/2026: ementa..."). Retorna null se não
+   achar -- nunca lança erro; o caller sempre cai no GLOSSARIO_FALLBACK. */
+function siglaDaProposicao(content) {
+  const m = String(content || '').match(/^([A-Z]{2,5})\s*[\d./]+/);
+  return m ? m[1] : null;
+}
+
+function glossarioDaSigla(sigla) {
+  return (sigla && GLOSSARIO_PROPOSICOES[sigla]) || GLOSSARIO_FALLBACK;
+}
+
 /* Antes era uma lista \u00fanica cortada em 25 itens no total -- com
    proposi\u00e7\u00f5es agora coletando muito mais que antes, elas sozinhas
    enchiam o corte e escondiam discursos, despesas e v\u00ednculos. Agrupar por
@@ -384,7 +458,18 @@ function evidenceGroupsHTML(evidence) {
       <details class="evd-group" open>
         <summary>${esc(EVIDENCE_GROUP_LABEL[t] || t)} <span class="evd-count">${itens.length}</span></summary>
         <div class="evd">
-          ${mostrados.map((e) => `<div>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">` : ''}<b>${esc(e.source || '')}</b>${e.url ? '</a>' : ''} \u2014 ${esc(String(e.content || '').slice(0, 240))}</div>`).join('')}
+          ${mostrados.map((e) => {
+            if (t === 'projeto') {
+              // Só proposições de autoria ganham clique: tornam-se botão, e o
+              // popup explica a SIGLA (jargão do tipo) via GLOSSARIO_PROPOSICOES,
+              // nunca o mérito da proposição específica. e.url (raro nesta
+              // categoria) vira ação secundária dentro do popup, não o clique
+              // principal. discurso/despesa/vinculo ficam como <div> de sempre.
+              const idx = evidence.indexOf(e);
+              return `<button type="button" class="evd-item" data-evd-proj data-evd-idx="${idx}"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || '').slice(0, 240))}<span class="evd-item-hint">Ver significado &rarr;</span></button>`;
+            }
+            return `<div>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">` : ''}<b>${esc(e.source || '')}</b>${e.url ? '</a>' : ''} \u2014 ${esc(String(e.content || '').slice(0, 240))}</div>`;
+          }).join('')}
           ${resto > 0 ? `<p class="evd-more">+ ${resto} n\u00e3o exibido(s) aqui.</p>` : ''}
         </div>
       </details>`;
@@ -654,6 +739,46 @@ async function openModal(i) {
 function closeModal() {
   $('#modal').hidden = true;
   document.body.style.overflow = '';
+  closePropModal(); // defensivo: nunca deixa o popup de proposição orfão
+}
+
+/* ---------------- popup: significado do tipo de proposição ----------------
+   Painel secundário, por CIMA do modal do dossiê (mesmo padrão visual --
+   .modal/.modal-panel/.modal-backdrop/.modal-x/data-close -- mas com
+   atributo data-prop-close próprio e z-index maior, para empilhar sem
+   fechar nem perder o estado do dossiê por baixo). Fechar o popup NUNCA
+   fecha o modal principal -- só o inverso (closeModal acima) fecha os
+   dois, por segurança. Não recalcula nem reinterpreta nada: só traduz a
+   sigla do TIPO da proposição (via GLOSSARIO_PROPOSICOES) e mostra o
+   texto original completo (sem o corte de 240 caracteres usado na lista)
+   para transparência. */
+function propModalHTML(e) {
+  const sigla = siglaDaProposicao(e.content);
+  const g = glossarioDaSigla(sigla);
+  return `
+    <div class="m-head prop-head">
+      <h2 id="propTitle">${esc(g.nome)}</h2>
+      ${sigla ? `<p>${esc(sigla)}</p>` : ''}
+    </div>
+    <div class="m-sec">
+      <h4>O que significa</h4>
+      <p class="prop-explicacao">${esc(g.explicacao)}</p>
+    </div>
+    <div class="m-sec">
+      <h4>Texto original desta proposição</h4>
+      <p class="prop-original"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || ''))}</p>
+    </div>
+    ${e.url ? `<div class="m-sec prop-fonte"><a href="${esc(e.url)}" target="_blank" rel="noopener">Ver fonte oficial &rarr;</a></div>` : ''}`;
+}
+
+function openPropModal(e) {
+  $('#propModalBody').innerHTML = propModalHTML(e);
+  $('#propModal').hidden = false;
+  $('.prop-modal-panel').scrollTop = 0;
+}
+
+function closePropModal() {
+  $('#propModal').hidden = true;
 }
 
 /* ---------------- eventos ---------------- */
@@ -661,6 +786,20 @@ function closeModal() {
 document.addEventListener('click', (e) => {
   const card = e.target.closest('.card');
   if (card) return openModal(Number(card.dataset.i));
+
+  // Popup de significado da proposição -- checado ANTES de [data-close] de
+  // propósito: usa o atributo próprio data-prop-close, então nunca cai no
+  // closeModal() do dossiê por engano (os dois ficam desacoplados).
+  const projBtn = e.target.closest('[data-evd-proj]');
+  if (projBtn) {
+    if (!modalDossieAtual) return;
+    const idx = Number(projBtn.dataset.evdIdx);
+    const ev = (modalDossieAtual.evidence || [])[idx];
+    if (ev) openPropModal(ev);
+    return;
+  }
+
+  if (e.target.closest('[data-prop-close]')) return closePropModal();
 
   if (e.target.closest('[data-close]')) return closeModal();
 
@@ -688,7 +827,11 @@ document.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !$('#modal').hidden) closeModal();
+  if (e.key !== 'Escape') return;
+  // Popup de proposição fecha primeiro -- Escape nunca fecha o dossiê
+  // "por baixo" se o popup ainda estiver aberto por cima dele.
+  if (!$('#propModal').hidden) return closePropModal();
+  if (!$('#modal').hidden) closeModal();
 });
 
 $('#sort').addEventListener('change', (e) => { state.sort = e.target.value; renderGrid(); });
