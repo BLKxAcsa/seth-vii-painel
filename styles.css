@@ -1,1 +1,566 @@
-PLACEHOLDER_STYLES_CSS
+/* Seth VII — tema escuro, grade de cards, modal.
+   Paleta neutra de propósito: o projeto analisa política e não deve sugerir
+   juízo por cor. Verde/vermelho só nas faixas de score, com rótulo textual
+   ao lado para não depender de cor (acessibilidade). */
+
+:root {
+  --bg: #0b0d10;
+  --bg-2: #12151a;
+  --card: #16191f;
+  --card-hi: #1c2027;
+  --line: #252a33;
+  --line-hi: #333a45;
+  --tx: #e6e9ef;
+  --tx-2: #9aa3b2;
+  --tx-3: #6b7482;
+  --accent: #7aa2f7;
+  --ok: #7ec699;
+  --warn: #e0c07a;
+  --bad: #e08b8b;
+  --radius: 12px;
+  --shadow: 0 8px 28px rgba(0, 0, 0, .45);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+
+/* ---------------- topbar ---------------- */
+
+.topbar {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(11, 13, 16, .92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+
+.brand-mark {
+  display: grid; place-items: center;
+  width: 38px; height: 38px; flex: 0 0 38px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #1d2430, #131820);
+  border: 1px solid var(--line-hi);
+  font-weight: 700; font-size: 13px; letter-spacing: .5px;
+  color: var(--accent);
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text strong { font-size: 15px; letter-spacing: .2px; }
+.brand-text em { font-style: normal; font-size: 11.5px; color: var(--tx-3); }
+
+.search {
+  flex: 1 1 220px; min-width: 180px;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.search input {
+  flex: 1 1 auto; min-width: 0; padding: 9px 12px;
+  background: var(--bg-2); color: var(--tx);
+  border: 1px solid var(--line); border-radius: 9px;
+  font-size: 14px; outline: none;
+}
+.search input:focus { border-color: var(--line-hi); background: #151920; }
+.search input::placeholder { color: var(--tx-3); }
+
+.toolbar {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; padding-bottom: 12px;
+}
+
+.chips { display: flex; gap: 6px; flex-wrap: wrap; flex: 1 1 auto; }
+
+.chip {
+  padding: 5px 11px; border-radius: 999px;
+  background: var(--bg-2); border: 1px solid var(--line);
+  color: var(--tx-2); font-size: 12.5px; cursor: pointer;
+  white-space: nowrap;
+}
+.chip:hover { border-color: var(--line-hi); color: var(--tx); }
+.chip[aria-pressed="true"] {
+  background: #1b2231; border-color: #2f3d58; color: var(--accent);
+}
+
+.sorter { display: flex; align-items: center; gap: 7px; }
+.sorter label { font-size: 12px; color: var(--tx-3); }
+.sorter select {
+  background: var(--bg-2); color: var(--tx);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 6px 9px; font-size: 13px; outline: none;
+}
+
+/* ---------------- stats ---------------- */
+
+.stats {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  margin: 20px 0 14px;
+}
+
+.stat {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 12px 14px;
+}
+.stat b { display: block; font-size: 21px; font-weight: 650; letter-spacing: -.3px; }
+.stat span { font-size: 11.5px; color: var(--tx-3); text-transform: uppercase; letter-spacing: .5px; }
+
+/* Substitui a barra de stats quando nao ha parlamentar carregado -- uma
+   barra cheia de zero/traco parece painel quebrado; um convite a buscar nao. */
+.stats-empty {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 18px;
+  font-size: 13.5px; color: var(--tx-2); text-align: center;
+}
+
+.notice {
+  background: #12161d; border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px; padding: 12px 15px;
+  font-size: 13px; color: var(--tx-2); margin-bottom: 20px;
+}
+.notice strong { color: var(--tx); }
+
+/* ---------------- grade de cards ---------------- */
+
+.card-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  cursor: pointer; text-align: left; padding: 0;
+  color: inherit; font: inherit;
+  transition: border-color .15s, transform .15s, background .15s;
+  display: flex; flex-direction: column;
+}
+.card:hover {
+  border-color: var(--line-hi); background: var(--card-hi);
+  transform: translateY(-2px);
+}
+.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.card-top { display: flex; gap: 12px; padding: 14px; align-items: flex-start; }
+
+.avatar {
+  width: 46px; height: 46px; flex: 0 0 46px;
+  border-radius: 10px; display: grid; place-items: center;
+  background: linear-gradient(145deg, #1e2532, #151a22);
+  border: 1px solid var(--line-hi);
+  font-weight: 650; font-size: 15px; color: var(--tx-2);
+}
+
+.card-id { min-width: 0; flex: 1; }
+.card-id h3 {
+  margin: 0 0 3px; font-size: 15px; font-weight: 600;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.card-id p { margin: 0; font-size: 12px; color: var(--tx-3); }
+
+.score-badge {
+  flex: 0 0 auto; text-align: right; min-width: 54px;
+}
+.score-badge b { display: block; font-size: 19px; font-weight: 650; letter-spacing: -.4px; }
+.score-badge span { font-size: 10px; color: var(--tx-3); }
+
+.s-ok  { color: var(--ok); }
+.s-mid { color: var(--warn); }
+.s-bad { color: var(--bad); }
+.s-na  { color: var(--tx-3); }
+
+.bar { height: 3px; background: var(--line); }
+.bar i { display: block; height: 100%; }
+.bar .f-ok  { background: var(--ok); }
+.bar .f-mid { background: var(--warn); }
+.bar .f-bad { background: var(--bad); }
+.bar .f-na  { background: var(--tx-3); }
+
+.card-foot {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding: 11px 14px 14px; margin-top: auto;
+}
+
+.tag {
+  font-size: 11.5px; padding: 3px 8px; border-radius: 6px;
+  background: var(--bg-2); border: 1px solid var(--line); color: var(--tx-2);
+}
+.tag.alert { border-color: #4a3436; color: var(--bad); background: #1d1516; }
+.tag.cov   { border-color: #333a45; }
+
+/* ---------------- modal ---------------- */
+
+/* O atributo hidden do HTML vale display:none pela folha do navegador, que tem
+   especificidade menor que QUALQUER regra de classe com display. Como .modal
+   declara display:grid, o modal "fechado" continuava ocupando a tela inteira e
+   seu backdrop (position:absolute; inset:0) engolia todos os cliques -- nenhum
+   card abria. Sem !important aqui, o painel fica inerte. */
+[hidden] { display: none !important; }
+
+.modal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: 16px; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, .7); }
+
+.modal-panel {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 780px; max-height: 88vh; overflow-y: auto;
+  background: var(--bg-2); border: 1px solid var(--line-hi);
+  border-radius: 14px; box-shadow: var(--shadow); padding: 22px;
+}
+
+.modal-x {
+  position: absolute; top: 10px; right: 12px;
+  width: 32px; height: 32px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--line);
+  color: var(--tx-2); font-size: 20px; line-height: 1; cursor: pointer;
+}
+.modal-x:hover { color: var(--tx); border-color: var(--line-hi); }
+
+.m-head { display: flex; gap: 14px; align-items: flex-start; padding-right: 40px; }
+.m-head h2 { margin: 0 0 4px; font-size: 21px; letter-spacing: -.3px; }
+.m-head p  { margin: 0; font-size: 13px; color: var(--tx-3); }
+
+.m-score { margin-left: auto; text-align: right; }
+.m-score b { display: block; font-size: 30px; font-weight: 660; letter-spacing: -1px; }
+.m-score span { font-size: 12px; color: var(--tx-2); }
+
+.m-sec { margin-top: 22px; }
+.m-sec > h4 {
+  margin: 0 0 10px; font-size: 11.5px; text-transform: uppercase;
+  letter-spacing: .8px; color: var(--tx-3);
+  border-bottom: 1px solid var(--line); padding-bottom: 6px;
+}
+
+.factor { margin-bottom: 11px; }
+.factor-h { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
+.factor-h span:last-child { color: var(--tx-2); font-variant-numeric: tabular-nums; }
+.track { height: 5px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.track i { display: block; height: 100%; }
+
+.miss {
+  background: #17141a; border: 1px solid #33262f; border-radius: 9px;
+  padding: 11px 13px; font-size: 12.5px; color: var(--tx-2);
+}
+.miss ul { margin: 7px 0 0; padding-left: 18px; }
+.miss li { margin-bottom: 4px; }
+
+.finding {
+  border: 1px solid var(--line); border-left: 3px solid var(--warn);
+  border-radius: 9px; padding: 11px 13px; margin-bottom: 9px;
+  background: var(--card); font-size: 13px;
+}
+.finding.c-alta  { border-left-color: var(--bad); }
+.finding.c-baixa { border-left-color: var(--tx-3); }
+.finding-h { display: flex; gap: 8px; align-items: center; margin-bottom: 5px; flex-wrap: wrap; }
+.finding-h b { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; color: var(--tx-2); }
+.conf { font-size: 10.5px; padding: 2px 7px; border-radius: 5px; background: var(--bg-2); border: 1px solid var(--line); color: var(--tx-3); }
+.finding p { margin: 0; color: var(--tx-2); }
+.finding .src { margin-top: 6px; font-size: 11px; color: var(--tx-3); }
+
+.plist { margin: 0; padding: 0; list-style: none; }
+.plist li {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 9px; padding: 10px 12px; margin-bottom: 8px; font-size: 13px;
+}
+.plist .p-meta { margin-top: 5px; font-size: 11.5px; color: var(--tx-3); display: flex; gap: 10px; flex-wrap: wrap; }
+
+.evd div {
+  font-size: 12.5px; color: var(--tx-2);
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+}
+.evd div:last-child { border-bottom: 0; }
+.evd b { color: var(--tx-3); font-weight: 600; font-size: 11px; }
+
+.legal {
+  margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line);
+  font-size: 11.5px; color: var(--tx-3);
+}
+
+/* ---------------- rodapé ---------------- */
+
+.empty { text-align: center; color: var(--tx-3); padding: 46px 0; }
+
+.foot { margin: 40px 0 30px; padding-top: 18px; border-top: 1px solid var(--line); }
+.foot p { margin: 0 0 8px; font-size: 12px; color: var(--tx-3); }
+.disclaimer { max-width: 760px; line-height: 1.6; }
+
+/* ---------------- responsivo ---------------- */
+
+@media (max-width: 560px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .modal-panel { padding: 18px 15px; max-height: 92vh; }
+  .m-head { flex-wrap: wrap; }
+  .m-score { margin-left: 0; text-align: left; width: 100%; }
+  .m-score b { font-size: 26px; }
+  .sorter { width: 100%; }
+  .sorter select { flex: 1; }
+}
+
+@media (min-width: 900px) {
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+/* ---------------- registro mensurável ----------------
+   Bloco que aparece para todo parlamentar, porque presença e produção
+   legislativa têm dado apurado — ao contrário da viabilidade de promessa,
+   que depende de haver promessa detectada nos discursos. */
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.rec {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 12px;
+}
+
+.rec-h {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rec-h span { font-size: 12px; color: var(--tx-2); }
+
+.rec-h b {
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.rec .track { margin: 8px 0 6px; }
+
+.rec p {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--tx-3);
+  line-height: 1.45;
+}
+
+.rec-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line-hi);
+  border-radius: 8px;
+  background: var(--bg-2);
+  font-size: 12.5px;
+  color: var(--tx-2);
+  line-height: 1.5;
+}
+
+.rec-note b { color: var(--tx); font-weight: 600; }
+
+/* Ausência de dado é declarada, nunca disfarçada de zero. */
+.tag.muted {
+  border-style: dashed;
+  color: var(--tx-3);
+}
+
+/* ---------------- busca ao vivo ----------------
+   Resultados vindos da API oficial no momento da digitação. Ficam visualmente
+   separados da grade pré-gerada para o usuário saber o que é dado do minuto e
+   o que é dado publicado. */
+
+.live {
+  margin: 12px 0 4px;
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  padding: 12px 14px;
+}
+
+.live-h { font-size: 12.5px; color: var(--tx-2); margin-bottom: 10px; }
+.live-h b { color: var(--accent); }
+
+.live-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px;
+}
+
+.live-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; text-align: left; cursor: pointer;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; color: var(--tx); font: inherit;
+}
+
+.live-item:hover { background: var(--card-hi); border-color: var(--accent); }
+
+.live-item img {
+  width: 36px; height: 46px; object-fit: cover;
+  border-radius: 6px; background: var(--line); flex-shrink: 0;
+}
+
+.live-item span { display: flex; flex-direction: column; min-width: 0; }
+.live-item b { font-size: 13px; font-weight: 600; }
+.live-item em { font-style: normal; font-size: 11px; color: var(--tx-3); }
+
+/* ---------------- progresso da análise ---------------- */
+
+.steps { display: flex; flex-direction: column; gap: 7px; }
+
+.step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--tx-3);
+}
+
+.step.done { color: var(--ok); }
+.step.doing { color: var(--tx); }
+
+.spin {
+  width: 12px; height: 12px; flex-shrink: 0;
+  border: 2px solid var(--line-hi); border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: girar .7s linear infinite;
+}
+
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* Quem prefere menos movimento não deve receber spinner girando. */
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; border-top-color: var(--tx-2); }
+}
+
+.steps-note {
+  margin: 14px 0 0; font-size: 11.5px; line-height: 1.5; color: var(--tx-3);
+}
+
+/* Marca visual do que foi apurado agora, e não lido de arquivo. */
+.tag.vivo {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.live-note {
+  font-size: 12px;
+  color: var(--tx-3);
+  line-height: 1.5;
+  border-top: 1px solid var(--line);
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+/* ---------------- Modo profundo ---------------- */
+
+.deep-toggle {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; user-select: none;
+  font-size: 12.5px; color: var(--tx-2); white-space: nowrap;
+}
+
+.deep-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+.deep-toggle-track {
+  width: 34px; height: 19px; border-radius: 999px;
+  background: var(--line-hi); position: relative;
+  transition: background .15s;
+  flex: none;
+}
+
+.deep-toggle-thumb {
+  position: absolute; top: 2px; left: 2px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--tx-2);
+  transition: transform .15s, background .15s;
+}
+
+.deep-toggle input:checked + .deep-toggle-track { background: #6a4fc7; }
+.deep-toggle input:checked + .deep-toggle-track .deep-toggle-thumb {
+  transform: translateX(15px); background: #d8cdfa;
+}
+
+.deep-toggle input:focus-visible + .deep-toggle-track { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.deep-progress {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: #b79ef0;
+  border: 1px solid #4a3d63; background: #211a2e;
+  border-radius: 8px; padding: 8px 10px; margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.deep-progress.warn { color: var(--warn); border-color: var(--line-hi); background: var(--bg-2); }
+
+/* Selo de dossiê profundo já publicado, distinto da análise instantânea. */
+.tag.deep {
+  border-color: #9a7fd1;
+  color: #b79ef0;
+}
+
+.deep-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #b79ef0;
+  border: 1px solid #4a3d63;
+  background: #211a2e;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+}
+
+/* ---------------- Evidências agrupadas + resumo ---------------- */
+
+.evd-group {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.evd-group summary {
+  cursor: pointer;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-2);
+}
+
+.evd-group summary::-webkit-details-marker { display: none; }
+
+.evd-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tx-3);
+  background: var(--card-hi);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.evd-more { font-size: 12px; color: var(--tx-3); margin: 6px 12px 0; }
+
+.resumo {
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  padding: 14px 16px;
+}
+
+.resumo p { margin: 6px 0; font-size: 13.5px; color: var(--tx-2); line-height: 1.55; }
+.resumo-aviso { font-size: 12px !important; color: var(--tx-3) !important; }
