@@ -93,7 +93,9 @@ function cardHTML(p, i) {
       <div class="avatar">${esc(initials(pol.name))}</div>
       <div class="card-id">
         <h3>${esc(pol.name)}</h3>
-        <p>${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}</p>
+        <p>${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}${
+          pol.role === 'Senador(a)' ? ' · <span class="casa-badge casa-senado">Senado</span>' : ''
+        }</p>
       </div>
       <div class="score-badge">
         <b class="s-${headline.cls}">${esc(headline.val)}</b>
@@ -699,12 +701,12 @@ async function buscarNaCamara(termo) {
 
   const box = $('#live');
   box.hidden = false;
-  box.innerHTML = `<div class="live-h">Procurando "${esc(termo)}" na Câmara…</div>`;
+  box.innerHTML = `<div class="live-h">Procurando "${esc(termo)}" na Câmara e no Senado…</div>`;
 
   let achados = [];
   try {
-    const { buscarDeputados } = await import('./engine.js');
-    achados = await buscarDeputados(termo);
+    const { buscarParlamentares } = await import('./engine.js');
+    achados = await buscarParlamentares(termo);
   } catch (err) {
     if (seq !== buscaSeq) return;
     box.innerHTML = `<div class="live-h">Não foi possível consultar a API oficial
@@ -717,11 +719,11 @@ async function buscarNaCamara(termo) {
   if (seq !== buscaSeq) return;
 
   if (!achados.length) {
-    box.innerHTML = `<div class="live-h"><b>Nenhum deputado federal em exercício</b>
+    box.innerHTML = `<div class="live-h"><b>Nenhum deputado ou senador em exercício</b>
       encontrado para "${esc(termo)}".</div>
-      <div class="live-note">O painel ao vivo consulta a Câmara dos Deputados.
-      Se for candidato, dirigente partidário, ex-deputado ou influenciador político
-      sem mandato federal atual, ele não aparece nessa base. Ex.: Jones Manoel
+      <div class="live-note">O painel ao vivo consulta a Câmara dos Deputados e o Senado
+      Federal. Se for candidato, dirigente partidário, ex-parlamentar ou influenciador
+      político sem mandato federal atual, ele não aparece nessa base. Ex.: Jones Manoel
       não consta como deputado federal em exercício.</div>`;
     return;
   }
@@ -734,10 +736,11 @@ async function buscarNaCamara(termo) {
       ${achados.map((d) => `
         <button class="live-item" data-dep='${esc(JSON.stringify({
           id: d.id, nome: d.nome, siglaPartido: d.siglaPartido,
-          siglaUf: d.siglaUf, urlFoto: d.urlFoto,
+          siglaUf: d.siglaUf, urlFoto: d.urlFoto, casa: d.casa,
         }))}'>
           <img src="${esc(d.urlFoto || '')}" alt="" loading="lazy">
-          <span><b>${esc(d.nome)}</b><em>${esc(d.siglaPartido || '—')} · ${esc(d.siglaUf || '')}</em></span>
+          <span><b>${esc(d.nome)}</b><em>${esc(d.siglaPartido || '—')} · ${esc(d.siglaUf || '')}
+            <span class="casa-badge${d.casa === 'senado' ? ' casa-senado' : ''}">${d.casa === 'senado' ? 'Senado' : 'Câmara'}</span></em></span>
         </button>`).join('')}
     </div>`;
 }
@@ -906,8 +909,9 @@ async function analisar(dep, deepDossieExistente) {
   pintar('iniciando');
 
   try {
-    const { analisarAoVivo } = await import('./engine.js');
-    const dossie = await analisarAoVivo(dep, (msg) => {
+    const { analisarAoVivo, analisarSenadorAoVivo } = await import('./engine.js');
+    const funcaoAnalise = dep.casa === 'senado' ? analisarSenadorAoVivo : analisarAoVivo;
+    const dossie = await funcaoAnalise(dep, (msg) => {
       if (passos[passos.length - 1] !== msg) {
         const anterior = document.querySelector('.step.doing');
         if (anterior && passos.length < 8) passos.push(anterior.textContent.trim().replace(/^\s*/, ''));

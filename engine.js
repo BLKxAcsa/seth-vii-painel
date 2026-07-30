@@ -26,6 +26,8 @@
 
 const API = 'https://dadosabertos.camara.leg.br/api/v2';
 const SICONFI = 'https://apidatalake.tesouro.gov.br/ords/siconfi/tt';
+const API_SENADO = 'https://legis.senado.leg.br/dadosabertos';
+const INICIO_LEGISLATURA = '2023-02-01';
 
 /* ------------------------------------------------------------------ *
  * Camada de rede
@@ -316,6 +318,266 @@ export async function buscarDeputados(nome) {
     .slice(0, 8);
 
   return ranqueados;
+}
+
+/* ------------------------------------------------------------------ *
+ * Senado Federal -- API separada da Camara, estruturas de resposta bem
+ * diferentes (JSON aninhado; Pronunciamentos/Autorias/Votacoes podem vir
+ * null, um objeto unico ou uma lista, dependendo de quantos resultados
+ * existem -- ver normalizarLista()).
+ *
+ * Tudo abaixo foi conferido direto contra a API real em 2026-07-30, nao
+ * assumido a partir de documentacao:
+ * - /senador/{codigo}/despesas e /senador/{codigo}/frentes -> 404
+ *   confirmado. Nao existe dado aberto de despesas nem de frentes
+ *   parlamentares para senadores -- declarado ausente (null), nunca
+ *   fingido como zero.
+ * - /autorias e /votacoes tem aviso de descontinuacao no payload
+ *   (desativacao completa anunciada pra 2026-02-01, ja passada) mas
+ *   continuam retornando 200 com dado real nesta data. Os substitutos
+ *   sugeridos (/processo, /votacao) existem mas tem formato de resposta
+ *   diferente e nao foram conferidos a fundo -- uso o que funciona agora
+ *   e documento o risco, em vez de trocar por algo nao verificado no meio
+ *   da integracao.
+ * - Nenhum dos dois aceita dataInicio/dataFim (testado, sem efeito), mas
+ *   os dois aceitam `ano` -- por isso paginam por ano dentro da
+ *   legislatura atual, mesmo padrao de coletarDespesas. Sem esse filtro,
+ *   um senador de carreira longa devolve a carreira inteira (medido: 3326
+ *   votacoes sem filtro contra 353 so na legislatura atual).
+ * - /discursos aceita dataInicio/dataFim (AAAAMMDD) e retorna
+ *   `Pronunciamentos: null` (nao lista vazia) sem pronunciamento no
+ *   periodo.
+ * - /senador/lista/atual nao tem busca por nome; a lista inteira (81
+ *   senadores) e pequena o bastante pra filtrar no navegador.
+ * ------------------------------------------------------------------ */
+
+function normalizarLista(valor) {
+  if (!valor) return [];
+  return Array.isArray(valor) ? valor : [valor];
+}
+
+let _senadoresCache = null;
+async function todosSenadores() {
+  if (_senadoresCache) return _senadoresCache;
+  const d = await tentar(`${API_SENADO}/senador/lista/atual`);
+  const lista = normalizarLista(
+    d && d.ListaParlamentarEmExercicio && d.ListaParlamentarEmExercicio.Parlamentares
+      && d.ListaParlamentarEmExercicio.Parlamentares.Parlamentar,
+  );
+  _senadoresCache = lista.map((p) => {
+    const ip = p.IdentificacaoParlamentar || {};
+    return {
+      id: ip.CodigoParlamentar,
+      nome: ip.NomeParlamentar,
+      nomeCompleto: ip.NomeCompletoParlamentar || ip.NomeParlamentar,
+      siglaPartido: ip.SiglaPartidoParlamentar || null,
+      siglaUf: ip.UfParlamentar || (p.Mandato && p.Mandato.UfParlamentar) || null,
+      urlFoto: ip.UrlFotoParlamentar || null,
+    };
+  });
+  return _senadoresCache;
+}
+
+async function buscarSenadores(nome) {
+  const termoOriginal = String(nome || '').trim();
+  const chave = normalizarBusca(termoOriginal);
+  if (!chave) return [];
+  const todos = await todosSenadores();
+
+  const diretos = todos.filter((s) => normalizarBusca(s.nome).includes(chave)
+    || normalizarBusca(s.nomeCompleto).includes(chave));
+  if (diretos.length) {
+    return diretos.map((s) => ({ ...s, _busca: 'direta' }));
+  }
+
+  return todos.map((s) => ({
+    ...s,
+    _scoreBusca: distanciaLevenshtein(chave, normalizarBusca(s.nome)),
+    _busca: 'aproximacao',
+  }))
+    .filter((s) => s._scoreBusca <= Math.max(2, Math.floor(chave.length * 0.18)))
+    .sort((a, b) => a._scoreBusca - b._scoreBusca || a.nome.localeCompare(b.nome, 'pt-BR'))
+    .slice(0, 8);
+}
+
+export async function buscarParlamentares(nome) {
+  const [deputados, senadores] = await Promise.all([
+    buscarDeputados(nome).catch(() => []),
+    buscarSenadores(nome).catch(() => []),
+  ]);
+  return [
+    ...deputados.map((d) => ({ ...d, casa: 'camara' })),
+    ...senadores.map((s) => ({ ...s, casa: 'senado' })),
+  ];
+}
+
+async function coletarDiscursosSenado(codigo, limite = 300) {
+  const dataInicio = INICIO_LEGISLATURA.replace(/-/g, '');
+  const dataFim = iso(hoje()).replace(/-/g, '');
+  const d = await tentar(`${API_SENADO}/senador/${codigo}/discursos?${qs({ dataInicio, dataFim })}`);
+  const par = (d && d.DiscursosParlamentar && d.DiscursosParlamentar.Parlamentar) || {};
+  const lista = normalizarLista(par.Pronunciamentos && par.Pronunciamentos.Pronunciamento);
+  return lista.slice(0, limite).map((p) => ({
+    data: p.DataPronunciamento || (p.SessaoPlenaria && p.SessaoPlenaria.DataSessao) || null,
+    sumario: p.TextoResumo || null,
+    tipo: (p.TipoUsoPalavra && p.TipoUsoPalavra.Descricao) || null,
+    url: p.UrlTexto || null,
+  }));
+}
+
+async function coletarAutoriasSenado(codigo, limite = 300) {
+  const inicio = performance.now();
+  const anoAtual = hoje().getFullYear();
+  const anoLegislatura = parseInt(INICIO_LEGISLATURA.slice(0, 4), 10);
+  const todas = [];
+  for (let ano = anoAtual; ano >= anoLegislatura; ano--) {
+    if (orcamentoEsgotado(inicio, 10000)) break;
+    const d = await tentar(`${API_SENADO}/senador/${codigo}/autorias?${qs({ ano })}`);
+    const par = (d && d.MateriasAutoriaParlamentar && d.MateriasAutoriaParlamentar.Parlamentar) || {};
+    todas.push(...normalizarLista(par.Autorias && par.Autorias.Autoria));
+  }
+  return todas.slice(0, limite).map((a) => {
+    const m = a.Materia || {};
+    return {
+      id: m.Codigo, type: m.Sigla, number: m.Numero, year: m.Ano,
+      summary: m.Ementa, data: m.Data,
+      autorPrincipal: a.IndicadorAutorPrincipal === 'Sim',
+    };
+  });
+}
+
+async function coletarVotosSenado(codigo, limite = 300) {
+  const inicio = performance.now();
+  const anoAtual = hoje().getFullYear();
+  const anoLegislatura = parseInt(INICIO_LEGISLATURA.slice(0, 4), 10);
+  const todos = [];
+  for (let ano = anoAtual; ano >= anoLegislatura; ano--) {
+    if (orcamentoEsgotado(inicio, 10000)) break;
+    const d = await tentar(`${API_SENADO}/senador/${codigo}/votacoes?${qs({ ano })}`);
+    const par = (d && d.VotacaoParlamentar && d.VotacaoParlamentar.Parlamentar) || {};
+    todos.push(...normalizarLista(par.Votacoes && par.Votacoes.Votacao));
+  }
+  return todos.slice(0, limite).map((v) => {
+    const m = v.Materia || {};
+    return {
+      data: (v.SessaoPlenaria && v.SessaoPlenaria.DataSessao) || null,
+      materia: m.Sigla ? `${m.Sigla} ${m.Numero}/${m.Ano}` : null,
+      ementa: m.Ementa || null,
+      descricao: v.DescricaoVotacao || null,
+      resultado: v.DescricaoResultado || null,
+      voto: v.SiglaDescricaoVoto || 'registrado',
+    };
+  });
+}
+
+async function coletarComissoesSenado(codigo) {
+  const d = await tentar(`${API_SENADO}/senador/${codigo}/comissoes`);
+  const par = (d && d.MembroComissaoParlamentar && d.MembroComissaoParlamentar.Parlamentar) || {};
+  const lista = normalizarLista(par.MembroComissoes && par.MembroComissoes.Comissao);
+  return lista.filter((c) => !c.DataFim).map((c) => ({
+    sigla: (c.IdentificacaoComissao && c.IdentificacaoComissao.SiglaComissao) || null,
+    nome: (c.IdentificacaoComissao && c.IdentificacaoComissao.NomeComissao) || null,
+    titulo: c.DescricaoParticipacao || null,
+  }));
+}
+
+export async function analisarSenadorAoVivo(senador, onProgress = () => {}) {
+  await carregarRegras();
+  const t0 = performance.now();
+  const prog = (m) => onProgress(m);
+  const codigo = senador.id;
+
+  const perfil = {
+    id: codigo,
+    name: senador.nome,
+    party: senador.siglaPartido || null,
+    state: senador.siglaUf || null,
+    role: 'Senador(a)',
+    photo: senador.urlFoto || null,
+  };
+
+  prog('coletando discursos, autorias, votacoes e comissoes do Senado');
+  const [discursos, autorias, votos, comissoes, noticias] = await Promise.all([
+    coletarDiscursosSenado(codigo),
+    coletarAutoriasSenado(codigo),
+    coletarVotosSenado(codigo),
+    coletarComissoesSenado(codigo),
+    coletarNoticiasPublicas(perfil.name),
+  ]);
+
+  prog('extraindo promessas dos discursos');
+  const textoDiscursos = discursos.map((d) => d.sumario || '').join('\n');
+  const { promessas, descartes } = extrairPromessas(textoDiscursos);
+
+  let orcamento = null;
+  if (promessas.length) {
+    prog('consultando orcamento estadual no SICONFI');
+    orcamento = await coletarOrcamento(perfil.state);
+  }
+
+  const contexto = { comissoes, frentes: [] };
+  prog('cruzando discurso, acao registrada e vinculos');
+  const cross = cruzar({
+    discursos: discursos.map((d) => ({ transcricao: null, sumario: d.sumario })),
+    proposicoes: autorias,
+    contexto,
+    promessas,
+  });
+
+  const evidencias = [
+    ...autorias.map((a) => ({
+      source: 'Autoria (Senado)', type: 'projeto',
+      content: `${a.type || 'Materia'} ${a.number || ''}/${a.year || ''}: ${(a.summary || '').slice(0, 180)}`,
+    })),
+    ...discursos.map((d) => ({
+      source: 'Discurso (Senado)', type: 'discurso',
+      content: `${(d.data || '').slice(0, 10)} - ${(d.sumario || '').slice(0, 180)}`,
+      url: d.url || undefined,
+    })),
+    ...comissoes.map((c) => ({
+      source: 'Comissao/grupo parlamentar', type: 'vinculo',
+      content: `${c.titulo || 'Membro'} - ${c.nome}`,
+    })),
+    {
+      source: 'Cobertura de dados', type: 'cobertura',
+      content: 'Despesas de gabinete e frentes parlamentares nao tem endpoint publico de dados abertos para o Senado (a Camara tem) -- nao incluidas nesta analise. Ausente, nao zero.',
+    },
+    ...noticias.map((n) => ({
+      source: n.fonte, type: 'noticia_publica',
+      content: `${n.title}${n.pubDate ? ' - ' + n.pubDate : ''}`,
+      url: n.link,
+    })),
+  ];
+
+  return {
+    politician: perfil,
+    score: null,
+    label: promessas.length ? null : 'Sem promessas detectadas',
+    promises: promessas,
+    discarded: descartes,
+    evidence: evidencias,
+    viability: [],
+    inconsistencies: [],
+    expenses: null,
+    cross_reference: cross,
+    contexto,
+    noticias_publicas: noticias,
+    record: {
+      attendance_rate: null,
+      sessions_checked: null,
+      propositions_total: autorias.length,
+      propositions_analyzed: autorias.length,
+      propositions_decided: null,
+      propositions_approved: null,
+      total_votes: votos.length,
+      inconsistencies: 0,
+    },
+    orcamento,
+    ao_vivo: true,
+    casa: 'senado',
+    duration_s: Math.round((performance.now() - t0) / 100) / 10,
+    coletado_em: new Date().toISOString(),
+  };
 }
 
 async function coletarPresenca(depId, prog, maxSessoes = 80) {
@@ -837,6 +1099,7 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     },
     orcamento,
     ao_vivo: true,
+    casa: 'camara',
     duration_s: Math.round((performance.now() - t0) / 100) / 10,
     coletado_em: new Date().toISOString(),
   };

@@ -627,3 +627,12 @@ body {
 }
 .anomaly-item:first-child { border-top: 0; }
 .anomaly-item a { color: var(--accent); white-space: nowrap; }
+
+/* ---------------- selo de câmara (Câmara/Senado) ---------------- */
+
+.casa-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  padding: 1px 6px; border-radius: 5px;
+  background: var(--card-hi); border: 1px solid var(--line); color: var(--tx-2);
+}
+.casa-badge.casa-senado { border-color: #3a3550; color: #b9a8f0; background: #1c1830; }
