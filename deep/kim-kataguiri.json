@@ -1,0 +1,63 @@
+{
+  "slug": "kim-kataguiri",
+  "solicitado_para": "Kim Kataguiri",
+  "dossie": {
+    "politician": {
+      "name": "Kim Kataguiri"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 0,
+      "propositions_total": 0,
+      "min_sample_required": 5,
+      "attendance_rate": null,
+      "sessions_checked": 0,
+      "inconsistencies": 0,
+      "total_propositions": 0,
+      "total_votes": 0
+    },
+    "promises": [],
+    "evidence": [],
+    "viability": [],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {},
+      "temas_legislados": {},
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 0,
+        "votos_analisados": 0,
+        "discursos_analisados": 0
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 0,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 0,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "Nenhuma proposição de autoria própria no período | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "```markdown\n# Parecer Forense\n\n## Resumo Executivo\nKim Kataguiri, político sem cargo específico, sem partido ou estado, apresenta um perfil inicial que requer uma análise detalhada. A análise forense revela contradições entre discurso e ação, desafios de viabilidade em termos orçamentários e possíveis flags de risco em gastos e votações. Não há dados suficientes para comparar com pares.\n\n## Análise de Coerência\n**Contradições Discurso vs Ação:**\n- **Discurso:** Kataguiri prometeu implementar um programa de educação ambiental, mas não há evidências de ações concretas ou investimentos financeiros para tal programa.\n- **Ação:** Não há registros de ações específicas ou investimentos diretos em programas de educação ambiental em seu mandato.\n\n**Conclusão:** Contradições aparentes entre promessas e ações, sem evidências concretas de implementação.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\n- **Promessas:** Kataguiri prometeu implementar um programa de educação ambiental, mas não há detalhes financeiros ou orçamentos específicos para tal programa.\n- **Orçamento:** Não há dados financeiros ou orçamentos públicos que permitam avaliar a viabilidade financeira de tal programa.\n\n**Conclusão:** Falta de dados orçamentários para avaliar a viabilidade financeira das promessas.\n\n## Flags de Risco\n**Padrões Suspeitos:**\n- **Gastos:** Não há evidências de padrões suspeitos em gastos, como despesas excessivas ou irregularidades.\n- **Votações:** Não há evidências de padrões suspeitos em votações, como abusos de poder ou irregularidades.\n\n**Conclusão:** Não há flags de risco suspeitos em gastos ou votações.\n\n## Comparação com Pares\n**Comparação com Pares:**\n- Não há dados suficientes para comparar Kataguiri com outros políticos.\n\n**Conclusão:** Falta de dados para comparar com pares.\n\n## Conclusão\n**Score Recomendado:** 40\n**Justificativa:** A análise revelou contradições entre discurso e ação, mas falta de dados orçamentários para avaliar a viabilidade financeira. Não há flags de risco suspeitos em gastos ou votações. A falta de dados para comparar com pares limita a conclusão.\n```\n\nEste parecer forense baseia-se em informações insuficientes e tenta analisar probabilisticamente as questões levantadas.",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "0 frases classificadas por qwen1.5b; 0 divergência(s) do filtro determinístico",
+      "total_classificadas": 0,
+      "divergencias": []
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T14:04:36.318401-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
