@@ -400,6 +400,46 @@ function resumoHTML(p) {
   </div>`;
 }
 
+/* Pontos de atenção (despesas) vêm em dois formatos possíveis: string
+   pronta (dossiês antigos publicados pelo pipeline Python, que ainda não
+   foi atualizado) ou objeto estruturado (análise ao vivo, engine.js
+   atualizado). Os dois precisam renderizar sem quebrar. O objeto usa
+   <details> para o nome do fornecedor funcionar como "clique para ver a
+   investigação" -- mesmo padrão já usado em evidenceGroupsHTML, sem
+   precisar de handler de clique novo. */
+function anomalyHTML(a, p) {
+  if (typeof a === 'string') {
+    return `<div class="finding"><p>${esc(a)}</p></div>`;
+  }
+  const sev = a.severity === 'alta' ? 'alta' : 'media';
+  const amount = typeof a.amount === 'number'
+    ? `R$ ${a.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : null;
+
+  // Detalhamento usa despesas já coletadas NESTA análise -- não é busca
+  // nova nem cruzamento com outros parlamentares (isso é escopo da Análise
+  // Profunda, que tem orçamento de tempo maior).
+  const itens = (p.expenses || []).filter((d) => d.fornecedor === a.supplier);
+  const detalheHTML = itens.length
+    ? itens.slice(0, 20).map((d) => `
+        <div class="anomaly-item">
+          <span>${esc((d.data || '').slice(0, 10) || '—')}</span>
+          <span>${esc(d.tipo || '—')}</span>
+          <span>${typeof d.valor === 'number' ? 'R$ ' + d.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '—'}</span>
+          ${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">comprovante</a>` : '<span>—</span>'}
+        </div>`).join('')
+    : '<p style="color:var(--tx-3);font-size:12px;margin:6px 0 0">Detalhamento não disponível nesta análise.</p>';
+
+  return `
+    <details class="finding anomaly sev-${sev}">
+      <summary>
+        <span>⚠️ ${esc(a.supplier || 'fornecedor não identificado')}${a.cnpjCpf ? ` <span class="anomaly-doc">${esc(a.cnpjCpf)}</span>` : ''}</span>
+        ${amount ? `<b>${amount}</b>` : ''}
+      </summary>
+      <p>${esc(a.description || '')}</p>
+      <div class="anomaly-detail">${detalheHTML}</div>
+    </details>`;
+}
+
 function modalHTML(p) {
   const pol = p.politician || {};
   const has = hasScore(p);
@@ -439,8 +479,20 @@ function modalHTML(p) {
 
   const incHTML = (p.inconsistencies || []).length
     ? `<div class="m-sec"><h4>Pontos de atenção</h4>${
-        p.inconsistencies.map((s) => `<div class="finding"><p>${esc(s)}</p></div>`).join('')
+        p.inconsistencies.map((a) => anomalyHTML(a, p)).join('')
       }</div>` : '';
+
+  // Só aparece quando a análise coletou a lista completa de despesas (hoje,
+  // análise ao vivo do engine.js atualizado). Dossiês antigos do pipeline
+  // Python ainda não têm esse campo -- não fabrica o botão sem o dado real.
+  const nAnomaliasObj = (p.inconsistencies || []).filter((a) => typeof a === 'object' && a).length;
+  const gastosBtnHTML = (p.expenses && p.expenses.length)
+    ? `<div class="m-sec">
+        <h4>Gastos</h4>
+        <button type="button" class="gastos-btn" data-gastos>
+          💰 Ver todos os gastos (${p.expenses.length})${nAnomaliasObj ? ` · ${nAnomaliasObj} sinalizado(s)` : ''}
+        </button>
+      </div>` : '';
 
   const promHTML = (p.promises || []).length
     ? `<ul class="plist">${p.promises.slice(0, 12).map((pr) => `
@@ -490,6 +542,8 @@ function modalHTML(p) {
     ${findHTML}
   </div>
 
+  ${gastosBtnHTML}
+
   ${incHTML}
 
   <div class="m-sec"><h4>Promessas extraídas de discursos</h4>${promHTML}</div>
@@ -508,9 +562,60 @@ function modalHTML(p) {
   </p>`;
 }
 
+/* Visão dedicada de Gastos -- lista completa (não o recorte de 10 usado em
+   "Evidências coletadas"), com fornecedor sinalizado em destaque quando
+   bate com um dos Pontos de atenção. Reaproveita o mesmo #modalBody da
+   análise principal (troca de conteúdo, não abre modal novo) para não
+   duplicar overlay/scroll/foco. */
+function gastosViewHTML(p) {
+  const pol = p.politician || {};
+  const despesas = (p.expenses || []).slice().sort((a, b) => (b.valor || 0) - (a.valor || 0));
+  const anomalias = (p.inconsistencies || []).filter((a) => typeof a === 'object' && a && a.supplier);
+  const fornecedoresSinalizados = new Set(anomalias.map((a) => a.supplier));
+  const total = despesas.reduce((s, d) => s + (d.valor || 0), 0);
+
+  const rows = despesas.map((d) => {
+    const flagged = d.fornecedor && fornecedoresSinalizados.has(d.fornecedor);
+    return `
+      <tr class="${flagged ? 'gasto-flag' : ''}">
+        <td>${esc((d.data || '').slice(0, 10) || '—')}</td>
+        <td>${esc(d.tipo || '—')}</td>
+        <td>${flagged ? '⚠️ ' : ''}${esc(d.fornecedor || 'não identificado')}${d.cnpjCpf ? `<br><span class="gasto-doc">${esc(d.cnpjCpf)}</span>` : ''}</td>
+        <td class="gasto-valor">${typeof d.valor === 'number' ? 'R$ ' + d.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '—'}</td>
+        <td>${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">comprovante</a>` : (d.numDocumento ? esc(d.numDocumento) : '—')}</td>
+      </tr>`;
+  }).join('');
+
+  return `
+  <div class="m-head">
+    <div class="avatar">${esc(initials(pol.name))}</div>
+    <div>
+      <h2>${esc(pol.name)}</h2>
+      <p>Gastos da cota parlamentar coletados nesta análise</p>
+    </div>
+  </div>
+
+  <button type="button" class="voltar-btn" data-voltar>&larr; Voltar à análise</button>
+
+  <div class="m-sec">
+    <h4>${despesas.length} registro${despesas.length === 1 ? '' : 's'} · R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h4>
+    ${anomalias.length ? `<p class="gastos-note">${anomalias.length} padrão(ões) sinalizado(s) (linhas destacadas abaixo) — ver "Pontos de atenção" na análise para o detalhamento de cada um.</p>` : ''}
+    ${despesas.length ? `
+      <div class="table-wrapper">
+        <table class="gastos-table">
+          <thead><tr><th>Data</th><th>Tipo</th><th>Fornecedor</th><th>Valor líquido</th><th>Documento</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>` : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma despesa coletada nesta análise.</p>'}
+  </div>
+
+  <button type="button" class="voltar-btn" data-voltar>&larr; Voltar à análise</button>`;
+}
+
 async function openModal(i) {
   const p = state.data[i];
   modalAtual = slugify((p.politician || {}).name);
+  modalDossieAtual = p;
   $('#modalBody').innerHTML = modalHTML(p);
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
@@ -539,6 +644,21 @@ document.addEventListener('click', (e) => {
   if (card) return openModal(Number(card.dataset.i));
 
   if (e.target.closest('[data-close]')) return closeModal();
+
+  if (e.target.closest('[data-gastos]')) {
+    if (!modalDossieAtual) return;
+    $('#modalBody').innerHTML = gastosViewHTML(modalDossieAtual);
+    $('.modal-panel').scrollTop = 0;
+    return;
+  }
+
+  if (e.target.closest('[data-voltar]')) {
+    if (!modalDossieAtual) return;
+    const deep = modalDossieAtual._deep;
+    $('#modalBody').innerHTML = (deep ? deepBadgeHTML(deep) : '') + modalHTML(modalDossieAtual);
+    $('.modal-panel').scrollTop = 0;
+    return;
+  }
 
   const chip = e.target.closest('.chip');
   if (chip) {
@@ -693,6 +813,12 @@ const WORKER_URL = 'https://seth-vii-deep-trigger.angst.workers.dev';
 // de polling atualize o modal depois que o usuário já abriu outra pessoa.
 let modalAtual = null;
 
+// Dossiê inteiro exibido no modal agora (não só o slug) -- permite trocar
+// entre a análise principal e a visão de Gastos sem reprocessar nada, e sem
+// precisar re-localizar o item em state.data (funciona igual para um card
+// pré-carregado e para um resultado de busca ao vivo recém-analisado).
+let modalDossieAtual = null;
+
 async function solicitarAnaliseProfunda(nome) {
   try {
     const r = await fetch(WORKER_URL, {
@@ -706,14 +832,34 @@ async function solicitarAnaliseProfunda(nome) {
   }
 }
 
-async function aguardarDossieProfundo(slug, onUpdate) {
+// Pollings de Análise Profunda em andamento, por slug -- independentes do
+// modal. Antes, sair do card ou abrir outro parlamentar parava o
+// acompanhamento em silêncio (a checagem "modalAtual !== slug" desistia).
+// Agora o polling roda até o fim (ou até os ~15min esgotarem) mesmo se o
+// usuário navegar para outro lugar, e atualiza o card assim que o dossiê
+// fica pronto -- a tela só é redesenhada se ainda fizer sentido mostrar.
+const pollsEmAndamento = new Set();
+
+async function aguardarDossieProfundo(slug, dossieRef) {
+  if (pollsEmAndamento.has(slug)) return; // já existe um polling para este slug
+  pollsEmAndamento.add(slug);
   const intervaloMs = 20000;
   const maxTentativas = 45; // ~15 min
-  for (let i = 0; i < maxTentativas; i++) {
-    await new Promise((r) => setTimeout(r, intervaloMs));
-    if (modalAtual !== slug) return; // usuário saiu desta análise
-    const deep = await buscarAnaliseProfunda(slug);
-    if (deep) { onUpdate(deep); return; }
+  try {
+    for (let i = 0; i < maxTentativas; i++) {
+      await new Promise((r) => setTimeout(r, intervaloMs));
+      const deep = await buscarAnaliseProfunda(slug);
+      if (deep) {
+        dossieRef._deep = deep;
+        renderGrid(); // card some/aparece com o selo mesmo se o modal estiver fechado
+        if (modalAtual === slug && modalDossieAtual === dossieRef) {
+          $('#modalBody').innerHTML = deepBadgeHTML(deep) + modalHTML(dossieRef);
+        }
+        return;
+      }
+    }
+  } finally {
+    pollsEmAndamento.delete(slug);
   }
 }
 
@@ -769,6 +915,7 @@ async function analisar(dep, deepDossieExistente) {
       pintar(msg);
     });
     dossie._deep = deepDossieExistente || null;
+    modalDossieAtual = dossie;
 
     // Entra no mesmo estado dos demais para reusar card, modal e ordenação.
     state.data.unshift(dossie);
@@ -786,16 +933,17 @@ async function analisar(dep, deepDossieExistente) {
     // sem travar a análise instantânea, que já está na tela.
     if (querProfunda && !deepDossieExistente) {
       const resp = await solicitarAnaliseProfunda(dep.nome);
-      if (modalAtual !== slug) return;
+      // Efeito (guardar o dossiê profundo, iniciar o polling) não depende de
+      // o modal ainda estar aberto nesta análise -- só a atualização da tela
+      // depende disso. Antes, sair do modal logo após pedir a análise
+      // profunda descartava o pedido "iniciado" sem nunca acompanhar.
       if (resp.status === 'ja_existe') {
-        body.innerHTML = deepBadgeHTML(resp) + modalHTML(dossie);
+        dossie._deep = resp;
+        if (modalAtual === slug) body.innerHTML = deepBadgeHTML(resp) + modalHTML(dossie);
       } else if (resp.status === 'iniciado') {
-        body.innerHTML = progressoProfundoHTML('aguardando') + modalHTML(dossie);
-        aguardarDossieProfundo(slug, (deep) => {
-          if (modalAtual !== slug) return;
-          body.innerHTML = deepBadgeHTML(deep) + modalHTML(dossie);
-        });
-      } else {
+        if (modalAtual === slug) body.innerHTML = progressoProfundoHTML('aguardando') + modalHTML(dossie);
+        aguardarDossieProfundo(slug, dossie);
+      } else if (modalAtual === slug) {
         body.innerHTML = progressoProfundoHTML(resp.erro?.includes('limite') ? 'limite' : 'erro') + modalHTML(dossie);
       }
     }

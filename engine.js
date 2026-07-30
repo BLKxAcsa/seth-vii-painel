@@ -399,14 +399,44 @@ async function contarProposicoes(depId) {
   return m ? parseInt(m[1], 10) : 0;
 }
 
-async function coletarDespesas(depId) {
-  const ano = hoje().getFullYear();
-  const d = await tentar(`${API}/deputados/${depId}/despesas?${qs({
-    ano, itens: 100, ordem: 'DESC', ordenarPor: 'dataDocumento',
-  })}`);
-  return ((d && d.dados) || []).map((x) => ({
-    valor: x.valorLiquido, tipo: x.tipoDespesa, fornecedor: x.nomeFornecedor,
+async function coletarDespesas(depId, limite = 400) {
+  // A API da Câmara pagina despesas por ANO (não por intervalo de datas
+  // como discursos/proposições) -- `ano` é obrigatório, senão o endpoint
+  // decide sozinho e o resultado varia. Versão anterior pedia só o ano
+  // corrente com itens:100 e sem paginação -- um parlamentar com muitos
+  // lançamentos no ano perdia o resto em silêncio, e nada de anos
+  // anteriores. Agora cobre os últimos 3 anos (mesma ordem de grandeza da
+  // janela de discursos/proposições) com paginação real dentro de cada ano.
+  const anoAtual = hoje().getFullYear();
+  const anos = [anoAtual, anoAtual - 1, anoAtual - 2];
+  const inicio = performance.now();
+  const todas = [];
+  for (const ano of anos) {
+    if (orcamentoEsgotado(inicio, 12000)) break; // teto de 12s pra esta fonte
+    for (let pagina = 1; todas.length < limite; pagina++) {
+      if (orcamentoEsgotado(inicio, 12000)) break;
+      const d = await tentar(`${API}/deputados/${depId}/despesas?${qs({
+        ano, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'dataDocumento',
+      })}`);
+      const dados = (d && d.dados) || [];
+      if (!dados.length) break;
+      todas.push(...dados);
+      if (dados.length < 100) break; // última página deste ano
+    }
+    if (todas.length >= limite) break;
+  }
+  return todas.slice(0, limite).map((x) => ({
+    valor: x.valorLiquido,
+    valorBruto: x.valorDocumento,
+    valorGlosa: x.valorGlosa,
+    tipo: x.tipoDespesa,
+    fornecedor: x.nomeFornecedor,
+    cnpjCpf: x.cnpjCpfFornecedor || null,
+    numDocumento: x.numDocumento || null,
     data: x.dataDocumento,
+    ano: x.ano,
+    mes: x.mes,
+    url: x.urlDocumento || null,
   }));
 }
 
@@ -619,16 +649,72 @@ function cruzar({ discursos, proposicoes, contexto, promessas }) {
   };
 }
 
+/* Duas famílias de anomalia, cada uma como objeto estruturado (não mais
+   string pronta) para a UI poder renderizar selo, valor e detalhamento por
+   fornecedor separadamente:
+   1) valor_atipico -- despesa isolada muito acima do padrão do próprio
+      parlamentar (limiar estatístico, mesma lógica de antes).
+   2) concentracao -- mesmo fornecedor aparecendo muitas vezes ou
+      concentrando uma fatia grande do total analisado (novo).
+   Isto compara despesas DENTRO do que já foi coletado deste parlamentar --
+   não é cruzamento com outros parlamentares nem busca externa. Isso é
+   escopo da Análise Profunda, que tem orçamento de tempo maior. */
 function detectarAnomalias(despesas) {
-  if (despesas.length < 5) return [];
-  const vals = despesas.map((d) => d.valor).filter((v) => v > 0);
-  if (!vals.length) return [];
+  if (!despesas || despesas.length < 5) return [];
+  const comValor = despesas.filter((d) => d.valor > 0);
+  if (!comValor.length) return [];
+
+  const anomalias = [];
+  const vals = comValor.map((d) => d.valor);
   const media = vals.reduce((a, b) => a + b, 0) / vals.length;
   const dp = Math.sqrt(vals.reduce((a, v) => a + (v - media) ** 2, 0) / vals.length);
-  const limite = media + 2 * dp;
-  return despesas.filter((d) => d.valor > limite).slice(0, 5).map((d) =>
-    `⚠️ Despesa atípica: R$ ${d.valor.toLocaleString('pt-BR',
-      { minimumFractionDigits: 2 })} — ${d.tipo} — ${d.fornecedor}`);
+  const limiteValor = media + 2 * dp;
+
+  comValor
+    .filter((d) => d.valor > limiteValor)
+    .sort((a, b) => b.valor - a.valor)
+    .slice(0, 8)
+    .forEach((d) => {
+      anomalias.push({
+        type: 'valor_atipico',
+        supplier: d.fornecedor || 'fornecedor não identificado',
+        cnpjCpf: d.cnpjCpf || null,
+        amount: d.valor,
+        date: d.data || null,
+        expenseType: d.tipo || null,
+        description: `Valor ${(d.valor / media).toFixed(1)}x acima da média das despesas analisadas deste parlamentar (R$ ${media.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}).`,
+        severity: d.valor > media + 3 * dp ? 'alta' : 'media',
+      });
+    });
+
+  const porFornecedor = new Map();
+  comValor.forEach((d) => {
+    const chave = (d.fornecedor || '').trim();
+    if (!chave) return;
+    if (!porFornecedor.has(chave)) porFornecedor.set(chave, []);
+    porFornecedor.get(chave).push(d);
+  });
+  const totalGeral = vals.reduce((a, b) => a + b, 0) || 1;
+  porFornecedor.forEach((lista, fornecedor) => {
+    const total = lista.reduce((a, d) => a + d.valor, 0);
+    const participacao = total / totalGeral;
+    // 5+ pagamentos ou 25%+ do total analisado no mesmo fornecedor: fora do
+    // padrão esperado de pulverização normal de despesas de gabinete.
+    if (lista.length >= 5 || participacao >= 0.25) {
+      anomalias.push({
+        type: 'concentracao',
+        supplier: fornecedor,
+        cnpjCpf: lista[0].cnpjCpf || null,
+        amount: total,
+        occurrences: lista.length,
+        expenseType: lista[0].tipo || null,
+        description: `${lista.length} pagamento(s) ao mesmo fornecedor nas despesas analisadas, somando R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} (${Math.round(participacao * 100)}% do total analisado).`,
+        severity: (participacao >= 0.4 || lista.length >= 10) ? 'alta' : 'media',
+      });
+    }
+  });
+
+  return anomalias.sort((a, b) => (b.amount || 0) - (a.amount || 0)).slice(0, 12);
 }
 
 /* ------------------------------------------------------------------ *
@@ -727,6 +813,9 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     evidence: evidencias,
     viability: [],
     inconsistencies: anomalias,
+    // Lista completa (não só o recorte de 10 usado em evidencias) -- alimenta
+    // o modal de Gastos, que precisa do detalhamento, não só de uma amostra.
+    expenses: despesas,
     cross_reference: cross,
     contexto,
     noticias_publicas: noticias,

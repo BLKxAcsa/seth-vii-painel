@@ -564,3 +564,66 @@ body {
 
 .resumo p { margin: 6px 0; font-size: 13.5px; color: var(--tx-2); line-height: 1.55; }
 .resumo-aviso { font-size: 12px !important; color: var(--tx-3) !important; }
+
+/* ---------------- Gastos (modal dedicado) ---------------- */
+
+.gastos-btn {
+  width: 100%; text-align: left;
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 11px 14px;
+  color: var(--tx); font-size: 13.5px; font-weight: 600;
+  cursor: pointer;
+}
+.gastos-btn:hover { border-color: var(--line-hi); background: var(--card-hi); }
+
+.voltar-btn {
+  background: none; border: none; color: var(--accent);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  padding: 6px 0; margin-bottom: 10px; display: inline-block;
+}
+.voltar-btn:hover { text-decoration: underline; }
+
+.gastos-note { font-size: 12.5px; color: var(--tx-3); margin: 0 0 10px; }
+
+.table-wrapper { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+
+.gastos-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.gastos-table th, .gastos-table td {
+  padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.gastos-table th:nth-child(3), .gastos-table td:nth-child(3) { white-space: normal; min-width: 160px; }
+.gastos-table thead th {
+  background: var(--bg-2); color: var(--tx-3); font-weight: 600;
+  text-transform: uppercase; font-size: 10.5px; letter-spacing: .4px;
+}
+.gastos-table tbody tr:last-child td { border-bottom: 0; }
+.gastos-table tbody tr:hover { background: var(--card-hi); }
+.gastos-table tr.gasto-flag { background: #1d1516; }
+.gastos-table tr.gasto-flag:hover { background: #241a1b; }
+.gasto-valor { font-weight: 600; white-space: nowrap; }
+.gasto-doc { color: var(--tx-3); font-size: 10.5px; }
+
+/* ---------------- anomalias (Pontos de atenção) ---------------- */
+
+/* .finding já existe (achados de cruzamento) -- <details> reaproveita a
+   mesma caixa, só adiciona cursor e disclosure no summary. */
+.finding.anomaly summary {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; cursor: pointer; list-style: none; margin-bottom: 5px;
+}
+.finding.anomaly summary::-webkit-details-marker { display: none; }
+.finding.anomaly summary::before { content: '▸'; margin-right: 2px; color: var(--tx-3); font-size: 10px; }
+.finding.anomaly[open] summary::before { content: '▾'; }
+.finding.anomaly.sev-alta  { border-left-color: var(--bad); }
+.finding.anomaly.sev-media { border-left-color: var(--warn); }
+.anomaly-doc { color: var(--tx-3); font-size: 11px; font-weight: 400; }
+
+.anomaly-detail { margin-top: 6px; }
+.anomaly-item {
+  display: grid; grid-template-columns: 76px 1fr auto auto; gap: 10px;
+  align-items: center; font-size: 12px; color: var(--tx-2);
+  padding: 5px 0; border-top: 1px solid var(--line);
+}
+.anomaly-item:first-child { border-top: 0; }
+.anomaly-item a { color: var(--accent); white-space: nowrap; }
