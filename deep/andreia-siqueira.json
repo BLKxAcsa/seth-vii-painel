@@ -1,0 +1,383 @@
+{
+  "slug": "andreia-siqueira",
+  "solicitado_para": "Andreia Siqueira",
+  "dossie": {
+    "politician": {
+      "id": 220676,
+      "name": "Andreia Siqueira",
+      "party": "PSB",
+      "state": "PA",
+      "email": "dep.andreiasiqueira@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/220676",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 162,
+      "propositions_total": 488,
+      "min_sample_required": 5,
+      "attendance_rate": 74.7,
+      "sessions_checked": 91,
+      "inconsistencies": 0,
+      "total_propositions": 488,
+      "total_votes": 0
+    },
+    "promises": [],
+    "evidence": [
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3956/2026: Requer a criação da Frente Parlamentar Mista em Defesa do Programa Espacial Brasileiro.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PL 4225/2023",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 15/2026: Altera os art. 150 Constituição Federal para incluir as entidades esportivas sem fins lucrativos.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PPP 1/0: Leitura realizada em Plenário pelo Dep. Rodrigo Rollemberg (PSB-DF) do parecer da Relatora pela: • Comissão de Educação, que conclui pela aprovação dos Projetos de Lei nº 4.225/2023, nº 4.375/2023, nº",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (PSB-PA), pela aprovação do PL 5573/16, na forma do Substitutivo da Comissão de Administração e Serviço Público.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 8.069/1990 para estabelecer a obrigatoriedade de verificação de identidade e idade em estabelecimentos de hospedagem e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (PSB-PA), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Inversão da Pauta - PL 726/2026",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (PSB-PA), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "DOC 580/2026: Comunicação de transferência da Presidência da Frente Parlamentar Mista em Defesa dos Municípios Sedes de Usinas Hidrelétricas e Alagados.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2735/2026: Requer a incluso a Ordem do Dia do Plenário para votação imediata do Projeto de Lei Complementar nº 185/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 4/0: Dispõe sobre os direitos das pessoas com Transtorno do Déficit de Atenção com Hiperatividade (TDAH), institui o dia da conscientização das pessoas com TDAH e altera a Lei 14.420, de 20 de julho de 202",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Reconhece as estruturas familiares atípicas que cuidam de pessoas com deficiência como beneficiárias diretas de políticas públicas sociais e estabelece diretrizes para sua inclusão em programas sociai",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (PSB-PA), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (PSB-PA), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RCP 2/2026: Requer, nos termos do § 3º do art. 58 da Constituição Federal e dos arts. 35, 36 e 37, do Regimento Interno da Câmara dos Deputados, a criação de Comissão Parlamentar de Inquérito, com a finalidade de",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 3/0: Dispõe sobre os direitos das pessoas com Transtorno do Déficit de Atenção com Hiperatividade (TDAH), institui o dia da conscientização das pessoas com TDAH e altera a Lei 14.420, de 20 de julho de 202",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 2/0: ispõe sobre os direitos das pessoas com Transtorno do Déficit de Atenção com Hiperatividade (TDAH), institui o dia da conscientização das pessoas com TDAH e altera a Lei 14.420, de 20 de julho de 2022",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Estabelece normas de acessibilidade digital em aplicativos e plataformas eletrônicas de instituições financeiras, e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera a Lei nº 13.146, de 6 de julho de 2015 (Lei Brasileira de Inclusão da Pessoa com Deficiência), para agravar a pena do crime de retenção ou utilização de cartão magnético ou meio eletrônico de p",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 805/2026: Dispõe sobre o enfrentamento à violência digital contra as mulheres por sua condição de mulher, com base na Lei Modelo Interamericana para Prevenir, Punir e Erradicar a Violência Digital de Gênero con",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 1/0: Dispõe sobre os direitos das pessoas com Transtorno do Déficit de Atenção com Hiperatividade (TDAH), institui o dia da conscientização das pessoas com TDAH e altera a Lei 14.420, de 20 de julho de 202",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 3/0: Altera a Lei nº 8.069, de 13 de julho de 1990, que \"Dispõe sobre o Estatuto da Criança e do Adolescente e dá outras providências\", para garantir o direito de proteção dos dados de crianças e adolescen",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 3/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação do PL 1746/2015 e da Emenda Adotada pela Comissão de Ciência, Tecnologia e Inovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 46/2025: Altera a redação do § 4º do art. 212 da Constituição Federal para considerar o programa de alimentação escolar como despesa de manutenção e desenvolvimento de ensino.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMR 1/0: Institui, no âmbito da União, o Selo “Escola Amiga da Saúde Mental”, destinado a reconhecer instituições de ensino que promovam ações voltadas à promoção da saúde mental de seus estudantes, professore",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, com emenda.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4896/2025: Requer o registro da Frente Parlamentar Mista do Crédito de Carbono.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4711/2025: Requer o registro, no âmbito da Câmara dos Deputados, da Frente Parlamentar “Frente Parlamentar em Defesa da Ética na Saúde Suplementar”.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, e pela rejeição do Substitutivo Adotado pela Comissão de Saúde.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4700/2025: Requer o registro da Frente Parlamentar Mista de Telecomunicações e Soluções Digitais.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4692/2025: Requer o registro da Frente Parlamentar Mista em Defesa da Cannabis Medicinal e do Cânhamo Industrial.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação do PL 3539/2025.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REC 23/2025: Recurso contra a tramitação conclusiva do Projeto de Lei nº 1.176 DE 2011, que Institui o Programa de Proteção e Promoção dos Mestres e Mestras dos Saberes e Fazeres das Culturas Populares.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 2/0: Requerimento de Retirada de Matéria da Pauta - PL 1746/2015",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - PL 2425/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Altera o art. 6º da Lei nº 7.713, de 22 de dezembro de 1988, para isentar do Imposto de Renda os valores recebidos por atletas brasileiros como premiação em torneios internacionais em que representem ",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, do PL 3029/2024, do PL 3035/2024, do PL 3041/2024, do PL 3063/2024, do PL 3064/2024, do PL 3065/2024, do PL 3066/2024, do PL ",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 2/0: Altera a Lei nº 13.105, de 16 de março de 2015 (Código de Processo Civil), para dispor sobre prioridade de tramitação de procedimentos cíveis, em qualquer juízo ou instância, relativos à investigação ",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 2/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4302/2025: Requeiro o registro da Frente Parlamentar em Defesa das Confederações e Federações do Esporte e Paradesporto.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Inclusão de Matéria na Ordem do Dia para Apreciação Imediata - PL 2536/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Dispõe sobre os direitos das pessoas com Transtorno do Déficit de Atenção com Hiperatividade (TDAH), institui o dia da conscientização das pessoas com TDAH e altera a Lei 14.420, de 20 de julho de 202",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação deste, do PL 4375/2023, do PL 6036/2023, e do PL 149/2024, apensados, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 4222/2025: Requer o registro da Frente Parlamentar Mista pela Integração Sul-Americana.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Andreia Siqueira (MDB-PA), pela aprovação.",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {
+        "educação": 1
+      },
+      "temas_legislados": {
+        "educação": 29,
+        "saúde": 83,
+        "infraestrutura": 9,
+        "segurança": 31,
+        "economia": 10,
+        "transporte": 4,
+        "habitação": 1,
+        "cultura": 11,
+        "meio_ambiente": 6,
+        "tecnologia": 25
+      },
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 488,
+        "votos_analisados": 0,
+        "discursos_analisados": 1
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 275046.32,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 488,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "488 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# Parecer Técnico de Análise Forense – Deputado Federal Andreia Siqueira (PSB-PA)\n\n---\n\n## 1. Resumo Executivo\n\nO perfil analisado de Andreia Siqueira (PSB-PA), Deputada Federal, apresenta uma trajetória legislativa marcada por uma forte concentração de propostas voltadas para políticas públicas de inclusão social, direitos das pessoas com deficiência e proteção de direitos digitais e de crianças. A análise revela uma série de proposições com foco em temas como acessibilidade digital, saúde mental nas escolas, direitos das pessoas com TDAH, proteção de dados de crianças e ações contra a violência digital contra mulheres. A maioria das propostas foi apresentada com o status de \"Parecer da Relatora\" ou \"Requerimento\", indicando atuação ativa na fase de análise parlamentar, mas sem evidência de aprovação final ou implementação.\n\nA análise não identifica contradições claras entre discurso e ação, pois todas as proposições estão alinhadas com diretrizes de inclusão e proteção social, comum em partidos como o PSB. No entanto, a repetição frequente de temas (especialmente sobre TDAH, inclusão digital e proteção de dados) sugere uma estratégia de posicionamento institucional, mas não implica necessariamente coerência ou viabilidade orçamentária. A ausência de dados sobre gastos, orçamentos associados ou impacto fiscal das propostas limita a avaliação de viabilidade. Ainda assim, o padrão de atuação é consistente com a trajetória de políticas públicas de base social, típica de parlamentares com foco em direitos sociais.\n\n---\n\n## 2. Análise de Coerência (Discurso vs Ação)\n\nA análise não revela evidências de contradições entre o discurso e a ação legislativa. Todas as proposições apresentadas estão alinhadas com temas de inclusão social, proteção de direitos e governança digital — áreas que são frequentemente destacadas como prioridades do PSB. A repetição de propostas sobre TDAH, acessibilidade digital, proteção de dados de crianças e saúde mental nas escolas indica uma consistência temática, embora não necessariamente uma coerência com ações concretas de implementação.\n\nA proposição **PRLP 1/0, 2/0, 3/0** (sobre direitos das pessoas com TDAH) é apresentada em múltiplas versões com o mesmo objetivo, o que pode indicar uma estratégia de fortalecimento de posição institucional, mas não implica contradição com o discurso. A ausência de propostas que contradigam ou desafiem esses temas (como políticas de redução de gastos com saúde mental ou exclusão de direitos digitais) sugere ausência de discurso contraditório.\n\n**Conclusão**: Nenhum padrão de incoerência foi identificado. A atuação legislativa é coerente com a",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "0 frases classificadas por qwen1.5b; 0 divergência(s) do filtro determinístico",
+      "total_classificadas": 0,
+      "divergencias": []
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T18:19:36.816953-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
