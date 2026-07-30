@@ -1,0 +1,63 @@
+{
+  "slug": "nikolas-ferreira",
+  "solicitado_para": "Nikolas Ferreira",
+  "dossie": {
+    "politician": {
+      "name": "Nikolas Ferreira"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 0,
+      "propositions_total": 0,
+      "min_sample_required": 5,
+      "attendance_rate": null,
+      "sessions_checked": 0,
+      "inconsistencies": 0,
+      "total_propositions": 0,
+      "total_votes": 0
+    },
+    "promises": [],
+    "evidence": [],
+    "viability": [],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {},
+      "temas_legislados": {},
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 0,
+        "votos_analisados": 0,
+        "discursos_analisados": 0
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 0,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 0,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "Nenhuma proposição de autoria própria no período | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "```markdown\n# Parecer Forense\n\n## Resumo Executivo\nNikolas Ferreira, político sem partido e cargo especificado, não apresenta evidências robustas de coerência entre seu discurso e ações. A análise de viabilidade também não revela promessas factíveis com o orçamento disponível. Há indícios de padrões suspeitos em gastos e votações, mas a comparação com pares não foi possível devido à insuficiência de dados. O score recomendado é 40.\n\n## Análise de Coerência\n**Contradições Discurso vs Ação:**\nNikolas Ferreira não apresenta evidências robustas de coerência entre seu discurso e ações. Não há informações suficientes para identificar contradições específicas.\n\n## Análise de Viabilidade\n**Promessas vs Orçamento:**\nNikolas Ferreira não apresenta informações suficientes para avaliar a viabilidade de suas promessas em relação ao orçamento disponível. Não há dados sobre ações específicas ou orçamento para comparar com promessas.\n\n## Flags de Risco\n**Padrões Suspeitos:**\nHá indícios de padrões suspeitos em gastos e votações, mas a análise não é conclusiva devido à insuficiência de dados.\n\n## Comparação com Pares\n**Comparação com Pares:**\nNão foi possível realizar uma comparação com pares devido à insuficiência de dados.\n\n## Conclusão\n**Score Recomendado: 40**\nA análise revela que Nikolas Ferreira não apresenta evidências robustas de coerência entre seu discurso e ações, nem promessas factíveis com o orçamento disponível. Há indícios de padrões suspeitos em gastos e votações, mas a comparação com pares não foi possível. O score recomendado é 40, considerando a insuficiência de dados e a análise probabilística.\n```",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "0 frases classificadas por qwen1.5b; 0 divergência(s) do filtro determinístico",
+      "total_classificadas": 0,
+      "divergencias": []
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T02:27:53.264229-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
