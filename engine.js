@@ -97,6 +97,14 @@ const hoje = () => new Date();
 const iso = (d) => d.toISOString().slice(0, 10);
 const diasAtras = (n) => { const d = hoje(); d.setDate(d.getDate() - n); return iso(d); };
 
+// Orçamento de tempo (ms) por fonte que pagina/varre várias requisições no
+// navegador. Sem isso, um deputado com histórico muito grande faria a
+// análise "instantânea" deixar de ser instantânea. Verificado ENTRE
+// páginas/sessões, nunca cancela uma requisição em andamento -- ao esgotar,
+// para e devolve o que já tem. Mesma filosofia do resto do projeto: dado
+// parcial é declarado parcial, nunca vira "completo" por omissão.
+const orcamentoEsgotado = (inicioMs, limiteMs) => (performance.now() - inicioMs) > limiteMs;
+
 /* ------------------------------------------------------------------ *
  * Regras (carregadas do JSON exportado pelo Python)
  * ------------------------------------------------------------------ */
@@ -310,13 +318,19 @@ export async function buscarDeputados(nome) {
   return ranqueados;
 }
 
-async function coletarPresenca(depId, prog, maxSessoes = 20) {
+async function coletarPresenca(depId, prog, maxSessoes = 80) {
   // Não existe endpoint de presença. O caminho é listar as sessões
   // deliberativas (codTipoEvento=110) e conferir a lista de presentes de cada
   // uma. Sem esse filtro, /eventos devolve os 100 eventos mais recentes de
   // todos os tipos e as sessões somem no meio.
+  //
+  // Janela e teto de sessões estendidos (180d/20 sessões -> 730d/80 sessões):
+  // rigor histórico de verdade -- 20 sessões em 6 meses é pouco pra flagrar
+  // mudança de comportamento. As requisições continuam concorrentes via
+  // Promise.all; o Limiter(6) já existente enfileira sozinho, sem precisar
+  // de lógica nova aqui.
   const lst = await tentar(`${API}/eventos?${qs({
-    dataInicio: diasAtras(180), dataFim: iso(hoje()),
+    dataInicio: diasAtras(730), dataFim: iso(hoje()),
     codTipoEvento: 110, itens: 100, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
   })}`);
   const sessoes = ((lst && lst.dados) || []).slice(0, maxSessoes);
@@ -349,11 +363,25 @@ async function coletarPresenca(depId, prog, maxSessoes = 20) {
   };
 }
 
-async function coletarProposicoes(depId, limite = 20) {
-  const d = await tentar(`${API}/proposicoes?${qs({
-    idDeputadoAutor: depId, itens: limite, ordem: 'DESC', ordenarPor: 'id',
-  })}`);
-  return ((d && d.dados) || []).map((p) => ({
+async function coletarProposicoes(depId, limite = 300) {
+  // Pagina de verdade em vez de trazer só as "20 mais recentes" -- um
+  // deputado de carreira longa tem milhares (~2.684 medido com Arlindo
+  // Chinaglia, id 73433, contra a API real em 2026-07-29). Teto de 300 (15x
+  // o valor antigo) equilibra profundidade com a promessa de análise
+  // instantânea -- histórico ainda mais fundo é papel da Análise Profunda.
+  const inicio = performance.now();
+  const todas = [];
+  for (let pagina = 1; todas.length < limite; pagina++) {
+    if (orcamentoEsgotado(inicio, 12000)) break; // teto de 12s pra esta fonte
+    const d = await tentar(`${API}/proposicoes?${qs({
+      idDeputadoAutor: depId, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'id',
+    })}`);
+    const dados = (d && d.dados) || [];
+    if (!dados.length) break;
+    todas.push(...dados);
+    if (dados.length < 100) break; // última página
+  }
+  return todas.slice(0, limite).map((p) => ({
     id: p.id, type: p.siglaTipo, number: p.numero, year: p.ano,
     summary: p.ementa,
   }));
@@ -382,14 +410,30 @@ async function coletarDespesas(depId) {
   }));
 }
 
-async function coletarDiscursos(depId) {
+async function coletarDiscursos(depId, limite = 300) {
   // dataInicio/dataFim são obrigatórios: sem eles a API responde 200 com zero
   // registros, o que parece "deputado sem discurso" e não é.
-  const d = await tentar(`${API}/deputados/${depId}/discursos?${qs({
-    dataInicio: diasAtras(365), dataFim: iso(hoje()),
-    itens: 20, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
-  })}`);
-  return ((d && d.dados) || []).map((s) => ({
+  //
+  // Janela e paginação estendidas (365d/1 página de 20 -> 3 anos/paginação
+  // real até 300): um deputado ativo facilmente supera 20 discursos, e a
+  // versão anterior descartava o resto em silêncio -- sem sequer estender a
+  // janela, o teto de itens já escondia dado dentro do próprio período
+  // antigo.
+  const inicio = performance.now();
+  const dataInicio = diasAtras(1095);
+  const dataFim = iso(hoje());
+  const todos = [];
+  for (let pagina = 1; todos.length < limite; pagina++) {
+    if (orcamentoEsgotado(inicio, 10000)) break; // teto de 10s pra esta fonte
+    const d = await tentar(`${API}/deputados/${depId}/discursos?${qs({
+      dataInicio, dataFim, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
+    })}`);
+    const dados = (d && d.dados) || [];
+    if (!dados.length) break;
+    todos.push(...dados);
+    if (dados.length < 100) break; // última página
+  }
+  return todos.slice(0, limite).map((s) => ({
     data: s.dataHoraInicio, transcricao: s.transcricao, sumario: s.sumario,
     tipo: s.tipoDiscurso,
   }));
