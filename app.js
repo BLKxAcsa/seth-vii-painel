@@ -87,39 +87,20 @@ function cardHTML(p, i) {
         unit: att != null ? 'presença' : 'sem dado',
         pct: att != null ? att : 0, cap: 'presença' };
 
-  // headline.cap descreve a CATEGORIA da metrica ("viabilidade" ou
-  // "presenca"); headline.unit descreve a UNIDADE/observacao ("/100",
-  // "presenca" ou "sem dado"). Quando os dois dizem a mesma palavra
-  // (caso de presenca com dado disponivel) o sufixo fica redundante
-  // com o rotulo acima do numero, entao so um dos dois e mostrado.
-  const metricSuffix = headline.unit && headline.unit !== headline.cap ? esc(headline.unit) : '';
-
-  const casaBadge = pol.role === 'Senador(a)'
-    ? '<span class="casa-badge casa-senado">Senado</span>' : '';
-
   return `
-  <button class="card card-${headline.cls}" data-i="${i}">
-    <div class="card-head">
+  <button class="card" data-i="${i}">
+    <div class="card-top">
       <div class="avatar">${esc(initials(pol.name))}</div>
       <div class="card-id">
-        <h3 class="card-name">${esc(pol.name)}</h3>
-        <div class="card-meta">
-          <span class="card-party">${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}</span>
-          ${casaBadge}
-        </div>
+        <h3>${esc(pol.name)}</h3>
+        <p>${esc(pol.party || '—')}${pol.state ? ' · ' + esc(pol.state) : ''}</p>
+      </div>
+      <div class="score-badge">
+        <b class="s-${headline.cls}">${esc(headline.val)}</b>
+        <span>${esc(headline.unit)}</span>
       </div>
     </div>
-
-    <div class="card-metric">
-      <div class="metric-row">
-        <span class="metric-label">${esc(headline.cap)}</span>
-        <span class="metric-value s-${headline.cls}">${esc(headline.val)}${
-          metricSuffix ? `<small>${metricSuffix}</small>` : ''
-        }</span>
-      </div>
-      <div class="bar"><i class="f-${headline.cls}" style="width:${headline.pct}%"></i></div>
-    </div>
-
+    <div class="bar"><i class="f-${headline.cls}" style="width:${headline.pct}%"></i></div>
     <div class="card-foot">
       ${att != null && sessions
         ? `<span class="tag">presença ${att.toFixed(0)}% · ${sessions} sessões</span>` : ''}
@@ -183,27 +164,10 @@ function renderGrid() {
   const idx = new Map(state.data.map((p, i) => [p, i]));
   $('#grid').innerHTML = list.map((p) => cardHTML(p, idx.get(p))).join('');
   $('#empty').hidden = list.length > 0;
-  if (!list.length) {
-    // Sem parlamentar carregado (site limpo) e sem resultado de filtro sao
-    // duas situacoes diferentes -- a primeira pede um convite a buscar, a
-    // segunda so avisa que o filtro atual nao bateu com nada.
-    $('#empty').innerHTML = state.data.length === 0
-      ? 'Nenhum parlamentar pré-carregado ainda. <strong>Busque o nome de um deputado ou senador acima</strong> para uma análise ao vivo, com dados do minuto.'
-      : 'Nenhum resultado para esse filtro.';
-  }
 }
 
 function renderStats() {
   const d = state.data;
-  if (!d.length) {
-    // Uma barra de estatisticas cheia de zero/traco parece painel quebrado.
-    // Sem parlamentar carregado e o estado normal agora (o site vive de
-    // busca ao vivo) -- entao o convite substitui a barra em vez de
-    // conviver com ela zerada.
-    $('#stats').innerHTML =
-      '<div class="stats-empty">Nenhum parlamentar pré-carregado — use a busca acima para analisar qualquer deputado ou senador ao vivo, com dados do minuto.</div>';
-    return;
-  }
   const scored = d.filter(hasScore);
   const avg = scored.length
     ? (scored.reduce((s, p) => s + p.score, 0) / scored.length).toFixed(1) : '—';
@@ -348,202 +312,6 @@ function recordHTML(p) {
   </div>`;
 }
 
-const EVIDENCE_GROUP_LABEL = {
-  projeto: 'Proposi\u00e7\u00f5es de autoria',
-  discurso: 'Discursos em plen\u00e1rio',
-  despesa: 'Despesas (cota parlamentar)',
-  vinculo: 'Comiss\u00f5es e frentes',
-};
-const EVIDENCE_GROUP_ORDER = ['projeto', 'discurso', 'vinculo', 'despesa'];
-const EVIDENCE_GROUP_CAP = 8;
-
-/* Glossário de siglas de tipo de proposição (PL, PEC, EMC...), em
-   linguagem simples, para o popup "o que significa isso" ao clicar numa
-   proposição de autoria (evidência type === 'projeto'). Fonte oficial:
-   mesma API de Dados Abertos da Câmara que este projeto já usa para
-   coletar proposições -- GET /referencias/tiposProposicao. Não
-   interpreta o MÉRITO de nenhuma proposição específica -- só traduz o
-   JARGÃO do tipo. Sigla sem entrada aqui cai no fallback genérico
-   abaixo; nunca fica em branco. */
-const GLOSSARIO_PROPOSICOES = {
-  PL:  { nome: 'Projeto de Lei', explicacao: 'Projeto de lei comum. Se aprovado pelos deputados, pelos senadores e sancionado (assinado) pelo Presidente, se torna uma lei nova que vale para todo o país.' },
-  PLP: { nome: 'Projeto de Lei Complementar', explicacao: 'Como um Projeto de Lei, mas para assuntos que a Constituição exige um processo mais rigoroso -- precisa de maioria absoluta de votos, não só da maioria dos presentes.' },
-  PEC: { nome: 'Proposta de Emenda à Constituição', explicacao: 'Proposta para mudar o texto da própria Constituição Federal. É o processo mais difícil de aprovar: precisa de 3/5 dos votos, em dois turnos, nas duas Casas do Congresso.' },
-  MPV: { nome: 'Medida Provisória', explicacao: 'Regra criada diretamente pelo Presidente da República, que já entra em vigor imediatamente -- mas o Congresso precisa votá-la em até 120 dias, ou ela perde a validade.' },
-  MSC: { nome: 'Mensagem', explicacao: 'Comunicação oficial entre os Poderes (ex.: do Presidente para o Congresso). Não é, por si só, uma lei.' },
-  REQ: { nome: 'Requerimento', explicacao: 'Pedido formal de um parlamentar dentro do processo legislativo (ex.: pedir uma informação, criar uma comissão, mudar a ordem de uma votação). É um trâmite interno -- não cria lei.' },
-  EMC: { nome: 'Emenda (na Comissão)', explicacao: 'Sugestão de mudança no texto de um projeto que já está em tramitação, proposta por outro parlamentar.' },
-  EMP: { nome: 'Emenda de Plenário', explicacao: 'Sugestão de mudança no texto de um projeto, apresentada durante a votação em Plenário (não mais na comissão).' },
-  EMS: { nome: 'Emenda/Substitutivo do Senado', explicacao: 'Mudança no texto de um projeto, proposta pelo Senado depois que ele passou pela Câmara (ou vice-versa).' },
-  PRL: { nome: 'Parecer do Relator', explicacao: 'Análise oficial escrita pelo deputado(a) escolhido(a) (relator) para avaliar um projeto antes da votação, recomendando aprovação, rejeição ou mudanças. É uma opinião técnica dentro do processo, não uma lei em si.' },
-  PAR: { nome: 'Parecer de Comissão', explicacao: 'Análise oficial de uma comissão (grupo de parlamentares especializado no tema) sobre um projeto, com sua recomendação.' },
-  MAN: { nome: 'Manifestação do Relator', explicacao: 'Posição preliminar do relator sobre um projeto, antes do parecer final.' },
-  SBT: { nome: 'Substitutivo', explicacao: 'Uma versão alternativa (reescrita) de um projeto de lei, para substituir o texto original.' },
-  RCP: { nome: 'Requerimento de CPI', explicacao: 'Pedido para criar uma Comissão Parlamentar de Inquérito (CPI) -- um grupo de parlamentares com poder de investigação para apurar um fato específico.' },
-  DTQ: { nome: 'Destaque', explicacao: 'Pedido para votar separadamente uma parte específica de um projeto, em vez de votar tudo de uma vez.' },
-  INC: { nome: 'Indicação', explicacao: 'Sugestão informal de um parlamentar para o Poder Executivo. Não obriga a nada -- é uma recomendação, não uma lei.' },
-  DOC: { nome: 'Documento', explicacao: 'Documento administrativo do processo legislativo (ex.: um ofício, uma indicação de liderança partidária). Não tem efeito de lei.' },
-  REC: { nome: 'Recurso', explicacao: 'Pedido para reverter ou reconsiderar uma decisão sobre a tramitação de um projeto ou de outro requerimento.' },
-  PDC: { nome: 'Projeto de Decreto Legislativo', explicacao: 'Projeto para o Congresso decidir sobre atos do Poder Executivo ou assuntos exclusivos do Legislativo (ex.: aprovar um tratado internacional). Diferente do Projeto de Lei, não precisa da sanção do Presidente.' },
-  PRC: { nome: 'Projeto de Resolução', explicacao: 'Projeto para a Câmara decidir sobre seu próprio funcionamento interno (ex.: criar uma CPI, mudar o regimento). Não precisa da sanção do Presidente.' },
-  PRN: { nome: 'Projeto de Resolução do Congresso', explicacao: 'Como o Projeto de Resolução, mas para decisões conjuntas de Câmara e Senado.' },
-  PET: { nome: 'Petição', explicacao: 'Pedido apresentado por um cidadão ou entidade de fora do Congresso.' },
-  PFC: { nome: 'Proposta de Fiscalização e Controle', explicacao: 'Pedido para que uma comissão fiscalize um órgão ou programa do governo.' },
-  RIC: { nome: 'Requerimento de Informação', explicacao: 'Pedido oficial de um parlamentar para o governo responder com informações sobre um assunto específico.' },
-  SIT: { nome: 'Solicitação de Informação ao TCU', explicacao: 'Pedido de informação ao Tribunal de Contas da União, o órgão que fiscaliza as contas públicas.' },
-  INA: { nome: 'Indicação de Autoridade', explicacao: 'Indicação de nome para ocupar um cargo público que precisa da aprovação do Congresso.' },
-  OF:  { nome: 'Ofício', explicacao: 'Comunicação oficial escrita entre órgãos (ex.: entre a Câmara e o Senado).' },
-  CON: { nome: 'Consulta', explicacao: 'Pergunta formal sobre a interpretação de uma regra do processo legislativo.' },
-  REM: { nome: 'Reclamação', explicacao: 'Reclamação formal dentro do processo legislativo.' },
-  REP: { nome: 'Representação', explicacao: 'Denúncia ou comunicação formal de um fato para apuração.' },
-  /* As seis siglas abaixo nao vieram no glossario original -- apareceram
-     em evidencias REAIS (autorias de proposicoes, dossie de Kim
-     Kataguiri, coletado ao vivo pelo proprio pipeline deste projeto)
-     durante a implementacao deste popup, e foram adicionadas cruzando o
-     MESMO endpoint oficial (GET /referencias/tiposProposicao), sem
-     inventar significado. RPD e reutilizada pela API para varios
-     requerimentos procedimentais parecidos (retirar da pauta, adiar,
-     encerrar discussao, votacao nominal...) -- por isso a explicacao
-     fica no nivel da categoria, e o texto original ao lado sempre mostra
-     qual e o pedido exato. */
-  RDF:  { nome: 'Redação Final', explicacao: 'Texto final e já revisado de um projeto que terminou de tramitar numa Casa, redigido para deixar a redação clara antes de seguir adiante ou ser promulgado.' },
-  PEP:  { nome: 'Parecer às Emendas de Plenário', explicacao: 'Análise oficial do relator sobre as emendas (sugestões de mudança) apresentadas durante a votação em Plenário.' },
-  PRLE: { nome: 'Parecer Preliminar às Emendas de Plenário', explicacao: 'Primeira análise do relator sobre as emendas apresentadas em Plenário, antes do parecer final sobre elas.' },
-  PPP:  { nome: 'Parecer Proferido em Plenário', explicacao: 'Análise oficial do relator lida e registrada durante a sessão do Plenário, em vez de só protocolada por escrito.' },
-  PRLP: { nome: 'Parecer Preliminar', explicacao: 'Primeira análise do relator sobre um projeto, antes do parecer final.' },
-  RPD:  { nome: 'Requerimento sobre a sessão ou a votação', explicacao: 'Pedido formal de um parlamentar sobre como a sessão ou a votação deve prosseguir agora (por exemplo: retirar algo da pauta, adiar, encerrar uma discussão, votar de forma nominal). A mesma sigla cobre vários pedidos parecidos -- o texto original ao lado mostra qual é este.' },
-};
-
-const GLOSSARIO_FALLBACK = {
-  nome: 'Tipo de proposição legislativa',
-  explicacao: 'Documento ou trâmite oficial do processo legislativo. Ainda não temos uma explicação específica para esta sigla no glossário -- o texto original abaixo é a fonte real.',
-};
-
-/* Extrai a sigla do começo de e.content (formato típico vindo do
-   engine/pipeline: "PL 2546/2026: ementa..."). Retorna null se não
-   achar -- nunca lança erro; o caller sempre cai no GLOSSARIO_FALLBACK. */
-function siglaDaProposicao(content) {
-  const m = String(content || '').match(/^([A-Z]{2,5})\s*[\d./]+/);
-  return m ? m[1] : null;
-}
-
-function glossarioDaSigla(sigla) {
-  return (sigla && GLOSSARIO_PROPOSICOES[sigla]) || GLOSSARIO_FALLBACK;
-}
-
-/* Antes era uma lista \u00fanica cortada em 25 itens no total -- com
-   proposi\u00e7\u00f5es agora coletando muito mais que antes, elas sozinhas
-   enchiam o corte e escondiam discursos, despesas e v\u00ednculos. Agrupar por
-   tipo com um teto por grupo (e contagem real ao lado) resolve os dois
-   problemas: nada some em sil\u00eancio, e fica organizado por categoria. */
-function evidenceGroupsHTML(evidence) {
-  if (!evidence.length) {
-    return '<p style="color:var(--tx-3);font-size:13px;margin:0">Sem evid\u00eancias coletadas.</p>';
-  }
-  const grupos = {};
-  for (const e of evidence) {
-    const t = e.type || 'outro';
-    (grupos[t] = grupos[t] || []).push(e);
-  }
-  const ordem = [...EVIDENCE_GROUP_ORDER, ...Object.keys(grupos).filter((k) => !EVIDENCE_GROUP_ORDER.includes(k))];
-  return ordem.filter((t) => (grupos[t] || []).length).map((t) => {
-    const itens = grupos[t];
-    const mostrados = itens.slice(0, EVIDENCE_GROUP_CAP);
-    const resto = itens.length - mostrados.length;
-    // Aberto por padrão sempre -- um acordeão fechado por padrão foi
-    // exatamente a origem da queixa de "análise cortada". O teto de itens
-    // por grupo já evita que a lista fique gigante; fechar por cima disso
-    // só esconderia de novo.
-    return `
-      <details class="evd-group" open>
-        <summary>${esc(EVIDENCE_GROUP_LABEL[t] || t)} <span class="evd-count">${itens.length}</span></summary>
-        <div class="evd">
-          ${mostrados.map((e) => {
-            if (t === 'projeto') {
-              // Só proposições de autoria ganham clique: tornam-se botão, e o
-              // popup explica a SIGLA (jargão do tipo) via GLOSSARIO_PROPOSICOES,
-              // nunca o mérito da proposição específica. e.url (raro nesta
-              // categoria) vira ação secundária dentro do popup, não o clique
-              // principal. discurso/despesa/vinculo ficam como <div> de sempre.
-              const idx = evidence.indexOf(e);
-              return `<button type="button" class="evd-item" data-evd-proj data-evd-idx="${idx}"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || '').slice(0, 240))}<span class="evd-item-hint">Ver significado &rarr;</span></button>`;
-            }
-            return `<div>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">` : ''}<b>${esc(e.source || '')}</b>${e.url ? '</a>' : ''} \u2014 ${esc(String(e.content || '').slice(0, 240))}</div>`;
-          }).join('')}
-          ${resto > 0 ? `<p class="evd-more">+ ${resto} n\u00e3o exibido(s) aqui.</p>` : ''}
-        </div>
-      </details>`;
-  }).join('');
-}
-
-/* Resumo final: recombina n\u00fameros j\u00e1 calculados acima em uma frase curta.
-   N\u00e3o calcula nada novo -- s\u00f3 reapresenta o que j\u00e1 est\u00e1 no dossi\u00ea, para
-   quem quer o essencial sem ler a an\u00e1lise inteira. */
-function resumoHTML(p) {
-  const rec = record(p);
-  const att = num(rec.attendance_rate);
-  const props = num(rec.propositions_total);
-  const nPromises = (p.promises || []).length;
-  const nAlerts = findings(p).length + (p.inconsistencies || []).length;
-  const has = hasScore(p);
-
-  const partes = [];
-  if (att != null) partes.push(`presen\u00e7a de ${att.toFixed(0)}% nas sess\u00f5es conferidas`);
-  if (props != null) partes.push(`${props} proposi\u00e7\u00e3o(\u00f5es) de autoria`);
-  partes.push(has
-    ? `viabilidade de ${p.score.toFixed(0)}/100 para ${nPromises} promessa(s) identificada(s)`
-    : 'nenhuma promessa identificada nos discursos analisados');
-  if (nAlerts) partes.push(`${nAlerts} ponto(s) de aten\u00e7\u00e3o no cruzamento`);
-
-  return `
-  <div class="m-sec resumo">
-    <h4>Resumo</h4>
-    <p>${esc((p.politician || {}).name || 'Este parlamentar')} tem ${partes.join(', ')}.</p>
-    <p class="resumo-aviso">Resumo autom\u00e1tico a partir dos dados acima \u2014 n\u00e3o
-      substitui a an\u00e1lise completa e o conte\u00fado mais extenso desta p\u00e1gina.</p>
-  </div>`;
-}
-
-/* Pontos de atenção (despesas) vêm em dois formatos possíveis: string
-   pronta (dossiês antigos publicados pelo pipeline Python, que ainda não
-   foi atualizado) ou objeto estruturado (análise ao vivo, engine.js
-   atualizado). Os dois precisam renderizar sem quebrar. O objeto usa
-   <details> para o nome do fornecedor funcionar como "clique para ver a
-   investigação" -- mesmo padrão já usado em evidenceGroupsHTML, sem
-   precisar de handler de clique novo. */
-function anomalyHTML(a, p) {
-  if (typeof a === 'string') {
-    return `<div class="finding"><p>${esc(a)}</p></div>`;
-  }
-  const sev = a.severity === 'alta' ? 'alta' : 'media';
-  const amount = typeof a.amount === 'number'
-    ? `R$ ${a.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : null;
-
-  // Detalhamento usa despesas já coletadas NESTA análise -- não é busca
-  // nova nem cruzamento com outros parlamentares (isso é escopo da Análise
-  // Profunda, que tem orçamento de tempo maior).
-  const itens = (p.expenses || []).filter((d) => d.fornecedor === a.supplier);
-  const detalheHTML = itens.length
-    ? itens.slice(0, 20).map((d) => `
-        <div class="anomaly-item">
-          <span>${esc((d.data || '').slice(0, 10) || '—')}</span>
-          <span>${esc(d.tipo || '—')}</span>
-          <span>${typeof d.valor === 'number' ? 'R$ ' + d.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '—'}</span>
-          ${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">comprovante</a>` : '<span>—</span>'}
-        </div>`).join('')
-    : '<p style="color:var(--tx-3);font-size:12px;margin:6px 0 0">Detalhamento não disponível nesta análise.</p>';
-
-  return `
-    <details class="finding anomaly sev-${sev}">
-      <summary>
-        <span>⚠️ ${esc(a.supplier || 'fornecedor não identificado')}${a.cnpjCpf ? ` <span class="anomaly-doc">${esc(a.cnpjCpf)}</span>` : ''}</span>
-        ${amount ? `<b>${amount}</b>` : ''}
-      </summary>
-      <p>${esc(a.description || '')}</p>
-      <div class="anomaly-detail">${detalheHTML}</div>
-    </details>`;
-}
-
 function modalHTML(p) {
   const pol = p.politician || {};
   const has = hasScore(p);
@@ -563,8 +331,9 @@ function modalHTML(p) {
   const missing = (v.unavailable_factors || []);
   const missHTML = missing.length ? `
     <div class="miss">
-      <strong>${missing.length} fator(es) sem dado público</strong>, excluído(s) do
-      cálculo (peso redistribuído entre os demais).
+      <strong>Não foi possível medir ${missing.length} fator(es).</strong>
+      Eles foram <em>excluídos</em> do cálculo — o peso foi redistribuído entre
+      os medidos, e não contado como zero.
       <ul>${missing.map((m) => `<li>${esc(FACTOR_LABEL[m] || m.replace(/_/g, ' '))}</li>`).join('')}</ul>
     </div>` : '';
 
@@ -579,24 +348,12 @@ function modalHTML(p) {
         <p>${esc(a.descricao)}</p>
         ${(a.fontes || []).length ? `<div class="src">Fontes: ${esc((a.fontes || []).join(' · '))}</div>` : ''}
       </div>`).join('')
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma divergência encontrada entre discurso e ação registrada.</p>';
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma divergência entre discurso e ação registrada foi encontrada nos dados analisados.</p>';
 
   const incHTML = (p.inconsistencies || []).length
     ? `<div class="m-sec"><h4>Pontos de atenção</h4>${
-        p.inconsistencies.map((a) => anomalyHTML(a, p)).join('')
+        p.inconsistencies.map((s) => `<div class="finding"><p>${esc(s)}</p></div>`).join('')
       }</div>` : '';
-
-  // Só aparece quando a análise coletou a lista completa de despesas (hoje,
-  // análise ao vivo do engine.js atualizado). Dossiês antigos do pipeline
-  // Python ainda não têm esse campo -- não fabrica o botão sem o dado real.
-  const nAnomaliasObj = (p.inconsistencies || []).filter((a) => typeof a === 'object' && a).length;
-  const gastosBtnHTML = (p.expenses && p.expenses.length)
-    ? `<div class="m-sec">
-        <h4>Gastos</h4>
-        <button type="button" class="gastos-btn" data-gastos>
-          💰 Ver todos os gastos (${p.expenses.length})${nAnomaliasObj ? ` · ${nAnomaliasObj} sinalizado(s)` : ''}
-        </button>
-      </div>` : '';
 
   const promHTML = (p.promises || []).length
     ? `<ul class="plist">${p.promises.slice(0, 12).map((pr) => `
@@ -608,14 +365,18 @@ function modalHTML(p) {
             ${pr.is_conditional ? '<span>condicional</span>' : ''}
           </div>
         </li>`).join('')}</ul>`
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma promessa identificada nos discursos analisados.</p>';
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma promessa foi extraída dos discursos analisados. Sem promessa não há o que avaliar — por isso não há score.</p>';
 
-  const evdHTML = evidenceGroupsHTML(p.evidence || []);
+  const evdHTML = (p.evidence || []).length
+    ? `<div class="evd">${p.evidence.slice(0, 25).map((e) =>
+        `<div><b>${esc(e.source || '')}</b> — ${esc(String(e.content || '').slice(0, 190))}</div>`
+      ).join('')}</div>`
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Sem evidências coletadas.</p>';
 
   const news = p.noticias_publicas || [];
   const newsHTML = news.length
-    ? `<div class="evd">${news.map((n) => `<div><b>${esc(n.fonte || 'Notícia pública')}</b> — ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title || '')}</a>` : esc(n.title || '')}<br><span style="color:var(--tx-3)">${esc((n.resumo || '').slice(0, 280))}</span></div>`).join('')}</div>`
-    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma notícia pública recente encontrada.</p>';
+    ? `<div class="evd">${news.map((n) => `<div><b>${esc(n.fonte || 'Notícia pública')}</b> — ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title || '')}</a>` : esc(n.title || '')}<br><span style="color:var(--tx-3)">${esc((n.resumo || '').slice(0, 220))}</span></div>`).join('')}</div>`
+    : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma notícia pública recente encontrada nos feeds acessíveis pelo navegador. Redes sociais e Google News exigem proxy/backend ou API autenticada.</p>';
 
   return `
   <div class="m-head">
@@ -646,8 +407,6 @@ function modalHTML(p) {
     ${findHTML}
   </div>
 
-  ${gastosBtnHTML}
-
   ${incHTML}
 
   <div class="m-sec"><h4>Promessas extraídas de discursos</h4>${promHTML}</div>
@@ -656,129 +415,27 @@ function modalHTML(p) {
 
   <div class="m-sec"><h4>Evidências coletadas</h4>${evdHTML}</div>
 
-  ${resumoHTML(p)}
-
   <p class="legal">
     Análise probabilística, não acusatória. Mede viabilidade técnica, não
-    honestidade nem intenção. Promessas extraídas automaticamente de discursos
-    podem conter falsos positivos. Fontes: Câmara dos Deputados, SICONFI e
-    feeds de notícia pública.
+    honestidade nem intenção. As promessas são extraídas automaticamente de
+    transcrições de discursos e podem conter falsos positivos. Fontes: API de
+    Dados Abertos da Câmara dos Deputados, SICONFI (Tesouro Nacional) e feeds
+    públicos acessíveis no navegador. Redes sociais e Google News não são lidos
+    diretamente no site quando bloqueiam CORS ou exigem API autenticada; para
+    isso é preciso camada de coleta em GitHub Actions/proxy.
   </p>`;
 }
 
-/* Visão dedicada de Gastos -- lista completa (não o recorte de 10 usado em
-   "Evidências coletadas"), com fornecedor sinalizado em destaque quando
-   bate com um dos Pontos de atenção. Reaproveita o mesmo #modalBody da
-   análise principal (troca de conteúdo, não abre modal novo) para não
-   duplicar overlay/scroll/foco. */
-function gastosViewHTML(p) {
-  const pol = p.politician || {};
-  const despesas = (p.expenses || []).slice().sort((a, b) => (b.valor || 0) - (a.valor || 0));
-  const anomalias = (p.inconsistencies || []).filter((a) => typeof a === 'object' && a && a.supplier);
-  const fornecedoresSinalizados = new Set(anomalias.map((a) => a.supplier));
-  const total = despesas.reduce((s, d) => s + (d.valor || 0), 0);
-
-  const rows = despesas.map((d) => {
-    const flagged = d.fornecedor && fornecedoresSinalizados.has(d.fornecedor);
-    return `
-      <tr class="${flagged ? 'gasto-flag' : ''}">
-        <td>${esc((d.data || '').slice(0, 10) || '—')}</td>
-        <td>${esc(d.tipo || '—')}</td>
-        <td>${flagged ? '⚠️ ' : ''}${esc(d.fornecedor || 'não identificado')}${d.cnpjCpf ? `<br><span class="gasto-doc">${esc(d.cnpjCpf)}</span>` : ''}</td>
-        <td class="gasto-valor">${typeof d.valor === 'number' ? 'R$ ' + d.valor.toLocaleString('pt-BR', { minimumFractionDigits: 2 }) : '—'}</td>
-        <td>${d.url ? `<a href="${esc(d.url)}" target="_blank" rel="noopener">comprovante</a>` : (d.numDocumento ? esc(d.numDocumento) : '—')}</td>
-      </tr>`;
-  }).join('');
-
-  return `
-  <div class="m-head">
-    <div class="avatar">${esc(initials(pol.name))}</div>
-    <div>
-      <h2>${esc(pol.name)}</h2>
-      <p>Gastos da cota parlamentar coletados nesta análise</p>
-    </div>
-  </div>
-
-  <button type="button" class="voltar-btn" data-voltar>&larr; Voltar à análise</button>
-
-  <div class="m-sec">
-    <h4>${despesas.length} registro${despesas.length === 1 ? '' : 's'} · R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h4>
-    ${anomalias.length ? `<p class="gastos-note">${anomalias.length} padrão(ões) sinalizado(s) (linhas destacadas abaixo) — ver "Pontos de atenção" na análise para o detalhamento de cada um.</p>` : ''}
-    ${despesas.length ? `
-      <div class="table-wrapper">
-        <table class="gastos-table">
-          <thead><tr><th>Data</th><th>Tipo</th><th>Fornecedor</th><th>Valor líquido</th><th>Documento</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      </div>` : '<p style="color:var(--tx-3);font-size:13px;margin:0">Nenhuma despesa coletada nesta análise.</p>'}
-  </div>
-
-  <button type="button" class="voltar-btn" data-voltar>&larr; Voltar à análise</button>`;
-}
-
-async function openModal(i) {
-  const p = state.data[i];
-  modalAtual = slugify((p.politician || {}).name);
-  modalDossieAtual = p;
-  $('#modalBody').innerHTML = modalHTML(p);
+function openModal(i) {
+  $('#modalBody').innerHTML = modalHTML(state.data[i]);
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
   $('.modal-panel').scrollTop = 0;
-
-  // Card pré-gerado (não veio de busca ao vivo): confere se já existe dossiê
-  // profundo publicado para este nome e mostra o selo, sem refazer a análise.
-  if (!p._deep) {
-    const deep = await buscarAnaliseProfunda((p.politician || {}).name);
-    if (deep && modalAtual === slugify((p.politician || {}).name)) {
-      p._deep = deep;
-      $('#modalBody').innerHTML = deepBadgeHTML(deep) + modalHTML(p);
-    }
-  }
 }
 
 function closeModal() {
   $('#modal').hidden = true;
   document.body.style.overflow = '';
-  closePropModal(); // defensivo: nunca deixa o popup de proposição orfão
-}
-
-/* ---------------- popup: significado do tipo de proposição ----------------
-   Painel secundário, por CIMA do modal do dossiê (mesmo padrão visual --
-   .modal/.modal-panel/.modal-backdrop/.modal-x/data-close -- mas com
-   atributo data-prop-close próprio e z-index maior, para empilhar sem
-   fechar nem perder o estado do dossiê por baixo). Fechar o popup NUNCA
-   fecha o modal principal -- só o inverso (closeModal acima) fecha os
-   dois, por segurança. Não recalcula nem reinterpreta nada: só traduz a
-   sigla do TIPO da proposição (via GLOSSARIO_PROPOSICOES) e mostra o
-   texto original completo (sem o corte de 240 caracteres usado na lista)
-   para transparência. */
-function propModalHTML(e) {
-  const sigla = siglaDaProposicao(e.content);
-  const g = glossarioDaSigla(sigla);
-  return `
-    <div class="m-head prop-head">
-      <h2 id="propTitle">${esc(g.nome)}</h2>
-      ${sigla ? `<p>${esc(sigla)}</p>` : ''}
-    </div>
-    <div class="m-sec">
-      <h4>O que significa</h4>
-      <p class="prop-explicacao">${esc(g.explicacao)}</p>
-    </div>
-    <div class="m-sec">
-      <h4>Texto original desta proposição</h4>
-      <p class="prop-original"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || ''))}</p>
-    </div>
-    ${e.url ? `<div class="m-sec prop-fonte"><a href="${esc(e.url)}" target="_blank" rel="noopener">Ver fonte oficial &rarr;</a></div>` : ''}`;
-}
-
-function openPropModal(e) {
-  $('#propModalBody').innerHTML = propModalHTML(e);
-  $('#propModal').hidden = false;
-  $('.prop-modal-panel').scrollTop = 0;
-}
-
-function closePropModal() {
-  $('#propModal').hidden = true;
 }
 
 /* ---------------- eventos ---------------- */
@@ -787,36 +444,7 @@ document.addEventListener('click', (e) => {
   const card = e.target.closest('.card');
   if (card) return openModal(Number(card.dataset.i));
 
-  // Popup de significado da proposição -- checado ANTES de [data-close] de
-  // propósito: usa o atributo próprio data-prop-close, então nunca cai no
-  // closeModal() do dossiê por engano (os dois ficam desacoplados).
-  const projBtn = e.target.closest('[data-evd-proj]');
-  if (projBtn) {
-    if (!modalDossieAtual) return;
-    const idx = Number(projBtn.dataset.evdIdx);
-    const ev = (modalDossieAtual.evidence || [])[idx];
-    if (ev) openPropModal(ev);
-    return;
-  }
-
-  if (e.target.closest('[data-prop-close]')) return closePropModal();
-
   if (e.target.closest('[data-close]')) return closeModal();
-
-  if (e.target.closest('[data-gastos]')) {
-    if (!modalDossieAtual) return;
-    $('#modalBody').innerHTML = gastosViewHTML(modalDossieAtual);
-    $('.modal-panel').scrollTop = 0;
-    return;
-  }
-
-  if (e.target.closest('[data-voltar]')) {
-    if (!modalDossieAtual) return;
-    const deep = modalDossieAtual._deep;
-    $('#modalBody').innerHTML = (deep ? deepBadgeHTML(deep) : '') + modalHTML(modalDossieAtual);
-    $('.modal-panel').scrollTop = 0;
-    return;
-  }
 
   const chip = e.target.closest('.chip');
   if (chip) {
@@ -827,11 +455,7 @@ document.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  // Popup de proposição fecha primeiro -- Escape nunca fecha o dossiê
-  // "por baixo" se o popup ainda estiver aberto por cima dele.
-  if (!$('#propModal').hidden) return closePropModal();
-  if (!$('#modal').hidden) closeModal();
+  if (e.key === 'Escape' && !$('#modal').hidden) closeModal();
 });
 
 $('#sort').addEventListener('change', (e) => { state.sort = e.target.value; renderGrid(); });
@@ -861,12 +485,12 @@ async function buscarNaCamara(termo) {
 
   const box = $('#live');
   box.hidden = false;
-  box.innerHTML = `<div class="live-h">Procurando "${esc(termo)}" na Câmara e no Senado…</div>`;
+  box.innerHTML = `<div class="live-h">Procurando "${esc(termo)}" na Câmara…</div>`;
 
   let achados = [];
   try {
-    const { buscarParlamentares } = await import('./engine.js');
-    achados = await buscarParlamentares(termo);
+    const { buscarDeputados } = await import('./engine.js');
+    achados = await buscarDeputados(termo);
   } catch (err) {
     if (seq !== buscaSeq) return;
     box.innerHTML = `<div class="live-h">Não foi possível consultar a API oficial
@@ -879,11 +503,11 @@ async function buscarNaCamara(termo) {
   if (seq !== buscaSeq) return;
 
   if (!achados.length) {
-    box.innerHTML = `<div class="live-h"><b>Nenhum deputado ou senador em exercício</b>
+    box.innerHTML = `<div class="live-h"><b>Nenhum deputado federal em exercício</b>
       encontrado para "${esc(termo)}".</div>
-      <div class="live-note">O painel ao vivo consulta a Câmara dos Deputados e o Senado
-      Federal. Se for candidato, dirigente partidário, ex-parlamentar ou influenciador
-      político sem mandato federal atual, ele não aparece nessa base. Ex.: Jones Manoel
+      <div class="live-note">O painel ao vivo consulta a Câmara dos Deputados.
+      Se for candidato, dirigente partidário, ex-deputado ou influenciador político
+      sem mandato federal atual, ele não aparece nessa base. Ex.: Jones Manoel
       não consta como deputado federal em exercício.</div>`;
     return;
   }
@@ -896,27 +520,21 @@ async function buscarNaCamara(termo) {
       ${achados.map((d) => `
         <button class="live-item" data-dep='${esc(JSON.stringify({
           id: d.id, nome: d.nome, siglaPartido: d.siglaPartido,
-          siglaUf: d.siglaUf, urlFoto: d.urlFoto, casa: d.casa,
+          siglaUf: d.siglaUf, urlFoto: d.urlFoto,
         }))}'>
           <img src="${esc(d.urlFoto || '')}" alt="" loading="lazy">
-          <span><b>${esc(d.nome)}</b><em>${esc(d.siglaPartido || '—')} · ${esc(d.siglaUf || '')}
-            <span class="casa-badge${d.casa === 'senado' ? ' casa-senado' : ''}">${d.casa === 'senado' ? 'Senado' : 'Câmara'}</span></em></span>
+          <span><b>${esc(d.nome)}</b><em>${esc(d.siglaPartido || '—')} · ${esc(d.siglaUf || '')}</em></span>
         </button>`).join('')}
     </div>`;
 }
 
 /* ---------------- Análise Profunda (beta) ----------------
    Não roda no navegador: usa 2 modelos locais (1-2GB cada) + feeds sem CORS.
-   Por segurança, NENHUM token fica no código do site -- o disparo é feito
-   pelo próprio visitante, marcando "Modo profundo" (#deepToggle) antes de
-   buscar/analisar alguém sem dossiê publicado ainda. O clique chama o
-   Cloudflare Worker (WORKER_URL); é o Worker -- não o navegador -- que
-   guarda a credencial e aciona o GitHub Actions (workflow_dispatch).
-   Verificado de ponta a ponta em 2026-07-30: POST direto ao Worker ->
-   run real disparado -> dossiê publicado em site/deep/<slug>.json em
-   ~15min. (Versão anterior deste comentário dizia que o disparo era
-   só manual pelo mantenedor -- estava desatualizada/errada; corrigido
-   após teste real confirmar o contrário.) */
+   Por segurança, NENHUM token fica no código do site -- então o disparo real
+   hoje é feito pelo mantenedor via GitHub Actions, não por clique anônimo.
+   O que o visitante PODE fazer sem token nenhum: abrir uma issue pública no
+   repositório do painel pedindo a análise. É gratuito, não expõe credencial,
+   e não depende de nenhum serviço novo. */
 
 function slugify(nome) {
   return String(nome || '')
@@ -947,20 +565,30 @@ async function buscarAnaliseProfunda(nome) {
    já presentes ali -- sem duplicar leitura de campo em dois lugares. */
 function deepBadgeHTML(deep) {
   const d = deep.dossie || {};
+  const sub = d.subbrain || {};
   const noticias = d.noticias_publicas || [];
-  const divergencias = (d.subbrain || {}).divergencias || [];
-  const quando = d.generated_at
-    ? new Date(d.generated_at).toLocaleDateString('pt-BR')
-    : null;
+  const divergencias = sub.divergencias || [];
   return `
   <div class="deep-badge">
     <span>🔬</span>
     <span>
-      <b>Análise profunda disponível</b>${quando ? ` · ${esc(quando)}` : ''}
-      ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is)` : ''}
-      ${divergencias.length ? `· ${divergencias.length} ponto(s) revisado(s) por segunda análise` : ''}
+      <b>Análise Profunda (beta) já publicada</b> para este nome —
+      cérebro: ${esc(d.ai_provider || 'indisponível')}
+      ${sub.disponivel ? `· subcérebro: ${esc(sub.resumo || '')}` : ''}
+      ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is) encontrada(s)` : ''}
+      ${divergencias.length ? `<br>⚠️ ${divergencias.length} divergência(s) do subcérebro sobre o filtro de promessas` : ''}
     </span>
   </div>`;
+}
+
+function linkPedidoIssue(nome) {
+  const title = encodeURIComponent(`Análise profunda: ${nome || '(nome do político)'}`);
+  const body = encodeURIComponent(
+    `Pedido de análise profunda (beta) para: ${nome || ''}\n\n` +
+    'Contexto: análise com dois modelos de IA locais (cérebro + subcérebro) ' +
+    'e busca em feeds de notícia oficiais, feita via GitHub Actions.'
+  );
+  return `https://github.com/BLKxAcsa/seth-vii-painel/issues/new?title=${title}&body=${body}&labels=analise-profunda`;
 }
 
 // Clicar num resultado da busca dispara a análise ao vivo. Este handler foi
@@ -974,83 +602,33 @@ document.addEventListener('click', async (e) => {
   await analisar(dep, deep);
 });
 
+$('#btnDeepInfo')?.addEventListener('click', () => {
+  const box = document.getElementById('deepCtaInfo') || (() => {
+    const d = document.createElement('div');
+    d.id = 'deepCtaInfo';
+    d.className = 'deep-cta-limite';
+    $('#deepCta').appendChild(d);
+    return d;
+  })();
+  const nomeAtual = $('#q').value.trim();
+  box.innerHTML = `
+    <strong>Duas formas de pedir, hoje:</strong>
+    <ol style="margin:8px 0 0;padding-left:18px;line-height:1.6">
+      <li><strong>Abra um pedido público</strong> (não precisa de token nem de
+        acesso ao código): <a href="${esc(linkPedidoIssue(nomeAtual))}"
+        target="_blank" rel="noopener">abrir issue no GitHub</a>${nomeAtual ? ` já
+        preenchida para "${esc(nomeAtual)}"` : ''}.</li>
+      <li>Se o dossiê profundo já existir para esse nome, ele aparece
+        automaticamente marcado como <span class="tag deep">Profunda ✓</span>
+        no resultado da busca acima.</li>
+    </ol>`;
+});
 
-const WORKER_URL = 'https://seth-vii-deep-trigger.angst.workers.dev';
 
-// Slug do dossiê profundo sendo exibido no momento -- evita que uma resposta
-// de polling atualize o modal depois que o usuário já abriu outra pessoa.
-let modalAtual = null;
-
-// Dossiê inteiro exibido no modal agora (não só o slug) -- permite trocar
-// entre a análise principal e a visão de Gastos sem reprocessar nada, e sem
-// precisar re-localizar o item em state.data (funciona igual para um card
-// pré-carregado e para um resultado de busca ao vivo recém-analisado).
-let modalDossieAtual = null;
-
-async function solicitarAnaliseProfunda(nome) {
-  try {
-    const r = await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome }),
-    });
-    return await r.json();
-  } catch {
-    return { erro: 'não foi possível contatar o serviço de análise profunda' };
-  }
-}
-
-// Pollings de Análise Profunda em andamento, por slug -- independentes do
-// modal. Antes, sair do card ou abrir outro parlamentar parava o
-// acompanhamento em silêncio (a checagem "modalAtual !== slug" desistia).
-// Agora o polling roda até o fim (ou até os ~15min esgotarem) mesmo se o
-// usuário navegar para outro lugar, e atualiza o card assim que o dossiê
-// fica pronto -- a tela só é redesenhada se ainda fizer sentido mostrar.
-const pollsEmAndamento = new Set();
-
-async function aguardarDossieProfundo(slug, dossieRef) {
-  if (pollsEmAndamento.has(slug)) return; // já existe um polling para este slug
-  pollsEmAndamento.add(slug);
-  const intervaloMs = 20000;
-  const maxTentativas = 45; // ~15 min
-  try {
-    for (let i = 0; i < maxTentativas; i++) {
-      await new Promise((r) => setTimeout(r, intervaloMs));
-      const deep = await buscarAnaliseProfunda(slug);
-      if (deep) {
-        dossieRef._deep = deep;
-        renderGrid(); // card some/aparece com o selo mesmo se o modal estiver fechado
-        if (modalAtual === slug && modalDossieAtual === dossieRef) {
-          $('#modalBody').innerHTML = deepBadgeHTML(deep) + modalHTML(dossieRef);
-        }
-        return;
-      }
-    }
-  } finally {
-    pollsEmAndamento.delete(slug);
-  }
-}
-
-function progressoProfundoHTML(estado) {
-  if (estado === 'aguardando') {
-    return `<div class="deep-progress"><span class="spin"></span>
-      Análise profunda em andamento — geralmente 5 a 15 minutos. Esta janela
-      atualiza sozinha quando terminar.</div>`;
-  }
-  if (estado === 'limite') {
-    return `<div class="deep-progress warn">Limite de pedidos por hora atingido.
-      Tente novamente mais tarde.</div>`;
-  }
-  return `<div class="deep-progress warn">Não foi possível iniciar a análise
-      profunda agora.</div>`;
-}
-
-async function analisar(dep, deepDossieExistente) {
+async function analisar(dep, deepDossie) {
   const body = $('#modalBody');
   $('#modal').hidden = false;
   document.body.style.overflow = 'hidden';
-  const slug = slugify(dep.nome);
-  modalAtual = slug;
 
   const passos = [];
   const pintar = (atual) => {
@@ -1060,69 +638,47 @@ async function analisar(dep, deepDossieExistente) {
         <div><h2 id="mName">${esc(dep.nome)}</h2>
           <p>${esc(dep.siglaPartido || '—')} · ${esc(dep.siglaUf || '')}</p></div>
       </div>
-      ${deepDossieExistente ? deepBadgeHTML(deepDossieExistente) : ''}
+      ${deepDossie ? deepBadgeHTML(deepDossie) : ''}
       <div class="m-sec">
-        <h4>Analisando fontes oficiais</h4>
+        <h4>Analisando ao vivo nas fontes oficiais</h4>
         <div class="steps">
           ${passos.map((p) => `<div class="step done">✓ ${esc(p)}</div>`).join('')}
           <div class="step doing"><span class="spin"></span> ${esc(atual)}</div>
         </div>
-        <p class="steps-note">Geralmente 20 a 60 segundos.</p>
+        <p class="steps-note">A coleta acontece no seu navegador, direto nas APIs
+          da Câmara e do Tesouro. Nada passa por servidor nosso — não há
+          servidor. Leva de 20 a 60 segundos, conforme a resposta das fontes.</p>
       </div>`;
   };
 
   pintar('iniciando');
 
   try {
-    const { analisarAoVivo, analisarSenadorAoVivo } = await import('./engine.js');
-    const funcaoAnalise = dep.casa === 'senado' ? analisarSenadorAoVivo : analisarAoVivo;
-    const dossie = await funcaoAnalise(dep, (msg) => {
+    const { analisarAoVivo } = await import('./engine.js');
+    const dossie = await analisarAoVivo(dep, (msg) => {
       if (passos[passos.length - 1] !== msg) {
         const anterior = document.querySelector('.step.doing');
         if (anterior && passos.length < 8) passos.push(anterior.textContent.trim().replace(/^\s*/, ''));
       }
       pintar(msg);
     });
-    dossie._deep = deepDossieExistente || null;
-    modalDossieAtual = dossie;
+    dossie._deep = deepDossie || null;
 
     // Entra no mesmo estado dos demais para reusar card, modal e ordenação.
     state.data.unshift(dossie);
     renderStats(); renderChips(); renderGrid();
-
-    const querProfunda = $('#deepToggle')?.checked;
-    const renderizarModal = (extra = '') =>
-      (deepDossieExistente ? deepBadgeHTML(deepDossieExistente) : extra) + modalHTML(dossie);
-
-    body.innerHTML = renderizarModal();
+    body.innerHTML = (deepDossie ? deepBadgeHTML(deepDossie) : '') + modalHTML(dossie);
     $('.modal-panel').scrollTop = 0;
     $('#live').hidden = true;
-
-    // Modo profundo ligado e ainda sem dossiê publicado: dispara e acompanha
-    // sem travar a análise instantânea, que já está na tela.
-    if (querProfunda && !deepDossieExistente) {
-      const resp = await solicitarAnaliseProfunda(dep.nome);
-      // Efeito (guardar o dossiê profundo, iniciar o polling) não depende de
-      // o modal ainda estar aberto nesta análise -- só a atualização da tela
-      // depende disso. Antes, sair do modal logo após pedir a análise
-      // profunda descartava o pedido "iniciado" sem nunca acompanhar.
-      if (resp.status === 'ja_existe') {
-        dossie._deep = resp;
-        if (modalAtual === slug) body.innerHTML = deepBadgeHTML(resp) + modalHTML(dossie);
-      } else if (resp.status === 'iniciado') {
-        if (modalAtual === slug) body.innerHTML = progressoProfundoHTML('aguardando') + modalHTML(dossie);
-        aguardarDossieProfundo(slug, dossie);
-      } else if (modalAtual === slug) {
-        body.innerHTML = progressoProfundoHTML(resp.erro?.includes('limite') ? 'limite' : 'erro') + modalHTML(dossie);
-      }
-    }
   } catch (err) {
     body.innerHTML = `
       <div class="m-head"><div class="avatar">${esc(initials(dep.nome))}</div>
         <div><h2>${esc(dep.nome)}</h2><p>análise interrompida</p></div></div>
       <div class="m-sec"><h4>Não foi possível concluir</h4>
-        <div class="rec-note">Fonte oficial indisponível no momento. Tente novamente
-          em alguns instantes.<br><span style="color:var(--tx-3);font-size:12px">${esc(err.message)}</span></div></div>`;
+        <div class="rec-note">${esc(err.message)}<br><br>
+          As fontes são APIs públicas de terceiros e ficam instáveis sem aviso.
+          Nada foi estimado para preencher a falha — preferimos não mostrar
+          número a mostrar número inventado.</div></div>`;
   }
 }
 
@@ -1139,9 +695,8 @@ fetch('data.json')
     const when = d.generated_at
       ? new Date(d.generated_at).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })
       : '—';
-    $('#meta').textContent = state.data.length
-      ? `${state.data.length} deputados · dados de ${when} · fonte: ${d.source || 'Câmara dos Deputados'}`
-      : 'Nenhum parlamentar pré-carregado · use a busca acima para analisar ao vivo';
+    $('#meta').textContent =
+      `${state.data.length} deputados · dados de ${when} · fonte: ${d.source || 'Câmara dos Deputados'}`;
   })
   .catch((err) => {
     $('#grid').innerHTML =

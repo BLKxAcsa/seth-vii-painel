@@ -22,12 +22,7 @@
     </a>
 
     <div class="search">
-      <input id="q" type="search" placeholder="Digite o nome de qualquer deputado" autocomplete="off">
-      <label class="deep-toggle" title="Cruza mais fontes oficiais e leva alguns minutos">
-        <input type="checkbox" id="deepToggle">
-        <span class="deep-toggle-track"><span class="deep-toggle-thumb"></span></span>
-        <span class="deep-toggle-label">🔬 Modo profundo</span>
-      </label>
+      <input id="q" type="search" placeholder="Digite o nome de qualquer deputado — a análise roda ao vivo" autocomplete="off">
     </div>
   </div>
 
@@ -55,9 +50,48 @@
   <section class="stats" id="stats"></section>
 
   <section class="notice">
-    <strong>Como ler:</strong> presença em sessões é o dado disponível para
-    todos. O score de viabilidade só existe quando há promessa detectada em
-    discurso. Fatores sem dado público não entram no cálculo.
+    <strong>Como ler estes números.</strong>
+    O destaque de cada card é <em>presença em sessões</em>, porque é o dado
+    apurado para todos. O <em>score de viabilidade</em> só existe quando uma
+    promessa foi detectada em discurso — e discurso de plenário é quase todo
+    procedimental (orientação de voto, questão de ordem, homenagem), então
+    <strong>“sem promessa detectada” é o resultado comum, não uma falha</strong>.
+    Fatores sem dado público são <strong>excluídos do cálculo</strong>, nunca
+    contados como zero, e aparecem listados em cada dossiê. Nada aqui mede
+    honestidade ou intenção.
+  </section>
+
+  <section class="deep-cta" id="deepCta">
+    <div class="deep-cta-h">
+      <strong>🔬 Análise Profunda (beta)</strong>
+      <span class="tag vivo">roda em minutos, não em segundos</span>
+    </div>
+    <p>
+      A análise instantânea acima roda no seu navegador e usa só fontes com
+      acesso liberado a partir dele (API da Câmara, SICONFI, Agência Brasil).
+      A <strong>Análise Profunda</strong> roda em um servidor do GitHub Actions
+      e, por não estar limitada ao navegador, consegue:
+    </p>
+    <ul>
+      <li>usar <strong>dois modelos de IA locais</strong> (Qwen 3B como
+        "cérebro" para redigir a narrativa, Qwen 1.5B como "subcérebro" para
+        dar uma segunda opinião sobre cada promessa aceita ou descartada);</li>
+      <li>varrer <strong>mais feeds de notícia oficiais</strong> (Agência
+        Brasil/EBC completa + Agência Senado), que o navegador não alcança
+        por bloqueio de CORS;</li>
+      <li>demorar o que precisar — <strong>de 5 a 15 minutos</strong>, medido
+        de verdade num run completo (551s incluindo o download dos dois
+        modelos na primeira vez).</li>
+    </ul>
+    <div class="deep-cta-limite">
+      <strong>Limite honesto de hoje:</strong> por segurança, nenhuma página
+      pública pode acionar direto um workflow do repositório privado —
+      exigiria expor uma credencial no código do navegador, e isso nunca vai
+      acontecer aqui. Por ora, quem dispara a análise profunda é o
+      mantenedor do projeto, pelo GitHub Actions. O resultado, quando pronto,
+      é publicado automaticamente e aparece aqui embaixo, na busca.
+    </div>
+    <button class="btn-deep" id="btnDeepInfo" type="button">Como pedir uma análise profunda</button>
   </section>
 
   <div id="grid" class="card-grid"></div>
@@ -80,18 +114,6 @@
   <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="mName">
     <button class="modal-x" data-close aria-label="Fechar">&times;</button>
     <div id="modalBody"></div>
-  </div>
-</div>
-
-<!-- Popup secundário: significado da sigla de uma proposição (PL, PEC, EMC...).
-     Fica por CIMA do modal do dossiê (z-index maior, ver styles.css) sem
-     fechá-lo ou perder o estado dele -- data-prop-close é independente de
-     data-close, então fechar este popup nunca fecha o modal principal. -->
-<div id="propModal" class="modal prop-modal" hidden>
-  <div class="modal-backdrop" data-prop-close></div>
-  <div class="modal-panel prop-modal-panel" role="dialog" aria-modal="true" aria-labelledby="propTitle">
-    <button class="modal-x" data-prop-close aria-label="Fechar">&times;</button>
-    <div id="propModalBody"></div>
   </div>
 </div>
 
