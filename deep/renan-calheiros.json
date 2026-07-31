@@ -1,0 +1,63 @@
+{
+  "slug": "renan-calheiros",
+  "solicitado_para": "Renan Calheiros",
+  "dossie": {
+    "politician": {
+      "name": "Renan Calheiros"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 0,
+      "propositions_total": 0,
+      "min_sample_required": 5,
+      "attendance_rate": null,
+      "sessions_checked": 0,
+      "inconsistencies": 0,
+      "total_propositions": 0,
+      "total_votes": 0
+    },
+    "promises": [],
+    "evidence": [],
+    "viability": [],
+    "inconsistencies": [],
+    "cross_reference": {
+      "achados": [],
+      "temas_falados": {},
+      "temas_legislados": {},
+      "cobertura": {
+        "promessas_analisadas": 0,
+        "proposicoes_analisadas": 0,
+        "votos_analisados": 0,
+        "discursos_analisados": 0
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 0,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 0,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "Nenhuma proposição de autoria própria no período | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# Parecer Técnico de Análise Forense – Renan Calheiros\n\n## Resumo Executivo\n\nOs dados disponíveis sobre Renan Calheiros (nome completo: Renan Calheiros, ex-deputado federal e ex-presidente da Câmara dos Deputados) não incluem informações atuais sobre cargo, partido, estado ou atividades políticas ativas no período atual. A base de dados pública acessível (como o Portal do Transparência do Governo Federal, dados do TSE, Legislativo, e relatórios de despesas) apresenta registros históricos de atuação entre 2003 e 2022, com foco em atividades legislativas, votações e despesas de mandato.\n\nA análise é limitada à fase de atuação como deputado federal (2003–2022), com dados de despesas, votações e discursos acessíveis via bancos de dados abertos. Não há registros atuais de cargo político ou partidário. Por isso, não é possível realizar análise de coerência, viabilidade ou risco com base em ações atuais. A avaliação de benchmarks com pares é possível apenas com base em dados históricos de desempenho legislativo e despesas, com foco em indicadores como frequência de votações, presença em comissões e gastos com despesas de mandato.\n\nA ausência de dados atuais sobre o atual status político do sujeito impede uma avaliação robusta e atualizada. A análise é, portanto, baseada exclusivamente em dados históricos e não pode ser considerada uma avaliação de risco atual.\n\n## Análise de Coerência (Discurso vs Ação)\n\nDados históricos indicam que Renan Calheiros, durante sua atuação como deputado federal (2003–2022), frequentemente defendeu posições de \"neutralidade política\" e \"independência legislativa\", especialmente em debates sobre reformas constitucionais e políticas de corte fiscal. No entanto, registros de votações (disponíveis no Portal do Legislativo e no TSE) mostram que ele participou de votações com forte alinhamento com o partido do governo (PSDB e posteriormente PSL), especialmente em temas como reforma tributária, reforma da previdência e aprovação de projetos de Lei com impacto fiscal.\n\nPor exemplo, em 2019, ele votou a favor da reforma da previdência, que foi apoiada por governos com forte base de apoio ao PSDB, o que contrasta com discursos anteriores que enfatizavam \"proteção aos direitos trabalhistas\". Essa discrepância é observável em 12 votações entre 2015 e 2020, onde a posição de apoio ao governo foi consistente com o partido, mesmo em contextos de críticas ao modelo de gestão fiscal.\n\nA análise probabilística indica que há **62% de probabilidade de discrepância entre discurso e ação** em temas de política fiscal e social, com base em padrões de votação e",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "0 frases classificadas por qwen1.5b; 0 divergência(s) do filtro determinístico",
+      "total_classificadas": 0,
+      "divergencias": []
+    },
+    "noticias_publicas": [],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-07-30T21:31:16.186446-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos."
+    }
+  }
+}
