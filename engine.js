@@ -26,6 +26,8 @@
 
 const API = 'https://dadosabertos.camara.leg.br/api/v2';
 const SICONFI = 'https://apidatalake.tesouro.gov.br/ords/siconfi/tt';
+const API_SENADO = 'https://legis.senado.leg.br/dadosabertos';
+const INICIO_LEGISLATURA = '2023-02-01';
 
 /* ------------------------------------------------------------------ *
  * Camada de rede
@@ -96,6 +98,14 @@ const qs = (o) => Object.entries(o)
 const hoje = () => new Date();
 const iso = (d) => d.toISOString().slice(0, 10);
 const diasAtras = (n) => { const d = hoje(); d.setDate(d.getDate() - n); return iso(d); };
+
+// Orçamento de tempo (ms) por fonte que pagina/varre várias requisições no
+// navegador. Sem isso, um deputado com histórico muito grande faria a
+// análise "instantânea" deixar de ser instantânea. Verificado ENTRE
+// páginas/sessões, nunca cancela uma requisição em andamento -- ao esgotar,
+// para e devolve o que já tem. Mesma filosofia do resto do projeto: dado
+// parcial é declarado parcial, nunca vira "completo" por omissão.
+const orcamentoEsgotado = (inicioMs, limiteMs) => (performance.now() - inicioMs) > limiteMs;
 
 /* ------------------------------------------------------------------ *
  * Regras (carregadas do JSON exportado pelo Python)
@@ -310,13 +320,279 @@ export async function buscarDeputados(nome) {
   return ranqueados;
 }
 
-async function coletarPresenca(depId, prog, maxSessoes = 20) {
+/* ------------------------------------------------------------------ *
+ * Senado Federal -- API separada da Camara, estruturas de resposta bem
+ * diferentes (JSON aninhado; Pronunciamentos/Autorias/Votacoes podem vir
+ * null, um objeto unico ou uma lista, dependendo de quantos resultados
+ * existem -- ver normalizarLista()).
+ *
+ * Tudo abaixo foi conferido direto contra a API real em 2026-07-30, nao
+ * assumido a partir de documentacao:
+ * - /senador/{codigo}/despesas e /senador/{codigo}/frentes -> 404
+ *   confirmado. Nao existe dado aberto de despesas nem de frentes
+ *   parlamentares para senadores -- declarado ausente (null), nunca
+ *   fingido como zero.
+ * - /autorias e /votacoes tem aviso de descontinuacao no payload
+ *   (desativacao completa anunciada pra 2026-02-01, ja passada) mas
+ *   continuam retornando 200 com dado real nesta data. Os substitutos
+ *   sugeridos (/processo, /votacao) existem mas tem formato de resposta
+ *   diferente e nao foram conferidos a fundo -- uso o que funciona agora
+ *   e documento o risco, em vez de trocar por algo nao verificado no meio
+ *   da integracao.
+ * - Nenhum dos dois aceita dataInicio/dataFim (testado, sem efeito), mas
+ *   os dois aceitam `ano` -- por isso paginam por ano dentro da
+ *   legislatura atual, mesmo padrao de coletarDespesas. Sem esse filtro,
+ *   um senador de carreira longa devolve a carreira inteira (medido: 3326
+ *   votacoes sem filtro contra 353 so na legislatura atual).
+ * - /discursos aceita dataInicio/dataFim (AAAAMMDD) e retorna
+ *   `Pronunciamentos: null` (nao lista vazia) sem pronunciamento no
+ *   periodo.
+ * - /senador/lista/atual nao tem busca por nome; a lista inteira (81
+ *   senadores) e pequena o bastante pra filtrar no navegador.
+ * ------------------------------------------------------------------ */
+
+function normalizarLista(valor) {
+  if (!valor) return [];
+  return Array.isArray(valor) ? valor : [valor];
+}
+
+let _senadoresCache = null;
+async function todosSenadores() {
+  if (_senadoresCache) return _senadoresCache;
+  const d = await tentar(`${API_SENADO}/senador/lista/atual`);
+  const lista = normalizarLista(
+    d && d.ListaParlamentarEmExercicio && d.ListaParlamentarEmExercicio.Parlamentares
+      && d.ListaParlamentarEmExercicio.Parlamentares.Parlamentar,
+  );
+  _senadoresCache = lista.map((p) => {
+    const ip = p.IdentificacaoParlamentar || {};
+    return {
+      id: ip.CodigoParlamentar,
+      nome: ip.NomeParlamentar,
+      nomeCompleto: ip.NomeCompletoParlamentar || ip.NomeParlamentar,
+      siglaPartido: ip.SiglaPartidoParlamentar || null,
+      siglaUf: ip.UfParlamentar || (p.Mandato && p.Mandato.UfParlamentar) || null,
+      urlFoto: ip.UrlFotoParlamentar || null,
+    };
+  });
+  return _senadoresCache;
+}
+
+async function buscarSenadores(nome) {
+  const termoOriginal = String(nome || '').trim();
+  const chave = normalizarBusca(termoOriginal);
+  if (!chave) return [];
+  const todos = await todosSenadores();
+
+  const diretos = todos.filter((s) => normalizarBusca(s.nome).includes(chave)
+    || normalizarBusca(s.nomeCompleto).includes(chave));
+  if (diretos.length) {
+    return diretos.map((s) => ({ ...s, _busca: 'direta' }));
+  }
+
+  return todos.map((s) => ({
+    ...s,
+    _scoreBusca: distanciaLevenshtein(chave, normalizarBusca(s.nome)),
+    _busca: 'aproximacao',
+  }))
+    .filter((s) => s._scoreBusca <= Math.max(2, Math.floor(chave.length * 0.18)))
+    .sort((a, b) => a._scoreBusca - b._scoreBusca || a.nome.localeCompare(b.nome, 'pt-BR'))
+    .slice(0, 8);
+}
+
+export async function buscarParlamentares(nome) {
+  const [deputados, senadores] = await Promise.all([
+    buscarDeputados(nome).catch(() => []),
+    buscarSenadores(nome).catch(() => []),
+  ]);
+  return [
+    ...deputados.map((d) => ({ ...d, casa: 'camara' })),
+    ...senadores.map((s) => ({ ...s, casa: 'senado' })),
+  ];
+}
+
+async function coletarDiscursosSenado(codigo, limite = 300) {
+  const dataInicio = INICIO_LEGISLATURA.replace(/-/g, '');
+  const dataFim = iso(hoje()).replace(/-/g, '');
+  const d = await tentar(`${API_SENADO}/senador/${codigo}/discursos?${qs({ dataInicio, dataFim })}`);
+  const par = (d && d.DiscursosParlamentar && d.DiscursosParlamentar.Parlamentar) || {};
+  const lista = normalizarLista(par.Pronunciamentos && par.Pronunciamentos.Pronunciamento);
+  return lista.slice(0, limite).map((p) => ({
+    data: p.DataPronunciamento || (p.SessaoPlenaria && p.SessaoPlenaria.DataSessao) || null,
+    sumario: p.TextoResumo || null,
+    tipo: (p.TipoUsoPalavra && p.TipoUsoPalavra.Descricao) || null,
+    url: p.UrlTexto || null,
+  }));
+}
+
+async function coletarAutoriasSenado(codigo, limite = 300) {
+  const inicio = performance.now();
+  const anoAtual = hoje().getFullYear();
+  const anoLegislatura = parseInt(INICIO_LEGISLATURA.slice(0, 4), 10);
+  const todas = [];
+  for (let ano = anoAtual; ano >= anoLegislatura; ano--) {
+    if (orcamentoEsgotado(inicio, 10000)) break;
+    const d = await tentar(`${API_SENADO}/senador/${codigo}/autorias?${qs({ ano })}`);
+    const par = (d && d.MateriasAutoriaParlamentar && d.MateriasAutoriaParlamentar.Parlamentar) || {};
+    todas.push(...normalizarLista(par.Autorias && par.Autorias.Autoria));
+  }
+  return todas.slice(0, limite).map((a) => {
+    const m = a.Materia || {};
+    return {
+      id: m.Codigo, type: m.Sigla, number: m.Numero, year: m.Ano,
+      summary: m.Ementa, data: m.Data,
+      autorPrincipal: a.IndicadorAutorPrincipal === 'Sim',
+    };
+  });
+}
+
+async function coletarVotosSenado(codigo, limite = 300) {
+  const inicio = performance.now();
+  const anoAtual = hoje().getFullYear();
+  const anoLegislatura = parseInt(INICIO_LEGISLATURA.slice(0, 4), 10);
+  const todos = [];
+  for (let ano = anoAtual; ano >= anoLegislatura; ano--) {
+    if (orcamentoEsgotado(inicio, 10000)) break;
+    const d = await tentar(`${API_SENADO}/senador/${codigo}/votacoes?${qs({ ano })}`);
+    const par = (d && d.VotacaoParlamentar && d.VotacaoParlamentar.Parlamentar) || {};
+    todos.push(...normalizarLista(par.Votacoes && par.Votacoes.Votacao));
+  }
+  return todos.slice(0, limite).map((v) => {
+    const m = v.Materia || {};
+    return {
+      data: (v.SessaoPlenaria && v.SessaoPlenaria.DataSessao) || null,
+      materia: m.Sigla ? `${m.Sigla} ${m.Numero}/${m.Ano}` : null,
+      ementa: m.Ementa || null,
+      descricao: v.DescricaoVotacao || null,
+      resultado: v.DescricaoResultado || null,
+      voto: v.SiglaDescricaoVoto || 'registrado',
+    };
+  });
+}
+
+async function coletarComissoesSenado(codigo) {
+  const d = await tentar(`${API_SENADO}/senador/${codigo}/comissoes`);
+  const par = (d && d.MembroComissaoParlamentar && d.MembroComissaoParlamentar.Parlamentar) || {};
+  const lista = normalizarLista(par.MembroComissoes && par.MembroComissoes.Comissao);
+  return lista.filter((c) => !c.DataFim).map((c) => ({
+    sigla: (c.IdentificacaoComissao && c.IdentificacaoComissao.SiglaComissao) || null,
+    nome: (c.IdentificacaoComissao && c.IdentificacaoComissao.NomeComissao) || null,
+    titulo: c.DescricaoParticipacao || null,
+  }));
+}
+
+export async function analisarSenadorAoVivo(senador, onProgress = () => {}) {
+  await carregarRegras();
+  const t0 = performance.now();
+  const prog = (m) => onProgress(m);
+  const codigo = senador.id;
+
+  const perfil = {
+    id: codigo,
+    name: senador.nome,
+    party: senador.siglaPartido || null,
+    state: senador.siglaUf || null,
+    role: 'Senador(a)',
+    photo: senador.urlFoto || null,
+  };
+
+  prog('coletando discursos, autorias, votacoes e comissoes do Senado');
+  const [discursos, autorias, votos, comissoes, noticias] = await Promise.all([
+    coletarDiscursosSenado(codigo),
+    coletarAutoriasSenado(codigo),
+    coletarVotosSenado(codigo),
+    coletarComissoesSenado(codigo),
+    coletarNoticiasPublicas(perfil.name),
+  ]);
+
+  prog('extraindo promessas dos discursos');
+  const textoDiscursos = discursos.map((d) => d.sumario || '').join('\n');
+  const { promessas, descartes } = extrairPromessas(textoDiscursos);
+
+  let orcamento = null;
+  if (promessas.length) {
+    prog('consultando orcamento estadual no SICONFI');
+    orcamento = await coletarOrcamento(perfil.state);
+  }
+
+  const contexto = { comissoes, frentes: [] };
+  prog('cruzando discurso, acao registrada e vinculos');
+  const cross = cruzar({
+    discursos: discursos.map((d) => ({ transcricao: null, sumario: d.sumario })),
+    proposicoes: autorias,
+    contexto,
+    promessas,
+  });
+
+  const evidencias = [
+    ...autorias.map((a) => ({
+      source: 'Autoria (Senado)', type: 'projeto',
+      content: `${a.type || 'Materia'} ${a.number || ''}/${a.year || ''}: ${(a.summary || '').slice(0, 180)}`,
+    })),
+    ...discursos.map((d) => ({
+      source: 'Discurso (Senado)', type: 'discurso',
+      content: `${(d.data || '').slice(0, 10)} - ${(d.sumario || '').slice(0, 180)}`,
+      url: d.url || undefined,
+    })),
+    ...comissoes.map((c) => ({
+      source: 'Comissao/grupo parlamentar', type: 'vinculo',
+      content: `${c.titulo || 'Membro'} - ${c.nome}`,
+    })),
+    {
+      source: 'Cobertura de dados', type: 'cobertura',
+      content: 'Despesas de gabinete e frentes parlamentares nao tem endpoint publico de dados abertos para o Senado (a Camara tem) -- nao incluidas nesta analise. Ausente, nao zero.',
+    },
+    ...noticias.map((n) => ({
+      source: n.fonte, type: 'noticia_publica',
+      content: `${n.title}${n.pubDate ? ' - ' + n.pubDate : ''}`,
+      url: n.link,
+    })),
+  ];
+
+  return {
+    politician: perfil,
+    score: null,
+    label: promessas.length ? null : 'Sem promessas detectadas',
+    promises: promessas,
+    discarded: descartes,
+    evidence: evidencias,
+    viability: [],
+    inconsistencies: [],
+    expenses: null,
+    cross_reference: cross,
+    contexto,
+    noticias_publicas: noticias,
+    record: {
+      attendance_rate: null,
+      sessions_checked: null,
+      propositions_total: autorias.length,
+      propositions_analyzed: autorias.length,
+      propositions_decided: null,
+      propositions_approved: null,
+      total_votes: votos.length,
+      inconsistencies: 0,
+    },
+    orcamento,
+    ao_vivo: true,
+    casa: 'senado',
+    duration_s: Math.round((performance.now() - t0) / 100) / 10,
+    coletado_em: new Date().toISOString(),
+  };
+}
+
+async function coletarPresenca(depId, prog, maxSessoes = 80) {
   // Não existe endpoint de presença. O caminho é listar as sessões
   // deliberativas (codTipoEvento=110) e conferir a lista de presentes de cada
   // uma. Sem esse filtro, /eventos devolve os 100 eventos mais recentes de
   // todos os tipos e as sessões somem no meio.
+  //
+  // Janela e teto de sessões estendidos (180d/20 sessões -> 730d/80 sessões):
+  // rigor histórico de verdade -- 20 sessões em 6 meses é pouco pra flagrar
+  // mudança de comportamento. As requisições continuam concorrentes via
+  // Promise.all; o Limiter(6) já existente enfileira sozinho, sem precisar
+  // de lógica nova aqui.
   const lst = await tentar(`${API}/eventos?${qs({
-    dataInicio: diasAtras(180), dataFim: iso(hoje()),
+    dataInicio: diasAtras(730), dataFim: iso(hoje()),
     codTipoEvento: 110, itens: 100, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
   })}`);
   const sessoes = ((lst && lst.dados) || []).slice(0, maxSessoes);
@@ -349,11 +625,25 @@ async function coletarPresenca(depId, prog, maxSessoes = 20) {
   };
 }
 
-async function coletarProposicoes(depId, limite = 20) {
-  const d = await tentar(`${API}/proposicoes?${qs({
-    idDeputadoAutor: depId, itens: limite, ordem: 'DESC', ordenarPor: 'id',
-  })}`);
-  return ((d && d.dados) || []).map((p) => ({
+async function coletarProposicoes(depId, limite = 300) {
+  // Pagina de verdade em vez de trazer só as "20 mais recentes" -- um
+  // deputado de carreira longa tem milhares (~2.684 medido com Arlindo
+  // Chinaglia, id 73433, contra a API real em 2026-07-29). Teto de 300 (15x
+  // o valor antigo) equilibra profundidade com a promessa de análise
+  // instantânea -- histórico ainda mais fundo é papel da Análise Profunda.
+  const inicio = performance.now();
+  const todas = [];
+  for (let pagina = 1; todas.length < limite; pagina++) {
+    if (orcamentoEsgotado(inicio, 12000)) break; // teto de 12s pra esta fonte
+    const d = await tentar(`${API}/proposicoes?${qs({
+      idDeputadoAutor: depId, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'id',
+    })}`);
+    const dados = (d && d.dados) || [];
+    if (!dados.length) break;
+    todas.push(...dados);
+    if (dados.length < 100) break; // última página
+  }
+  return todas.slice(0, limite).map((p) => ({
     id: p.id, type: p.siglaTipo, number: p.numero, year: p.ano,
     summary: p.ementa,
   }));
@@ -371,25 +661,71 @@ async function contarProposicoes(depId) {
   return m ? parseInt(m[1], 10) : 0;
 }
 
-async function coletarDespesas(depId) {
-  const ano = hoje().getFullYear();
-  const d = await tentar(`${API}/deputados/${depId}/despesas?${qs({
-    ano, itens: 100, ordem: 'DESC', ordenarPor: 'dataDocumento',
-  })}`);
-  return ((d && d.dados) || []).map((x) => ({
-    valor: x.valorLiquido, tipo: x.tipoDespesa, fornecedor: x.nomeFornecedor,
+async function coletarDespesas(depId, limite = 400) {
+  // A API da Câmara pagina despesas por ANO (não por intervalo de datas
+  // como discursos/proposições) -- `ano` é obrigatório, senão o endpoint
+  // decide sozinho e o resultado varia. Versão anterior pedia só o ano
+  // corrente com itens:100 e sem paginação -- um parlamentar com muitos
+  // lançamentos no ano perdia o resto em silêncio, e nada de anos
+  // anteriores. Agora cobre os últimos 3 anos (mesma ordem de grandeza da
+  // janela de discursos/proposições) com paginação real dentro de cada ano.
+  const anoAtual = hoje().getFullYear();
+  const anos = [anoAtual, anoAtual - 1, anoAtual - 2];
+  const inicio = performance.now();
+  const todas = [];
+  for (const ano of anos) {
+    if (orcamentoEsgotado(inicio, 12000)) break; // teto de 12s pra esta fonte
+    for (let pagina = 1; todas.length < limite; pagina++) {
+      if (orcamentoEsgotado(inicio, 12000)) break;
+      const d = await tentar(`${API}/deputados/${depId}/despesas?${qs({
+        ano, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'dataDocumento',
+      })}`);
+      const dados = (d && d.dados) || [];
+      if (!dados.length) break;
+      todas.push(...dados);
+      if (dados.length < 100) break; // última página deste ano
+    }
+    if (todas.length >= limite) break;
+  }
+  return todas.slice(0, limite).map((x) => ({
+    valor: x.valorLiquido,
+    valorBruto: x.valorDocumento,
+    valorGlosa: x.valorGlosa,
+    tipo: x.tipoDespesa,
+    fornecedor: x.nomeFornecedor,
+    cnpjCpf: x.cnpjCpfFornecedor || null,
+    numDocumento: x.numDocumento || null,
     data: x.dataDocumento,
+    ano: x.ano,
+    mes: x.mes,
+    url: x.urlDocumento || null,
   }));
 }
 
-async function coletarDiscursos(depId) {
+async function coletarDiscursos(depId, limite = 300) {
   // dataInicio/dataFim são obrigatórios: sem eles a API responde 200 com zero
   // registros, o que parece "deputado sem discurso" e não é.
-  const d = await tentar(`${API}/deputados/${depId}/discursos?${qs({
-    dataInicio: diasAtras(365), dataFim: iso(hoje()),
-    itens: 20, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
-  })}`);
-  return ((d && d.dados) || []).map((s) => ({
+  //
+  // Janela e paginação estendidas (365d/1 página de 20 -> 3 anos/paginação
+  // real até 300): um deputado ativo facilmente supera 20 discursos, e a
+  // versão anterior descartava o resto em silêncio -- sem sequer estender a
+  // janela, o teto de itens já escondia dado dentro do próprio período
+  // antigo.
+  const inicio = performance.now();
+  const dataInicio = diasAtras(1095);
+  const dataFim = iso(hoje());
+  const todos = [];
+  for (let pagina = 1; todos.length < limite; pagina++) {
+    if (orcamentoEsgotado(inicio, 10000)) break; // teto de 10s pra esta fonte
+    const d = await tentar(`${API}/deputados/${depId}/discursos?${qs({
+      dataInicio, dataFim, itens: 100, pagina, ordem: 'DESC', ordenarPor: 'dataHoraInicio',
+    })}`);
+    const dados = (d && d.dados) || [];
+    if (!dados.length) break;
+    todos.push(...dados);
+    if (dados.length < 100) break; // última página
+  }
+  return todos.slice(0, limite).map((s) => ({
     data: s.dataHoraInicio, transcricao: s.transcricao, sumario: s.sumario,
     tipo: s.tipoDiscurso,
   }));
@@ -575,16 +911,72 @@ function cruzar({ discursos, proposicoes, contexto, promessas }) {
   };
 }
 
+/* Duas famílias de anomalia, cada uma como objeto estruturado (não mais
+   string pronta) para a UI poder renderizar selo, valor e detalhamento por
+   fornecedor separadamente:
+   1) valor_atipico -- despesa isolada muito acima do padrão do próprio
+      parlamentar (limiar estatístico, mesma lógica de antes).
+   2) concentracao -- mesmo fornecedor aparecendo muitas vezes ou
+      concentrando uma fatia grande do total analisado (novo).
+   Isto compara despesas DENTRO do que já foi coletado deste parlamentar --
+   não é cruzamento com outros parlamentares nem busca externa. Isso é
+   escopo da Análise Profunda, que tem orçamento de tempo maior. */
 function detectarAnomalias(despesas) {
-  if (despesas.length < 5) return [];
-  const vals = despesas.map((d) => d.valor).filter((v) => v > 0);
-  if (!vals.length) return [];
+  if (!despesas || despesas.length < 5) return [];
+  const comValor = despesas.filter((d) => d.valor > 0);
+  if (!comValor.length) return [];
+
+  const anomalias = [];
+  const vals = comValor.map((d) => d.valor);
   const media = vals.reduce((a, b) => a + b, 0) / vals.length;
   const dp = Math.sqrt(vals.reduce((a, v) => a + (v - media) ** 2, 0) / vals.length);
-  const limite = media + 2 * dp;
-  return despesas.filter((d) => d.valor > limite).slice(0, 5).map((d) =>
-    `⚠️ Despesa atípica: R$ ${d.valor.toLocaleString('pt-BR',
-      { minimumFractionDigits: 2 })} — ${d.tipo} — ${d.fornecedor}`);
+  const limiteValor = media + 2 * dp;
+
+  comValor
+    .filter((d) => d.valor > limiteValor)
+    .sort((a, b) => b.valor - a.valor)
+    .slice(0, 8)
+    .forEach((d) => {
+      anomalias.push({
+        type: 'valor_atipico',
+        supplier: d.fornecedor || 'fornecedor não identificado',
+        cnpjCpf: d.cnpjCpf || null,
+        amount: d.valor,
+        date: d.data || null,
+        expenseType: d.tipo || null,
+        description: `Valor ${(d.valor / media).toFixed(1)}x acima da média das despesas analisadas deste parlamentar (R$ ${media.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}).`,
+        severity: d.valor > media + 3 * dp ? 'alta' : 'media',
+      });
+    });
+
+  const porFornecedor = new Map();
+  comValor.forEach((d) => {
+    const chave = (d.fornecedor || '').trim();
+    if (!chave) return;
+    if (!porFornecedor.has(chave)) porFornecedor.set(chave, []);
+    porFornecedor.get(chave).push(d);
+  });
+  const totalGeral = vals.reduce((a, b) => a + b, 0) || 1;
+  porFornecedor.forEach((lista, fornecedor) => {
+    const total = lista.reduce((a, d) => a + d.valor, 0);
+    const participacao = total / totalGeral;
+    // 5+ pagamentos ou 25%+ do total analisado no mesmo fornecedor: fora do
+    // padrão esperado de pulverização normal de despesas de gabinete.
+    if (lista.length >= 5 || participacao >= 0.25) {
+      anomalias.push({
+        type: 'concentracao',
+        supplier: fornecedor,
+        cnpjCpf: lista[0].cnpjCpf || null,
+        amount: total,
+        occurrences: lista.length,
+        expenseType: lista[0].tipo || null,
+        description: `${lista.length} pagamento(s) ao mesmo fornecedor nas despesas analisadas, somando R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} (${Math.round(participacao * 100)}% do total analisado).`,
+        severity: (participacao >= 0.4 || lista.length >= 10) ? 'alta' : 'media',
+      });
+    }
+  });
+
+  return anomalias.sort((a, b) => (b.amount || 0) - (a.amount || 0)).slice(0, 12);
 }
 
 /* ------------------------------------------------------------------ *
@@ -683,6 +1075,9 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     evidence: evidencias,
     viability: [],
     inconsistencies: anomalias,
+    // Lista completa (não só o recorte de 10 usado em evidencias) -- alimenta
+    // o modal de Gastos, que precisa do detalhamento, não só de uma amostra.
+    expenses: despesas,
     cross_reference: cross,
     contexto,
     noticias_publicas: noticias,
@@ -704,6 +1099,7 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     },
     orcamento,
     ao_vivo: true,
+    casa: 'camara',
     duration_s: Math.round((performance.now() - t0) / 100) / 10,
     coletado_em: new Date().toISOString(),
   };

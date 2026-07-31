@@ -65,10 +65,13 @@ body {
 .brand-text strong { font-size: 15px; letter-spacing: .2px; }
 .brand-text em { font-style: normal; font-size: 11.5px; color: var(--tx-3); }
 
-.search { flex: 1 1 220px; min-width: 180px; }
+.search {
+  flex: 1 1 220px; min-width: 180px;
+  display: flex; align-items: center; gap: 10px;
+}
 
 .search input {
-  width: 100%; padding: 9px 12px;
+  flex: 1 1 auto; min-width: 0; padding: 9px 12px;
   background: var(--bg-2); color: var(--tx);
   border: 1px solid var(--line); border-radius: 9px;
   font-size: 14px; outline: none;
@@ -117,6 +120,14 @@ body {
 .stat b { display: block; font-size: 21px; font-weight: 650; letter-spacing: -.3px; }
 .stat span { font-size: 11.5px; color: var(--tx-3); text-transform: uppercase; letter-spacing: .5px; }
 
+/* Substitui a barra de stats quando nao ha parlamentar carregado -- uma
+   barra cheia de zero/traco parece painel quebrado; um convite a buscar nao. */
+.stats-empty {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 18px;
+  font-size: 13.5px; color: var(--tx-2); text-align: center;
+}
+
 .notice {
   background: #12161d; border: 1px solid var(--line);
   border-left: 3px solid var(--accent);
@@ -125,65 +136,111 @@ body {
 }
 .notice strong { color: var(--tx); }
 
-/* ---------------- grade de cards ---------------- */
+/* ---------------- grade de cards ----------------
+   Zonas do card, de cima para baixo:
+     1) tarja de status -- reforco visual da cor do score/presenca;
+        nunca e a unica pista (o rotulo textual junto ao numero
+        continua sendo a fonte de verdade, por acessibilidade)
+     2) identificacao -- avatar, nome, partido/UF, selo de casa
+     3) metrica principal -- rotulo + valor + barra de progresso
+     4) fatos de apoio -- chips com presenca, proposicoes, votos,
+        promessas, achados, cobertura */
 
 .card-grid {
-  display: grid; gap: 14px;
+  display: grid; gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
 .card {
+  position: relative;
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); overflow: hidden;
   cursor: pointer; text-align: left; padding: 0;
   color: inherit; font: inherit;
-  transition: border-color .15s, transform .15s, background .15s;
+  transition: border-color .15s ease, transform .15s ease,
+              background .15s ease, box-shadow .15s ease;
   display: flex; flex-direction: column;
 }
+
+/* Tarja de 3px no topo com a mesma cor do score -- pista adicional
+   para varrer a grade rapidamente. Complementa o rotulo textual da
+   metrica, nunca o substitui. */
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--tx-3);
+}
+.card.card-ok::before  { background: var(--ok); }
+.card.card-mid::before { background: var(--warn); }
+.card.card-bad::before { background: var(--bad); }
+.card.card-na::before  { background: var(--tx-3); }
+
 .card:hover {
   border-color: var(--line-hi); background: var(--card-hi);
   transform: translateY(-2px);
+  box-shadow: var(--shadow);
 }
 .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-.card-top { display: flex; gap: 12px; padding: 14px; align-items: flex-start; }
+/* -- zona 2: identificacao -- */
 
-.avatar {
-  width: 46px; height: 46px; flex: 0 0 46px;
-  border-radius: 10px; display: grid; place-items: center;
-  background: linear-gradient(145deg, #1e2532, #151a22);
-  border: 1px solid var(--line-hi);
-  font-weight: 650; font-size: 15px; color: var(--tx-2);
+.card-head { display: flex; gap: 14px; align-items: center; padding: 16px 16px 12px; }
+
+.card .avatar {
+  width: 44px; height: 44px; flex: 0 0 44px;
+  border-radius: 12px;
+  font-size: 15px; font-weight: 700; letter-spacing: .2px;
 }
 
 .card-id { min-width: 0; flex: 1; }
-.card-id h3 {
-  margin: 0 0 3px; font-size: 15px; font-weight: 600;
+.card-name {
+  margin: 0 0 4px; font-size: 15.5px; font-weight: 650; letter-spacing: -.1px;
+  color: var(--tx);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
-.card-id p { margin: 0; font-size: 12px; color: var(--tx-3); }
-
-.score-badge {
-  flex: 0 0 auto; text-align: right; min-width: 54px;
+.card-meta {
+  display: flex; align-items: center; gap: 6px; row-gap: 4px; flex-wrap: wrap;
+  font-size: 12px; color: var(--tx-2); line-height: 1.3;
 }
-.score-badge b { display: block; font-size: 19px; font-weight: 650; letter-spacing: -.4px; }
-.score-badge span { font-size: 10px; color: var(--tx-3); }
+.card-party { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* -- zona 3: metrica principal -- */
+
+.card-metric { padding: 12px 16px; border-top: 1px solid var(--line); }
+
+.metric-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 10px; margin-bottom: 7px;
+}
+.metric-label {
+  font-size: 10.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--tx-3);
+}
+.metric-value {
+  font-size: 20px; font-weight: 700; letter-spacing: -.3px;
+  font-variant-numeric: tabular-nums;
+}
+.metric-value small {
+  font-size: 11px; font-weight: 600; letter-spacing: 0;
+  color: var(--tx-3); margin-left: .3em;
+}
 
 .s-ok  { color: var(--ok); }
 .s-mid { color: var(--warn); }
 .s-bad { color: var(--bad); }
 .s-na  { color: var(--tx-3); }
 
-.bar { height: 3px; background: var(--line); }
-.bar i { display: block; height: 100%; }
+.bar { height: 5px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: inherit; }
 .bar .f-ok  { background: var(--ok); }
 .bar .f-mid { background: var(--warn); }
 .bar .f-bad { background: var(--bad); }
 .bar .f-na  { background: var(--tx-3); }
 
+/* -- zona 4: fatos de apoio -- */
+
 .card-foot {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  padding: 11px 14px 14px; margin-top: auto;
+  display: flex; gap: 6px; flex-wrap: wrap;
+  padding: 12px 16px 16px; margin-top: auto;
 }
 
 .tag {
@@ -192,6 +249,14 @@ body {
 }
 .tag.alert { border-color: #4a3436; color: var(--bad); background: #1d1516; }
 .tag.cov   { border-color: #333a45; }
+
+/* Refinamento de forma exclusivo dos chips dentro do card (nao afeta
+   .tag em outros contextos, como o selo "modo profundo" do modal ou
+   a lista de resultados da busca ao vivo). */
+.card-foot .tag {
+  font-weight: 500; line-height: 1.5;
+  padding: 4px 9px; border-radius: 8px; white-space: nowrap;
+}
 
 /* ---------------- modal ---------------- */
 
@@ -268,13 +333,45 @@ body {
 }
 .plist .p-meta { margin-top: 5px; font-size: 11.5px; color: var(--tx-3); display: flex; gap: 10px; flex-wrap: wrap; }
 
-.evd { max-height: 260px; overflow-y: auto; }
-.evd div {
-  font-size: 12.5px; color: var(--tx-2);
+.evd div, .evd button.evd-item {
+  display: block; width: 100%; text-align: left; margin: 0;
+  font: inherit; font-size: 12.5px; color: var(--tx-2);
   padding: 8px 0; border-bottom: 1px solid var(--line);
 }
-.evd div:last-child { border-bottom: 0; }
+.evd div:last-child, .evd button.evd-item:last-child { border-bottom: 0; }
 .evd b { color: var(--tx-3); font-weight: 600; font-size: 11px; }
+
+/* Só itens de proposição (type === 'projeto') recebem esse botão --
+   discurso/despesa/vínculo continuam <div> simples, sem clique. */
+.evd button.evd-item {
+  background: none; border: 0; appearance: none; cursor: pointer;
+}
+.evd button.evd-item:hover, .evd button.evd-item:focus-visible { color: var(--tx); }
+.evd button.evd-item:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px;
+}
+.evd-item-hint { color: var(--accent); font-size: 11px; margin-left: 6px; white-space: nowrap; }
+
+/* ---------------- popup: significado do tipo de proposição ----------------
+   Painel secundário por CIMA do modal do dossiê. Reaproveita .modal /
+   .modal-panel / .modal-backdrop / .modal-x -- só soma z-index maior (95 >
+   90) para empilhar sem conflito, sem tocar na paleta de cores em :root. */
+.prop-modal { z-index: 95; }
+.prop-modal-panel { max-width: 520px; }
+.prop-head { padding-right: 40px; }
+.prop-head h2 { margin: 0 0 4px; font-size: 19px; letter-spacing: -.2px; }
+.prop-head p {
+  margin: 0; font-size: 11.5px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .5px; color: var(--tx-3);
+}
+.prop-explicacao { margin: 0; font-size: 13.5px; color: var(--tx-2); line-height: 1.6; }
+.prop-original {
+  margin: 0; font-size: 12.5px; color: var(--tx-2); line-height: 1.55;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 9px; padding: 11px 13px;
+}
+.prop-original b { color: var(--tx-3); font-weight: 600; font-size: 11px; }
+.prop-fonte a { color: var(--accent); font-size: 13px; }
 
 .legal {
   margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line);
@@ -293,6 +390,9 @@ body {
 
 @media (max-width: 560px) {
   .card-grid { grid-template-columns: 1fr; }
+  .card-head { padding: 14px 14px 11px; }
+  .card-metric { padding: 11px 14px; }
+  .card-foot { padding: 11px 14px 14px; }
   .modal-panel { padding: 18px 15px; max-height: 92vh; }
   .m-head { flex-wrap: wrap; }
   .m-score { margin-left: 0; text-align: left; width: 100%; }
@@ -452,54 +552,46 @@ body {
   padding-top: 10px;
 }
 
-/* ---------------- Análise Profunda (beta) ---------------- */
+/* ---------------- Modo profundo ---------------- */
 
-.deep-cta {
-  margin: 14px 0 4px;
-  padding: 14px 16px;
-  border: 1px solid var(--line-hi);
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--bg-2), var(--card));
+.deep-toggle {
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer; user-select: none;
+  font-size: 12.5px; color: var(--tx-2); white-space: nowrap;
 }
 
-.deep-cta-h {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
+.deep-toggle input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+.deep-toggle-track {
+  width: 34px; height: 19px; border-radius: 999px;
+  background: var(--line-hi); position: relative;
+  transition: background .15s;
+  flex: none;
 }
 
-.deep-cta-h strong { font-size: 15px; }
+.deep-toggle-thumb {
+  position: absolute; top: 2px; left: 2px;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: var(--tx-2);
+  transition: transform .15s, background .15s;
+}
 
-.deep-cta p { margin: 8px 0; font-size: 13px; color: var(--tx-2); line-height: 1.55; }
-.deep-cta ul { margin: 6px 0 10px; padding-left: 18px; font-size: 13px; color: var(--tx-2); line-height: 1.6; }
-.deep-cta li { margin-bottom: 4px; }
+.deep-toggle input:checked + .deep-toggle-track { background: #6a4fc7; }
+.deep-toggle input:checked + .deep-toggle-track .deep-toggle-thumb {
+  transform: translateX(15px); background: #d8cdfa;
+}
 
-.deep-cta-limite {
-  font-size: 12px;
-  color: var(--tx-3);
-  border-left: 3px solid var(--line-hi);
-  padding: 8px 10px;
-  margin: 10px 0;
-  background: var(--bg-2);
-  border-radius: 6px;
+.deep-toggle input:focus-visible + .deep-toggle-track { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.deep-progress {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: #b79ef0;
+  border: 1px solid #4a3d63; background: #211a2e;
+  border-radius: 8px; padding: 8px 10px; margin-bottom: 14px;
   line-height: 1.5;
 }
 
-.btn-deep {
-  margin-top: 6px;
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--line-hi);
-  background: var(--card-hi);
-  color: var(--tx);
-  font-size: 12.5px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-deep:hover { border-color: var(--accent); color: var(--accent); }
+.deep-progress.warn { color: var(--warn); border-color: var(--line-hi); background: var(--bg-2); }
 
 /* Selo de dossiê profundo já publicado, distinto da análise instantânea. */
 .tag.deep {
@@ -519,3 +611,118 @@ body {
   padding: 8px 10px;
   margin-bottom: 14px;
 }
+
+/* ---------------- Evidências agrupadas + resumo ---------------- */
+
+.evd-group {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.evd-group summary {
+  cursor: pointer;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-2);
+}
+
+.evd-group summary::-webkit-details-marker { display: none; }
+
+.evd-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--tx-3);
+  background: var(--card-hi);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.evd-more { font-size: 12px; color: var(--tx-3); margin: 6px 12px 0; }
+
+.resumo {
+  border: 1px solid var(--line-hi);
+  border-radius: var(--radius);
+  background: var(--bg-2);
+  padding: 14px 16px;
+}
+
+.resumo p { margin: 6px 0; font-size: 13.5px; color: var(--tx-2); line-height: 1.55; }
+.resumo-aviso { font-size: 12px !important; color: var(--tx-3) !important; }
+
+/* ---------------- Gastos (modal dedicado) ---------------- */
+
+.gastos-btn {
+  width: 100%; text-align: left;
+  background: var(--bg-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 11px 14px;
+  color: var(--tx); font-size: 13.5px; font-weight: 600;
+  cursor: pointer;
+}
+.gastos-btn:hover { border-color: var(--line-hi); background: var(--card-hi); }
+
+.voltar-btn {
+  background: none; border: none; color: var(--accent);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  padding: 6px 0; margin-bottom: 10px; display: inline-block;
+}
+.voltar-btn:hover { text-decoration: underline; }
+
+.gastos-note { font-size: 12.5px; color: var(--tx-3); margin: 0 0 10px; }
+
+.table-wrapper { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+
+.gastos-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.gastos-table th, .gastos-table td {
+  padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.gastos-table th:nth-child(3), .gastos-table td:nth-child(3) { white-space: normal; min-width: 160px; }
+.gastos-table thead th {
+  background: var(--bg-2); color: var(--tx-3); font-weight: 600;
+  text-transform: uppercase; font-size: 10.5px; letter-spacing: .4px;
+}
+.gastos-table tbody tr:last-child td { border-bottom: 0; }
+.gastos-table tbody tr:hover { background: var(--card-hi); }
+.gastos-table tr.gasto-flag { background: #1d1516; }
+.gastos-table tr.gasto-flag:hover { background: #241a1b; }
+.gasto-valor { font-weight: 600; white-space: nowrap; }
+.gasto-doc { color: var(--tx-3); font-size: 10.5px; }
+
+/* ---------------- anomalias (Pontos de atenção) ---------------- */
+
+/* .finding já existe (achados de cruzamento) -- <details> reaproveita a
+   mesma caixa, só adiciona cursor e disclosure no summary. */
+.finding.anomaly summary {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; cursor: pointer; list-style: none; margin-bottom: 5px;
+}
+.finding.anomaly summary::-webkit-details-marker { display: none; }
+.finding.anomaly summary::before { content: '▸'; margin-right: 2px; color: var(--tx-3); font-size: 10px; }
+.finding.anomaly[open] summary::before { content: '▾'; }
+.finding.anomaly.sev-alta  { border-left-color: var(--bad); }
+.finding.anomaly.sev-media { border-left-color: var(--warn); }
+.anomaly-doc { color: var(--tx-3); font-size: 11px; font-weight: 400; }
+
+.anomaly-detail { margin-top: 6px; }
+.anomaly-item {
+  display: grid; grid-template-columns: 76px 1fr auto auto; gap: 10px;
+  align-items: center; font-size: 12px; color: var(--tx-2);
+  padding: 5px 0; border-top: 1px solid var(--line);
+}
+.anomaly-item:first-child { border-top: 0; }
+.anomaly-item a { color: var(--accent); white-space: nowrap; }
+
+/* ---------------- selo de câmara (Câmara/Senado) ---------------- */
+
+.casa-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px;
+  padding: 1px 6px; border-radius: 5px;
+  background: var(--card-hi); border: 1px solid var(--line); color: var(--tx-2);
+}
+.casa-badge.casa-senado { border-color: #3a3550; color: #b9a8f0; background: #1c1830; }
