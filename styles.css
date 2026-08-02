@@ -136,6 +136,37 @@ body {
 }
 .notice strong { color: var(--tx); }
 
+/* ---------------- onboarding (mensagem de primeira visita) ---------------- */
+.onboarding {
+  position: relative;
+  background: #12161d; border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px; padding: 16px 44px 16px 16px;
+  font-size: 13px; color: var(--tx-2); margin-bottom: 20px;
+}
+.onboarding strong { color: var(--tx); }
+.onboarding p { margin: 8px 0 0; line-height: 1.55; }
+.onboarding p:first-of-type { margin-top: 6px; }
+.onboarding a { color: var(--accent); text-decoration: none; }
+.onboarding a:hover { text-decoration: underline; }
+.onboarding-x {
+  position: absolute; top: 8px; right: 10px;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--line);
+  color: var(--tx-2); font-size: 17px; line-height: 1; cursor: pointer;
+}
+.onboarding-x:hover { color: var(--tx); border-color: var(--line-hi); }
+.onboarding-ok {
+  margin-top: 12px; padding: 7px 16px; border-radius: 8px;
+  background: transparent; border: 1px solid var(--accent);
+  color: var(--accent); font: inherit; font-weight: 600; font-size: 12.5px;
+  cursor: pointer;
+}
+.onboarding-ok:hover { background: var(--accent); color: #0b0d10; }
+.report-link { margin-top: 2px !important; }
+.report-link a { color: var(--accent); text-decoration: none; }
+.report-link a:hover { text-decoration: underline; }
+
 /* ---------------- grade de cards ----------------
    Zonas do card, de cima para baixo:
      1) tarja de status -- reforco visual da cor do score/presenca;
