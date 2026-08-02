@@ -468,6 +468,15 @@ function evidenceGroupsHTML(evidence) {
               const idx = evidence.indexOf(e);
               return `<button type="button" class="evd-item" data-evd-proj data-evd-idx="${idx}"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || '').slice(0, 240))}<span class="evd-item-hint">Ver significado &rarr;</span></button>`;
             }
+            if (t === 'discurso' && e.full) {
+              // Queixa real (2026-08-02): "os discursos são divididos ou
+              // cortados" -- o content aqui já vem truncado (180-300
+              // caracteres) só para caber na lista. e.full carrega o texto
+              // sem corte; o botão abre um popup dedicado para lê-lo inteiro,
+              // igual ao popup de proposição, sem inflar a lista de evidências.
+              const idx = evidence.indexOf(e);
+              return `<button type="button" class="evd-item" data-evd-discurso data-evd-idx="${idx}"><b>${esc(e.source || '')}</b> \u2014 ${esc(String(e.content || '').slice(0, 240))}<span class="evd-item-hint">Ver discurso completo &rarr;</span></button>`;
+            }
             return `<div>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">` : ''}<b>${esc(e.source || '')}</b>${e.url ? '</a>' : ''} \u2014 ${esc(String(e.content || '').slice(0, 240))}</div>`;
           }).join('')}
           ${resto > 0 ? `<p class="evd-more">+ ${resto} n\u00e3o exibido(s) aqui.</p>` : ''}
@@ -781,6 +790,34 @@ function closePropModal() {
   $('#propModal').hidden = true;
 }
 
+/* ---------------- popup: discurso completo ----------------
+   Mesma técnica do popup de proposição (camada por CIMA do modal do
+   dossiê), para resolver a queixa de discurso "dividido ou cortado": a
+   lista de evidências só mostra um trecho curto por razão de espaço, mas
+   e.full carrega o texto inteiro. */
+function speechModalHTML(e) {
+  const texto = String(e.full || e.content || '');
+  return `
+    <div class="prop-head m-head">
+      <h2 id="speechTitle">${esc(e.source || 'Discurso')}</h2>
+    </div>
+    <div class="m-sec">
+      <h4>Texto completo</h4>
+      <p class="speech-full">${esc(texto)}</p>
+    </div>
+    ${e.url ? `<div class="m-sec prop-fonte"><a href="${esc(e.url)}" target="_blank" rel="noopener">Ver fonte oficial &rarr;</a></div>` : ''}`;
+}
+
+function openSpeechModal(e) {
+  $('#speechModalBody').innerHTML = speechModalHTML(e);
+  $('#speechModal').hidden = false;
+  $('.speech-modal-panel').scrollTop = 0;
+}
+
+function closeSpeechModal() {
+  $('#speechModal').hidden = true;
+}
+
 /* ---------------- eventos ---------------- */
 
 document.addEventListener('click', (e) => {
@@ -799,7 +836,19 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  // Popup de discurso completo -- mesmo desacoplamento de data-close que o
+  // popup de proposição acima, via data-speech-close próprio.
+  const discBtn = e.target.closest('[data-evd-discurso]');
+  if (discBtn) {
+    if (!modalDossieAtual) return;
+    const idx = Number(discBtn.dataset.evdIdx);
+    const ev = (modalDossieAtual.evidence || [])[idx];
+    if (ev) openSpeechModal(ev);
+    return;
+  }
+
   if (e.target.closest('[data-prop-close]')) return closePropModal();
+  if (e.target.closest('[data-speech-close]')) return closeSpeechModal();
 
   if (e.target.closest('[data-close]')) return closeModal();
 
@@ -818,6 +867,35 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  // FAQ de reanálise direcionada: pedir uma nova Análise Profunda de quem
+  // já tem uma, desta vez com um foco específico (ver deepBadgeHTML).
+  if (e.target.closest('[data-deep-rerun]')) {
+    const faq = $('#deepFaq');
+    if (faq) faq.hidden = !faq.hidden;
+    return;
+  }
+
+  const chipFoco = e.target.closest('[data-foco-chip]');
+  if (chipFoco) {
+    const campo = $('#deepFocoTexto');
+    if (campo) { campo.value = chipFoco.dataset.focoChip; campo.focus(); }
+    return;
+  }
+
+  if (e.target.closest('[data-deep-faq-cancel]')) {
+    const faq = $('#deepFaq');
+    if (faq) faq.hidden = true;
+    return;
+  }
+
+  const confirmBtn = e.target.closest('[data-deep-faq-confirm]');
+  if (confirmBtn) {
+    const nome = confirmBtn.dataset.nome;
+    const foco = ($('#deepFocoTexto')?.value || '').trim();
+    pedirNovaAnaliseDirecionada(nome, foco);
+    return;
+  }
+
   const chip = e.target.closest('.chip');
   if (chip) {
     state.party = chip.dataset.p || null;
@@ -828,8 +906,9 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
-  // Popup de proposição fecha primeiro -- Escape nunca fecha o dossiê
-  // "por baixo" se o popup ainda estiver aberto por cima dele.
+  // Popups secundários fecham primeiro -- Escape nunca fecha o dossiê "por
+  // baixo" se um deles ainda estiver aberto por cima dele.
+  if (!$('#speechModal').hidden) return closeSpeechModal();
   if (!$('#propModal').hidden) return closePropModal();
   if (!$('#modal').hidden) closeModal();
 });
@@ -944,11 +1023,17 @@ async function buscarAnaliseProfunda(nome) {
 /* Selo mostrado quando já existe um dossiê de Análise Profunda publicado
    para o nome buscado. `deep.dossie` tem o schema completo do CLI Python
    (mesmo formato de data.json), então reaproveita subbrain/noticias_publicas
-   já presentes ali -- sem duplicar leitura de campo em dois lugares. */
+   já presentes ali -- sem duplicar leitura de campo em dois lugares.
+
+   Inclui um botão para pedir uma NOVA análise, desta vez direcionada: abre
+   um pequeno FAQ (chips de foco comum + campo livre) em vez de disparar
+   direto, para o pedido chegar ao redator de IA com um alvo claro em vez
+   de repetir a mesma análise genérica de novo. */
 function deepBadgeHTML(deep) {
   const d = deep.dossie || {};
   const noticias = d.noticias_publicas || [];
   const divergencias = (d.subbrain || {}).divergencias || [];
+  const focoAnterior = (d.metadata || {}).foco_solicitado;
   const quando = d.generated_at
     ? new Date(d.generated_at).toLocaleDateString('pt-BR')
     : null;
@@ -959,7 +1044,24 @@ function deepBadgeHTML(deep) {
       <b>Análise profunda disponível</b>${quando ? ` · ${esc(quando)}` : ''}
       ${noticias.length ? `· ${noticias.length} notícia(s) oficial(is)` : ''}
       ${divergencias.length ? `· ${divergencias.length} ponto(s) revisado(s) por segunda análise` : ''}
+      ${focoAnterior ? `<br><span class="deep-foco-tag">Direcionada para: "${esc(focoAnterior)}"</span>` : ''}
     </span>
+    <button type="button" class="deep-rerun-btn" data-deep-rerun>🎯 Pedir nova análise direcionada</button>
+  </div>
+  <div class="deep-faq" id="deepFaq" hidden>
+    <p class="deep-faq-intro">O que você quer que a nova análise foque? Escolha uma opção (ou escreva a sua) e confirme.</p>
+    <div class="deep-faq-chips">
+      <button type="button" class="deep-faq-chip" data-foco-chip="Gastos e despesas de gabinete">💰 Gastos</button>
+      <button type="button" class="deep-faq-chip" data-foco-chip="Coerência entre o que disse em discurso e como votou">🗳️ Discurso x voto</button>
+      <button type="button" class="deep-faq-chip" data-foco-chip="Notícias recentes sobre este parlamentar">📰 Notícias recentes</button>
+      <button type="button" class="deep-faq-chip" data-foco-chip="A promessa sobre: ">✅ Uma promessa específica</button>
+    </div>
+    <textarea id="deepFocoTexto" class="deep-faq-texto" rows="2" placeholder="Descreva o que você quer verificar (opcional)"></textarea>
+    <p class="deep-faq-aviso">O pedido de reanálise direcionada foi adicionado nesta versão do site; o serviço externo que dispara a análise ainda pode não suportar reanalisar quem já tem dossiê -- se isso acontecer, você verá um aviso em vez de travar em silêncio.</p>
+    <div class="deep-faq-actions">
+      <button type="button" class="deep-faq-cancel" data-deep-faq-cancel>Cancelar</button>
+      <button type="button" class="deep-faq-confirm" data-deep-faq-confirm data-nome="${esc(deep.solicitado_para || '')}">Confirmar pedido</button>
+    </div>
   </div>`;
 }
 
@@ -987,12 +1089,18 @@ let modalAtual = null;
 // pré-carregado e para um resultado de busca ao vivo recém-analisado).
 let modalDossieAtual = null;
 
-async function solicitarAnaliseProfunda(nome) {
+async function solicitarAnaliseProfunda(nome, foco, forcar) {
   try {
+    const body = { nome };
+    if (foco) body.foco = foco;
+    // "forcar" pede ao serviço externo para reanalisar mesmo já tendo
+    // dossiê -- ver aviso no topo de dual-brain-analysis.yml sobre o que
+    // falta no lado do Worker para isto valer ponta a ponta.
+    if (forcar) body.forcar = true;
     const r = await fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome }),
+      body: JSON.stringify(body),
     });
     return await r.json();
   } catch {
@@ -1029,6 +1137,50 @@ async function aguardarDossieProfundo(slug, dossieRef) {
   } finally {
     pollsEmAndamento.delete(slug);
   }
+}
+
+// Pedido explícito de REANÁLISE de quem já tem dossiê, desta vez com foco
+// (ver deepBadgeHTML e o FAQ que chama esta função). Diferente do fluxo
+// automático em analisar() -- aqui SEMPRE avisamos "forcar: true" ao
+// serviço externo, e tratamos "ja_existe" como um aviso explícito, não como
+// sucesso silencioso: o usuário pediu algo novo, então merece saber se o
+// pedido não pôde ser atendido ainda (ver nota em dual-brain-analysis.yml
+// sobre o que falta no Worker externo para isto valer ponta a ponta).
+async function pedirNovaAnaliseDirecionada(nome, foco) {
+  const slug = slugify(nome);
+  if (modalAtual !== slug || !modalDossieAtual) return;
+  const dossie = modalDossieAtual;
+  const corpo = $('#modalBody');
+
+  corpo.innerHTML = progressoProfundoHTML('aguardando') + modalHTML(dossie);
+  $('.modal-panel').scrollTop = 0;
+
+  const resp = await solicitarAnaliseProfunda(nome, foco, true);
+
+  if (modalAtual !== slug) return; // usuário já saiu -- não redesenha por cima de outra pessoa
+
+  if (resp.status === 'iniciado') {
+    aguardarDossieProfundo(slug, dossie);
+    return; // já está mostrando "aguardando" desde o início desta função
+  }
+
+  if (resp.status === 'ja_existe') {
+    // Aviso HONESTO: o usuário pediu uma reanálise nova e direcionada, mas
+    // o serviço (ainda) devolveu a mesma de sempre -- nunca mostrar isso
+    // como se fosse a análise nova que foi pedida.
+    dossie._deep = resp;
+    $('#modalBody').innerHTML = `
+      <div class="deep-faq-erro">
+        ⚠️ Este serviço ainda não suporta pedir uma nova análise de quem já
+        tem uma -- você está vendo a análise anterior, não a direcionada
+        para "${esc(foco || '(sem foco)')}" que você pediu agora.
+      </div>` + deepBadgeHTML(resp) + modalHTML(dossie);
+    return;
+  }
+
+  $('#modalBody').innerHTML =
+    progressoProfundoHTML(resp.erro?.includes('limite') ? 'limite' : 'erro')
+    + (dossie._deep ? deepBadgeHTML(dossie._deep) : '') + modalHTML(dossie);
 }
 
 function progressoProfundoHTML(estado) {
