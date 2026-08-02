@@ -564,6 +564,13 @@ export async function analisarSenadorAoVivo(senador, onProgress = () => {}) {
     ...discursos.map((d) => ({
       source: 'Discurso (Senado)', type: 'discurso',
       content: `${(d.data || '').slice(0, 10)} - ${(d.sumario || '').slice(0, 180)}`,
+      // Texto integral sem corte, para o popup "Ver discurso completo".
+      // No Senado isto ainda é o TextoResumo (o navegador não alcança o
+      // texto integral por CORS, ver comentário no topo do arquivo) -- mas
+      // já remove o limite de 180 caracteres, e fica pronto para quando o
+      // dossiê vier do backend Python (integrations/senado.py), que já
+      // busca o texto verbatim do lado do servidor.
+      full: d.transcricao || d.sumario || '',
       url: d.url || undefined,
     })),
     ...comissoes.map((c) => ({
@@ -1081,6 +1088,9 @@ export async function analisarAoVivo(deputado, onProgress = () => {}) {
     ...discursos.slice(0, 10).map((d) => ({
       source: 'Discurso', type: 'discurso',
       content: `${(d.data || '').slice(0, 10)} — ${(d.sumario || '').slice(0, 180)}`,
+      // Texto integral sem corte -- discursos da Câmara já trazem
+      // transcricao (texto real da fala) na própria resposta da API.
+      full: d.transcricao || d.sumario || '',
     })),
     ...contexto.comissoes.map((c) => ({
       source: 'Comissão', type: 'vinculo',
