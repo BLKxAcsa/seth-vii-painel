@@ -182,12 +182,25 @@ function ehNarracaoPassada(frase) {
   return false;
 }
 
+const NEGATIVA_RE = /(?<![\p{L}\p{N}_])n[ãa]o\s+(?:vou|irei|vamos|iremos|pretendo|prometo)(?![\p{L}\p{N}_])/iu;
+
+const FALA_CITADA_RE = /(?<![\p{L}\p{N}_])(?:dizia-se|se\s+dizia|diziam|costumava(?:m)?\s+dizer|ouvia-se\s+dizer|dizem\s+por\s+a[íi]|era\s+comum\s+ouvir|muita\s+gente\s+dizia|antigamente\s+se\s+dizia|algu[ée]m\s+(?:disse|dizia)|(?:ele|ela)\s+dizia)(?![\p{L}\p{N}_])/iu;
+
 function motivoRejeicao(frase) {
   if (frase.trimEnd().endsWith('?')) return 'pergunta retórica';
   for (const rx of RULES._reject) {
     if (rx.test(frase)) return 'padrão de rejeição';
   }
   if (ehNarracaoPassada(frase)) return 'narração de fato passado (já + verbo de entrega)';
+  // Negação: "não vou investir" casa o MESMO padrão de "vou investir" --
+  // uma recusa não é compromisso de entrega. Achado real (2026-08-02):
+  // discurso de senador tinha "não vou investir (...) dinheiro enterrado"
+  // contado como promessa antes desta correção.
+  if (NEGATIVA_RE.test(frase)) return 'promessa negativa (recusa, não é compromisso de entrega)';
+  // Fala citada/relatada: o orador está reportando a fala de outra pessoa
+  // (ou de si mesmo no passado) -- não é compromisso feito agora, mesmo que
+  // a citação contenha um marcador de compromisso.
+  if (FALA_CITADA_RE.test(frase)) return 'fala citada/relatada (não é compromisso do próprio orador)';
   if (!categorizar(frase)) return 'sem tema de política pública';
   if (!temVerboDeAcao(frase)) return 'sem verbo de ação de política pública';
   return null;
