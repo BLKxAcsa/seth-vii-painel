@@ -1129,6 +1129,29 @@ async function analisar(dep, deepDossieExistente) {
 
 /* ---------------- carga ---------------- */
 
+/* ---------------- onboarding (mensagem de primeira visita) ----------------
+   Explica o que o site faz, o disclaimer e avisa do tempo do Modo profundo
+   ANTES do visitante ligar o toggle -- assim ele nao acha que travou.
+   Versionado (v1): se o texto mudar de forma relevante no futuro, basta
+   trocar a chave para reexibir a todos. */
+(function initOnboarding() {
+  const KEY = 'seth_vii_onboarding_v1';
+  const box = $('#onboarding');
+  if (!box) return;
+  try {
+    if (!localStorage.getItem(KEY)) box.hidden = false;
+  } catch {
+    // localStorage indisponivel (modo privado restrito) -- mostra mesmo assim
+    box.hidden = false;
+  }
+  const dismiss = () => {
+    box.hidden = true;
+    try { localStorage.setItem(KEY, '1'); } catch { /* ignora */ }
+  };
+  $('#onboardingOk')?.addEventListener('click', dismiss);
+  $('#onboardingClose')?.addEventListener('click', dismiss);
+})();
+
 fetch('data.json')
   .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
   .then((d) => {
