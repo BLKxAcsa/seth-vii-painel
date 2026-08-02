@@ -58,7 +58,7 @@
     <p>Este painel cruza dados públicos (Câmara, Senado, SICONFI) para avaliar a
       viabilidade de promessas políticas. É uma análise probabilística, não uma
       acusação, e não substitui investigação jornalística.</p>
-    <p>Ativar o <strong>🔬 Modo profundo</strong> aciona uma segunda análise mais
+    <p>Ativar o <strong>🔎 Modo profundo</strong> aciona uma segunda análise mais
       completa que pode levar de <strong>5 a 15 minutos</strong>. Não é preciso
       esperar olhando a tela: o card e o dossiê se atualizam sozinhos quando ela
       terminar.</p>
@@ -101,10 +101,10 @@
   </div>
 </div>
 
-<!-- Popup secundario: significado da sigla de uma proposicao (PL, PEC, EMC...).
-     Fica por CIMA do modal do dossie (z-index maior, ver styles.css) sem
-     fecha-lo ou perder o estado dele -- data-prop-close e independente de
-     data-close, entao fechar este popup nunca fecha o modal principal. -->
+<!-- Popup secundário: significado da sigla de uma proposição (PL, PEC, EMC...).
+     Fica por CIMA do modal do dossiê (z-index maior, ver styles.css) sem
+     fechá-lo ou perder o estado dele -- data-prop-close é independente de
+     data-close, então fechar este popup nunca fecha o modal principal. -->
 <div id="propModal" class="modal prop-modal" hidden>
   <div class="modal-backdrop" data-prop-close></div>
   <div class="modal-panel prop-modal-panel" role="dialog" aria-modal="true" aria-labelledby="propTitle">
