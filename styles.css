@@ -404,6 +404,17 @@ body {
 .prop-original b { color: var(--tx-3); font-weight: 600; font-size: 11px; }
 .prop-fonte a { color: var(--accent); font-size: 13px; }
 
+/* ---------------- popup: discurso completo ----------------
+   Reaproveita .prop-modal (mesmo z-index 95) mas com painel mais largo e
+   mais alto que o de significado de proposição: discurso real pode passar
+   de 10 mil caracteres (medido em discursos reais de plenário), enquanto o
+   popup de proposição é só um parágrafo de glossário. */
+.speech-modal-panel { max-width: 720px; max-height: 82vh; overflow-y: auto; }
+.speech-full {
+  margin: 0; font-size: 13.5px; color: var(--tx-2); line-height: 1.65;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+
 .legal {
   margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--line);
   font-size: 11.5px; color: var(--tx-3);
@@ -641,6 +652,51 @@ body {
   border-radius: 8px;
   padding: 8px 10px;
   margin-bottom: 14px;
+}
+
+.deep-foco-tag { color: #9a7fd1; font-size: 11.5px; }
+
+.deep-rerun-btn {
+  margin-left: auto; flex-shrink: 0;
+  background: transparent; border: 1px solid #4a3d63; color: #b79ef0;
+  border-radius: 7px; padding: 5px 10px; font: inherit; font-size: 11.5px;
+  cursor: pointer; white-space: nowrap;
+}
+.deep-rerun-btn:hover { background: #2b2240; }
+
+.deep-faq {
+  border: 1px solid #4a3d63; background: #1a1524; border-radius: 9px;
+  padding: 12px 13px; margin: -4px 0 14px; font-size: 12.5px; color: var(--tx-2);
+}
+.deep-faq-intro { margin: 0 0 10px; }
+.deep-faq-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.deep-faq-chip {
+  background: #211a2e; border: 1px solid #4a3d63; color: #b79ef0;
+  border-radius: 999px; padding: 5px 11px; font-size: 11.5px; cursor: pointer;
+}
+.deep-faq-chip:hover { background: #2b2240; }
+.deep-faq-texto {
+  width: 100%; resize: vertical; font: inherit; font-size: 12.5px;
+  background: var(--card); color: var(--tx); border: 1px solid var(--line);
+  border-radius: 7px; padding: 8px 10px; margin-bottom: 8px;
+}
+.deep-faq-aviso { margin: 0 0 10px; font-size: 11px; color: var(--tx-3); line-height: 1.5; }
+.deep-faq-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.deep-faq-cancel {
+  background: transparent; border: 1px solid var(--line); color: var(--tx-2);
+  border-radius: 7px; padding: 6px 12px; font: inherit; font-size: 12px; cursor: pointer;
+}
+.deep-faq-confirm {
+  background: #4a3d63; border: 1px solid #6a4fc7; color: #efe9fb;
+  border-radius: 7px; padding: 6px 14px; font: inherit; font-size: 12px;
+  font-weight: 600; cursor: pointer;
+}
+.deep-faq-confirm:hover { background: #5a4a78; }
+
+.deep-faq-erro {
+  border: 1px solid #5a3a3a; background: #241a1a; color: #e0a8a8;
+  border-radius: 9px; padding: 10px 12px; margin-bottom: 14px; font-size: 12.5px;
+  line-height: 1.5;
 }
 
 /* ---------------- Evidências agrupadas + resumo ---------------- */
