@@ -1,0 +1,590 @@
+{
+  "slug": "tabata-amaral",
+  "solicitado_para": "Tabata Amaral",
+  "dossie": {
+    "politician": {
+      "id": 204534,
+      "name": "Tabata Amaral",
+      "party": "PSB",
+      "state": "SP",
+      "email": "dep.tabataamaral@camara.leg.br",
+      "uri": "https://dadosabertos.camara.leg.br/api/v2/deputados/204534",
+      "role": "Deputado Federal"
+    },
+    "record": {
+      "fulfillment_rate": null,
+      "propositions_decided": 0,
+      "propositions_approved": 0,
+      "propositions_ambiguous": 23,
+      "propositions_total": 497,
+      "min_sample_required": 5,
+      "attendance_rate": 100.0,
+      "sessions_checked": 91,
+      "inconsistencies": 2,
+      "total_propositions": 497,
+      "total_votes": 0
+    },
+    "promises": [
+      {
+        "text": "O que precisamos fazer é falar de adaptação, é, de novo, enxergar como nossas cidades serão afetadas, estabelecer prazo, alocar recurso, estabelecer diretrizes e garantir que, da agricultura à habitação, faremos tudo o que pudermos para proteger a nossa população.",
+        "category": "economia",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Vamos tirar da educação, vamos tirar de outro investimento da educação\".",
+        "category": "educação",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      },
+      {
+        "text": "Mas eu não poderia deixar de fazer este último apelo: vamos tirar o FUNDEB do teto de gastos, vamos investir na educação, vamos dizer para as nossas crianças que nós nos importamos com o seu futuro.",
+        "category": "educação",
+        "confidence": 0.65,
+        "is_conditional": false,
+        "is_negative": false,
+        "entities": {}
+      }
+    ],
+    "evidence": [
+      {
+        "source": "Cota Parlamentar",
+        "type": "despesa",
+        "content": "R$ 4,080.82 — PASSAGEM AÉREA - SIGEPA — Gol Linhas Aéreas [ANOMALIA]",
+        "relevance": 0.9
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4739/2026: Altera a Lei nº 14.133, de 1º de abril de 2021 (Lei de Licitações e Contratos Administrativos), a Lei nº 8.987, de 13 de fevereiro de 1995 (Lei de Concessões e Permissões de Serviços Públicos), a Lei ",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 4730/2026: Institui o Programa Envelhecer nos Territórios e o Programa Viva Mais Cidadania, voltados à promoção e proteção dos direitos humanos das pessoas idosas, e dá outras providências.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3956/2026: Requer a criação da Frente Parlamentar Mista em Defesa do Programa Espacial Brasileiro.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRLP 1/0: Altera a Lei nº 7.716, de 5 de janeiro de 1989, e o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para dispor sobre crimes praticados em razão de misoginia.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2144/2026: Requer informações do Sr. André de Paula, Ministro de Estado da Agricultura e Pecuária, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de bovinos vivos para",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2143/2026: Requer informações do Sr. João Paulo Capobianco, Ministro de Estado do Meio Ambiente e Mudança do Clima, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de b",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2142/2026: Requer informações do Sr. Márcio Elias Rosa, Ministro de Estado do Desenvolvimento, Indústria, Comércio e Serviços, sobre as condições de regulação e fiscalização pela União da exportação marítima com",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2141/2026: Requer informações do Sr. Dario Durigan, Ministro de Estado da Fazenda, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de bovinos vivos para abate no exteri",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2140/2026: Requer informações do Sr. Bruno Moretti, Ministro de Estado do Planejamento e Orçamento, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de bovinos vivos par",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2139/2026: Requer informações da Sra. Miriam Belchior, Ministra-Chefe da Casa Civil, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de bovinos vivos para abate no exte",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 2138/2026: Requer informações do Sr. Mauro Vieira, Ministro de Estado das Relações Exteriores, sobre as condições de regulação e fiscalização pela União da exportação marítima comercial de bovinos vivos para aba",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 3690/2026: Requeiro a Vossa Excelência, com base no art. 155, do Regimento Interno da Câmara dos Deputados, regime de urgência para apreciação do Projeto de Lei nº 896/2023, que Altera a Lei nº 7.716, de 5 de ja",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "SBT 1/0: Institui a Política Nacional de Promoção de Fatores de Proteção da Saúde Mental de Meninas.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela aprovação, com substitutivo.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Inversão da Pauta - PL 5602/2019",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 2/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa do Projeto de Lei n° 5602/19, do PL 4574/21, do PL 1330/23 e do PL 4950/23, apensados, na",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela rejeição.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 763/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 646/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 597/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 582/2025",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 690/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 617/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RDF 1/0: Redação Final ao PDL 616/2024",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 1916/2026: Solicita ao Exmo. Sr. Ministro de Estado da Saúde, Sr. Alexandre Padilha, informações acerca da suspensão cautelar, da análise regulatória e da eventual disponibilização do medicamento Elevidys® no Br",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3228/2026: Altera a Lei nº 11.947, de 16 de junho de 2009, para fixar limites máximos de aquisição de alimentos processados e ultraprocessados e limites mínimos de aquisição de alimentos in natura ou minimamente",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 3227/2026: Altera a Lei nº 9.394, de 20 de dezembro de 1996, para adequar o Exame Nacional do Ensino Médio (Enem) à organização curricular do ensino médio e articular a aferição da formação técnica e profissiona",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RIC 1858/2026: Solicita ao Exmo. Sr. Ministro de Estado da Saúde Sr. Alexandre Padilha, informações acerca das condições para a promoção, proteção e recuperação da saúde relacionados ao climatério.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REL 2/2026: Relatório final do Grupo de Trabalho sobre os Crimes Praticados em razão de Misoginia.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP).",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REL 1/2026: Relatório do Grupo de Trabalho com a Finalidade de discutir o PL 896/2023, que  “Altera a Lei nº 7.716, de 5 de Janeiro de 1989, e o Decreto-Lei nº 2.848, de 7 de dezembro de 1940 (Código Penal), para",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PEC 13/2026: Altera o art. 9º da Emenda Constitucional nº 132, de 20 de dezembro de 2023, para permitir a concessão de créditos do Imposto sobre Bens e Serviços através de fomento indireto a doadores e patrocinado",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2563/2026: Altera a Lei nº 12.527, de 18 de novembro de 2011, para estabelecer a obrigatoriedade de divulgação de estatísticas de ocupação de cargos, funções e empregos por homens e mulheres na administração púb",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 1/0: Requerimento de Retirada de Matéria da Pauta - PL 6608/2019",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PL 2478/2026: Altera a Lei nº 14.790, de 29 de dezembro de 2023, para dispor sobre a proteção da saúde mental, do consumidor e da economia familiar no ambiente de apostas de quota fixa e jogos online, com ênfase na",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "EMR 2/0: Altera o Regimento Interno da Câmara dos Deputados para prever a análise do relatório anual de implementação da Lei nº 12.527, de 18 de novembro de 2011 (Lei de Acesso à Informação).",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "REQ 2874/2026: Requer a desapensação do Projeto de Lei nº 1.424/2026, que define antissemitismo com a finalidade de instruir as políticas públicas nacionais, do Projeto de Lei nº 473/2025, que altera a redação da Le",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa deste e do Substitutivo da Comissão de Ciência, Tecnologia, Comunicação e Informática.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 2/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa, com emenda.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade, técnica legislativa e, no mérito, pela aprovação.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "PRL 1/0: Parecer da Relatora, Dep. Tabata Amaral (PSB-SP), pela constitucionalidade, juridicidade e técnica legislativa.",
+        "relevance": 0.8
+      },
+      {
+        "source": "Proposição",
+        "type": "projeto",
+        "content": "RPD 34/0: Requerimento de Inversão da Pauta",
+        "relevance": 0.8
+      }
+    ],
+    "viability": [
+      {
+        "score": 51.5,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          41.5,
+          61.5
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 70.0,
+          "similaridade_pares": 80.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n✅ Taxa de aprovação de proposições é alta\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 51.5/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 51.5,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          41.5,
+          61.5
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 70.0,
+          "similaridade_pares": 80.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n✅ Taxa de aprovação de proposições é alta\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 51.5/100 (baseado em 100% dos fatores previstos)"
+      },
+      {
+        "score": 51.5,
+        "label": "Pouco Viável",
+        "confidence_interval": [
+          41.5,
+          61.5
+        ],
+        "factors": {
+          "viabilidade_orcamentaria": 20.0,
+          "historico_politico": 70.0,
+          "similaridade_pares": 80.0,
+          "escopo_geografico": 50.0,
+          "tendencias": 60.0
+        },
+        "unavailable_factors": [],
+        "coverage": 1.0,
+        "explanation": "❌ Orçamento provavelmente não comporta\n✅ Taxa de aprovação de proposições é alta\n✅ Pares obtiveram resultado parecido\n\n📊 Score: 51.5/100 (baseado em 100% dos fatores previstos)"
+      }
+    ],
+    "inconsistencies": [
+      "⚠️ Despesa atípica: R$ 4,080.82 para Gol Linhas Aéreas — valor muito acima da média",
+      "⚠️ Despesa atípica: R$ 3,344.28 para LATAM Airlines Brasil — valor muito acima da média"
+    ],
+    "cross_reference": {
+      "achados": [
+        {
+          "tipo": "sem_acao_legislativa",
+          "tema": "transporte",
+          "descricao": "Tema 'transporte' aparece 1x em discursos, mas nenhuma das 497 proposições de autoria analisadas menciona o tema.",
+          "confianca": "media",
+          "fontes": [
+            "Discursos em plenário (Câmara)",
+            "Proposições de autoria (Câmara)"
+          ]
+        }
+      ],
+      "temas_falados": {
+        "saúde": 9,
+        "educação": 14,
+        "segurança": 1,
+        "economia": 4,
+        "infraestrutura": 2,
+        "transporte": 1,
+        "meio_ambiente": 3
+      },
+      "temas_legislados": {
+        "educação": 39,
+        "saúde": 24,
+        "infraestrutura": 2,
+        "segurança": 18,
+        "economia": 19,
+        "cultura": 2,
+        "meio_ambiente": 11,
+        "tecnologia": 18
+      },
+      "cobertura": {
+        "promessas_analisadas": 3,
+        "proposicoes_analisadas": 497,
+        "votos_analisados": 0,
+        "discursos_analisados": 59
+      }
+    },
+    "benchmark": {
+      "politician_expenses": 279915.88,
+      "reference_expense_avg": 35000.0,
+      "politician_propositions": 497,
+      "reference_propositions_avg": 8.0,
+      "events_attended": 0,
+      "attendance_comparison_available": false,
+      "reference_is_estimate": true,
+      "assessment": "497 proposições — acima da referência estimada (8) | Comparação de presença indisponível (API não fornece)"
+    },
+    "ai_analysis": "# **Parecer Técnico de Análise Forense – Deputado Federal Tabata Amaral (PSB-SP)**\n\n---\n\n## **1. Resumo Executivo**\n\nO presente parecer técnico analisa o discurso e ações do deputado federal Tabata Amaral (PSB-SP), com foco em coerência, viabilidade, riscos e benchmarking com pares. A análise revela uma contradição estrutural entre as promessas de investimento em educação e ações parlamentares que priorizam a fiscalização de políticas de exportação de bovinos vivos e ações de controle de alimentos ultraprocessados. A promessa de \"tirar o FUNDEB do teto de gastos\" e \"investir na educação\" é explicitamente contradita por uma série de propostas que, em vez de aumentar investimentos diretos, reforçam a fiscalização de setores produtivos e de políticas públicas, sem indicadores de alocamento de recursos.  \n\nEm termos de viabilidade, não há dados de orçamento público vinculado às propostas de investimento em educação ou adaptação climática. A ausência de indicadores de alocação financeira para políticas de saúde mental, educação e adaptação urbana limita a avaliação da viabilidade. Em contrapartida, há um padrão de solicitação de informações (RICs) direcionadas a ministérios envolvidos em exportação de bovinos vivos, com foco em regulação e fiscalização, o que sugere uma atuação de monitoramento institucional, mas sem evidência de propostas de intervenção direta.  \n\nA análise identifica um risco de desalinhamento entre o discurso de proteção social e a prática de fiscalização de políticas produtivas, especialmente em áreas como saúde, educação e meio ambiente. A ausência de dados de gastos com educação ou adaptação climática, combinada com a frequência de propostas de fiscalização, eleva a probabilidade de um desvio entre a intenção de investimento e a prática de controle institucional.\n\n---\n\n## **2. Análise de Coerência**\n\nA análise revela uma **contradição significativa entre o discurso e a ação** em relação à política de educação.\n\n- **Discurso**: Tabata Amaral prometeu, com confiança de 65%, \"tirar o FUNDEB do teto de gastos\" e \"investir na educação\", destacando o compromisso com o futuro das crianças. Essa declaração é alinhada com o discurso de proteção social e investimento em educação, com ênfase em direitos e futuro.\n  \n- **Ação**: Nenhuma das propostas apresentadas envolve a alteração do teto de gastos do FUNDEB, a ampliação de recursos para educação ou a criação de novos fundos para investimento direto. Em vez disso, há propostas como:\n  - **PL 3227/2026**: Altera o Enem para alinhar com a organização curricular, mas",
+    "ai_provider": "local",
+    "subbrain": {
+      "executado": true,
+      "disponivel": true,
+      "modelo": "qwen1.5b",
+      "resumo": "36 frases classificadas por qwen1.5b; 22 divergência(s) do filtro determinístico",
+      "total_classificadas": 36,
+      "divergencias": [
+        {
+          "texto": "A gente tem plataformas estrangeiras que concentram a distribuição e capturam a receita publicitária que é produzida no Brasil, e essas plataformas serão sempre muito bem-vindas no nosso país, mas é muito importante que a gente não abra mão, em nenhum momento, da soberania brasileira.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Hoje, é verdade, a gente teve que travar uma grande luta para que este projeto não fosse retirado de pauta, mas não tenham dúvida do que eu vou dizer: daqui a alguns anos  podem anotar o que eu estou dizendo , quando a gente estiver discutindo uma nova ampliação da licença, esta batalha não vai ser necessária, porque são os pais que serão beneficiados por este projeto que a gente está votando hoje, que terão 10, 15, 20 dias de licença-paternidade, que vão travar essa batalha daqui a alguns anos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Assim, 10 milhões de brasileiros serão beneficiados.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Não vamos esperar nem 35 dias mais, e 5 dias é muito pouco.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Quem é da educação sabe que essa sempre vai ser a arma mais poderosa que vamos ter para mudar o mundo.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Se não apostarmos na educação, se não apostarmos nas novas gerações para que façam melhor do que nós, para que saibam lidar com isso, não avançaremos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Até quando vamos tratar essas tragédias como se fossem inevitáveis?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Quando é que vamos começar a responsabilizar quem deveria estar trabalhando para que elas não acontecessem?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Para isso, vamos precisar da redução de imposto para várias atividades.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu realmente considerei desistir do ensino médio.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Em uma sociedade que só oferece razão para a pessoa largar os estudos, vamos oferecer um incentivo, que foi testado, que funciona, para que esse aluno, para que essa aluna continue em sala de aula.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Grande vitória para todos nós que defendemos a responsabilidade fiscal, porque sabemos da importância dessa âncora para o desenvolvimento econômico do nosso País.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "E nós vamos continuar avançando até que não reste uma mulher insegura neste País, até que nós possamos, no ponto de ônibus, com as nossas filhas, em nossos lares, no ambiente de trabalho, ser livres, viver em segurança, em pé de igualdade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Mas se há uma coisa que nós aprendemos a fazer nos últimos anos foi a resistir, e seguiremos resistindo no Senado, na Justiça, lutando por vetos presidenciais.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Então, vamos, sim, aprovar o arcabouço fiscal, que é muito necessário e muito importante, mas vamos proteger a educação básica, vamos lutar por nossas crianças, vamos ter coragem de fazer o que é certo por quem mais precisa quando tivermos a oportunidade.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "É este o apelo que faço a todos os Deputados que dizem defender a nossa educação: vamos tirar o FUNDEB do teto de gastos.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Vamos fazer esse gesto pelo nosso futuro, pela nossa educação básica.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "cria um espaço de discussão nas escolas  se não for nas escolas, onde é que nós vamos debater a saúde mental dos nossos jovens?",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguirei trabalhando de domingo a domingo, manhã, tarde e noite, com firmeza e coragem até o dia em que o filho do rico e o filho da Vila Missionária tenham as mesmas oportunidades.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "que cada Município, na hora de fazer o plano diretor e na hora de pensar em suas obras, entenda que nós precisaremos de recursos e de planejamento para que as mudanças do clima não impactem os mais vulneráveis: não impactem quem mora em favela, não impactem a mulher, não impactem o negro.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Eu me comprometo a honrar cada voto, com a mesma coragem, com o mesmo diálogo, com o mesmo diploma de realidade, com a mesma crença na boa política.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        },
+        {
+          "texto": "Seguirei lutando até o dia em que, no nosso Brasil, o filho do pobre e o filho do rico tenham a mesma oportunidade, até o dia em que todos, independente de gênero, raça, orientação sexual, deficiência ou qualquer outra característica, possam sonhar e possam sonhar sem limites.",
+          "rotulo_subcerebro": "COMPROMISSO"
+        }
+      ]
+    },
+    "noticias_publicas": [
+      {
+        "fonte": "G1 — Política",
+        "titulo": "PSB confirma França como vice de Haddad e lança Tebet ao Senado em SP",
+        "title": "PSB confirma França como vice de Haddad e lança Tebet ao Senado em SP",
+        "resumo": "Convenção estadual do PSB em SP, com Haddad, França, Alckmin, Tebet, Marina e Tabata\nPaulo Gomes/TV Globo\nO Diretório Estadual do Partido Socialista Brasileiro (PSB) realizou na noite desta sexta-feira (31), na Alesp, sua convenção para oficializar os candidatos que vão disputar ",
+        "url": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/07/31/psb-confirma-franca-como-vice-de-haddad-e-lanca-tebet-ao-senado-em-sp.ghtml",
+        "link": "https://g1.globo.com/sp/sao-paulo/eleicoes/2026/noticia/2026/07/31/psb-confirma-franca-como-vice-de-haddad-e-lanca-tebet-ao-senado-em-sp.ghtml",
+        "publicado_em": "Fri, 31 Jul 2026 23:52:12 -0000"
+      },
+      {
+        "fonte": "G1 — Política",
+        "titulo": "Lula sanciona lei que cria 'PIX Pensão Alimentícia', com transferências automáticas do dinheiro",
+        "title": "Lula sanciona lei que cria 'PIX Pensão Alimentícia', com transferências automáticas do dinheiro",
+        "resumo": "Lula sanciona lei que cria 'PIX Pensão Alimentícia'\nO presidente Luiz Inácio Lula da Silva (PT) sancionou nesta quarta-feira (29) uma lei que cria um sistema de transferência automática da pensão alimentícia, batizado de \"PIX Pensão\". A proposta já havia sido aprovada pela Câmara",
+        "url": "https://g1.globo.com/politica/noticia/2026/07/29/lula-sanciona-lei-que-cria-pix-pensao-alimenticia-com-transferencias-automaticas-para-beneficiarios.ghtml",
+        "link": "https://g1.globo.com/politica/noticia/2026/07/29/lula-sanciona-lei-que-cria-pix-pensao-alimenticia-com-transferencias-automaticas-para-beneficiarios.ghtml",
+        "publicado_em": "Wed, 29 Jul 2026 19:16:07 -0000"
+      }
+    ],
+    "metadata": {
+      "version": "2.0.0",
+      "generated_at": "2026-08-02T01:54:34.826069-03:00",
+      "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos.",
+      "foco_solicitado": null
+    }
+  }
+}
