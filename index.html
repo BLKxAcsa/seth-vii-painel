@@ -113,6 +113,17 @@
   </div>
 </div>
 
+<!-- Popup secundario: discurso completo, sem corte. Mesma tecnica do
+     propModal acima (por CIMA do modal do dossie, data-speech-close
+     proprio e independente de data-close/data-prop-close). -->
+<div id="speechModal" class="modal prop-modal speech-modal" hidden>
+  <div class="modal-backdrop" data-speech-close></div>
+  <div class="modal-panel prop-modal-panel speech-modal-panel" role="dialog" aria-modal="true" aria-labelledby="speechTitle">
+    <button class="modal-x" data-speech-close aria-label="Fechar">&times;</button>
+    <div id="speechModalBody"></div>
+  </div>
+</div>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>
