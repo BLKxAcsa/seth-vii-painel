@@ -15,7 +15,7 @@
       "fulfillment_rate": null,
       "propositions_decided": 0,
       "propositions_approved": 0,
-      "propositions_ambiguous": 23,
+      "propositions_ambiguous": 19,
       "propositions_total": 497,
       "min_sample_required": 5,
       "attendance_rate": 100.0,
@@ -465,100 +465,8 @@
     "ai_provider": "local",
     "subbrain": {
       "executado": true,
-      "disponivel": true,
-      "modelo": "qwen1.5b",
-      "resumo": "36 frases classificadas por qwen1.5b; 22 divergência(s) do filtro determinístico",
-      "total_classificadas": 36,
-      "divergencias": [
-        {
-          "texto": "A gente tem plataformas estrangeiras que concentram a distribuição e capturam a receita publicitária que é produzida no Brasil, e essas plataformas serão sempre muito bem-vindas no nosso país, mas é muito importante que a gente não abra mão, em nenhum momento, da soberania brasileira.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Hoje, é verdade, a gente teve que travar uma grande luta para que este projeto não fosse retirado de pauta, mas não tenham dúvida do que eu vou dizer: daqui a alguns anos  podem anotar o que eu estou dizendo , quando a gente estiver discutindo uma nova ampliação da licença, esta batalha não vai ser necessária, porque são os pais que serão beneficiados por este projeto que a gente está votando hoje, que terão 10, 15, 20 dias de licença-paternidade, que vão travar essa batalha daqui a alguns anos.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Assim, 10 milhões de brasileiros serão beneficiados.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Não vamos esperar nem 35 dias mais, e 5 dias é muito pouco.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Quem é da educação sabe que essa sempre vai ser a arma mais poderosa que vamos ter para mudar o mundo.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Se não apostarmos na educação, se não apostarmos nas novas gerações para que façam melhor do que nós, para que saibam lidar com isso, não avançaremos.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Até quando vamos tratar essas tragédias como se fossem inevitáveis?",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Quando é que vamos começar a responsabilizar quem deveria estar trabalhando para que elas não acontecessem?",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Para isso, vamos precisar da redução de imposto para várias atividades.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Eu realmente considerei desistir do ensino médio.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Em uma sociedade que só oferece razão para a pessoa largar os estudos, vamos oferecer um incentivo, que foi testado, que funciona, para que esse aluno, para que essa aluna continue em sala de aula.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Grande vitória para todos nós que defendemos a responsabilidade fiscal, porque sabemos da importância dessa âncora para o desenvolvimento econômico do nosso País.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "E nós vamos continuar avançando até que não reste uma mulher insegura neste País, até que nós possamos, no ponto de ônibus, com as nossas filhas, em nossos lares, no ambiente de trabalho, ser livres, viver em segurança, em pé de igualdade.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Mas se há uma coisa que nós aprendemos a fazer nos últimos anos foi a resistir, e seguiremos resistindo no Senado, na Justiça, lutando por vetos presidenciais.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Então, vamos, sim, aprovar o arcabouço fiscal, que é muito necessário e muito importante, mas vamos proteger a educação básica, vamos lutar por nossas crianças, vamos ter coragem de fazer o que é certo por quem mais precisa quando tivermos a oportunidade.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "É este o apelo que faço a todos os Deputados que dizem defender a nossa educação: vamos tirar o FUNDEB do teto de gastos.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Vamos fazer esse gesto pelo nosso futuro, pela nossa educação básica.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "cria um espaço de discussão nas escolas  se não for nas escolas, onde é que nós vamos debater a saúde mental dos nossos jovens?",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Seguirei trabalhando de domingo a domingo, manhã, tarde e noite, com firmeza e coragem até o dia em que o filho do rico e o filho da Vila Missionária tenham as mesmas oportunidades.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "que cada Município, na hora de fazer o plano diretor e na hora de pensar em suas obras, entenda que nós precisaremos de recursos e de planejamento para que as mudanças do clima não impactem os mais vulneráveis: não impactem quem mora em favela, não impactem a mulher, não impactem o negro.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Eu me comprometo a honrar cada voto, com a mesma coragem, com o mesmo diálogo, com o mesmo diploma de realidade, com a mesma crença na boa política.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        },
-        {
-          "texto": "Seguirei lutando até o dia em que, no nosso Brasil, o filho do pobre e o filho do rico tenham a mesma oportunidade, até o dia em que todos, independente de gênero, raça, orientação sexual, deficiência ou qualquer outra característica, possam sonhar e possam sonhar sem limites.",
-          "rotulo_subcerebro": "COMPROMISSO"
-        }
-      ]
+      "disponivel": false,
+      "motivo": "modelo carregou mas parou de responder após 2 tentativas (ConnectTimeout: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Max retries exceeded with url: /xet-bridge-us/6a38b39fd999d260195aaa05/a7bdff6f9817586f2b0ea56288ba3bc0ec11a56d56c53b1d5bc099ebbd81dad6?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27Qwen_Qwen3-1.7B-Q4_K_M.gguf%3B+filename%3D%22Qwen_Qwen3-1.7B-Q4_K_M.gguf%22%3B&X-Xet-Cas-Uid=public&user_id=public&Expires=1785651851&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNmEzOGIzOWZkOTk5ZDI2MDE5NWFhYTA1L2E3YmRmZjZmOTgxNzU4NmYyYjBlYTU2Mjg4YmEzYmMwZWMxMWE1NmQ1NmM1M2IxZDViYzA5OWViYmQ4MWRhZDZcXD9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWlubGluZSUzQitmaWxlbmFtZSUyQSUzRFVURi04JTI3JTI3UXdlbl9Rd2VuMy0xLjdCLVE0X0tfTS5nZ3VmJTNCK2ZpbGVuYW1lJTNEJTIyUXdlbl9Rd2VuMy0xLjdCLVE0X0tfTS5nZ3VmJTIyJTNCJlgtWGV0LUNhcy1VaWQ9cHVibGljJnVzZXJfaWQ9cHVibGljIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODU2NTE4NTF9fX1dfQ__&Signature=MEUCIFUkbfpoRR9x13TYVT3OEHsgthaK5PmGskjBjfghAbWOAiEA63a-RHAqgU100t7U0TBH0rgDLF3ZIafd0tYHXsMhERo_&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F (Caused by ConnectTimeoutError(<HTTPSConnection(host='us.aws.cdn.hf.co', port=443) at 0x7f8a7cdc87a0>, 'Connection to us.aws.cdn.hf.co timed out. (connect timeout=600)')))"
     },
     "noticias_publicas": [
       {
@@ -582,7 +490,7 @@
     ],
     "metadata": {
       "version": "2.0.0",
-      "generated_at": "2026-08-02T01:54:34.826069-03:00",
+      "generated_at": "2026-08-02T02:40:33.688639-03:00",
       "disclaimer": "Análise probabilística, não acusatória. Baseada em dados públicos.",
       "foco_solicitado": null
     }
