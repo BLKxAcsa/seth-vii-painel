@@ -164,11 +164,30 @@ function temVerboDeAcao(frase) {
   return RULES._stems.some((rx) => rx.test(frase));
 }
 
+function ehNarracaoPassada(frase) {
+  // "Já" perto de um verbo de ação denuncia conquista passada, não
+  // promessa futura -- espelha PromiseExtractor._is_past_narration do
+  // Python. Ficou necessário depois que "quero/queremos" virou marcador de
+  // compromisso: é o abridor mais comum de frases como "quero destacar que
+  // já ampliamos o acesso à saúde", que sem esta checagem passaria pelo
+  // portão de substância (tem tema E verbo de ação) mesmo narrando o passado.
+  const re = /(?<![\p{L}\p{N}_])j[áa](?![\p{L}\p{N}_])/giu;
+  let m;
+  while ((m = re.exec(frase))) {
+    const janela = frase.slice(m.index + m[0].length, m.index + m[0].length + 60);
+    const palavras = janela.toLowerCase().match(/[\p{L}\p{N}_]+/gu) || [];
+    if (palavras.some((w) => RULES._exact.has(w))) return true;
+    if (RULES._stems.some((rx) => rx.test(janela))) return true;
+  }
+  return false;
+}
+
 function motivoRejeicao(frase) {
   if (frase.trimEnd().endsWith('?')) return 'pergunta retórica';
   for (const rx of RULES._reject) {
     if (rx.test(frase)) return 'padrão de rejeição';
   }
+  if (ehNarracaoPassada(frase)) return 'narração de fato passado (já + verbo de entrega)';
   if (!categorizar(frase)) return 'sem tema de política pública';
   if (!temVerboDeAcao(frase)) return 'sem verbo de ação de política pública';
   return null;
